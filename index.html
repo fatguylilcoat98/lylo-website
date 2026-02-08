@@ -18,22 +18,29 @@
 </head>
 <body class="antialiased flex flex-col min-h-screen">
 
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-black italic tracking-tighter text-blue-500 glow-text hover:text-white transition">LYLO</a>
-            
-            <div class="hidden md:flex gap-8 text-sm font-bold text-gray-400 uppercase tracking-widest">
-                <a href="#mission" class="hover:text-white transition">Our Story</a>
-                <a href="#features" class="hover:text-white transition">Features</a>
-                <a href="#programs" class="hover:text-white transition">Programs</a>
-                <a href="#pricing" class="hover:text-white transition">Pricing</a>
+<nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        
+        <div class="flex items-center gap-2 group cursor-pointer" onclick="window.location.href='/'">
+            <div class="relative w-12 h-12 flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 bg-blue-500/20 blur-xl rounded-full group-hover:bg-blue-500/40 transition-all"></div>
+                
+                <img src="https://i.ibb.co/cKW1Qtn9/Untitled-design-removebg-preview.png" 
+                     alt="LYLO Logo" 
+                     class="w-20 h-20 max-w-none object-contain relative z-10 ml-[-24px] transition-transform group-hover:scale-110">
             </div>
-
-            <a href="https://app.mylylo.pro" class="px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold uppercase tracking-widest rounded text-xs transition shadow-[0_0_15px_rgba(37,99,235,0.4)]">
-                Login / Launch App
-            </a>
+            <span class="text-2xl font-black tracking-tighter text-white uppercase italic">
+                LYLO<span class="text-blue-500">.</span>PRO
+            </span>
         </div>
-    </nav>
+
+        <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+            <a href="#features" class="hover:text-white transition">Features</a>
+            <a href="#pricing" class="hover:text-white transition">Pricing</a>
+            <a href="https://app.mylylo.pro" class="px-6 py-2 border border-blue-600 text-blue-500 rounded hover:bg-blue-600 hover:text-white transition">Client Login</a>
+        </div>
+    </div>
+</nav>
 
     <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div class="absolute inset-0 gradient-bg"></div>
@@ -165,7 +172,7 @@
         </div>
     </section>
 
-<section id="pricing" class="py-24 bg-[#050505]">
+<section id="pricing" class="py-24 bg-[#050505] mt-12">
     <div class="max-w-7xl mx-auto px-6">
         <h2 class="text-3xl font-bold uppercase tracking-widest text-center mb-16 text-white">CHOOSE YOUR PROTECTION</h2>
         
@@ -174,7 +181,9 @@
             <div class="card p-8 rounded-2xl flex flex-col items-center text-center group transition-all duration-500 border border-white/5 bg-white/[0.02]">
                 <div class="relative mb-6 flex justify-center">
                     <div class="absolute inset-0 bg-slate-400/10 blur-[50px] rounded-full"></div>
-                    <img src="https://i.ibb.co/Xx96vg39/free-shield-png.png" alt="Free Shield" class="w-52 h-52 object-contain relative z-10 transition-transform duration-700 group-hover:scale-110">
+                    <img src="https://i.ibb.co/Xx96vg39/free-shield-png.png" 
+                         alt="Free Shield" 
+                         class="w-52 h-52 object-contain relative z-10 transition-transform duration-700 group-hover:scale-110">
                 </div>
                 <h3 class="text-gray-400 font-bold uppercase text-sm mb-2">Standard</h3>
                 <div class="text-4xl font-black mb-6 text-white">$0</div>
@@ -187,12 +196,12 @@
 
             <div class="p-8 rounded-2xl flex flex-col items-center text-center bg-blue-900/10 border border-blue-600 relative overflow-hidden transform md:scale-105 group transition-all duration-500">
                 <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 uppercase">Most Popular</div>
-                <div class="relative mb-6 flex justify-center">
+                <div class="relative mb-6 flex justify-center items-center h-52">
                     <div class="absolute inset-0 bg-blue-500/30 blur-[60px] rounded-full animate-pulse"></div>
                     
                     <img src="https://i.ibb.co/cKW1Qtn9/Untitled-design-removebg-preview.png" 
                          alt="Pro Shield" 
-                         class="w-56 h-56 object-contain relative z-10 transition-transform duration-700 group-hover:scale-110 drop-shadow-[0_0_30px_rgba(59,130,246,0.5)] ml-[-70px]">
+                         class="w-72 h-72 max-w-none object-contain relative z-10 transition-transform duration-700 group-hover:scale-110 drop-shadow-[0_0_30px_rgba(59,130,246,0.5)] ml-[-85px]">
                 </div>
                 <h3 class="text-blue-400 font-bold uppercase text-sm mb-2">Pro Guardian</h3>
                 <div class="text-4xl font-black mb-6 text-white">$6.99</div>
@@ -206,7 +215,9 @@
             <div class="card p-8 rounded-2xl flex flex-col items-center text-center border border-yellow-600/30 bg-yellow-900/5 group transition-all duration-500">
                 <div class="relative mb-6 flex justify-center">
                     <div class="absolute inset-0 bg-yellow-500/20 blur-[60px] rounded-full animate-pulse"></div>
-                    <img src="https://i.ibb.co/7xC3Kn3g/elite-shield.png" alt="Elite Shield" class="w-52 h-52 object-contain relative z-10 transition-transform duration-700 group-hover:scale-110 drop-shadow-[0_0_30px_rgba(251,191,36,0.4)]">
+                    <img src="https://i.ibb.co/7xC3Kn3g/elite-shield.png" 
+                         alt="Elite Shield" 
+                         class="w-52 h-52 object-contain relative z-10 transition-transform duration-700 group-hover:scale-110 drop-shadow-[0_0_30px_rgba(251,191,36,0.4)]">
                 </div>
                 <h3 class="text-yellow-500 font-bold uppercase text-sm mb-2">Elite Justice</h3>
                 <div class="text-4xl font-black mb-6 text-white">$9.99</div>
