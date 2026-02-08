@@ -165,112 +165,44 @@
         </div>
     </section>
 
-    <section id="pricing" class="py-24 bg-[#050505]">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-bold uppercase tracking-widest text-center mb-16 text-white">Choose Your Protection</h2>
+   <section id="pricing" class="py-24 bg-[#050505]">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold uppercase tracking-widest mb-16 text-white">Choose Your Protection</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 
-                <div class="card p-8 rounded-2xl flex flex-col items-center text-center group hover:border-gray-500 transition-all duration-500">
-                    <div class="relative w-48 h-48 mb-6 transition-transform duration-500 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-slate-600/20 blur-2xl rounded-full"></div>
-                        <svg viewBox="0 0 200 220" class="w-full h-full drop-shadow-2xl">
-                            <defs>
-                                <linearGradient id="steelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#64748b" stop-opacity="1" />
-                                    <stop offset="100%" stop-color="#334155" stop-opacity="1" />
-                                </linearGradient>
-                                <linearGradient id="mutedGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#fcd34d" stop-opacity="1" />
-                                    <stop offset="100%" stop-color="#d97706" stop-opacity="1" />
-                                </linearGradient>
-                            </defs>
-                            <path d="M100 10 L180 50 L180 120 Q180 180 100 210 Q20 180 20 120 L20 50 Z" 
-                                  fill="url(#steelGrad)" stroke="#475569" stroke-width="2" />
-                            <g stroke="#94a3b8" stroke-width="1" fill="none" opacity="0.3">
-                                <path d="M100 40 L100 80" /><path d="M70 60 L130 60" /><path d="M50 100 L150 100" />
-                                <circle cx="100" cy="40" r="2" fill="#94a3b8" />
-                            </g>
-                            <path d="M10 90 L190 80 L190 140 L10 150 Z" fill="#1e293b" opacity="0.8" />
-                            <text x="65" y="135" text-anchor="end" font-family="sans-serif" font-weight="900" font-size="55" fill="url(#steelGrad)" style="filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.5));">LY</text>
-                            <text x="70" y="135" text-anchor="start" font-family="sans-serif" font-weight="900" font-size="55" fill="url(#mutedGold)" style="filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.5));">LO</text>
-                            <text x="50" y="200" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="18" fill="#64748b">FREE</text>
-                            <text x="150" y="200" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="18" fill="#d97706">TIER</text>
-                        </svg>
+                <div class="card p-8 rounded-2xl flex flex-col items-center">
+                    <div class="relative mb-6">
+                        <div class="absolute inset-0 bg-slate-500/20 blur-2xl rounded-full"></div>
+                        <img src="https://app.mylylo.pro/free-shield.png" alt="Free Shield" class="w-48 h-48 object-contain relative z-10">
                     </div>
                     <h3 class="text-gray-400 font-bold uppercase text-sm mb-2">Standard</h3>
-                    <div class="text-4xl font-black mb-6 text-white">-bash</div>
-                    <ul class="space-y-4 text-sm text-gray-300 mb-8 flex-1 text-left w-full">
-                        <li><i class="fas fa-check text-gray-500 mr-2"></i> 5 Security Scans / Day</li>
-                        <li><i class="fas fa-check text-gray-500 mr-2"></i> Basic Scam Detection</li>
-                        <li><i class="fas fa-check text-gray-500 mr-2"></i> Community Alerts</li>
-                    </ul>
-                    <a href="https://app.mylylo.pro?tier=free" class="w-full py-3 border border-gray-600 text-white rounded text-center font-bold uppercase text-xs hover:bg-white hover:text-black transition">Get Started</a>
+                    <div class="text-4xl font-black mb-6 text-white">$0</div>
+                    <a href="https://app.mylylo.pro?tier=free" class="w-full py-3 border border-gray-600 text-white rounded font-bold uppercase text-xs hover:bg-white hover:text-black transition">Get Started</a>
                 </div>
 
-                <div class="p-8 rounded-2xl flex flex-col items-center text-center bg-blue-900/10 border border-blue-600 relative overflow-hidden transform md:scale-105 group hover:shadow-[0_0_50px_rgba(37,99,235,0.3)] transition-all duration-500">
-                    <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 uppercase">Most Popular</div>
-                    <div class="relative w-48 h-48 mb-6 transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-blue-500/30 blur-3xl rounded-full animate-pulse"></div>
-                        <svg viewBox="0 0 200 220" class="w-full h-full drop-shadow-2xl">
-                            <defs>
-                                <linearGradient id="proGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#06b6d4" stop-opacity="1" />
-                                    <stop offset="100%" stop-color="#3b82f6" stop-opacity="1" />
-                                </linearGradient>
-                            </defs>
-                            <path d="M100 10 L180 50 L180 120 Q180 180 100 210 Q20 180 20 120 L20 50 Z" 
-                                  fill="url(#proGrad)" fill-opacity="0.15" stroke="url(#proGrad)" stroke-width="3" style="filter: drop-shadow(0 0 10px rgba(59,130,246,0.5));"/>
-                            <g stroke="#06b6d4" stroke-width="1.5" fill="none" opacity="0.8">
-                                <path d="M100 40 L100 80" /><path d="M70 60 L130 60" /><path d="M50 100 L150 100" />
-                                <circle cx="100" cy="40" r="3" fill="#06b6d4" /><circle cx="50" cy="100" r="3" fill="#06b6d4" /><circle cx="150" cy="100" r="3" fill="#06b6d4" />
-                            </g>
-                            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="45" fill="url(#proGrad)" style="text-shadow: 0 0 30px rgba(6,182,212,0.8);">LYLO</text>
-                            <text x="50%" y="85%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="16" fill="url(#proGrad)" letter-spacing="2">PRO TIER</text>
-                        </svg>
+                <div class="p-8 rounded-2xl flex flex-col items-center bg-blue-900/10 border border-blue-600 transform md:scale-105">
+                    <div class="relative mb-6">
+                        <div class="absolute inset-0 bg-blue-500/40 blur-3xl rounded-full animate-pulse"></div>
+                        <img src="https://app.mylylo.pro/pro-shield.png" alt="Pro Shield" class="w-48 h-48 object-contain relative z-10">
                     </div>
                     <h3 class="text-blue-400 font-bold uppercase text-sm mb-2">Pro Guardian</h3>
-                    <div class="text-4xl font-black mb-6 text-white">.99<span class="text-sm font-normal text-gray-400">/mo</span></div>
-                    <ul class="space-y-4 text-sm text-gray-300 mb-8 flex-1 text-left w-full">
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> <strong>Unlimited</strong> Scans</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Fast Response Time</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Image Analysis</li>
-                    </ul>
-                    <a href="https://app.mylylo.pro?tier=pro" class="block w-full py-3 bg-blue-600 rounded text-center font-bold uppercase text-xs hover:bg-blue-500 text-white transition shadow-[0_0_20px_rgba(37,99,235,0.4)]">Start Free Trial</a>
+                    <div class="text-4xl font-black mb-6 text-white">$6.99</div>
+                    <a href="https://app.mylylo.pro?tier=pro" class="block w-full py-3 bg-blue-600 rounded text-center font-bold uppercase text-xs hover:bg-blue-500 text-white transition">Start Free Trial</a>
                 </div>
 
-                <div class="card p-8 rounded-2xl flex flex-col items-center text-center border border-yellow-600/30 group hover:shadow-[0_0_50px_rgba(234,179,8,0.2)] transition-all duration-500">
-                    <div class="relative w-48 h-48 mb-6 transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-yellow-500/20 blur-3xl rounded-full animate-pulse"></div>
-                        <svg viewBox="0 0 200 220" class="w-full h-full drop-shadow-2xl">
-                            <defs>
-                                <linearGradient id="eliteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#fbbf24" stop-opacity="1" />
-                                    <stop offset="100%" stop-color="#d97706" stop-opacity="1" />
-                                </linearGradient>
-                            </defs>
-                            <path d="M100 10 L180 50 L180 120 Q180 180 100 210 Q20 180 20 120 L20 50 Z" 
-                                  fill="url(#eliteGrad)" fill-opacity="0.15" stroke="url(#eliteGrad)" stroke-width="3" style="filter: drop-shadow(0 0 10px rgba(251,191,36,0.5));"/>
-                            <g stroke="#fbbf24" stroke-width="1.5" fill="none" opacity="0.8">
-                                <path d="M100 40 L100 80" /><path d="M70 60 L130 60" /><path d="M50 100 L150 100" />
-                                <circle cx="100" cy="40" r="3" fill="#fbbf24" /><circle cx="50" cy="100" r="3" fill="#fbbf24" /><circle cx="150" cy="100" r="3" fill="#fbbf24" />
-                            </g>
-                            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="45" fill="url(#eliteGrad)" style="text-shadow: 0 0 30px rgba(251,191,36,0.8);">LYLO</text>
-                            <text x="50%" y="85%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="16" fill="url(#eliteGrad)" letter-spacing="2">ELITE TIER</text>
-                        </svg>
+                <div class="card p-8 rounded-2xl flex flex-col items-center border border-yellow-600/30">
+                    <div class="relative mb-6">
+                        <div class="absolute inset-0 bg-yellow-500/30 blur-3xl rounded-full animate-pulse"></div>
+                        <img src="https://app.mylylo.pro/elite-shield.png" alt="Elite Shield" class="w-48 h-48 object-contain relative z-10">
                     </div>
                     <h3 class="text-yellow-500 font-bold uppercase text-sm mb-2">Elite Justice</h3>
-                    <div class="text-4xl font-black mb-6 text-white">.99<span class="text-sm font-normal text-gray-400">/mo</span></div>
-                    <ul class="space-y-4 text-sm text-gray-300 mb-8 flex-1 text-left w-full">
-                        <li><i class="fas fa-check text-yellow-500 mr-2"></i> Everything in Pro</li>
-                        <li><i class="fas fa-check text-yellow-500 mr-2"></i> <strong>Legal Aid Connection</strong></li>
-                        <li><i class="fas fa-check text-yellow-500 mr-2"></i> Priority "Human" Support</li>
-                    </ul>
+                    <div class="text-4xl font-black mb-6 text-white">$9.99</div>
                     <a href="mailto:mylylo.ai@gmail.com?subject=Elite Tier Application" class="inline-block w-full py-3 border border-yellow-600 text-yellow-500 rounded text-center font-bold uppercase text-xs hover:bg-yellow-600 hover:text-black transition">Apply for Elite</a>
                 </div>
+
             </div>
         </div>
     </section>
-
     <footer id="legal" class="py-12 border-t border-white/10 text-center text-gray-500 text-xs">
         <div class="max-w-4xl mx-auto px-6">
             <div class="grid md:grid-cols-3 gap-8 mb-12 text-left">
