@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="manifest" href="/manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -12,27 +14,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #050505; color: white; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: white; scroll-behavior: smooth; overflow-x: hidden; }
         .glow-blue { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
         .card { 
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
             border: 1px solid rgba(255,255,255,0.05); 
             background: rgba(255,255,255,0.01);
         }
-        .card:hover { 
-            border-color: rgba(59, 130, 246, 0.5); 
-            transform: translateY(-10px); 
-            background: rgba(255,255,255,0.03); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        @media (hover: hover) {
+            .card:hover { 
+                border-color: rgba(59, 130, 246, 0.5); 
+                transform: translateY(-10px); 
+                background: rgba(255,255,255,0.03); 
+                box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            }
         }
         details summary::-webkit-details-marker { display:none; }
         .nav-link { position: relative; }
         .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0; height: 2px; bottom: -4px; left: 0;
-            background-color: #3b82f6;
-            transition: width 0.3s ease;
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
+            background-color: #3b82f6; transition: width 0.3s ease;
         }
         .nav-link:hover::after { width: 100%; }
     </style>
@@ -40,187 +41,171 @@
 <body>
 
 <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-        <div class="flex items-center gap-4 group cursor-pointer" onclick="window.location.href='/'">
-            <img src="pro-sheild-final.png" alt="LYLO PRO" class="w-12 h-12 object-contain transition-transform group-hover:scale-110">
-            <span class="text-2xl font-black tracking-tighter text-white uppercase italic">LYLO<span class="text-blue-500">.</span>PRO</span>
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3 group cursor-pointer" onclick="window.location.href='/'">
+            <img src="pro-sheild-final.png" alt="LYLO PRO" class="w-10 h-10 md:w-12 md:h-12 object-contain">
+            <span class="text-xl md:text-2xl font-black tracking-tighter text-white uppercase italic">LYLO<span class="text-blue-500">.</span>PRO</span>
+        </div>
+        <div class="flex lg:hidden">
+            <a href="https://app.mylylo.pro" class="px-4 py-2 bg-blue-600 text-white text-[10px] font-black uppercase rounded-sm">Login</a>
         </div>
         <div class="hidden lg:flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
-            <a href="#features" class="nav-link hover:text-white transition">Capabilities</a>
-            <a href="#master-lylo" class="nav-link hover:text-white transition">How it Works</a>
-            <a href="#pricing" class="nav-link hover:text-white transition">Pricing</a>
-            <a href="#scholarship" class="nav-link hover:text-white transition">Scholarship Program</a>
-            <a href="#beta" class="nav-link hover:text-white transition">Beta Testers</a>
-            <a href="https://app.mylylo.pro" class="px-6 py-2.5 border border-blue-600 text-blue-500 rounded-sm hover:bg-blue-600 hover:text-white transition duration-300 shadow-lg glow-blue">Login</a>
+            <a href="#features" class="nav-link">Capabilities</a>
+            <a href="#master-lylo" class="nav-link">How it Works</a>
+            <a href="#pricing" class="nav-link">Pricing</a>
+            <a href="#scholarship" class="nav-link">Scholarship</a>
+            <a href="#beta" class="nav-link">Beta</a>
+            <a href="https://app.mylylo.pro" class="px-6 py-2.5 border border-blue-600 text-blue-500 rounded-sm hover:bg-blue-600 hover:text-white transition shadow-lg glow-blue">Login</a>
         </div>
     </div>
 </nav>
 
-<section class="relative pt-60 pb-32 px-6 text-center">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent -z-10"></div>
-    <h1 class="text-6xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.85] text-white italic uppercase mx-auto">
+<section class="relative pt-40 md:pt-60 pb-20 md:pb-32 px-4 md:px-6 text-center">
+    <h1 class="text-5xl md:text-9xl font-black mb-6 tracking-tighter leading-[0.9] text-white italic uppercase mx-auto">
         LOVE YOUR <br><span class="text-blue-500">LOVED ONES</span>
     </h1>
-    <p class="text-blue-400 text-lg md:text-xl font-bold uppercase tracking-[0.3em] mb-6">
+    <p class="text-blue-400 text-sm md:text-xl font-bold uppercase tracking-[0.2em] mb-6 px-4">
         Protection for them, Peace of mind for you.
     </p>
-    <p class="text-gray-400 text-lg md:text-xl mb-14 max-w-3xl mx-auto leading-relaxed font-light italic">
+    <p class="text-gray-400 text-base md:text-xl mb-14 max-w-3xl mx-auto leading-relaxed font-light italic px-4">
         LYLO is the first Digital Bodyguard that uses Pinecone long-term memory to learn your life, identify your threats, and manage your world.
     </p>
-    <div class="flex flex-wrap justify-center gap-6">
-        <button onclick="window.location.href='https://app.mylylo.pro'" class="px-12 py-6 bg-blue-600 text-white font-black rounded-sm hover:bg-blue-500 transition shadow-2xl glow-blue uppercase tracking-widest text-xs">
-            Get Protected Now
-        </button>
-        <a href="#features" class="px-12 py-6 border border-white/10 text-white font-black rounded-sm hover:bg-white/5 transition uppercase tracking-widest text-xs">
-            Explore Features
-        </a>
+    <div class="flex flex-col md:flex-row items-center justify-center gap-4 px-6">
+        <button onclick="window.location.href='https://app.mylylo.pro'" class="w-full md:w-auto px-12 py-5 bg-blue-600 text-white font-black rounded-sm uppercase tracking-widest text-xs">Get Protected Now</button>
+        <a href="#features" class="w-full md:w-auto px-12 py-5 border border-white/10 text-white font-black rounded-sm uppercase tracking-widest text-xs text-center">Explore Features</a>
     </div>
 </section>
 
-<section class="py-32 bg-black overflow-hidden">
-    <div class="max-w-5xl mx-auto px-6">
-        <div class="card p-12 rounded-[3rem] border-blue-900/20 bg-gradient-to-br from-blue-900/5 to-transparent relative">
-            <div class="grid md:grid-cols-3 gap-12 items-center">
-                <div class="md:col-span-2">
-                    <h3 class="text-xs font-bold text-blue-500 uppercase tracking-[0.5em] mb-4">A Note from the Founder</h3>
-                    <h2 class="text-4xl font-black uppercase italic tracking-tighter text-white mb-6">I'm Christopher, <br>and this is Personal.</h2>
-                    <p class="text-gray-400 leading-relaxed mb-6 font-medium uppercase tracking-wider text-xs">
-                        I didn’t build LYLO to be another faceless corporation. I’m a tech enthusiast based right here in <span class="text-white">Sacramento, CA</span>. Whether I’m building custom Z790 rigs, modding consoles, or hunting down the best carne asada in the city, I’ve always believed that technology should serve people—not target them.
-                    </p>
-                    <p class="text-gray-400 leading-relaxed font-medium uppercase tracking-wider text-xs">
-                        I created LYLO (Love Your Loved Ones) because I saw how easy it was for scammers to hurt the people we care about. This is my mission: to provide elite protection with a human heart, so you can Live Your Life Online without fear.
+<section class="py-20 md:py-32 bg-black">
+    <div class="max-w-5xl mx-auto px-4 md:px-6">
+        <div class="card p-8 md:p-12 rounded-[2rem] border-blue-900/20 bg-gradient-to-br from-blue-900/5 to-transparent">
+            <div class="flex flex-col-reverse md:grid md:grid-cols-3 gap-10 items-center">
+                <div class="md:col-span-2 text-center md:text-left">
+                    <h3 class="text-[10px] font-bold text-blue-500 uppercase tracking-[0.4em] mb-4">A Note from the Founder</h3>
+                    <h2 class="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-white mb-6">I'm Christopher, <br>and this is Personal.</h2>
+                    <p class="text-gray-400 leading-relaxed mb-6 font-medium uppercase tracking-wider text-[10px] md:text-xs text-left">
+                        I’m a tech enthusiast based in <span class="text-white">Sacramento, CA</span>. I’ve always believed that technology should serve people—not target them. I created LYLO to provide elite protection with a human heart.
                     </p>
                 </div>
                 <div class="flex justify-center">
-                    <div class="w-48 h-48 rounded-full border-2 border-blue-600/30 p-2 flex items-center justify-center">
-                        <img src="pro-sheild-final.png" alt="Founder" class="w-full h-full object-contain opacity-50">
-                    </div>
+                    <img src="pro-sheild-final.png" alt="Founder" class="w-32 h-32 md:w-48 md:h-48 object-contain opacity-50">
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section id="master-lylo" class="py-32 bg-[#080808] border-y border-white/5">
+<section id="master-lylo" class="py-20 md:py-32 bg-[#080808] border-y border-white/5">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-20 items-center">
-            <div>
-                <h2 class="text-4xl font-black uppercase tracking-widest mb-8 leading-tight">Master Your <br><span class="text-blue-500">Intelligence Engine</span></h2>
-                <p class="text-gray-400 mb-10 leading-relaxed">
-                    LYLO isn't just a program you run; it's an assistant you talk to. By combining real-time internet access with a secured memory vault, LYLO handles the complex tasks so you don't have to.
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="text-center md:text-left">
+                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-widest mb-8 leading-tight">Master Your <br><span class="text-blue-500">Intelligence Engine</span></h2>
+                <p class="text-gray-400 mb-10 leading-relaxed text-sm md:text-base">
+                    LYLO isn't just a program; it's an assistant you talk to. Combining real-time internet access with a secured memory vault.
                 </p>
                 <div class="space-y-6">
-                    <div class="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                    <div class="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 text-left">
                         <i class="fas fa-microphone text-blue-500 mt-1"></i>
                         <div>
-                            <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-1">Talk to Prompt</h4>
-                            <p class="text-gray-500 text-xs">Speak naturally. LYLO understands context.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                        <i class="fas fa-volume-up text-blue-500 mt-1"></i>
-                        <div>
-                            <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-1">Auto-Talk Feature</h4>
-                            <p class="text-gray-500 text-xs">LYLO can read instructions or scam alerts out loud.</p>
+                            <h4 class="text-white font-bold uppercase text-[10px] tracking-widest mb-1">Talk to Prompt</h4>
+                            <p class="text-gray-500 text-[10px]">Speak naturally. LYLO understands context.</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="relative">
-                <img src="https://i.ibb.co/cKW1Qtn9/Untitled-design-removebg-preview.png" alt="LYLO AI" class="w-full h-auto relative z-10 drop-shadow-[0_0_50px_rgba(37,99,235,0.3)]">
+            <div class="relative flex justify-center">
+                <img src="https://i.ibb.co/cKW1Qtn9/Untitled-design-removebg-preview.png" alt="LYLO AI" class="w-full max-w-sm md:max-w-none h-auto drop-shadow-[0_0_50px_rgba(37,99,235,0.3)]">
             </div>
         </div>
     </div>
 </section>
 
-<section id="features" class="py-32 bg-black">
+<section id="features" class="py-20 md:py-32 bg-black">
     <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-black uppercase tracking-[0.3em] text-center mb-4">Unmatched Capability</h2>
-        <div class="grid md:grid-cols-2 gap-8 mt-24">
-            <details class="group card p-2 rounded-2xl overflow-hidden shadow-2xl">
-                <summary class="flex justify-between items-center p-8 cursor-pointer">
-                    <span class="text-blue-400 font-bold uppercase tracking-[0.2em] text-xs flex items-center gap-4"><i class="fas fa-brain text-xl"></i> 01. Digital Memory (The Vault)</span>
-                    <i class="fas fa-chevron-down text-gray-700 transition-transform"></i>
+        <h2 class="text-2xl md:text-3xl font-black uppercase tracking-[0.3em] text-center mb-16 md:mb-24">Unmatched Capability</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <details class="group card p-4 rounded-2xl">
+                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                    <span class="text-blue-400 font-bold uppercase tracking-[0.2em] text-[10px] flex items-center gap-4"><i class="fas fa-brain"></i> 01. Digital Memory</span>
+                    <i class="fas fa-chevron-down text-gray-700"></i>
                 </summary>
-                <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-white/5 bg-black/50">
-                    <p class="mb-6">Powered by <strong>Pinecone Vector Memory</strong>, LYLO builds a secure database of your preferences. It never forgets a detail.</p>
-                </div>
+                <div class="px-4 pb-4 text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-4">Powered by Pinecone Memory, LYLO builds a secure database of your preferences.</div>
             </details>
-            <details class="group card p-2 rounded-2xl overflow-hidden shadow-2xl">
-                <summary class="flex justify-between items-center p-8 cursor-pointer">
-                    <span class="text-cyan-400 font-bold uppercase tracking-[0.2em] text-xs flex items-center gap-4"><i class="fas fa-cloud-sun text-xl"></i> 02. Live Web Intelligence</span>
-                    <i class="fas fa-chevron-down text-gray-700 transition-transform"></i>
+            <details class="group card p-4 rounded-2xl">
+                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                    <span class="text-cyan-400 font-bold uppercase tracking-[0.2em] text-[10px] flex items-center gap-4"><i class="fas fa-cloud-sun"></i> 02. Live Web Intel</span>
+                    <i class="fas fa-chevron-down text-gray-700"></i>
                 </summary>
-                <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-white/5 bg-black/50">
-                    <p class="mb-6">Scans the live internet 24/7 to provide the most current information available.</p>
-                </div>
+                <div class="px-4 pb-4 text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-4">Scans the live internet 24/7 for the latest fraud and info.</div>
             </details>
-            <details class="group card p-2 rounded-2xl overflow-hidden shadow-2xl">
-                <summary class="flex justify-between items-center p-8 cursor-pointer">
-                    <span class="text-orange-500 font-bold uppercase tracking-[0.2em] text-xs flex items-center gap-4"><i class="fas fa-utensils text-xl"></i> 03. Chef & Home Assistant</span>
-                    <i class="fas fa-chevron-down text-gray-700 transition-transform"></i>
+            <details class="group card p-4 rounded-2xl">
+                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                    <span class="text-orange-500 font-bold uppercase tracking-[0.2em] text-[10px] flex items-center gap-4"><i class="fas fa-utensils"></i> 03. Chef & Home Assistant</span>
+                    <i class="fas fa-chevron-down text-gray-700"></i>
                 </summary>
-                <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-white/5 bg-black/50">
-                    <p class="mb-6">From finding recipes to troubleshooting custom PC builds.</p>
-                </div>
+                <div class="px-4 pb-4 text-gray-400 text-xs leading-relaxed border-t border-white/5 pt-4">From recipes to troubleshooting custom PC builds.</div>
             </details>
-            <details class="group card p-2 rounded-2xl overflow-hidden shadow-2xl">
-                <summary class="flex justify-between items-center p-8 cursor-pointer">
-                    <span class="text-red-500 font-bold uppercase tracking-[0.2em] text-xs flex items-center gap-4"><i class="fas fa-check-double text-xl"></i> 04. The Truth Protocol</span>
-                    <i class="fas fa-chevron-down text-gray-700 transition-transform"></i>
+            <details class="group card p-4 rounded-2xl">
+                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                    <span class="text-red-500 font-bold uppercase tracking-[0.2em] text-[10px] flex items-center gap-4"><i class="fas fa-check-double"></i> 04. Truth Protocol</span>
+                    <i class="fas fa-chevron-down text-gray-700"></i>
                 </summary>
-                <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-white/5 bg-black/50 text-center">
-                    <p class="mb-6 italic">"CONFIDENCE RATING: 98% - VERIFIED BY 5 DATA POINTS"</p>
-                </div>
+                <div class="px-4 pb-4 text-gray-400 text-[10px] leading-relaxed border-t border-white/5 pt-4 text-center italic">"CONFIDENCE RATING: 98% - VERIFIED DATA"</div>
             </details>
         </div>
     </div>
 </section>
 
-<section id="pricing" class="py-40 bg-[#050505]">
+<section id="pricing" class="py-20 md:py-40 bg-[#050505]">
     <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-4xl font-black text-center mb-24 tracking-[0.4em] uppercase">The Protection Plans</h2>
-        <div class="grid md:grid-cols-3 gap-12">
-            <div class="card p-10 rounded-3xl flex flex-col items-center text-center">
-                <h3 class="text-gray-500 font-bold uppercase text-[10px] mb-4">Standard Shield</h3>
-                <div class="text-6xl font-black mb-10 text-white">$0</div>
-                <button onclick="window.location.href='https://app.mylylo.pro'" class="w-full py-5 border border-white/10 text-white rounded font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-white hover:text-black transition">Get Started</button>
+        <h2 class="text-3xl md:text-4xl font-black text-center mb-16 uppercase tracking-widest">The Plans</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div class="card p-8 text-center flex flex-col items-center">
+                <h3 class="text-gray-500 font-bold text-[10px] uppercase mb-4">Standard Shield</h3>
+                <div class="text-5xl font-black mb-8">$0</div>
+                <button onclick="window.location.href='https://app.mylylo.pro'" class="w-full py-4 border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest">Get Started</button>
             </div>
-            <div class="p-10 rounded-3xl flex flex-col items-center text-center bg-blue-900/10 border border-blue-600 transform md:scale-105 shadow-[0_0_80px_rgba(37,99,235,0.2)]">
-                <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-4 py-2 uppercase tracking-widest">Most Popular</div>
-                <h3 class="text-blue-400 font-bold uppercase text-[10px] mb-4">Pro Guardian</h3>
-                <div class="text-6xl font-black mb-10 text-white">$6.99</div>
-                <button onclick="window.location.href='https://app.mylylo.pro'" class="w-full py-5 bg-blue-600 rounded text-center font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-blue-500 text-white transition">Upgrade to Pro</button>
+            <div class="p-8 text-center flex flex-col items-center bg-blue-900/10 border border-blue-600 relative md:scale-105 shadow-xl">
+                <div class="absolute top-0 right-0 bg-blue-600 text-white text-[8px] font-bold px-4 py-2 uppercase">Popular</div>
+                <h3 class="text-blue-400 font-bold text-[10px] uppercase mb-4">Pro Guardian</h3>
+                <div class="text-5xl font-black mb-8">$6.99</div>
+                <button onclick="window.location.href='https://app.mylylo.pro'" class="w-full py-4 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-widest">Upgrade to Pro</button>
             </div>
-            <div class="card p-10 rounded-3xl flex flex-col items-center text-center border-yellow-600/30">
-                <h3 class="text-yellow-500 font-bold uppercase text-[10px] mb-4">Elite Justice</h3>
-                <div class="text-6xl font-black mb-10 text-white">$9.99</div>
-                <a href="mailto:mylylo.ai@gmail.com" class="w-full py-5 border border-yellow-600 text-yellow-500 rounded text-center font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-yellow-600 hover:text-black transition">Go Elite</a>
+            <div class="card p-8 text-center flex flex-col items-center border-yellow-600/30">
+                <h3 class="text-yellow-500 font-bold text-[10px] uppercase mb-4">Elite Justice</h3>
+                <div class="text-5xl font-black mb-8">$9.99</div>
+                <a href="mailto:mylylo.ai@gmail.com" class="w-full py-4 border border-yellow-600 text-yellow-500 text-[10px] font-bold uppercase tracking-widest">Go Elite</a>
             </div>
         </div>
     </div>
 </section>
 
-<footer class="py-24 bg-black border-t border-white/5 text-left">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-20">
+<div class="bg-red-900/10 border-y border-red-900/20 py-8 text-center px-4">
+    <p class="text-[8px] md:text-[10px] text-gray-500 uppercase font-bold tracking-widest">
+        LYLO IS AN AI ASSISTANT. ALWAYS VERIFY FINANCIAL, MEDICAL, OR LEGAL ADVICE WITH A HUMAN PROFESSIONAL.
+    </p>
+</div>
+
+<footer class="py-16 md:py-24 bg-black border-t border-white/5 text-center md:text-left">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
         <div>
-            <h4 class="text-white font-black uppercase text-xs tracking-[0.4em] mb-8 italic">LYLO.PRO</h4>
-            <p class="text-gray-500 text-xs leading-loose">Based in Sacramento, CA. Dedicated to Love Your Loved Ones by fighting fraud.</p>
+            <h4 class="text-white font-black uppercase text-xs tracking-widest italic mb-6">LYLO.PRO</h4>
+            <p class="text-gray-500 text-[10px]">Based in Sacramento, CA. Dedicated to Love Your Loved Ones by fighting fraud.</p>
         </div>
         <div>
-            <h4 class="text-white font-bold uppercase text-[10px] tracking-[0.3em] mb-8">Quick Links</h4>
-            <ul class="text-gray-500 text-[11px] space-y-4 uppercase font-bold tracking-widest">
-                <li><a href="https://www.identitytheft.gov/" target="_blank" class="hover:text-blue-500">Report Identity Theft</a></li>
-                <li><a href="https://www.ftc.gov/" target="_blank" class="hover:text-blue-500">FTC Scam Alerts</a></li>
-            </ul>
+            <h4 class="text-white font-bold uppercase text-[10px] mb-6">Links</h4>
+            <div class="flex flex-col gap-4 text-gray-500 text-[10px] font-bold uppercase">
+                <a href="https://www.identitytheft.gov/">Report Fraud</a>
+                <a href="https://www.ftc.gov/">FTC Alerts</a>
+            </div>
         </div>
         <div>
-            <h4 class="text-white font-bold uppercase text-[10px] tracking-[0.3em] mb-8">Contact</h4>
-            <a href="mailto:mylylo.ai@gmail.com" class="text-blue-500 font-black text-xs hover:underline tracking-widest uppercase">mylylo.ai@gmail.com</a>
+            <h4 class="text-white font-bold uppercase text-[10px] mb-6">Contact</h4>
+            <a href="mailto:mylylo.ai@gmail.com" class="text-blue-500 font-black text-[10px]">MYLYLO.AI@GMAIL.COM</a>
         </div>
     </div>
-    <div class="text-center mt-24 pt-10 border-t border-white/5 text-[9px] text-gray-700 tracking-[0.6em] font-black uppercase">
-        &copy; 2026 LYLO SECURITY SYSTEMS. ALL RIGHTS RESERVED.
+    <div class="text-center mt-12 pt-8 border-t border-white/5 text-[8px] text-gray-700 tracking-widest font-black uppercase">
+        &copy; 2026 LYLO SECURITY SYSTEMS.
     </div>
 </footer>
 
