@@ -581,10 +581,13 @@ async function runBetaLogin() {
             localStorage.setItem('isBetaTester', 'true');
             localStorage.setItem('lylo_assessment_complete', 'true');
 
+            // Show the alert
             alert("Access Granted! Welcome " + data.name + ". Tier: MAX UNLIMITED.");
             
-            // THE FORCE REDIRECT
-            // Force browser to App path. We use /#/ to bridge with HashRouter.
+            // THE FORCE REDIRECT:
+            // Using window.location.assign ensures the browser immediately replaces the 
+            // current URL with the App path. We use the hash /#/ to force Render 
+            // to keep you within the index.html shell.
             window.location.assign("/#/assessment"); 
         } else {
             alert("Access Denied: " + data.message);
