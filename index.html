@@ -573,7 +573,7 @@ async function runBetaLogin() {
         const data = await response.json();
 
         if (data.access) {
-            // 1. FORCE MAX TIER (Fixes "Welcome to Elite")
+            // Commit keys to storage
             localStorage.setItem('userEmail', email.toLowerCase().trim());
             localStorage.setItem('userName', data.name);
             localStorage.setItem('userTier', 'max'); 
@@ -583,9 +583,9 @@ async function runBetaLogin() {
 
             alert("Access Granted! Welcome " + data.name + ". Tier: MAX UNLIMITED.");
             
-            // 2. THE BRIDGE (Fixes the Dead End)
-            // Redirects using Hash Route to ensure React picks up the path on Render
-            window.location.href = "/#/assessment"; 
+            // THE FORCE REDIRECT
+            // Force browser to App path. We use /#/ to bridge with HashRouter.
+            window.location.assign("/#/assessment"); 
         } else {
             alert("Access Denied: " + data.message);
         }
