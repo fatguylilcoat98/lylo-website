@@ -169,11 +169,11 @@
             founder_title: "Nota del Fundador",
             founder_h2: "Soy Christopher, <br>y esto es personal.",
             founder_p1: "No construí LYLO para ser otra corporación sin rostro. Soy un entusiasta de la tecnología con sede aquí mismo en <span class='text-white'>Sacramento, CA</span>.",
-            founder_p2: "Creé LYLO (Love Your Loved Ones) porque vi lo fácil que era para los estafadores lastimar a las personas que amamos. Mi misión es protección de élite con corazón humano.",
+            founder_p2: "Creé LYLO (Love Your Loved Ones) because I saw how easy it was for scammers to hurt the people we care about. Mi misión es protección de élite con corazón humano.",
             privacy_h2: "EL <span class='text-blue-500'>ESCUDO DE PRIVACIDAD</span> LYLO",
             privacy_sub: "100% Encriptado • 0% Entrenamiento de Datos • 100% Privado",
             privacy_zero_h: "Cero Entrenamiento de Datos",
-            privacy_zero_p: "Nunca usamos sus conversaciones o capturas para entrenar modelos de IA globales. Su negocio es su negocio.",
+            privacy_zero_p: "Nunca usamos sus conversations o capturas para entrenar modelos de IA globales. Su negocio es su negocio.",
             privacy_anon_h: "Sistema de ID Anónimo",
             privacy_anon_p: "Usamos protocolos de identidad cifrada. No guardamos su nombre real en los registros de chat.",
             privacy_human_h: "Zona Libre de Humanos",
@@ -191,7 +191,7 @@
             feat2_h: "02. Inteligencia Web en Vivo",
             feat2_p: "LYLO escanea internet las 24 horas del día, los 7 días de la semana para proporcionar la información más actual disponible.",
             feat3_h: "03. Chef y Asistente del Hogar",
-            feat3_p: "Desde encontrar recetas hasta solucionar problemas de construcciones de PC personalizadas.",
+            feat3_p: "Desde encontrar recipes hasta solucionar problemas de construcciones de PC personalizadas.",
             feat4_h: "04. El Protocolo de la Verdad",
             feat4_p: "LYLO está programado con un estricto Protocolo Anti-Alucinación. Si la IA no está segura, no adivinará.",
             price_h2: "Planes de Protección",
@@ -584,7 +584,7 @@ async function runBetaLogin() {
             alert("Access Granted! Welcome " + data.name + ". Tier: MAX UNLIMITED.");
             
             // 2. THE BRIDGE (Fixes the Dead End)
-            // Uses Hash Route for reliable SPA navigation on Render
+            // Redirects using Hash Route to ensure React picks up the path on Render
             window.location.href = "/#/assessment"; 
         } else {
             alert("Access Denied: " + data.message);
