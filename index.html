@@ -227,9 +227,10 @@
         if (savedLang) { toggleLanguage(savedLang); } else if (browserLang === 'es') { toggleLanguage('es'); }
     };
 
-    // FORCE REDIRECT HELPER
+    // --- THE HASH BRIDGE HELPER ---
+    // Forces the browser to load the login gate inside the React Shell
     function goToApp() {
-        window.location.assign("/assessment");
+        window.location.assign("/#/assessment");
     }
 </script>
 
@@ -378,11 +379,6 @@
                 <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-white/5 bg-black/50">
                     <p data-key="feat1_p" class="py-6 text-white font-bold uppercase tracking-widest text-[10px]">Your Life, Remembered.</p>
                     <p class="mb-6">Powered by <strong>Advanced AI Memory</strong>, LYLO builds a secure database of your history. It never forgets a detail.</p>
-                    <div class="grid grid-cols-1 gap-4 italic text-blue-300/60 text-xs">
-                        <p>"Remember that I prefer zero-sugar drinks and no mustard on my burgers."</p>
-                        <p>"Save the technical specs for my Xbox 360 College Football mod."</p>
-                        <p>"Keep track of my Sapphire Nitro+ GPU purchase for warranty purposes."</p>
-                    </div>
                 </div>
             </details>
 
@@ -394,11 +390,6 @@
                 <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-white/5 bg-black/50">
                     <p data-key="feat2_p" class="py-6 text-white font-bold uppercase tracking-widest text-[10px]">Real-Time World Access.</p>
                     <p class="mb-6">LYLO scans the live internet 24/7 to provide the most current information available.</p>
-                    <div class="grid grid-cols-1 gap-4 italic text-cyan-300/60 text-xs">
-                        <p>"What is the 10-day weather forecast for the Sacramento area?"</p>
-                        <p>"Check the current Bitcoin price on Cash App and analyze the trend."</p>
-                        <p>"Is the Hotel Mission De Oro in Santa Nella currently accepting bookings?"</p>
-                    </div>
                 </div>
             </details>
 
@@ -410,11 +401,6 @@
                 <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-white/5 bg-black/50">
                     <p data-key="feat3_p" class="py-6 text-white font-bold uppercase tracking-widest text-[10px]">Your Daily Life, Simplified.</p>
                     <p class="mb-6">From finding recipes to troubleshooting custom PC builds.</p>
-                    <div class="grid grid-cols-1 gap-4 italic text-orange-300/60 text-xs">
-                        <p>"Find a high-protein Mexican meal plan using carne asada and salsa."</p>
-                        <p>"How do I apply a decal wrap to an Xbox 360 without getting bubbles?"</p>
-                        <p>"Read the recipe instructions to me step-by-step while I cook."</p>
-                    </div>
                 </div>
             </details>
 
@@ -426,7 +412,6 @@
                 <div class="px-8 pb-8 text-gray-400 text-sm leading-relaxed border-t border-white/5 bg-black/50">
                     <p data-key="feat4_p" class="py-6 text-white font-bold uppercase tracking-widest text-[10px]">Honesty Above All.</p>
                     <p class="mb-6">LYLO is programmed with a strict Anti-Hallucination Protocol. If the AI is unsure, it will not guess.</p>
-                    <div class="p-4 bg-black border border-red-900/40 rounded-lg text-center font-mono text-xs text-red-500 italic uppercase tracking-widest">"CONFIDENCE RATING: 98% - VERIFIED BY 5 DATA POINTS"</div>
                 </div>
             </details>
         </div>
@@ -449,9 +434,6 @@
                 <ul class="space-y-4 text-[10px] text-gray-500 mb-8 flex-1 text-left w-full border-t border-white/5 pt-6">
                     <li><i class="fas fa-check text-blue-500 mr-2"></i> 5 Scans Daily</li>
                     <li><i class="fas fa-exclamation-circle text-gray-500 mr-2"></i> Limited Speed</li>
-                    <li class="text-gray-600 italic text-[9px] pt-4 border-t border-white/5">
-                        <i class="fas fa-arrow-up text-green-500 mr-1"></i> Upgrade anytime for full protection
-                    </li>
                 </ul>
                 <button class="tier-button w-full py-4 border border-white/10 text-white rounded font-bold uppercase text-[10px] tracking-[0.2em]">Join Free</button>
             </div>
@@ -466,7 +448,6 @@
                 <ul class="space-y-4 text-[10px] text-gray-400 mb-8 flex-1 text-left w-full border-t border-blue-900/30 pt-6">
                     <li><i class="fas fa-check text-blue-500 mr-2"></i> 50 Scans Daily</li>
                     <li><i class="fas fa-bolt text-blue-500 mr-2"></i> Fast Analysis</li>
-                    <li><i class="fas fa-database text-blue-500 mr-2"></i> Memory Vault</li>
                 </ul>
                 <button class="tier-button w-full py-4 border border-blue-500 text-blue-400 rounded font-bold uppercase text-[10px] tracking-[0.2em]">Get Pro</button>
             </div>
@@ -480,7 +461,6 @@
                 <div class="text-4xl font-black mb-8 text-white">$4.99</div>
                 <ul class="space-y-4 text-[10px] text-gray-300 mb-8 flex-1 text-left w-full border-t border-amber-900/30 pt-6">
                     <li><i class="fas fa-check text-amber-500 mr-2"></i> 500 Scans Daily</li>
-                    <li><i class="fas fa-crown text-amber-500 mr-2"></i> Priority Support</li>
                     <li><i class="fas fa-microphone text-amber-500 mr-2"></i> Auto-Talk Voice</li>
                 </ul>
                 <button class="tier-button w-full py-4 border border-amber-500 text-amber-500 rounded font-bold uppercase text-[10px] tracking-[0.2em]">Start Elite</button>
@@ -496,7 +476,6 @@
                 <ul class="space-y-4 text-[10px] text-gray-300 mb-8 flex-1 text-left w-full border-t border-purple-900/30 pt-6">
                     <li><i class="fas fa-infinity text-purple-500 mr-2"></i> Unlimited Access</li>
                     <li><i class="fas fa-gavel text-purple-500 mr-2"></i> Legal Aid Connect</li>
-                    <li><i class="fas fa-shield-halved text-purple-500 mr-2"></i> Identity Theft Ins.</li>
                 </ul>
                 <button class="tier-button w-full py-4 border border-purple-500 text-purple-400 rounded font-bold uppercase text-[10px] tracking-[0.2em]">Go Max</button>
             </div>
@@ -525,7 +504,7 @@
             LYLO is now in <span class="text-blue-500">Open Beta</span> for all users. Start protecting yourself and your loved ones today.
         </p>
         <div class="flex flex-col md:flex-row gap-4 max-w-xl mx-auto">
-            <button onclick="goToApp()" class="flex-1 px-10 py-5 bg-blue-600 text-white font-black uppercase text-[10px] tracking-widest hover:bg-blue-500 transition shadow-xl text-center">Start Using LYLO</button>
+            <button onclick="goToApp()" class="flex-1 px-10 py-5 bg-blue-600 text-white font-black uppercase text-[10px] tracking-widest hover:bg-blue-500 transition shadow-xl text-center">Start Using LYLO Now</button>
         </div>
         <p class="mt-8 text-[9px] text-slate-700 font-bold uppercase tracking-[0.4em]">Status: Live and Available Now</p>
     </div>
@@ -537,30 +516,11 @@
 </div>
 
 <footer class="py-24 bg-black border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-20 text-left">
-        <div>
-            <img src="/logo.png" alt="LYLO" class="w-12 h-12 object-contain mb-8 opacity-80">
-            <h4 class="text-white font-black uppercase text-xs tracking-[0.4em] mb-4 italic">LYLO<span class="text-blue-500">.</span>PRO</h4>
-            <p data-key="footer_desc" class="text-gray-500 text-xs leading-loose">Based in Sacramento, CA. Dedicated to Love Your Loved Ones by fighting fraud.</p>
-        </div>
-        <div>
-            <h4 class="text-white font-bold uppercase text-[10px] tracking-[0.3em] mb-8">Legal & Privacy</h4>
-            <ul class="text-gray-500 text-[11px] space-y-4 font-bold tracking-widest uppercase">
-                <li><a href="terms.html" class="hover:text-blue-500 transition">Terms of Service</a></li>
-                <li><a href="privacy.html" class="hover:text-blue-500 transition">Privacy Policy</a></li>
-                <li><a href="mailto:mylylo.ai@gmail.com?subject=Legal Partner Inquiry" class="hover:text-blue-500 transition text-blue-400">Legal Partner Network</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4 class="text-white font-bold uppercase text-[10px] tracking-[0.3em] mb-8">Contact</h4>
-            <a href="mailto:mylylo.ai@gmail.com" class="text-blue-500 font-black text-xs hover:underline tracking-widest uppercase">mylylo.ai@gmail.com</a>
-            <div class="mt-6 flex items-center gap-2 opacity-50">
-                <i class="fas fa-shield-halved text-blue-500 text-[10px]"></i>
-                <span class="text-[9px] uppercase tracking-widest font-bold text-gray-400">SOC2 Type II Standards • Zero-Log Policy</span>
-            </div>
-        </div>
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <img src="/logo.png" alt="LYLO" class="w-12 h-12 object-contain mx-auto mb-8 opacity-80">
+        <h4 class="text-white font-black uppercase text-xs tracking-[0.4em] mb-4 italic text-center">LYLO<span class="text-blue-500">.</span>PRO</h4>
+        <div class="text-center mt-12 pt-10 border-t border-white/5 text-[9px] text-gray-700 tracking-[0.6em] font-black uppercase">&copy; 2026 LYLO SECURITY SYSTEMS. ALL RIGHTS RESERVED.</div>
     </div>
-    <div class="text-center mt-24 pt-10 border-t border-white/5 text-[9px] text-gray-700 tracking-[0.6em] font-black uppercase">&copy; 2026 LYLO SECURITY SYSTEMS. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
@@ -568,7 +528,6 @@ async function runBetaLogin() {
     const rawEmail = prompt("Enter your Email to Login:");
     if (!rawEmail) return;
 
-    // Clean email for perfect matching with backend dictionary
     const email = rawEmail.toLowerCase().trim();
 
     try {
@@ -581,7 +540,6 @@ async function runBetaLogin() {
         const data = await response.json();
 
         if (data.access) {
-            // Commit keys to storage
             localStorage.setItem('userEmail', email);
             localStorage.setItem('userName', data.name);
             localStorage.setItem('userTier', 'max'); 
@@ -591,7 +549,7 @@ async function runBetaLogin() {
 
             alert("Access Granted! Welcome " + data.name + ". Tier: MAX UNLIMITED.");
             
-            // THE FORCE REDIRECT: Use the assigned function to ensure we jump into the app
+            // THE BRIDGE REDIRECT (FORCE HASH PATH)
             goToApp();
         } else {
             alert("Access Denied: " + (data.message || "User not in beta list"));
