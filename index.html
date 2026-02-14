@@ -268,10 +268,10 @@
         LYLO is the first Digital Bodyguard that uses advanced AI memory to learn your life, identify your threats, and manage your world.
     </p>
     <div class="flex flex-col md:flex-row justify-center gap-6 px-4">
-        <button onclick="runBetaLogin()" data-key="btn_start" class="w-full md:w-auto px-12 py-6 bg-blue-600 text-white font-black uppercase text-xs tracking-widest rounded-sm hover:bg-blue-500 transition shadow-2xl glow-blue text-center">
+        <a href="/#/assessment" data-key="btn_start" class="w-full md:w-auto px-12 py-6 bg-blue-600 text-white font-black uppercase text-xs tracking-widest rounded-sm hover:bg-blue-500 transition shadow-2xl glow-blue text-center">
             Start Using LYLO Now
-        </button>
-        <a href="#features" data-key="btn_explore" class="w-full md:w-auto px-12 py-6 border border-white/10 text-white font-black rounded-sm uppercase tracking-widest text-xs text-center">
+        </a>
+        <a href="#features" class="w-full md:w-auto px-12 py-6 border border-white/10 text-white font-black rounded-sm uppercase tracking-widest text-xs text-center">
             Explore Features
         </a>
     </div>
@@ -434,7 +434,7 @@
         
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-stretch">
             
-            <div class="card p-8 rounded-3xl flex flex-col items-center text-center group border-white/10" onclick="runBetaLogin()">
+            <div class="card p-8 rounded-3xl flex flex-col items-center text-center group border-white/10" onclick="window.location.assign('/#/assessment')">
                 <div class="glow-wrapper">
                     <div class="radiant-light bg-white"></div>
                     <img src="/freetier.png" class="shield-box-img">
@@ -448,10 +448,10 @@
                         <i class="fas fa-arrow-up text-green-500 mr-1"></i> Upgrade anytime for full protection
                     </li>
                 </ul>
-                <button class="tier-button w-full py-4 border border-white/10 text-white rounded font-bold uppercase text-[10px] tracking-[0.2em]">Join Free</button>
+                <button class="tier-button w-full py-4 border border-white/10 text-white rounded font-bold uppercase text-[10px] tracking-[0.2em]" data-key="btn_join">Join Free</button>
             </div>
 
-            <div class="card p-8 rounded-3xl flex flex-col items-center text-center border-pro" onclick="runBetaLogin()">
+            <div class="card p-8 rounded-3xl flex flex-col items-center text-center border-pro" onclick="window.location.assign('/#/assessment')">
                 <div class="glow-wrapper">
                     <div class="radiant-light bg-blue-500"></div>
                     <img src="/protier.png" class="shield-box-img">
@@ -463,10 +463,10 @@
                     <li><i class="fas fa-bolt text-blue-500 mr-2"></i> Fast Analysis</li>
                     <li><i class="fas fa-database text-blue-500 mr-2"></i> Memory Vault</li>
                 </ul>
-                <button class="tier-button w-full py-4 border border-blue-500 text-blue-400 rounded font-bold uppercase text-[10px] tracking-[0.2em]">Get Pro</button>
+                <button class="tier-button w-full py-4 border border-blue-500 text-blue-400 rounded font-bold uppercase text-[10px] tracking-[0.2em]" data-key="btn_pro">Get Pro</button>
             </div>
 
-            <div class="card p-8 rounded-3xl flex flex-col items-center text-center border-elite" onclick="runBetaLogin()">
+            <div class="card p-8 rounded-3xl flex flex-col items-center text-center border-elite" onclick="window.location.assign('/#/assessment')">
                 <div class="glow-wrapper">
                     <div class="radiant-light bg-amber-500"></div>
                     <img src="/elitetier.png" class="shield-box-img">
@@ -478,10 +478,10 @@
                     <li><i class="fas fa-crown text-amber-500 mr-2"></i> Priority Support</li>
                     <li><i class="fas fa-microphone text-amber-500 mr-2"></i> Auto-Talk Voice</li>
                 </ul>
-                <button class="tier-button w-full py-4 border border-amber-500 text-amber-500 rounded font-bold uppercase text-[10px] tracking-[0.2em]">Start Elite</button>
+                <button class="tier-button w-full py-4 border border-amber-500 text-amber-500 rounded font-bold uppercase text-[10px] tracking-[0.2em]" data-key="btn_elite">Start Elite</button>
             </div>
 
-            <div class="card p-8 rounded-3xl flex flex-col items-center text-center border-max" onclick="runBetaLogin()">
+            <div class="card p-8 rounded-3xl flex flex-col items-center text-center border-max" onclick="window.location.assign('/#/assessment')">
                 <div class="glow-wrapper">
                     <div class="radiant-light bg-purple-500"></div>
                     <img src="/maxtier.png" class="shield-box-img">
@@ -493,7 +493,7 @@
                     <li><i class="fas fa-gavel text-purple-500 mr-2"></i> Legal Aid Connect</li>
                     <li><i class="fas fa-shield-halved text-purple-500 mr-2"></i> Identity Theft Ins.</li>
                 </ul>
-                <button class="tier-button w-full py-4 border border-purple-500 text-purple-400 rounded font-bold uppercase text-[10px] tracking-[0.2em]">Go Max</button>
+                <button class="tier-button w-full py-4 border border-purple-500 text-purple-400 rounded font-bold uppercase text-[10px] tracking-[0.2em]" data-key="btn_max">Go Max</button>
             </div>
 
         </div>
@@ -573,7 +573,6 @@ async function runBetaLogin() {
         const data = await response.json();
 
         if (data.access) {
-            // Commit keys to storage
             localStorage.setItem('userEmail', email.toLowerCase().trim());
             localStorage.setItem('userName', data.name);
             localStorage.setItem('userTier', 'max'); 
@@ -581,13 +580,9 @@ async function runBetaLogin() {
             localStorage.setItem('isBetaTester', 'true');
             localStorage.setItem('lylo_assessment_complete', 'true');
 
-            // Show the alert
             alert("Access Granted! Welcome " + data.name + ". Tier: MAX UNLIMITED.");
             
-            // THE FORCE REDIRECT:
-            // Using window.location.assign ensures the browser immediately replaces the 
-            // current URL with the App path. We use the hash /#/ to force Render 
-            // to keep you within the index.html shell.
+            // THE BRIDGE REDIRECT
             window.location.assign("/#/assessment"); 
         } else {
             alert("Access Denied: " + data.message);
