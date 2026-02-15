@@ -12,7 +12,7 @@
     <link rel="apple-touch-icon" href="https://mylylo.pro/logo.png">
     
     <meta name="theme-color" content="#02040a">
-    <title>LYLO | Love Your Loved Ones</title>
+    <title>LYLO | Your Digital Bodyguard Team</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -95,6 +95,14 @@
             background-color: #3b82f6; transition: width 0.3s ease;
         }
         .nav-link:hover::after { width: 100%; }
+
+        /* EXPERT GRID */
+        .expert-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.4) 100%);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+        .expert-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
     </style>
 </head>
 <body>
@@ -102,44 +110,53 @@
 <script>
     const translations = {
         en: {
-            hero_h1: "LOVE YOUR <br><span class='text-blue-500'>LOVED ONES</span>",
-            hero_p: "Protection for them, Peace of mind for you.",
-            hero_desc: "LYLO is the first Digital Bodyguard that uses advanced AI memory to learn your life, identify your threats, and manage your world.",
+            hero_h1: "DEPLOY YOUR <br><span class='text-blue-500'>SECURITY TEAM</span>",
+            hero_p: "Stop wondering. Start protecting.",
+            hero_desc: "LYLO isn't just an app. It is a fully deployed Digital Bodyguard Team that learns your life, identifies your threats, and bridges the gap between you and your technology.",
             nav_login: "Login",
-            nav_cap: "Capabilities",
-            nav_how: "How it Works",
+            nav_team: "Meet the Team",
+            nav_how: "Intelligence",
             nav_price: "Pricing",
             nav_scholar: "Scholarship",
             nav_beta: "Beta",
-            nav_wait: "Waitlist",
             founder_title: "A Note from the Founder",
             founder_h2: "I'm Christopher, <br>and this is Personal.",
             founder_p1: "I didn't build LYLO to be another faceless corporation. I'm a tech enthusiast based right here in <span class='text-white'>Sacramento, CA</span>. Whether I'm building custom Z790 rigs, modding consoles, or hunting down the best carne asada in the city, I've always believed that technology should serve people—not target them.",
             founder_p2: "I created LYLO (Love Your Loved Ones) because I saw how easy it was for scammers to hurt the people we care about. This is my mission: to provide elite protection with a human heart, so you can Live Your Life Online without fear.",
+            
+            // TEAM SECTION
+            team_h2: "Meet Your <span class='text-blue-500'>Specialists</span>",
+            team_sub: "Switching personalities isn't a game. It's unlocking a new department of protection.",
+            
+            // PRIVACY
             privacy_h2: "THE LYLO <span class='text-blue-500'>PRIVACY SHIELD</span>",
-            privacy_sub: "100% Encrypted • 0% Data Training • 100% Private",
+            privacy_sub: "120-Second Standby • 0% Data Training • 100% Private",
             privacy_zero_h: "Zero Data Training",
-            privacy_zero_p: "We never use your personal conversations or uploaded screenshots to train global AI models. Your business is your business.",
+            privacy_zero_p: "We never use your personal conversations or uploaded screenshots to train global AI models.",
             privacy_anon_h: "Anonymous ID System",
             privacy_anon_p: "We use 'Hashed Identity' protocols. We don't store your actual name in chat logs—only a secure, scrambled code.",
-            privacy_human_h: "Human-Free Zone",
-            privacy_human_p: "No human employees audit or read your security scans. Your interaction is strictly between you and your AI Bodyguard.",
+            privacy_human_h: "Auto-Standby Mode",
+            privacy_human_p: "Your home is private. LYLO automatically cuts the microphone after 120 seconds of silence.",
+            
+            // INTELLIGENCE
             master_h2: "Master Your <br><span class='text-blue-500'>Intelligence Engine</span>",
-            master_p: "LYLO isn't just a program you run; it's an assistant you talk to. By combining real-time internet access with a secured memory vault, LYLO handles the complex tasks so you don't have to.",
-            talk_h: "Talk to Prompt",
-            talk_p: "Don't want to type? Just hit the mic and speak naturally. LYLO understands context.",
-            auto_h: "Auto-Talk Feature",
-            auto_p: "Toggle Auto-Talk to have LYLO read instructions, search results, or scam alerts out loud.",
+            master_p: "LYLO combines real-time internet access with a secured memory vault. It handles the complex tasks so you don't have to.",
+            talk_h: "Vision Link",
+            talk_p: "Don't know how to explain it? Just show LYLO a photo. One tap analyzes scams or broken tech.",
+            auto_h: "Intelligence Sync",
+            auto_p: "LYLO remembers your devices, your car, and your needs. The more you talk, the stronger your shield gets.",
+            
+            // FEATURES
             feat_h2: "Unmatched Capability",
             feat_sub: "Beyond Security: A Personal Intelligence Suite",
             feat1_h: "01. Digital Memory (The Vault)",
             feat1_p: "Powered by Advanced AI Memory, LYLO builds a secure database of your history. It never forgets a detail.",
             feat2_h: "02. Live Web Intelligence",
             feat2_p: "LYLO scans the live internet 24/7 to provide the most current information available.",
-            feat3_h: "03. Chef & Home Assistant",
-            feat3_p: "From finding recipes to troubleshooting custom PC builds.",
-            feat4_h: "04. The Truth Protocol",
-            feat4_p: "LYLO is programmed with a strict Anti-Hallucination Protocol. If the AI is unsure, it will not guess.",
+            feat3_h: "03. The Truth Protocol",
+            feat3_p: "LYLO is programmed with a strict Anti-Hallucination Protocol. If the AI is unsure, it will not guess.",
+            
+            // PRICING
             price_h2: "The Protection Plans",
             plan_free: "Basic Shield",
             plan_pro: "Pro Guardian",
@@ -148,52 +165,51 @@
             btn_join: "Join Free",
             btn_pro: "Get Pro",
             btn_elite: "Start Elite",
-            btn_max: "Go Max",
-            footer_desc: "Based in Sacramento, CA. Dedicated to Love Your Loved Ones by fighting fraud.",
-            footer_legal: "Legal & Privacy",
-            footer_terms: "Terms of Service",
-            footer_policy: "Privacy Policy",
-            footer_net: "Legal Partner Network"
+            btn_max: "Go Max"
         },
         es: {
-            hero_h1: "AMA A TUS <br><span class='text-blue-500'>SERES QUERIDOS</span>",
-            hero_p: "Protección para ellos, tranquilidad para usted.",
-            hero_desc: "LYLO es el primer guardaespaldas digital que utiliza memoria de IA avanzada para conocer su vida, identificar amenazas y gestionar su mundo.",
+            hero_h1: "DESPLIEGUE SU <br><span class='text-blue-500'>EQUIPO DE SEGURIDAD</span>",
+            hero_p: "Deje de preguntarse. Empiece a proteger.",
+            hero_desc: "LYLO no es solo una aplicación. Es un equipo de guardaespaldas digitales totalmente desplegado que aprende de su vida, identifica sus amenazas y cierra la brecha entre usted y su tecnología.",
             nav_login: "Acceder",
-            nav_cap: "Capacidades",
-            nav_how: "Cómo Funciona",
+            nav_team: "El Equipo",
+            nav_how: "Inteligencia",
             nav_price: "Precios",
             nav_scholar: "Becas",
             nav_beta: "Beta",
-            nav_wait: "Lista de espera",
             founder_title: "Nota del Fundador",
             founder_h2: "Soy Christopher, <br>y esto es personal.",
             founder_p1: "No construí LYLO para ser otra corporación sin rostro. Soy un entusiasta de la tecnología con sede aquí mismo en <span class='text-white'>Sacramento, CA</span>.",
-            founder_p2: "Creé LYLO (Love Your Loved Ones) porque vi lo fácil que era para los estafadores lastimar a las personas que amamos. Mi misión es protección de élite con corazón humano.",
-            privacy_h2: "EL <span class='text-blue-500'>ESCUDO DE PRIVACIDAD</span> LYLO",
-            privacy_sub: "100% Encriptado • 0% Entrenamiento de Datos • 100% Privado",
-            privacy_zero_h: "Cero Entrenamiento de Datos",
-            privacy_zero_p: "Nunca usamos sus conversaciones o capturas para entrenar modelos de IA globales. Su negocio es su negocio.",
-            privacy_anon_h: "Sistema de ID Anónimo",
-            privacy_anon_p: "Usamos protocolos de identidad cifrada. No guardamos su nombre real en los registros de chat.",
-            privacy_human_h: "Zona Libre de Humanos",
-            privacy_human_p: "Ningún empleado humano audita o lee sus escaneos de seguridad. Su interacción es estrictamente privada.",
+            founder_p2: "Creé LYLO (Love Your Loved Ones) porque vi lo fácil que era para los estafadores lastimar a las personas que amamos.",
+            
+            team_h2: "Conozca a sus <span class='text-blue-500'>Especialistas</span>",
+            team_sub: "Cambiar de personalidad no es un juego. Es desbloquear un nuevo departamento de protección.",
+
+            privacy_h2: "EL <span class='text-blue-500'>ESCUDO DE PRIVACIDAD</span>",
+            privacy_sub: "Espera de 120 segundos • 0% Entrenamiento • 100% Privado",
+            privacy_zero_h: "Cero Entrenamiento",
+            privacy_zero_p: "Nunca usamos sus conversaciones para entrenar modelos globales.",
+            privacy_anon_h: "Identidad Anónima",
+            privacy_anon_p: "Usamos protocolos cifrados. No guardamos su nombre real.",
+            privacy_human_h: "Modo de Espera Automático",
+            privacy_human_p: "Su hogar es privado. LYLO corta el micrófono tras 120 segundos de silencio.",
+
             master_h2: "Domine su <br><span class='text-blue-500'>Motor de Inteligencia</span>",
-            master_p: "LYLO no es solo un programa que ejecuta; es un asistente con el que habla. Maneja las tareas complejas para que usted no tenga que hacerlo.",
-            talk_h: "Hablar para preguntar",
-            talk_p: "¿No quiere escribir? Solo use el micrófono y hable con naturalidad. LYLO entiende el contexto.",
-            auto_h: "Función Auto-Talk",
-            auto_p: "Active Auto-Talk para que LYLO lea instrucciones, resultados de búsqueda o alertas de estafa en voz alta.",
-            feat_h2: "Capacidad inigualable",
-            feat_sub: "Más allá de la seguridad: una suite de inteligencia personal",
-            feat1_h: "01. Memoria Digital (La Bóveda)",
-            feat1_p: "Impulsado por memoria de IA avanzada, LYLO construye una base de datos segura de su historia. Nunca olvida un detalle.",
+            master_p: "LYLO combina acceso a internet en tiempo real con una bóveda de memoria segura.",
+            talk_h: "Enlace de Visión",
+            talk_p: "¿No sabe explicarlo? Muestre una foto a LYLO. Un toque analiza estafas.",
+            auto_h: "Sincronización de Inteligencia",
+            auto_p: "LYLO recuerda sus dispositivos y su coche. Cuanto más habla, más fuerte es su escudo.",
+
+            feat_h2: "Capacidad Inigualable",
+            feat_sub: "Más allá de la seguridad",
+            feat1_h: "01. Memoria Digital",
+            feat1_p: "LYLO construye una base de datos segura de su historia.",
             feat2_h: "02. Inteligencia Web en Vivo",
-            feat2_p: "LYLO escanea internet las 24 horas del día, los 7 días de la semana para proporcionar la información más actual disponible.",
-            feat3_h: "03. Chef y Asistente del Hogar",
-            feat3_p: "Desde encontrar recetas hasta solucionar problemas de construcciones de PC personalizadas.",
-            feat4_h: "04. El Protocolo de la Verdad",
-            feat4_p: "LYLO está programado con un estricto Protocolo Anti-Alucinación. Si la IA no está segura, no adivinará.",
+            feat2_p: "LYLO escanea internet 24/7.",
+            feat3_h: "03. El Protocolo de la Verdad",
+            feat3_p: "Si la IA no está segura, no adivinará.",
+
             price_h2: "Planes de Protección",
             plan_free: "Escudo Básico",
             plan_pro: "Guardián Pro",
@@ -202,12 +218,7 @@
             btn_join: "Unirse gratis",
             btn_pro: "Obtener Pro",
             btn_elite: "Iniciar Elite",
-            btn_max: "Ir a Max",
-            footer_desc: "Con sede en Sacramento, CA. Dedicados a amar a sus seres queridos luchando contra el fraude.",
-            footer_legal: "Legal y Privacidad",
-            footer_terms: "Términos de servicio",
-            footer_policy: "Política de privacidad",
-            footer_net: "Red de Socios Legales"
+            btn_max: "Ir a Max"
         }
     };
 
@@ -227,9 +238,8 @@
         if (savedLang) { toggleLanguage(savedLang); } else if (browserLang === 'es') { toggleLanguage('es'); }
     };
 
-    // --- FIXED: PROPER REDIRECT TO APP DOMAIN ---
     function goToApp() {
-        window.location.assign("https://app.mylylo.pro/#/assessment");
+        window.location.assign("https://app.mylylo.pro/#/dashboard");
     }
 </script>
 
@@ -246,12 +256,11 @@
                 <div class="w-px h-3 bg-white/10"></div>
                 <button onclick="toggleLanguage('es')" class="px-3 py-1 hover:text-white transition">ES</button>
             </div>
-            <a href="#features" data-key="nav_cap" class="nav-link hover:text-white transition">Capabilities</a>
-            <a href="#master-lylo" data-key="nav_how" class="nav-link hover:text-white transition">How it Works</a>
+            <a href="#team" data-key="nav_team" class="nav-link hover:text-white transition">The Team</a>
+            <a href="#master-lylo" data-key="nav_how" class="nav-link hover:text-white transition">Intelligence</a>
             <a href="#pricing" data-key="nav_price" class="nav-link hover:text-white transition">Pricing</a>
             <a href="#scholarship" data-key="nav_scholar" class="nav-link hover:text-white transition">Scholarship</a>
             <a href="#beta" data-key="nav_beta" class="nav-link hover:text-white transition">Beta</a>
-            <a href="#waitlist" data-key="nav_wait" class="nav-link hover:text-white transition">Waitlist</a>
             <button onclick="runBetaLogin()" data-key="nav_login" class="px-6 py-2.5 border border-blue-600 text-blue-500 rounded-sm hover:bg-blue-600 hover:text-white transition shadow-lg glow-blue">Login</button>
         </div>
         
@@ -263,21 +272,21 @@
 
 <section class="relative pt-48 md:pt-60 pb-32 px-6 text-center">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent -z-10"></div>
-    <h1 data-key="hero_h1" class="text-5xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.85] text-white italic uppercase mx-auto">
-        LOVE YOUR <br><span class="text-blue-500">LOVED ONES</span>
+    <h1 data-key="hero_h1" class="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9] text-white italic uppercase mx-auto">
+        DEPLOY YOUR <br><span class="text-blue-500">SECURITY TEAM</span>
     </h1>
     <p data-key="hero_p" class="text-blue-400 text-lg md:text-2xl font-bold uppercase tracking-[0.3em] mb-6 px-4">
-        Protection for them, Peace of mind for you.
+        Stop wondering. Start protecting.
     </p>
     <p data-key="hero_desc" class="text-gray-400 text-lg md:text-xl mb-14 max-w-3xl mx-auto leading-relaxed font-light italic">
-        LYLO is the first Digital Bodyguard that uses advanced AI memory to learn your life, identify your threats, and manage your world.
+        LYLO isn't just an app. It is a fully deployed Digital Bodyguard Team that learns your life, identifies your threats, and bridges the gap between you and your technology.
     </p>
     <div class="flex flex-col md:flex-row justify-center gap-6 px-4">
-        <button onclick="goToApp()" data-key="btn_start" class="w-full md:w-auto px-12 py-6 bg-blue-600 text-white font-black uppercase text-sm tracking-widest rounded-sm hover:bg-blue-500 transition shadow-2xl glow-blue text-center">
-            Start Using LYLO Now
+        <button onclick="goToApp()" class="w-full md:w-auto px-12 py-6 bg-blue-600 text-white font-black uppercase text-sm tracking-widest rounded-sm hover:bg-blue-500 transition shadow-2xl glow-blue text-center">
+            Deploy Team Now
         </button>
-        <a href="#features" data-key="btn_explore" class="w-full md:w-auto px-12 py-6 border border-white/10 text-white font-black rounded-sm uppercase tracking-widest text-sm text-center">
-            Explore Features
+        <a href="#team" class="w-full md:w-auto px-12 py-6 border border-white/10 text-white font-black rounded-sm uppercase tracking-widest text-sm text-center">
+            Meet Experts
         </a>
     </div>
 </section>
@@ -304,28 +313,90 @@
     </div>
 </section>
 
+<section id="team" class="py-32 bg-[#080808] border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 data-key="team_h2" class="text-4xl md:text-5xl font-black uppercase tracking-[0.2em] text-white mb-4">Meet Your <span class="text-blue-500">Specialists</span></h2>
+            <p data-key="team_sub" class="text-gray-500 uppercase tracking-widest text-sm font-bold max-w-2xl mx-auto">Switching personalities isn't a game. It's unlocking a new department of protection.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-blue-600">
+                <h3 class="text-blue-400 font-black uppercase text-sm mb-1">The Guardian</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Security Lead</p>
+                <p class="text-gray-400 text-xs leading-relaxed">Scans for scams, fraud, and digital threats. Always on duty.</p>
+            </div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-gray-500">
+                <h3 class="text-gray-300 font-black uppercase text-sm mb-1">The Mechanic</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Garage Protector</p>
+                <p class="text-gray-400 text-xs leading-relaxed">Guards against repair fraud. Speaks "car" so you don't get ripped off.</p>
+            </div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-purple-500">
+                <h3 class="text-purple-400 font-black uppercase text-sm mb-1">The Techie</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Tech Bridge</p>
+                <p class="text-gray-400 text-xs leading-relaxed">Fixes gadget headaches in plain English. No jargon allowed.</p>
+            </div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-yellow-500">
+                <h3 class="text-yellow-400 font-black uppercase text-sm mb-1">The Lawyer</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Legal Shield</p>
+                <p class="text-gray-400 text-xs leading-relaxed">Reviews fine print and protects your rights against traps.</p>
+            </div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-amber-400">
+                <h3 class="text-amber-400 font-black uppercase text-sm mb-1">The Disciple</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Spiritual Armor</p>
+                <p class="text-gray-400 text-xs leading-relaxed">Provides biblical wisdom, scripture, and peace of mind.</p>
+            </div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-orange-500">
+                <h3 class="text-orange-400 font-black uppercase text-sm mb-1">Roast Master</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Humor Shield</p>
+                <p class="text-gray-400 text-xs leading-relaxed">High-energy wit. Roasts scammers so you don't have to.</p>
+            </div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-indigo-500">
+                <h3 class="text-indigo-400 font-black uppercase text-sm mb-1">The Storyteller</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Mental Guardian</p>
+                <p class="text-gray-400 text-xs leading-relaxed">Creates custom tales and helps document your personal history.</p>
+            </div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-red-500">
+                <h3 class="text-red-400 font-black uppercase text-sm mb-1">The Chef</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Kitchen Safety</p>
+                <p class="text-gray-400 text-xs leading-relaxed">Recipes, safety timers, and meal prep help.</p>
+            </div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-green-500">
+                <h3 class="text-green-400 font-black uppercase text-sm mb-1">The Coach</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Mobility Protector</p>
+                <p class="text-gray-400 text-xs leading-relaxed">Safe movements to keep you active and strong.</p>
+            </div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-pink-500">
+                <h3 class="text-pink-400 font-black uppercase text-sm mb-1">The Comedian</h3>
+                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Mood Protector</p>
+                <p class="text-gray-400 text-xs leading-relaxed">Keeps tech lighthearted. Laughter is the best defense.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="privacy" class="py-32 bg-black relative overflow-hidden border-t border-white/5">
     <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
             <h2 data-key="privacy_h2" class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-white mb-4">THE LYLO <span class="text-blue-500">PRIVACY SHIELD</span></h2>
             <div class="h-1 w-24 bg-blue-600 mx-auto mb-6"></div>
-            <p data-key="privacy_sub" class="text-gray-500 uppercase tracking-[0.3em] text-sm font-bold">100% Encrypted • 0% Data Training • 100% Private</p>
+            <p data-key="privacy_sub" class="text-gray-500 uppercase tracking-[0.3em] text-sm font-bold">120-Second Standby • 0% Data Training • 100% Private</p>
         </div>
         <div class="grid md:grid-cols-3 gap-8">
             <div class="card p-8 rounded-2xl border-white/5 bg-white/[0.01]">
+                <i class="fas fa-microphone-slash text-blue-500 text-4xl mb-6"></i>
+                <h4 data-key="privacy_human_h" class="text-white font-black uppercase text-sm tracking-widest mb-4">Auto-Standby Mode</h4>
+                <p data-key="privacy_human_p" class="text-gray-500 text-sm leading-relaxed uppercase tracking-wider font-medium">Your home is private. LYLO automatically cuts the microphone after 120 seconds of silence to ensure privacy.</p>
+            </div>
+            <div class="card p-8 rounded-2xl border-white/5 bg-white/[0.01]">
                 <i class="fas fa-user-secret text-blue-500 text-4xl mb-6"></i>
                 <h4 data-key="privacy_zero_h" class="text-white font-black uppercase text-sm tracking-widest mb-4">Zero Data Training</h4>
-                <p data-key="privacy_zero_p" class="text-gray-500 text-sm leading-relaxed uppercase tracking-wider font-medium">We never use your personal conversations or uploaded screenshots to train global AI models. Your business is your business.</p>
+                <p data-key="privacy_zero_p" class="text-gray-500 text-sm leading-relaxed uppercase tracking-wider font-medium">We never use your personal conversations or uploaded screenshots to train global AI models.</p>
             </div>
             <div class="card p-8 rounded-2xl border-white/5 bg-white/[0.01]">
                 <i class="fas fa-fingerprint text-blue-500 text-4xl mb-6"></i>
                 <h4 data-key="privacy_anon_h" class="text-white font-black uppercase text-sm tracking-widest mb-4">Anonymous ID System</h4>
-                <p data-key="privacy_anon_p" class="text-gray-500 text-sm leading-relaxed uppercase tracking-wider font-medium">We use "Hashed Identity" protocols. We don't store your actual name in chat logs—only a secure, scrambled code.</p>
-            </div>
-            <div class="card p-8 rounded-2xl border-white/5 bg-white/[0.01]">
-                <i class="fas fa-eye-slash text-blue-500 text-4xl mb-6"></i>
-                <h4 data-key="privacy_human_h" class="text-white font-black uppercase text-sm tracking-widest mb-4">Human-Free Zone</h4>
-                <p data-key="privacy_human_p" class="text-gray-500 text-sm leading-relaxed uppercase tracking-wider font-medium">No human employees audit or read your security scans. Your interaction is strictly between you and your AI Bodyguard.</p>
+                <p data-key="privacy_anon_p" class="text-gray-500 text-sm leading-relaxed uppercase tracking-wider font-medium">We use "Hashed Identity" protocols. We don't store your actual name in chat logs.</p>
             </div>
         </div>
     </div>
@@ -341,17 +412,17 @@
                 </p>
                 <div class="space-y-6">
                     <div class="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 text-left">
-                        <i class="fas fa-microphone text-blue-500 text-xl mt-1"></i>
+                        <i class="fas fa-camera text-blue-500 text-xl mt-1"></i>
                         <div>
-                            <h4 data-key="talk_h" class="text-white font-bold uppercase text-sm tracking-widest mb-1">Talk to Prompt</h4>
-                            <p data-key="talk_p" class="text-gray-500 text-sm">Don't want to type? Just hit the mic and speak naturally. LYLO understands context.</p>
+                            <h4 data-key="talk_h" class="text-white font-bold uppercase text-sm tracking-widest mb-1">Vision Link</h4>
+                            <p data-key="talk_p" class="text-gray-500 text-sm">Don't know how to explain it? Just show LYLO a photo. One tap analyzes scams or broken tech.</p>
                         </div>
                     </div>
                     <div class="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 text-left">
-                        <i class="fas fa-volume-up text-blue-500 text-xl mt-1"></i>
+                        <i class="fas fa-sync text-blue-500 text-xl mt-1"></i>
                         <div>
-                            <h4 data-key="auto_h" class="text-white font-bold uppercase text-sm tracking-widest mb-1">Auto-Talk Feature</h4>
-                            <p data-key="auto_p" class="text-gray-500 text-sm">Toggle Auto-Talk to have LYLO read instructions, search results, or scam alerts out loud.</p>
+                            <h4 data-key="auto_h" class="text-white font-bold uppercase text-sm tracking-widest mb-1">Intelligence Sync</h4>
+                            <p data-key="auto_p" class="text-gray-500 text-sm">LYLO remembers your devices, your car, and your needs. The more you talk, the stronger your shield gets.</p>
                         </div>
                     </div>
                 </div>
@@ -394,22 +465,11 @@
 
             <details class="group card p-2 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500">
                 <summary class="flex justify-between items-center p-8 cursor-pointer">
-                    <span data-key="feat3_h" class="text-orange-500 font-bold uppercase tracking-[0.2em] text-sm flex items-center gap-4"><i class="fas fa-utensils text-2xl"></i> 03. Chef & Home Assistant</span>
+                    <span data-key="feat3_h" class="text-red-500 font-bold uppercase tracking-[0.2em] text-sm flex items-center gap-4"><i class="fas fa-check-double text-2xl"></i> 03. The Truth Protocol</span>
                     <i class="fas fa-chevron-down text-gray-700 transition-transform"></i>
                 </summary>
                 <div class="px-8 pb-8 text-gray-400 text-base leading-relaxed border-t border-white/5 bg-black/50">
-                    <p data-key="feat3_p" class="py-6 text-white font-bold uppercase tracking-widest text-sm">Your Daily Life, Simplified.</p>
-                    <p class="mb-6 text-base">From finding recipes to troubleshooting custom PC builds.</p>
-                </div>
-            </details>
-
-            <details class="group card p-2 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500">
-                <summary class="flex justify-between items-center p-8 cursor-pointer">
-                    <span data-key="feat4_h" class="text-red-500 font-bold uppercase tracking-[0.2em] text-sm flex items-center gap-4"><i class="fas fa-check-double text-2xl"></i> 04. The Truth Protocol</span>
-                    <i class="fas fa-chevron-down text-gray-700 transition-transform"></i>
-                </summary>
-                <div class="px-8 pb-8 text-gray-400 text-base leading-relaxed border-t border-white/5 bg-black/50">
-                    <p data-key="feat4_p" class="py-6 text-white font-bold uppercase tracking-widest text-sm">Honesty Above All.</p>
+                    <p data-key="feat3_p" class="py-6 text-white font-bold uppercase tracking-widest text-sm">Honesty Above All.</p>
                     <p class="mb-6 text-base">LYLO is programmed with a strict Anti-Hallucination Protocol. If the AI is unsure, it will not guess.</p>
                 </div>
             </details>
@@ -431,8 +491,8 @@
                 <h3 data-key="plan_free" class="text-gray-400 font-black uppercase text-sm tracking-[0.3em] mb-2">Basic Shield</h3>
                 <div class="text-5xl font-black mb-8 text-white">$0</div>
                 <ul class="space-y-4 text-sm text-gray-500 mb-8 flex-1 text-left w-full border-t border-white/5 pt-6">
-                    <li><i class="fas fa-check text-blue-500 mr-2"></i> 5 Scans Daily</li>
-                    <li><i class="fas fa-exclamation-circle text-gray-500 mr-2"></i> Limited Speed</li>
+                    <li><i class="fas fa-shield-alt text-blue-500 mr-2"></i> The Guardian Only</li>
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> 10 Scans Daily</li>
                 </ul>
                 <button class="tier-button w-full py-4 border border-white/10 text-white rounded font-bold uppercase text-sm tracking-[0.2em]">Join Free</button>
             </div>
@@ -445,8 +505,8 @@
                 <h3 data-key="plan_pro" class="text-blue-400 font-black uppercase text-sm tracking-[0.3em] mb-2">Pro Guardian</h3>
                 <div class="text-5xl font-black mb-8 text-white">$1.99</div>
                 <ul class="space-y-4 text-sm text-gray-400 mb-8 flex-1 text-left w-full border-t border-blue-900/30 pt-6">
-                    <li><i class="fas fa-check text-blue-500 mr-2"></i> 50 Scans Daily</li>
-                    <li><i class="fas fa-bolt text-blue-500 mr-2"></i> Fast Analysis</li>
+                    <li><i class="fas fa-users text-blue-500 mr-2"></i> 4-Expert Team</li>
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Includes Mechanic</li>
                 </ul>
                 <button class="tier-button w-full py-4 border border-blue-500 text-blue-400 rounded font-bold uppercase text-sm tracking-[0.2em]">Get Pro</button>
             </div>
@@ -459,8 +519,8 @@
                 <h3 data-key="plan_elite" class="text-amber-500 font-black uppercase text-sm tracking-[0.3em] mb-2">Elite Justice</h3>
                 <div class="text-5xl font-black mb-8 text-white">$4.99</div>
                 <ul class="space-y-4 text-sm text-gray-300 mb-8 flex-1 text-left w-full border-t border-amber-900/30 pt-6">
-                    <li><i class="fas fa-check text-amber-500 mr-2"></i> 500 Scans Daily</li>
-                    <li><i class="fas fa-crown text-amber-500 mr-2"></i> Priority Support</li>
+                    <li><i class="fas fa-users text-amber-500 mr-2"></i> 6-Expert Team</li>
+                    <li><i class="fas fa-gavel text-amber-500 mr-2"></i> Includes Lawyer</li>
                 </ul>
                 <button class="tier-button w-full py-4 border border-amber-500 text-amber-500 rounded font-bold uppercase text-sm tracking-[0.2em]">Start Elite</button>
             </div>
@@ -473,8 +533,8 @@
                 <h3 data-key="plan_max" class="text-purple-500 font-black uppercase text-sm tracking-[0.3em] mb-2">Max Unlimited</h3>
                 <div class="text-5xl font-black mb-8 text-white">$9.99</div>
                 <ul class="space-y-4 text-sm text-gray-300 mb-8 flex-1 text-left w-full border-t border-purple-900/30 pt-6">
-                    <li><i class="fas fa-infinity text-purple-500 mr-2"></i> Unlimited Access</li>
-                    <li><i class="fas fa-gavel text-purple-500 mr-2"></i> Legal Aid Connect</li>
+                    <li><i class="fas fa-infinity text-purple-500 mr-2"></i> Full 10-Man Team</li>
+                    <li><i class="fas fa-search text-purple-500 mr-2"></i> Custom Search Engine</li>
                 </ul>
                 <button class="tier-button w-full py-4 border border-purple-500 text-purple-400 rounded font-bold uppercase text-sm tracking-[0.2em]">Go Max</button>
             </div>
