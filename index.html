@@ -12,7 +12,7 @@
     <link rel="apple-touch-icon" href="https://mylylo.pro/logo.png">
     
     <meta name="theme-color" content="#02040a">
-    <title>LYLO | Your Digital Bodyguard Team</title>
+    <title>LYLO | Love Your Loved Ones</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -110,9 +110,9 @@
 <script>
     const translations = {
         en: {
-            hero_h1: "DEPLOY YOUR <br><span class='text-blue-500'>SECURITY TEAM</span>",
-            hero_p: "Stop wondering. Start protecting.",
-            hero_desc: "LYLO isn't just an app. It is a fully deployed Digital Bodyguard Team that learns your life, identifies your threats, and bridges the gap between you and your technology.",
+            hero_h1: "LOVE YOUR <br><span class='text-blue-500'>LOVED ONES</span>",
+            hero_p: "Protection for them, Peace of mind for you.",
+            hero_desc: "LYLO is the first Digital Bodyguard that uses advanced AI memory to learn your life, identify your threats, and manage your world. It is protection with a heart.",
             nav_login: "Login",
             nav_team: "Meet the Team",
             nav_how: "Intelligence",
@@ -168,9 +168,9 @@
             btn_max: "Go Max"
         },
         es: {
-            hero_h1: "DESPLIEGUE SU <br><span class='text-blue-500'>EQUIPO DE SEGURIDAD</span>",
-            hero_p: "Deje de preguntarse. Empiece a proteger.",
-            hero_desc: "LYLO no es solo una aplicación. Es un equipo de guardaespaldas digitales totalmente desplegado que aprende de su vida, identifica sus amenazas y cierra la brecha entre usted y su tecnología.",
+            hero_h1: "AMA A TUS <br><span class='text-blue-500'>SERES QUERIDOS</span>",
+            hero_p: "Protección para ellos, tranquilidad para usted.",
+            hero_desc: "LYLO es el primer guardaespaldas digital que utiliza memoria de IA avanzada para conocer su vida, identificar amenazas y gestionar su mundo.",
             nav_login: "Acceder",
             nav_team: "El Equipo",
             nav_how: "Inteligencia",
@@ -272,14 +272,14 @@
 
 <section class="relative pt-48 md:pt-60 pb-32 px-6 text-center">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent -z-10"></div>
-    <h1 data-key="hero_h1" class="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9] text-white italic uppercase mx-auto">
-        DEPLOY YOUR <br><span class="text-blue-500">SECURITY TEAM</span>
+    <h1 data-key="hero_h1" class="text-5xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.85] text-white italic uppercase mx-auto">
+        LOVE YOUR <br><span class="text-blue-500">LOVED ONES</span>
     </h1>
     <p data-key="hero_p" class="text-blue-400 text-lg md:text-2xl font-bold uppercase tracking-[0.3em] mb-6 px-4">
-        Stop wondering. Start protecting.
+        Protection for them, Peace of mind for you.
     </p>
     <p data-key="hero_desc" class="text-gray-400 text-lg md:text-xl mb-14 max-w-3xl mx-auto leading-relaxed font-light italic">
-        LYLO isn't just an app. It is a fully deployed Digital Bodyguard Team that learns your life, identifies your threats, and bridges the gap between you and your technology.
+        LYLO is the first Digital Bodyguard that uses advanced AI memory to learn your life, identify your threats, and manage your world. It is protection with a heart.
     </p>
     <div class="flex flex-col md:flex-row justify-center gap-6 px-4">
         <button onclick="goToApp()" class="w-full md:w-auto px-12 py-6 bg-blue-600 text-white font-black uppercase text-sm tracking-widest rounded-sm hover:bg-blue-500 transition shadow-2xl glow-blue text-center">
@@ -599,8 +599,8 @@ async function runBetaLogin() {
             localStorage.setItem('userTier', 'max'); 
             localStorage.setItem('isEliteUser', 'true');
             localStorage.setItem('isBetaTester', 'true');
-            localStorage.setItem('lylo_assessment_complete', 'true');
-
+            // Removed the auto-skip quiz line so the quiz always runs for new logins if needed
+            
             alert("Access Granted! Welcome " + data.name + ". Tier: MAX UNLIMITED.");
             
             // FIXED: Direct redirect to app domain
