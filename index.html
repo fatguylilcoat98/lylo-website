@@ -491,8 +491,9 @@
                 <h3 data-key="plan_free" class="text-gray-400 font-black uppercase text-sm tracking-[0.3em] mb-2">Basic Shield</h3>
                 <div class="text-5xl font-black mb-8 text-white">$0</div>
                 <ul class="space-y-4 text-sm text-gray-500 mb-8 flex-1 text-left w-full border-t border-white/5 pt-6">
-                    <li><i class="fas fa-shield-alt text-blue-500 mr-2"></i> The Guardian Only</li>
-                    <li><i class="fas fa-check text-blue-500 mr-2"></i> 10 Scans Daily</li>
+                    <li><i class="fas fa-shield-alt text-blue-500 mr-2"></i> Security Scan Only</li>
+                    <li><i class="fas fa-search text-blue-500 mr-2"></i> 10 Searches Daily</li>
+                    <li><i class="fas fa-times text-gray-600 mr-2"></i> No Legal Access</li>
                 </ul>
                 <button class="tier-button w-full py-4 border border-white/10 text-white rounded font-bold uppercase text-sm tracking-[0.2em]">Join Free</button>
             </div>
@@ -505,8 +506,9 @@
                 <h3 data-key="plan_pro" class="text-blue-400 font-black uppercase text-sm tracking-[0.3em] mb-2">Pro Guardian</h3>
                 <div class="text-5xl font-black mb-8 text-white">$1.99</div>
                 <ul class="space-y-4 text-sm text-gray-400 mb-8 flex-1 text-left w-full border-t border-blue-900/30 pt-6">
-                    <li><i class="fas fa-users text-blue-500 mr-2"></i> 4-Expert Team</li>
-                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Includes Mechanic</li>
+                    <li><i class="fas fa-users text-blue-500 mr-2"></i> 5-Expert Team</li>
+                    <li><i class="fas fa-gavel text-blue-500 mr-2"></i> Basic Legal Shield</li>
+                    <li><i class="fas fa-search text-blue-500 mr-2"></i> 50 Searches Daily</li>
                 </ul>
                 <button class="tier-button w-full py-4 border border-blue-500 text-blue-400 rounded font-bold uppercase text-sm tracking-[0.2em]">Get Pro</button>
             </div>
@@ -520,7 +522,8 @@
                 <div class="text-5xl font-black mb-8 text-white">$4.99</div>
                 <ul class="space-y-4 text-sm text-gray-300 mb-8 flex-1 text-left w-full border-t border-amber-900/30 pt-6">
                     <li><i class="fas fa-users text-amber-500 mr-2"></i> 6-Expert Team</li>
-                    <li><i class="fas fa-gavel text-amber-500 mr-2"></i> Includes Lawyer</li>
+                    <li><i class="fas fa-shield-alt text-amber-500 mr-2"></i> Crisis Shield Access</li>
+                    <li><i class="fas fa-search text-amber-500 mr-2"></i> 150 Searches Daily</li>
                 </ul>
                 <button class="tier-button w-full py-4 border border-amber-500 text-amber-500 rounded font-bold uppercase text-sm tracking-[0.2em]">Start Elite</button>
             </div>
@@ -533,8 +536,9 @@
                 <h3 data-key="plan_max" class="text-purple-500 font-black uppercase text-sm tracking-[0.3em] mb-2">Max Unlimited</h3>
                 <div class="text-5xl font-black mb-8 text-white">$9.99</div>
                 <ul class="space-y-4 text-sm text-gray-300 mb-8 flex-1 text-left w-full border-t border-purple-900/30 pt-6">
-                    <li><i class="fas fa-infinity text-purple-500 mr-2"></i> Full 10-Man Team</li>
-                    <li><i class="fas fa-search text-purple-500 mr-2"></i> Custom Search Engine</li>
+                    <li><i class="fas fa-infinity text-purple-500 mr-2"></i> Full 10-Expert Team</li>
+                    <li><i class="fas fa-bolt text-purple-500 mr-2"></i> Early Access Features</li>
+                    <li><i class="fas fa-search text-purple-500 mr-2"></i> Unlimited Searches</li>
                 </ul>
                 <button class="tier-button w-full py-4 border border-purple-500 text-purple-400 rounded font-bold uppercase text-sm tracking-[0.2em]">Go Max</button>
             </div>
@@ -599,11 +603,9 @@ async function runBetaLogin() {
             localStorage.setItem('userTier', 'max'); 
             localStorage.setItem('isEliteUser', 'true');
             localStorage.setItem('isBetaTester', 'true');
-            // Removed the auto-skip quiz line so the quiz always runs for new logins if needed
             
             alert("Access Granted! Welcome " + data.name + ". Tier: MAX UNLIMITED.");
             
-            // FIXED: Direct redirect to app domain
             window.location.assign("https://app.mylylo.pro/#/dashboard");
         } else {
             alert("Access Denied: " + (data.message || "User not in beta list"));
