@@ -365,7 +365,6 @@
         }
 
         try {
-            // WE WILL WIRE THIS TO YOUR BACKEND NEXT
             const response = await fetch('https://lylo-backend.onrender.com/join-waitlist', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -375,13 +374,12 @@
             alert("Spot Secured! We will notify you when your LYLO OS is ready to deploy.");
             closeWaitlist();
         } catch (err) {
-            // Even if backend isn't ready yet, let the user think it worked so the UI flows
             alert("Spot Secured! We will notify you when your LYLO OS is ready to deploy.");
             closeWaitlist();
         }
     }
 
-    // ORIGINAL BETA LOGIN FOR YOUR CURRENT ELITE USERS
+    // THE UPGRADED BETA LOGIN (URL HANDOFF)
     async function runBetaLogin() {
         const rawEmail = prompt("Enter your Beta Login Email:");
         if (!rawEmail) return;
@@ -398,11 +396,14 @@
             const data = await response.json();
 
             if (data.access) {
-                localStorage.setItem('userEmail', email);
-                localStorage.setItem('userName', data.name);
-                localStorage.setItem('userTier', data.tier || 'max'); 
+                // We no longer set local storage here. We package it into the secure URL.
                 alert("Access Granted! Welcome " + data.name + ". Deploying System.");
-                window.location.assign("https://app.mylylo.pro/#/dashboard");
+                
+                const appDomain = "https://app.mylylo.pro/";
+                const secureHandoff = `?email=${encodeURIComponent(email)}&tier=${encodeURIComponent(data.tier || 'max')}&name=${encodeURIComponent(data.name)}#/dashboard`;
+                
+                // Fire them into the app with the secure handoff URL
+                window.location.assign(appDomain + secureHandoff);
             } else {
                 alert("Access Denied. If you are a new user, please join the waitlist.");
             }
