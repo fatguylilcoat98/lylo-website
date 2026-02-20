@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYLO | Legal & Trust Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: white; scroll-behavior: smooth; }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
+            background-color: #3b82f6; transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .glass-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-500 selection:text-white">
+
+<nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-6 py-5 flex justify-between items-center">
+        <div class="flex items-center gap-4 group cursor-pointer" onclick="window.location.href='/'">
+            <i class="fas fa-shield-alt text-blue-500 text-3xl"></i>
+            <span class="text-2xl font-black tracking-tighter text-white uppercase italic">LYLO<span class="text-blue-500">.</span>PRO</span>
+        </div>
+        <a href="/" class="px-6 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-black uppercase tracking-widest rounded-lg transition-colors">Return to OS</a>
+    </div>
+</nav>
+
+<main class="pt-32 pb-24 px-6 max-w-4xl mx-auto">
+    
+    <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-6xl font-black uppercase tracking-widest mb-4 italic">Trust <span class="text-blue-500">Center</span></h1>
+        <p class="text-gray-400 font-bold uppercase tracking-widest text-sm">Legal, Privacy, and Partnerships</p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-16 border-b border-white/10 pb-8">
+        <a href="#privacy" class="px-6 py-3 glass-card rounded-xl text-xs font-black uppercase tracking-widest hover:bg-white/10 transition-colors">Privacy Policy</a>
+        <a href="#terms" class="px-6 py-3 glass-card rounded-xl text-xs font-black uppercase tracking-widest hover:bg-white/10 transition-colors">Terms of Service</a>
+        <a href="#affiliate" class="px-6 py-3 glass-card rounded-xl text-amber-500 border-amber-500/20 font-black uppercase tracking-widest hover:bg-amber-500/10 transition-colors">Affiliate Program</a>
+    </div>
+
+    <section id="privacy" class="mb-24 scroll-mt-32">
+        <div class="flex items-center gap-4 mb-8">
+            <i class="fas fa-user-secret text-blue-500 text-3xl"></i>
+            <h2 class="text-3xl font-black uppercase tracking-widest">Privacy Policy</h2>
+        </div>
+        <div class="space-y-6 text-gray-400 text-sm leading-relaxed">
+            <p><strong>Effective Date:</strong> February 2026</p>
+            <p>At LYLO, we build digital bodyguards, not surveillance networks. Our privacy architecture is designed under a strict "Zero Human Access" protocol.</p>
+            
+            <h3 class="text-white font-bold text-lg uppercase tracking-wider mt-8">1. Zero Human Access & Log Purging</h3>
+            <p>Your conversations with LYLO experts are processed programmatically. We do not retain human-readable chat logs for our engineers or staff to review. Data processed during your session is strictly used to generate your immediate response and update your encrypted vector memory.</p>
+
+            <h3 class="text-white font-bold text-lg uppercase tracking-wider mt-8">2. 0% AI Model Training</h3>
+            <p>We absolutely <strong>never</strong> use your personal conversations, financial data, uploaded photos, or identifying markers to train foundational AI models (like OpenAI or Google Gemini). Your data remains isolated within your personal session environment.</p>
+
+            <h3 class="text-white font-bold text-lg uppercase tracking-wider mt-8">3. Financial Information</h3>
+            <p>LYLO does not store or process your credit card information. All payments and subscriptions are handled securely through Stripe, a certified PCI Level 1 Service Provider. We only store an encrypted token verifying your active subscription tier.</p>
+            
+            <h3 class="text-white font-bold text-lg uppercase tracking-wider mt-8">4. Standby & Microphone Protocols</h3>
+            <p>If you utilize LYLO's voice capabilities, the microphone strictly processes audio locally in your browser. Audio streams are transcribed and instantly discarded. LYLO employs an automatic 120-second standby cutoff to ensure your ambient environment is never inadvertently recorded.</p>
+        </div>
+    </section>
+
+    <section id="terms" class="mb-24 scroll-mt-32 pt-12 border-t border-white/10">
+        <div class="flex items-center gap-4 mb-8">
+            <i class="fas fa-gavel text-yellow-500 text-3xl"></i>
+            <h2 class="text-3xl font-black uppercase tracking-widest">Terms of Service</h2>
+        </div>
+        <div class="space-y-6 text-gray-400 text-sm leading-relaxed">
+            <p><strong>Effective Date:</strong> February 2026</p>
+            <p>By using LYLO, you agree to these terms. Please read them carefully, as they define the legal boundaries of our AI simulation.</p>
+            
+            <div class="p-6 bg-yellow-500/10 border border-yellow-500/30 rounded-2xl my-6">
+                <h3 class="text-yellow-500 font-black text-lg uppercase tracking-wider mb-2"><i class="fas fa-exclamation-triangle mr-2"></i> Critical Liability Disclaimer</h3>
+                <p class="text-yellow-400/80 font-bold">LYLO is an advanced AI Educational & Strategic Simulation. We are NOT a licensed law firm, medical practice, financial institution, or certified counseling service. No information provided by LYLO constitutes legally binding advice, medical diagnosis, or fiduciary counsel. You agree to always verify critical information with a licensed human professional before taking action.</p>
+            </div>
+
+            <h3 class="text-white font-bold text-lg uppercase tracking-wider mt-8">1. Service Usage & Limitations</h3>
+            <p>LYLO operates on a tier-based system with strict daily query limits to prevent abuse and ensure server stability. You agree not to use automated scripts, bots, or reverse-engineering tactics to bypass these daily limits.</p>
+
+            <h3 class="text-white font-bold text-lg uppercase tracking-wider mt-8">2. Accuracy of Information</h3>
+            <p>While LYLO utilizes live internet scanning and elite AI models (including the Truth Protocol), Artificial Intelligence can hallucinate, misinterpret data, or provide outdated information. You assume full responsibility for any actions taken based on LYLO's output.</p>
+
+            <h3 class="text-white font-bold text-lg uppercase tracking-wider mt-8">3. Payments & Cancellations</h3>
+            <p>Subscriptions (Pro Guardian, Elite Justice, Max Unlimited) are billed on a recurring monthly basis. You may cancel at any time through your Stripe billing portal. Refunds are generally not provided for partial months of service, except where required by law.</p>
+        </div>
+    </section>
+
+    <section id="affiliate" class="scroll-mt-32 pt-12 border-t border-white/10">
+        <div class="flex items-center gap-4 mb-8">
+            <i class="fas fa-handshake text-amber-500 text-3xl"></i>
+            <h2 class="text-3xl font-black uppercase tracking-widest">Partner Program</h2>
+        </div>
+        
+        <div class="glass-card p-8 rounded-3xl text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent"></div>
+            <div class="relative z-10">
+                <h3 class="text-2xl font-black text-white uppercase tracking-widest mb-4">Protect Your Circle. Get Paid.</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-xl mx-auto">
+                    We rely on word-of-mouth to protect people from scams. If you refer friends, family, or your audience to LYLO, we want to reward you. Join the LYLO Vanguard Partner Program and earn a recurring commission for every active user you bring to the platform.
+                </p>
+                <div class="grid md:grid-cols-3 gap-4 mb-8 text-left">
+                    <div class="bg-black/50 p-6 rounded-2xl border border-white/5">
+                        <i class="fas fa-link text-amber-500 text-2xl mb-3"></i>
+                        <h4 class="text-white font-black uppercase text-xs mb-2">1. Get Your Link</h4>
+                        <p class="text-gray-500 text-xs">Sign up and receive your unique LYLO tracking link.</p>
+                    </div>
+                    <div class="bg-black/50 p-6 rounded-2xl border border-white/5">
+                        <i class="fas fa-share-nodes text-amber-500 text-2xl mb-3"></i>
+                        <h4 class="text-white font-black uppercase text-xs mb-2">2. Share & Protect</h4>
+                        <p class="text-gray-500 text-xs">Share LYLO with anyone who needs a digital bodyguard.</p>
+                    </div>
+                    <div class="bg-black/50 p-6 rounded-2xl border border-white/5">
+                        <i class="fas fa-wallet text-amber-500 text-2xl mb-3"></i>
+                        <h4 class="text-white font-black uppercase text-xs mb-2">3. Earn Monthly</h4>
+                        <p class="text-gray-500 text-xs">Earn a 20% recurring commission for as long as they subscribe.</p>
+                    </div>
+                </div>
+                <a href="mailto:mylylo.ai@gmail.com?subject=Affiliate Program Application" class="inline-block px-10 py-5 bg-amber-600 hover:bg-amber-500 text-white font-black uppercase text-sm tracking-widest rounded-xl transition-colors shadow-[0_0_20px_rgba(245,158,11,0.3)]">Apply for Vanguard Partner</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="py-12 bg-black border-t border-white/10 mt-12">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="text-xs text-gray-700 tracking-[0.4em] font-black uppercase">
+            &copy; 2026 LYLO SECURITY SYSTEMS. ALL RIGHTS RESERVED. <br> SACRAMENTO, CA.
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
