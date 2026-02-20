@@ -126,13 +126,13 @@
             team_h2: "Meet Your <span class='text-blue-500'>Specialists</span>",
             team_sub: "Switching personalities isn't a game. It's unlocking a new department of protection.",
             privacy_h2: "THE LYLO <span class='text-blue-500'>PRIVACY SHIELD</span>",
-            privacy_sub: "120-Second Standby • 0% Data Training • 100% Private",
-            privacy_zero_h: "Zero Data Training",
-            privacy_zero_p: "We never use your personal conversations or uploaded screenshots to train global AI models.",
+            privacy_sub: "120-Second Standby • Zero Human Access • 0% Data Training",
+            privacy_zero_h: "Zero Human Access",
+            privacy_zero_p: "Your data is processed strictly by the AI and instantly purged. We retain zero chat logs. No engineer or employee can ever read your personal conversations.",
             privacy_anon_h: "Anonymous ID System",
-            privacy_anon_p: "We use 'Hashed Identity' protocols. We don't store your actual name in chat logs—only a secure, scrambled code.",
-            privacy_human_h: "Auto-Standby Mode",
-            privacy_human_p: "Your home is private. LYLO automatically cuts the microphone after 120 seconds of silence.",
+            privacy_anon_p: "We use 'Hashed Identity' protocols. We don't store your actual name in the intelligence logs—only a secure, scrambled code.",
+            privacy_train_h: "0% Model Training",
+            privacy_train_p: "We absolutely never use your personal conversations, financial data, or uploaded screenshots to train global AI models.",
             master_h2: "Master Your <br><span class='text-blue-500'>Intelligence Engine</span>",
             master_p: "LYLO combines real-time internet access with a secured memory vault. It handles the complex tasks so you don't have to.",
             talk_h: "Vision Link",
@@ -324,11 +324,72 @@
     </div>
 </section>
 
+<section id="privacy" class="py-32 bg-black relative overflow-hidden border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 data-key="privacy_h2" class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-white mb-4">THE LYLO <span class="text-blue-500">PRIVACY SHIELD</span></h2>
+            <div class="h-1 w-24 bg-blue-600 mx-auto mb-6"></div>
+            <p data-key="privacy_sub" class="text-gray-500 uppercase tracking-[0.3em] text-sm font-bold">120-Second Standby • Zero Human Access • 0% Data Training</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="card p-8 rounded-2xl border-white/5 bg-white/[0.01]">
+                <i class="fas fa-eye-slash text-blue-500 text-4xl mb-6"></i>
+                <h4 data-key="privacy_zero_h" class="text-white font-black uppercase text-sm tracking-widest mb-4">Zero Human Access</h4>
+                <p data-key="privacy_zero_p" class="text-gray-500 text-sm leading-relaxed uppercase tracking-wider font-medium">Your data is processed strictly by the AI and instantly purged. We retain zero chat logs. No engineer or employee can ever read your personal conversations.</p>
+            </div>
+            <div class="card p-8 rounded-2xl border-white/5 bg-white/[0.01]">
+                <i class="fas fa-fingerprint text-blue-500 text-4xl mb-6"></i>
+                <h4 data-key="privacy_anon_h" class="text-white font-black uppercase text-sm tracking-widest mb-4">Anonymous ID System</h4>
+                <p data-key="privacy_anon_p" class="text-gray-500 text-sm leading-relaxed uppercase tracking-wider font-medium">We use "Hashed Identity" protocols. We don't store your actual name in the intelligence logs—only a secure, scrambled code.</p>
+            </div>
+            <div class="card p-8 rounded-2xl border-white/5 bg-white/[0.01]">
+                <i class="fas fa-microchip text-blue-500 text-4xl mb-6"></i>
+                <h4 data-key="privacy_train_h" class="text-white font-black uppercase text-sm tracking-widest mb-4">0% Model Training</h4>
+                <p data-key="privacy_train_p" class="text-gray-500 text-sm leading-relaxed uppercase tracking-wider font-medium">We absolutely never use your personal conversations, financial data, or uploaded screenshots to train global AI models.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="master-lylo" class="py-32 bg-[#080808] border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
+            <div class="text-center md:text-left">
+                <h2 data-key="master_h2" class="text-4xl md:text-5xl font-black uppercase tracking-widest mb-8 leading-tight">Master Your <br><span class="text-blue-500">Intelligence Engine</span></h2>
+                <p data-key="master_p" class="text-gray-400 text-lg mb-10 leading-relaxed">
+                    LYLO isn't just a program you run; it's an assistant you talk to. By combining real-time internet access with a secured memory vault, LYLO handles the complex tasks so you don't have to.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 text-left">
+                        <i class="fas fa-camera text-blue-500 text-xl mt-1"></i>
+                        <div>
+                            <h4 data-key="talk_h" class="text-white font-bold uppercase text-sm tracking-widest mb-1">Vision Link</h4>
+                            <p data-key="talk_p" class="text-gray-500 text-sm">Don't know how to explain it? Just show LYLO a photo. One tap analyzes scams or broken tech.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 text-left">
+                        <i class="fas fa-sync text-blue-500 text-xl mt-1"></i>
+                        <div>
+                            <h4 data-key="auto_h" class="text-white font-bold uppercase text-sm tracking-widest mb-1">Intelligence Sync</h4>
+                            <p data-key="auto_p" class="text-gray-500 text-sm">LYLO remembers your devices, your car, and your needs. The more you talk, the stronger your shield gets.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative flex justify-center">
+                <div class="absolute inset-0 bg-blue-600/10 blur-[100px] rounded-full"></div>
+                <img src="https://mylylo.pro/logo.png" alt="LYLO AI" class="w-full h-auto relative z-10 drop-shadow-[0_0_50px_rgba(37,99,235,0.3)]">
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="pricing" class="py-40 bg-[#050505] border-t border-white/5">
     <div class="max-w-7xl mx-auto px-6">
         <h2 data-key="price_h2" class="text-5xl md:text-6xl font-black text-center mb-24 tracking-[0.4em] uppercase">The Protection Plans</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-stretch">
+            
             <div class="card p-8 rounded-3xl flex flex-col items-center text-center group border-white/10" onclick="openWaitlist()">
                 <div class="glow-wrapper">
                     <div class="radiant-light bg-white"></div>
@@ -336,6 +397,12 @@
                 </div>
                 <h3 data-key="plan_free" class="text-gray-400 font-black uppercase text-sm tracking-[0.3em] mb-2">Basic Shield</h3>
                 <div class="text-5xl font-black mb-8 text-white">$0</div>
+                <ul class="space-y-4 text-xs text-gray-500 mb-8 flex-1 text-left w-full border-t border-white/5 pt-6 uppercase font-bold tracking-wider">
+                    <li><i class="fas fa-check text-white mr-2"></i> 3 Daily Interactions</li>
+                    <li><i class="fas fa-microchip text-white mr-2"></i> High-Speed AI Engine</li>
+                    <li><i class="fas fa-shield-alt text-white mr-2"></i> Standard Scam Detection</li>
+                    <li><i class="fas fa-clock text-white mr-2"></i> Ephemeral Memory Only</li>
+                </ul>
                 <button class="tier-button w-full py-4 border border-white/10 text-white rounded font-bold uppercase text-sm tracking-[0.2em]">Join Waitlist</button>
             </div>
 
@@ -345,7 +412,13 @@
                     <img src="https://mylylo.pro/protier.png" class="shield-box-img">
                 </div>
                 <h3 data-key="plan_pro" class="text-blue-400 font-black uppercase text-sm tracking-[0.3em] mb-2">Pro Guardian</h3>
-                <div class="text-5xl font-black mb-8 text-white">$1.99</div>
+                <div class="text-5xl font-black mb-8 text-white">$1.99<span class="text-sm text-gray-500">/mo</span></div>
+                <ul class="space-y-4 text-xs text-gray-400 mb-8 flex-1 text-left w-full border-t border-blue-900/30 pt-6 uppercase font-bold tracking-wider">
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> 15 Daily Interactions</li>
+                    <li><i class="fas fa-microchip text-blue-500 mr-2"></i> High-Speed AI Engine</li>
+                    <li><i class="fas fa-users text-blue-500 mr-2"></i> Full 12-Expert Access</li>
+                    <li><i class="fas fa-camera text-blue-500 mr-2"></i> Vision Link Enabled</li>
+                </ul>
                 <button class="tier-button w-full py-4 border border-blue-500 text-blue-400 rounded font-bold uppercase text-sm tracking-[0.2em]">Waitlist Pro</button>
             </div>
 
@@ -355,7 +428,13 @@
                     <img src="https://mylylo.pro/elitetier.png" class="shield-box-img">
                 </div>
                 <h3 data-key="plan_elite" class="text-amber-500 font-black uppercase text-sm tracking-[0.3em] mb-2">Elite Justice</h3>
-                <div class="text-5xl font-black mb-8 text-white">$4.99</div>
+                <div class="text-5xl font-black mb-8 text-white">$4.99<span class="text-sm text-gray-500">/mo</span></div>
+                <ul class="space-y-4 text-xs text-gray-300 mb-8 flex-1 text-left w-full border-t border-amber-900/30 pt-6 uppercase font-bold tracking-wider">
+                    <li><i class="fas fa-check text-amber-500 mr-2"></i> 50 Daily Interactions</li>
+                    <li><i class="fas fa-microchip text-amber-500 mr-2"></i> High-Speed AI Engine</li>
+                    <li><i class="fas fa-briefcase-medical text-amber-500 mr-2"></i> Red Shield Crisis Hub</li>
+                    <li><i class="fas fa-database text-amber-500 mr-2"></i> Priority Data Processing</li>
+                </ul>
                 <button class="tier-button w-full py-4 border border-amber-500 text-amber-500 rounded font-bold uppercase text-sm tracking-[0.2em]">Waitlist Elite</button>
             </div>
 
@@ -365,18 +444,60 @@
                     <img src="https://mylylo.pro/maxtier.png" class="shield-box-img">
                 </div>
                 <h3 data-key="plan_max" class="text-purple-500 font-black uppercase text-sm tracking-[0.3em] mb-2">Max Unlimited</h3>
-                <div class="text-5xl font-black mb-8 text-white">$9.99</div>
+                <div class="text-5xl font-black mb-8 text-white">$9.99<span class="text-sm text-gray-500">/mo</span></div>
+                <ul class="space-y-4 text-xs text-gray-300 mb-8 flex-1 text-left w-full border-t border-purple-900/30 pt-6 uppercase font-bold tracking-wider">
+                    <li><i class="fas fa-infinity text-purple-500 mr-2"></i> 500 Daily Interactions</li>
+                    <li><i class="fas fa-brain text-purple-500 mr-2"></i> Dual Flagship AI Models</li>
+                    <li><i class="fas fa-memory text-purple-500 mr-2"></i> Infinite Pinecone Memory</li>
+                    <li><i class="fas fa-star text-purple-500 mr-2"></i> VIP Direct Support</li>
+                </ul>
                 <button class="tier-button w-full py-4 border border-purple-500 text-purple-400 rounded font-bold uppercase text-sm tracking-[0.2em]">Waitlist Max</button>
             </div>
+
         </div>
     </div>
 </section>
 
-<footer class="py-24 bg-black border-t border-white/5">
+<section id="scholarship" class="py-32 bg-[#080808] border-y border-white/5 text-center px-6">
+    <div class="max-w-4xl mx-auto">
+        <i class="fas fa-hands-helping text-blue-500 text-5xl mb-6"></i>
+        <h2 class="text-4xl md:text-5xl font-black uppercase tracking-widest mb-6 text-white">The Vanguard Scholarship</h2>
+        <p class="text-gray-400 mb-10 leading-relaxed uppercase tracking-wider text-sm max-w-2xl mx-auto font-medium">
+            We believe that top-tier digital protection is a fundamental right, not a luxury. If you are a senior citizen on a fixed income, a disabled individual, or currently facing severe financial hardship, you should not have to face the internet alone.
+        </p>
+        <p class="text-gray-300 mb-10 leading-relaxed uppercase tracking-widest text-xs font-black">
+            Apply below to receive a full Elite Justice package at absolutely no cost.
+        </p>
+        <a href="mailto:mylylo.ai@gmail.com?subject=Scholarship Application" class="px-10 py-5 bg-white text-black font-black uppercase text-sm tracking-widest rounded-xl hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.2)]">Apply for Coverage</a>
+    </div>
+</section>
+
+<footer class="py-24 bg-black">
     <div class="max-w-7xl mx-auto px-6 text-center">
-        <img src="https://mylylo.pro/logo.png" alt="LYLO" class="w-16 h-16 object-contain mx-auto mb-8 opacity-80">
-        <h4 class="text-white font-black uppercase text-lg tracking-[0.4em] mb-4 italic text-center">LYLO<span class="text-blue-500">.</span>PRO</h4>
-        <div class="text-center mt-12 pt-10 border-t border-white/5 text-sm text-gray-700 tracking-[0.6em] font-black uppercase">&copy; 2026 LYLO SECURITY SYSTEMS. ALL RIGHTS RESERVED.</div>
+        
+        <div class="p-5 bg-white/5 border border-white/10 rounded-2xl mb-12 flex flex-col md:flex-row items-center justify-center gap-4 max-w-4xl mx-auto shadow-lg">
+            <i class="fas fa-exclamation-triangle text-yellow-500 text-3xl"></i>
+            <p class="text-xs text-gray-400 font-bold uppercase tracking-widest text-left leading-relaxed">
+                <strong>CRITICAL DISCLAIMER:</strong> LYLO is an advanced AI Educational & Strategic Simulation. While powered by state-of-the-art models, AI systems can make mistakes, hallucinate facts, or misinterpret data. You must always verify critical medical, legal, or financial information with a certified, licensed human professional before taking action.
+            </p>
+        </div>
+
+        <img src="https://mylylo.pro/logo.png" alt="LYLO" class="w-16 h-16 object-contain mx-auto mb-6 opacity-80">
+        <h4 class="text-white font-black uppercase text-xl tracking-[0.4em] mb-10 italic text-center">LYLO<span class="text-blue-500">.</span>PRO</h4>
+        
+        <div class="flex flex-wrap justify-center gap-6 mb-12 text-xs font-black uppercase tracking-[0.2em] text-gray-500">
+            <a href="#" class="hover:text-blue-500 transition-colors">Terms of Service</a>
+            <span class="text-white/20">|</span>
+            <a href="#" class="hover:text-blue-500 transition-colors">Privacy Policy</a>
+            <span class="text-white/20">|</span>
+            <a href="#" class="hover:text-amber-500 transition-colors">Partner / Affiliate Program</a>
+            <span class="text-white/20">|</span>
+            <a href="mailto:mylylo.ai@gmail.com" class="hover:text-blue-500 transition-colors">Contact</a>
+        </div>
+
+        <div class="text-center pt-8 border-t border-white/5 text-[10px] text-gray-700 tracking-[0.6em] font-black uppercase">
+            &copy; 2026 LYLO SECURITY SYSTEMS. ALL RIGHTS RESERVED.
+        </div>
     </div>
 </footer>
 
@@ -447,13 +568,11 @@
             const data = await response.json();
 
             if (data.access) {
-                // We no longer set local storage here. We package it into the secure URL.
                 alert("Access Granted! Welcome " + data.name + ". Deploying System.");
                 
                 const appDomain = "https://app.mylylo.pro/";
                 const secureHandoff = `?email=${encodeURIComponent(email)}&tier=${encodeURIComponent(data.tier || 'max')}&name=${encodeURIComponent(data.name)}#/dashboard`;
                 
-                // Fire them into the app with the secure handoff URL
                 window.location.assign(appDomain + secureHandoff);
             } else {
                 alert("Access Denied. If you are a new user, please join the waitlist.");
