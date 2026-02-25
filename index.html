@@ -78,6 +78,7 @@
             <a href="#team" class="nav-link hover:text-white transition">The Team</a>
             <a href="#emergency" class="nav-link hover:text-red-400 transition">Emergency</a>
             <a href="#master-lylo" class="nav-link hover:text-white transition">Intelligence</a>
+            <a href="#features" class="nav-link hover:text-white transition">Features</a>
             <a href="#pricing" class="nav-link hover:text-white transition">Pricing</a>
             <button onclick="runBetaLogin()" class="px-6 py-2.5 border border-white/20 text-white rounded-sm hover:bg-white hover:text-black transition">Login</button>
             <button onclick="openWaitlist()" class="px-6 py-2.5 bg-blue-600 text-white rounded-sm hover:bg-blue-500 transition shadow-lg glow-blue">Join Waitlist</button>
@@ -177,97 +178,200 @@
     </div>
 </section>
 
-<!-- EMERGENCY PROTOCOLS -->
-<section id="emergency" class="py-32 bg-black border-y border-red-900/20">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <div class="inline-flex items-center gap-3 px-5 py-2.5 bg-red-500/10 border border-red-500/30 rounded-full mb-6">
-                <i class="fas fa-exclamation-triangle text-red-400 text-sm pulse-red"></i>
-                <span class="text-red-400 text-xs font-black uppercase tracking-[0.3em]">Emergency Protocol System</span>
-            </div>
-            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-[0.1em] text-white mb-4">When <span class="text-red-500">Seconds</span> Matter</h2>
-            <p class="text-gray-500 uppercase tracking-widest text-sm font-bold max-w-2xl mx-auto">Tell LYLO™ you're in a crisis. Get a calm, step-by-step protocol instantly — and a PDF dispatched to your email automatically.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <div class="emergency-card p-6">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 bg-yellow-500/10 rounded-xl flex items-center justify-center border border-yellow-500/20">
-                        <i class="fas fa-car-crash text-yellow-400"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-black uppercase text-xs tracking-widest">Car Accident</h4>
-                        <p class="text-xs text-gray-600 uppercase tracking-wider">The Lawyer</p>
-                    </div>
-                </div>
-                <p class="text-gray-400 text-xs leading-relaxed">10-step protocol: what to say, what NOT to say, how to document, when to call insurance — all before you leave the scene.</p>
-            </div>
-            <div class="emergency-card p-6">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 bg-red-500/10 rounded-xl flex items-center justify-center border border-red-500/20">
-                        <i class="fas fa-heartbeat text-red-400"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-black uppercase text-xs tracking-widest">Cardiac Emergency</h4>
-                        <p class="text-xs text-gray-600 uppercase tracking-wider">The Doctor</p>
-                    </div>
-                </div>
-                <p class="text-gray-400 text-xs leading-relaxed">Heart attack, stroke, and overdose protocols with exact steps, what to tell 911, and time-critical windows for treatment.</p>
-            </div>
-            <div class="emergency-card p-6">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center border border-blue-500/20">
-                        <i class="fas fa-user-shield text-blue-400"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-black uppercase text-xs tracking-widest">Account Hacked</h4>
-                        <p class="text-xs text-gray-600 uppercase tracking-wider">The Guardian</p>
-                    </div>
-                </div>
-                <p class="text-gray-400 text-xs leading-relaxed">Step-by-step breach containment, password lockdown, session termination, and fraud reporting before damage spreads.</p>
-            </div>
-            <div class="emergency-card p-6">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 bg-orange-500/10 rounded-xl flex items-center justify-center border border-orange-500/20">
-                        <i class="fas fa-tools text-orange-400"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-black uppercase text-xs tracking-widest">Brake Failure</h4>
-                        <p class="text-xs text-gray-600 uppercase tracking-wider">The Mechanic</p>
-                    </div>
-                </div>
-                <p class="text-gray-400 text-xs leading-relaxed">Tire blowout, brake failure, and engine overheating protocols — counter-intuitive moves that save lives on the highway.</p>
-            </div>
-            <div class="emergency-card p-6">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 bg-green-500/10 rounded-xl flex items-center justify-center border border-green-500/20">
-                        <i class="fas fa-university text-green-400"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-black uppercase text-xs tracking-widest">Account Drained</h4>
-                        <p class="text-xs text-gray-600 uppercase tracking-wider">Wealth Architect</p>
-                    </div>
-                </div>
-                <p class="text-gray-400 text-xs leading-relaxed">Bank fraud and wire transfer emergency response — 24-hour window guidance to freeze, report, and attempt wire recalls.</p>
-            </div>
-            <div class="emergency-card p-6">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 bg-purple-500/10 rounded-xl flex items-center justify-center border border-purple-500/20">
-                        <i class="fas fa-id-card text-purple-400"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-black uppercase text-xs tracking-widest">Identity Theft</h4>
-                        <p class="text-xs text-gray-600 uppercase tracking-wider">The Guardian</p>
-                    </div>
-                </div>
-                <p class="text-gray-400 text-xs leading-relaxed">Credit freeze, fraud alerts, FTC reporting, and police report guidance — the exact sequence that limits the damage.</p>
+<!-- EMERGENCY PROTOCOLS — MARQUEE SECTION -->
+<section id="emergency" class="relative py-40 overflow-hidden" style="background: #020202;">
+
+    <!-- Red glow background -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(220,38,38,0.12) 0%,transparent 70%);"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+
+        <!-- TOP BADGE -->
+        <div class="flex justify-center mb-8">
+            <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full border" style="background:rgba(220,38,38,0.08);border-color:rgba(220,38,38,0.35);">
+                <span class="w-2 h-2 rounded-full bg-red-500 pulse-red"></span>
+                <span class="text-red-400 text-xs font-black uppercase tracking-[0.4em]">LYLO™ Emergency Protocol System</span>
             </div>
         </div>
-        <div class="mt-10 p-5 bg-red-500/5 border border-red-500/20 rounded-2xl text-center">
-            <p class="text-xs text-gray-400 uppercase tracking-widest font-bold">
-                <i class="fas fa-file-pdf text-red-400 mr-2"></i>
-                Emergency protocols <strong class="text-white">automatically dispatch a PDF to your email</strong> — so you have it in writing when you need it most.
+
+        <!-- HEADLINE -->
+        <div class="text-center mb-6">
+            <h2 class="text-5xl md:text-8xl font-black uppercase italic tracking-tighter text-white leading-none mb-4">
+                When Seconds<br><span class="text-red-500">Save Lives</span>
+            </h2>
+            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
+                Most people freeze in a crisis because they don't know what to do. LYLO™ fixes that. Say what's happening — LYLO auto-switches to the right specialist and delivers a <strong class="text-white">calm, numbered, step-by-step protocol in seconds.</strong>
             </p>
         </div>
+
+        <!-- HOW IT WORKS STRIP -->
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-16 text-center">
+            <div class="flex items-center gap-3 px-5 py-3 rounded-2xl" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
+                <span class="text-2xl">🗣️</span>
+                <span class="text-white font-bold text-sm uppercase tracking-wider">Say what's happening</span>
+            </div>
+            <i class="fas fa-arrow-right text-red-500 text-xl hidden md:block"></i>
+            <i class="fas fa-arrow-down text-red-500 text-xl md:hidden"></i>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-2xl" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
+                <span class="text-2xl">⚡</span>
+                <span class="text-white font-bold text-sm uppercase tracking-wider">LYLO auto-switches specialist</span>
+            </div>
+            <i class="fas fa-arrow-right text-red-500 text-xl hidden md:block"></i>
+            <i class="fas fa-arrow-down text-red-500 text-xl md:hidden"></i>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-2xl" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
+                <span class="text-2xl">📋</span>
+                <span class="text-white font-bold text-sm uppercase tracking-wider">Step-by-step protocol delivered</span>
+            </div>
+            <i class="fas fa-arrow-right text-red-500 text-xl hidden md:block"></i>
+            <i class="fas fa-arrow-down text-red-500 text-xl md:hidden"></i>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-2xl" style="background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.3);">
+                <span class="text-2xl">📧</span>
+                <span class="text-red-300 font-bold text-sm uppercase tracking-wider">PDF auto-sent to your email</span>
+            </div>
+        </div>
+
+        <!-- PROTOCOL CARDS — EXPANDED -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+
+            <!-- CAR ACCIDENT -->
+            <div class="emergency-card p-8">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(234,179,8,0.1);border:1px solid rgba(234,179,8,0.25);">
+                        <i class="fas fa-car-crash text-yellow-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="text-white font-black uppercase text-base tracking-wide">Car Accident Protocol</h4>
+                            <span class="px-2 py-0.5 text-[10px] font-black uppercase tracking-wider rounded-full" style="background:rgba(234,179,8,0.15);color:#fbbf24;">10 Steps</span>
+                        </div>
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-bold">Auto-routes to: The Lawyer</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">Just say <em class="text-yellow-400 not-italic font-bold">"I was just in a car wreck"</em> — LYLO immediately switches to The Lawyer and walks you through exactly what to do, say, document, and avoid before you leave the scene.</p>
+                <div class="space-y-2">
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-yellow-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Do NOT admit fault — exact words to use</p></div>
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-yellow-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">What to photograph before anything moves</p></div>
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-yellow-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">How to handle insurance calls on the scene</p></div>
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-yellow-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">What NOT to sign at the scene</p></div>
+                </div>
+            </div>
+
+            <!-- CARDIAC EMERGENCY -->
+            <div class="emergency-card p-8">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);">
+                        <i class="fas fa-heartbeat text-red-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="text-white font-black uppercase text-base tracking-wide">Cardiac Emergency</h4>
+                            <span class="px-2 py-0.5 text-[10px] font-black uppercase tracking-wider rounded-full" style="background:rgba(239,68,68,0.15);color:#f87171;">Life Critical</span>
+                        </div>
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-bold">Auto-routes to: The Doctor</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">Heart attack, stroke, or overdose — say what you're seeing and The Doctor deploys a time-critical protocol with the exact steps to take while waiting for 911.</p>
+                <div class="space-y-2">
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">F.A.S.T. stroke recognition and response</p></div>
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Aspirin protocol for heart attack (when to use it)</p></div>
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Overdose response — Narcan guidance, recovery position</p></div>
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Exactly what to tell 911 to get fastest response</p></div>
+                </div>
+            </div>
+
+            <!-- IDENTITY THEFT / HACKED -->
+            <div class="emergency-card p-8">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);">
+                        <i class="fas fa-user-shield text-blue-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="text-white font-black uppercase text-base tracking-wide">Hacked or ID Stolen</h4>
+                            <span class="px-2 py-0.5 text-[10px] font-black uppercase tracking-wider rounded-full" style="background:rgba(59,130,246,0.15);color:#60a5fa;">Act Fast</span>
+                        </div>
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-bold">Auto-routes to: The Guardian</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">Say <em class="text-blue-400 not-italic font-bold">"my account was hacked"</em> or <em class="text-blue-400 not-italic font-bold">"my identity was stolen"</em> — The Guardian walks you through containment before the damage spreads.</p>
+                <div class="space-y-2">
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-blue-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Password lockdown sequence — right device, right order</p></div>
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-blue-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Credit freeze at all 3 bureaus — exact steps</p></div>
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-blue-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">FTC IdentityTheft.gov report walkthrough</p></div>
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-blue-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Active session termination — kick the hacker out</p></div>
+                </div>
+            </div>
+
+            <!-- ROAD EMERGENCY -->
+            <div class="emergency-card p-8">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.25);">
+                        <i class="fas fa-exclamation-circle text-orange-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="text-white font-black uppercase text-base tracking-wide">Road Emergency</h4>
+                            <span class="px-2 py-0.5 text-[10px] font-black uppercase tracking-wider rounded-full" style="background:rgba(249,115,22,0.15);color:#fb923c;">High Speed</span>
+                        </div>
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-bold">Auto-routes to: The Mechanic</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">Brake failure, tire blowout, engine overheating at highway speed — The Mechanic gives you counter-intuitive survival moves most people get wrong.</p>
+                <div class="space-y-2">
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Tire blowout: why you must briefly accelerate first</p></div>
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Brake failure: engine braking and emergency brake sequence</p></div>
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Overheating: why turning on your heater cools the engine</p></div>
+                    <div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Never turn off the engine while moving — explained</p></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- MORE PROTOCOLS STRIP -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);">
+                <i class="fas fa-university text-green-400 text-xl mb-2"></i>
+                <p class="text-white font-black text-xs uppercase tracking-wider">Account Drained</p>
+                <p class="text-gray-600 text-xs mt-1">Wealth Architect</p>
+            </div>
+            <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);">
+                <i class="fas fa-gavel text-yellow-500 text-xl mb-2"></i>
+                <p class="text-white font-black text-xs uppercase tracking-wider">Being Arrested</p>
+                <p class="text-gray-600 text-xs mt-1">The Lawyer</p>
+            </div>
+            <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);">
+                <i class="fas fa-home text-purple-400 text-xl mb-2"></i>
+                <p class="text-white font-black text-xs uppercase tracking-wider">Eviction Notice</p>
+                <p class="text-gray-600 text-xs mt-1">The Lawyer</p>
+            </div>
+            <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);">
+                <i class="fas fa-thermometer-full text-red-400 text-xl mb-2"></i>
+                <p class="text-white font-black text-xs uppercase tracking-wider">Heat Stroke</p>
+                <p class="text-gray-600 text-xs mt-1">Vitality Coach</p>
+            </div>
+        </div>
+
+        <!-- PDF CALLOUT — BIG -->
+        <div class="relative p-8 rounded-3xl overflow-hidden" style="background:linear-gradient(135deg,rgba(220,38,38,0.08) 0%,rgba(0,0,0,0.6) 100%);border:1px solid rgba(220,38,38,0.25);">
+            <div class="absolute top-0 right-0 w-64 h-64 opacity-5" style="background:radial-gradient(circle,#ef4444,transparent);transform:translate(30%,-30%);"></div>
+            <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+                <div class="w-20 h-20 rounded-3xl flex items-center justify-center flex-shrink-0" style="background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.3);">
+                    <i class="fas fa-file-pdf text-red-400 text-4xl"></i>
+                </div>
+                <div class="text-center md:text-left">
+                    <h3 class="text-white font-black text-2xl uppercase tracking-wide mb-2">Every Protocol Auto-Sends a PDF</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm max-w-2xl">The moment an emergency is detected, LYLO™ dispatches a full PDF of the protocol to your email — automatically. No button to press. No remembering to save it. When the adrenaline wears off and you need to reference what to do next, it's already in your inbox waiting.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISCLAIMER -->
+        <p class="text-center text-gray-700 text-xs uppercase tracking-widest font-bold mt-8">
+            Emergency protocols are informational guides only. In any life-threatening emergency, call 911 immediately.
+        </p>
+
     </div>
 </section>
 
@@ -419,6 +523,181 @@
 </section>
 
 <!-- PRICING -->
+
+<!-- FULL FEATURE SHOWCASE -->
+<section id="features" class="py-32 bg-[#050505] border-y border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-20">
+            <p class="text-xs font-black uppercase tracking-[0.5em] text-blue-500 mb-4">Everything It Does</p>
+            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-[0.1em] text-white mb-4">Built For <span class="text-blue-500">Real Life</span></h2>
+            <p class="text-gray-500 uppercase tracking-widest text-sm font-bold max-w-2xl mx-auto">Every feature exists because someone needed it. Here's everything LYLO™ can do.</p>
+        </div>
+
+        <!-- ROW 1: COMMUNICATION -->
+        <div class="mb-16">
+            <p class="text-xs font-black uppercase tracking-[0.4em] text-gray-600 mb-6 border-b border-white/5 pb-3">How You Talk To It</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center mb-4 border border-blue-500/20">
+                        <i class="fas fa-keyboard text-blue-400"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Type Your Message</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Type anything like a text message. LYLO reads it and responds instantly.</p>
+                </div>
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-green-500/10 rounded-xl flex items-center justify-center mb-4 border border-green-500/20">
+                        <i class="fas fa-microphone text-green-400"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Hold To Speak</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Hold the mic button and talk. LYLO transcribes and responds — hands free.</p>
+                </div>
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-purple-500/10 rounded-xl flex items-center justify-center mb-4 border border-purple-500/20">
+                        <i class="fas fa-volume-up text-purple-400"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Voice Replies On/Off</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Toggle voice on and LYLO speaks every response back to you. Toggle it off for silent mode.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 2: SETTINGS -->
+        <div class="mb-16">
+            <p class="text-xs font-black uppercase tracking-[0.4em] text-gray-600 mb-6 border-b border-white/5 pb-3">Your Settings</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-amber-500/10 rounded-xl flex items-center justify-center mb-4 border border-amber-500/20">
+                        <i class="fas fa-text-height text-amber-400"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Adjustable Font Size</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Tap the font button to cycle through 4 text sizes. Built for everyone including seniors.</p>
+                </div>
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-pink-500/10 rounded-xl flex items-center justify-center mb-4 border border-pink-500/20">
+                        <i class="fas fa-sliders-h text-pink-400"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Communication Style</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Choose how your council talks to you — Direct, Chill, Urgent, Warm, Zero Filter, or Academic.</p>
+                </div>
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-4 border border-indigo-500/20">
+                        <i class="fas fa-user-friends text-indigo-400"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Bestie Personality</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Choose your Bestie as male (The Bro) or female (The Bestie) with a matching voice.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 3: INTELLIGENCE -->
+        <div class="mb-16">
+            <p class="text-xs font-black uppercase tracking-[0.4em] text-gray-600 mb-6 border-b border-white/5 pb-3">What It Knows</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-4 border border-cyan-500/20">
+                        <i class="fas fa-camera text-cyan-400"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Vision Link</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Take a photo or upload an image. LYLO analyzes it — scam texts, broken parts, documents, anything.</p>
+                </div>
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-teal-500/10 rounded-xl flex items-center justify-center mb-4 border border-teal-500/20">
+                        <i class="fas fa-brain text-teal-400"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Intelligence Sync</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">LYLO builds a memory of your life — your car, devices, health, goals. The more you use it, the smarter it gets.</p>
+                </div>
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-orange-500/10 rounded-xl flex items-center justify-center mb-4 border border-orange-500/20">
+                        <i class="fas fa-globe text-orange-400"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Live Web Intelligence</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">LYLO searches the live internet in real time. Not old training data — actual current information.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 4: PROTECTION -->
+        <div class="mb-16">
+            <p class="text-xs font-black uppercase tracking-[0.4em] text-gray-600 mb-6 border-b border-white/5 pb-3">How It Protects You</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-red-500/10 rounded-xl flex items-center justify-center mb-4 border border-red-500/20">
+                        <i class="fas fa-exclamation-triangle text-red-400"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Emergency Auto-Switch</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Say "I was in a car wreck" from any screen. LYLO automatically switches to the right specialist and delivers a step-by-step protocol.</p>
+                </div>
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-yellow-500/10 rounded-xl flex items-center justify-center mb-4 border border-yellow-500/20">
+                        <i class="fas fa-shield-virus text-yellow-400"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Scam Detection</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Paste a suspicious message or describe a situation. LYLO flags scams with a confidence score and sends you a full report.</p>
+                </div>
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center mb-4 border border-blue-500/20">
+                        <i class="fas fa-file-pdf text-blue-400"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Auto PDF Dispatch</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Emergency protocols and important reports automatically email to you as a PDF — so you have it in writing when you need it.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 5: APP EXPERIENCE -->
+        <div class="mb-16">
+            <p class="text-xs font-black uppercase tracking-[0.4em] text-gray-600 mb-6 border-b border-white/5 pb-3">The App Experience</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center mb-4 border border-white/10">
+                        <i class="fas fa-mobile-alt text-gray-300"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Install To Home Screen</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Add LYLO to your iPhone or Android home screen. Works like a real app — no App Store needed.</p>
+                </div>
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center mb-4 border border-white/10">
+                        <i class="fas fa-bell text-gray-300"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Push Notifications</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Enable alerts so LYLO can notify you about threats, reminders, and important updates even when the app is closed.</p>
+                </div>
+                <div class="engine-card p-6">
+                    <div class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center mb-4 border border-white/10">
+                        <i class="fas fa-percentage text-gray-300"></i>
+                    </div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-2">Confidence Score</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">Every response shows a confidence percentage. You always know how certain LYLO is about what it just told you.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUICK REFERENCE TABLE -->
+        <div class="p-8 bg-white/[0.02] border border-white/5 rounded-3xl">
+            <p class="text-xs font-black uppercase tracking-[0.4em] text-gray-500 mb-6">Quick Reference — Everything At A Glance</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">Type or speak</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">Voice on/off toggle</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">4 font sizes</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">6 communication styles</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">12 specialist seats</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">Photo analysis</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">Live web search</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">AI memory vault</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">Emergency protocols</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">Auto persona switch</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">Scam detection</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">PDF email reports</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">Confidence scores</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">Push notifications</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">Install to home screen</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-green-400 text-xs"></i><span class="text-gray-400 text-xs uppercase font-bold tracking-wider">Triple AI engine race</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="pricing" class="py-40 bg-[#050505] border-t border-white/5">
     <div class="max-w-7xl mx-auto px-6">
         <h2 class="text-5xl md:text-6xl font-black text-center mb-16 tracking-[0.4em] uppercase">The Protection Plans</h2>
@@ -509,7 +788,7 @@
         <p class="text-gray-300 mb-10 leading-relaxed uppercase tracking-widest text-xs font-black">
             Apply below to receive a full Elite Justice package at absolutely no cost.
         </p>
-        <a href="mailto:mylylo.ai@gmail.com?subject=Scholarship Application" class="px-10 py-5 bg-white text-black font-black uppercase text-sm tracking-widest rounded-xl hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.2)]">Apply for Coverage</a>
+        <a href="/cdn-cgi/l/email-protection#f09d899c899c9fde9199b0979d91999cde939f9dcf8385929a959384cda393989f9c918283989980d0b180809c99939184999f9e" class="px-10 py-5 bg-white text-black font-black uppercase text-sm tracking-widest rounded-xl hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.2)]">Apply for Coverage</a>
     </div>
 </section>
 
@@ -562,7 +841,7 @@
             <span class="text-white/20">|</span>
             <a href="/legal.html#affiliate" class="hover:text-amber-500 transition-colors">Partner / Affiliate Program</a>
             <span class="text-white/20">|</span>
-            <a href="mailto:mylylo.ai@gmail.com" class="hover:text-blue-500 transition-colors">Contact</a>
+            <a href="/cdn-cgi/l/email-protection#412c382d382d2e6f202801262c20282d6f222e2c" class="hover:text-blue-500 transition-colors">Contact</a>
         </div>
 
         <div class="text-center pt-8 border-t border-white/5 text-[10px] text-gray-700 tracking-[0.6em] font-black uppercase">
@@ -583,7 +862,7 @@
     </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const STRIPE_LINKS = {
         monthly: {
             pro:   "https://buy.stripe.com/7sY00i4LU162gYf4NT7Zu05",
@@ -660,11 +939,4 @@
 
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(reg => console.log('LYLO OS Engine Active:', reg.scope))
-                .catch(err => console.log('OS Engine Failed:', err));
-        });
-    }
-</script>
-</body>
-</html>
+            navigator.serviceWorker.
