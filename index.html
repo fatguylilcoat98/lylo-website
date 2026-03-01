@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -17,14 +17,9 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #050505; color: white; scroll-behavior: smooth; overflow-x: hidden; }
-
-        .card { 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-            background: rgba(255,255,255,0.01);
-            border-width: 2px; border-style: solid;
-            border-color: rgba(255,255,255,0.05);
-            cursor: pointer; position: relative; overflow: hidden;
-        }
+        .card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(255,255,255,0.01); border-width: 2px; border-style: solid; border-color: rgba(255,255,255,0.05); cursor: pointer; position: relative; overflow: hidden; }
+        /* FIX 1: Elite card needs overflow:visible so Best Value badge shows above card */
+        .card-elite { overflow: visible !important; }
         .glow-wrapper { position: relative; display: flex; justify-content: center; align-items: center; height: 12rem; margin-bottom: 2rem; z-index: 10; }
         .radiant-light { position: absolute; width: 130px; height: 130px; border-radius: 50%; filter: blur(45px); opacity: 0.15; z-index: 0; animation: pulse-glow 4s infinite ease-in-out; }
         @keyframes pulse-glow { 0%, 100% { transform: scale(1); opacity: 0.15; } 50% { transform: scale(1.2); opacity: 0.35; } }
@@ -58,13 +53,12 @@
         .delay-1 { animation-delay: 0.1s; opacity: 0; }
         .delay-2 { animation-delay: 0.2s; opacity: 0; }
         .delay-3 { animation-delay: 0.3s; opacity: 0; }
-
-        /* HK badge */
         .hk-badge { background: linear-gradient(135deg, rgba(57,255,20,0.08), rgba(0,0,0,0.4)); border: 1px solid rgba(57,255,20,0.25); border-radius: 1rem; }
+        .lang-btn { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border:1px solid rgba(255,255,255,0.2); border-radius:100px; font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:.15em; cursor:pointer; transition:all .2s; color:white; background:transparent; }
+        .lang-btn:hover { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.4); }
     </style>
 </head>
 <body>
-
 <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 md:px-6 py-5 flex justify-between items-center">
         <div class="flex items-center gap-4 group cursor-pointer" onclick="window.location.href='/'">
@@ -72,17 +66,19 @@
             <span class="text-2xl md:text-3xl font-black tracking-tighter text-white uppercase italic">LYLO<span class="text-blue-500">™</span></span>
         </div>
         <div class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-[0.2em] text-gray-400">
-            <a href="#team" class="nav-link hover:text-white transition">The Team</a>
-            <a href="#emergency" class="nav-link hover:text-red-400 transition">Emergency</a>
-            <a href="#master-lylo" class="nav-link hover:text-white transition">Intelligence</a>
-            <a href="#how-it-works" class="nav-link hover:text-white transition">Features</a>
-            <a href="#pricing" class="nav-link hover:text-white transition">Pricing</a>
-            <button onclick="runBetaLogin()" class="px-6 py-2.5 border border-white/20 text-white rounded-sm hover:bg-white hover:text-black transition">Login</button>
-            <button onclick="openWaitlist()" class="px-6 py-2.5 bg-blue-600 text-white rounded-sm hover:bg-blue-500 transition shadow-lg glow-blue">Apply for Access</button>
+            <a href="#team" class="nav-link hover:text-white transition" data-t="nav_team">The Team</a>
+            <a href="#emergency" class="nav-link hover:text-red-400 transition" data-t="nav_emergency">Emergency</a>
+            <a href="#master-lylo" class="nav-link hover:text-white transition" data-t="nav_intelligence">Intelligence</a>
+            <a href="#how-it-works" class="nav-link hover:text-white transition" data-t="nav_features">Features</a>
+            <a href="#pricing" class="nav-link hover:text-white transition" data-t="nav_pricing">Pricing</a>
+            <button class="lang-btn" onclick="toggleLang()"><span id="lf">🇲🇽</span><span id="ll">Español</span></button>
+            <button onclick="runBetaLogin()" class="px-6 py-2.5 border border-white/20 text-white rounded-sm hover:bg-white hover:text-black transition" data-t="nav_login">Login</button>
+            <button onclick="openWaitlist()" class="px-6 py-2.5 bg-blue-600 text-white rounded-sm hover:bg-blue-500 transition shadow-lg glow-blue" data-t="nav_apply">Apply for Access</button>
         </div>
-        <div class="lg:hidden flex gap-3">
-            <button onclick="runBetaLogin()" class="px-4 py-2 border border-white/20 text-white text-xs font-black uppercase rounded-sm">Login</button>
-            <button onclick="openWaitlist()" class="px-4 py-2 bg-blue-600 text-white text-xs font-black uppercase rounded-sm">Apply</button>
+        <div class="lg:hidden flex gap-2 items-center">
+            <button class="lang-btn text-[10px] px-3 py-1.5" onclick="toggleLang()"><span id="lfm">🇲🇽</span><span id="llm">ES</span></button>
+            <button onclick="runBetaLogin()" class="px-4 py-2 border border-white/20 text-white text-xs font-black uppercase rounded-sm" data-t="nav_login">Login</button>
+            <button onclick="openWaitlist()" class="px-4 py-2 bg-blue-600 text-white text-xs font-black uppercase rounded-sm" data-t="nav_apply_short">Apply</button>
         </div>
     </div>
 </nav>
@@ -90,37 +86,25 @@
 <!-- HERO -->
 <section class="relative pt-48 md:pt-60 pb-32 px-6 text-center">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent -z-10"></div>
-
-    <!-- Founding member badge -->
     <div class="flex justify-center mb-8 fade-up">
         <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border" style="background:rgba(57,255,20,0.06);border-color:rgba(57,255,20,0.25);">
             <span class="w-2 h-2 rounded-full bg-green-400 pulse-red"></span>
-            <span class="text-green-400 text-xs font-black uppercase tracking-[0.3em]">Founding Member Rollout — Limited Spots</span>
+            <span class="text-green-400 text-xs font-black uppercase tracking-[0.3em]" data-t="hero_badge">Founding Member Rollout — Limited Spots</span>
         </div>
     </div>
-
-    <h1 class="text-5xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.85] text-white italic uppercase mx-auto fade-up">
+    <h1 class="text-5xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.85] text-white italic uppercase mx-auto fade-up" data-th="hero_h1">
         LOVE YOUR <br><span class="text-blue-500">LOVED ONES</span>
     </h1>
-    <p class="text-blue-400 text-lg md:text-2xl font-bold uppercase tracking-[0.3em] mb-6 px-4 fade-up delay-1">
-        Protection for them, Peace of mind for you.
-    </p>
-    <p class="text-gray-400 text-lg md:text-xl mb-6 max-w-3xl mx-auto leading-relaxed font-light italic fade-up delay-2">
-        LYLO™ is the first AI assistant that <strong class="text-white not-italic">checks itself before answering</strong>. Three engines race simultaneously. A confidence score validates every response. When the stakes are high — medical, legal, financial — a second verification layer fires automatically.
-    </p>
-    <!-- Safety differentiator callout -->
+    <p class="text-blue-400 text-lg md:text-2xl font-bold uppercase tracking-[0.3em] mb-6 px-4 fade-up delay-1" data-t="hero_sub">Protection for them, Peace of mind for you.</p>
+    <p class="text-gray-400 text-lg md:text-xl mb-6 max-w-3xl mx-auto leading-relaxed font-light italic fade-up delay-2" data-th="hero_body">LYLO™ is the first AI assistant that <strong class="text-white not-italic">checks itself before answering</strong>. Three engines race simultaneously. A confidence score validates every response. When the stakes are high — medical, legal, financial — a second verification layer fires automatically.</p>
     <div class="flex flex-wrap justify-center gap-3 mb-10 fade-up delay-2">
-        <span class="px-3 py-1.5 text-xs font-black uppercase tracking-wider rounded-full" style="background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.2);color:#39FF14;">✓ Confidence Score on Every Answer</span>
-        <span class="px-3 py-1.5 text-xs font-black uppercase tracking-wider rounded-full" style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:#60a5fa;">✓ 3-Model Consensus on High-Stakes Queries</span>
-        <span class="px-3 py-1.5 text-xs font-black uppercase tracking-wider rounded-full" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);color:#f87171;">✓ Auto-Blocks Hallucinations on Medical & Legal</span>
+        <span class="px-3 py-1.5 text-xs font-black uppercase tracking-wider rounded-full" style="background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.2);color:#39FF14;" data-t="badge_1">✓ Confidence Score on Every Answer</span>
+        <span class="px-3 py-1.5 text-xs font-black uppercase tracking-wider rounded-full" style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:#60a5fa;" data-t="badge_2">✓ 3-Model Consensus on High-Stakes Queries</span>
+        <span class="px-3 py-1.5 text-xs font-black uppercase tracking-wider rounded-full" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);color:#f87171;" data-t="badge_3">✓ Auto-Blocks Hallucinations on Medical &amp; Legal</span>
     </div>
     <div class="flex flex-col md:flex-row justify-center gap-6 px-4 fade-up delay-3">
-        <button onclick="openWaitlist()" class="w-full md:w-auto px-12 py-6 bg-blue-600 text-white font-black uppercase text-sm tracking-widest rounded-sm hover:bg-blue-500 transition shadow-2xl glow-blue text-center">
-            Apply for Founding Access
-        </button>
-        <a href="#team" class="w-full md:w-auto px-12 py-6 border border-white/10 text-white font-black rounded-sm uppercase tracking-widest text-sm text-center hover:border-white/30 transition">
-            Meet the Council
-        </a>
+        <button onclick="openWaitlist()" class="w-full md:w-auto px-12 py-6 bg-blue-600 text-white font-black uppercase text-sm tracking-widest rounded-sm hover:bg-blue-500 transition shadow-2xl glow-blue text-center" data-t="hero_cta1">Apply for Founding Access</button>
+        <a href="#team" class="w-full md:w-auto px-12 py-6 border border-white/10 text-white font-black rounded-sm uppercase tracking-widest text-sm text-center hover:border-white/30 transition" data-t="hero_cta2">Meet the Council</a>
     </div>
 </section>
 
@@ -130,18 +114,12 @@
         <div class="card p-8 md:p-12 rounded-[3rem] border-blue-900/20 bg-gradient-to-br from-blue-900/5 to-transparent relative">
             <div class="flex flex-col-reverse md:grid md:grid-cols-3 gap-12 items-center">
                 <div class="md:col-span-2 text-center md:text-left">
-                    <h3 class="text-sm font-bold text-blue-500 uppercase tracking-[0.5em] mb-4">A Note from the Founder</h3>
-                    <h2 class="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-white mb-6">I'm Christopher, <br>and this is Personal.</h2>
-                    <p class="text-gray-400 leading-relaxed mb-6 font-medium uppercase tracking-wider text-sm text-left">
-                        I didn't build LYLO™ to be another faceless corporation. I'm a tech enthusiast based right here in <span class='text-white'>Sacramento, CA</span>. Whether I'm building custom Z790 rigs, modding consoles, or hunting down the best carne asada in the city, I've always believed that technology should serve people—not target them.
-                    </p>
-                    <p class="text-gray-400 leading-relaxed font-medium uppercase tracking-wider text-sm text-left">
-                        I created LYLO™ (Love Your Loved Ones) because I saw how easy it was for scammers to hurt the people we care about. This is my mission: to provide elite protection with a human heart, so you can Live Your Life Online without fear.
-                    </p>
+                    <h3 class="text-sm font-bold text-blue-500 uppercase tracking-[0.5em] mb-4" data-t="founder_eyebrow">A Note from the Founder</h3>
+                    <h2 class="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-white mb-6" data-th="founder_title">I'm Christopher, <br>and this is Personal.</h2>
+                    <p class="text-gray-400 leading-relaxed mb-6 font-medium uppercase tracking-wider text-sm text-left" data-th="founder_p1">I didn't build LYLO™ to be another faceless corporation. I'm a tech enthusiast based right here in <span class='text-white'>Sacramento, CA</span>. Whether I'm building custom Z790 rigs, modding consoles, or hunting down the best carne asada in the city, I've always believed that technology should serve people—not target them.</p>
+                    <p class="text-gray-400 leading-relaxed font-medium uppercase tracking-wider text-sm text-left" data-t="founder_p2">I created LYLO™ (Love Your Loved Ones) because I saw how easy it was for scammers to hurt the people we care about. This is my mission: to provide elite protection with a human heart, so you can Live Your Life Online without fear.</p>
                 </div>
-                <div class="flex justify-center">
-                    <img src="logo.png" alt="LYLO" class="w-32 h-32 md:w-48 md:h-48 object-contain opacity-50">
-                </div>
+                <div class="flex justify-center"><img src="logo.png" alt="LYLO" class="w-32 h-32 md:w-48 md:h-48 object-contain opacity-50"></div>
             </div>
         </div>
     </div>
@@ -151,233 +129,42 @@
 <section class="py-32 bg-[#060606] border-y border-white/5">
     <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
-            <p class="text-xs font-black uppercase tracking-[0.5em] text-blue-500 mb-4">NEW IN 2026</p>
-            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-[0.15em] text-white mb-4">Triple Engine <span class="text-blue-500">Intelligence</span></h2>
-            <p class="text-gray-500 uppercase tracking-widest text-sm font-bold max-w-2xl mx-auto">Three AI engines race simultaneously. The fastest, most accurate answer wins. A confidence score validates every result.</p>
+            <p class="text-xs font-black uppercase tracking-[0.5em] text-blue-500 mb-4" data-t="engine_eyebrow">NEW IN 2026</p>
+            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-[0.15em] text-white mb-4" data-th="engine_h2">Triple Engine <span class="text-blue-500">Intelligence</span></h2>
+            <p class="text-gray-500 uppercase tracking-widest text-sm font-bold max-w-2xl mx-auto" data-t="engine_sub">Three AI engines race simultaneously. The fastest, most accurate answer wins. A confidence score validates every result.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div class="engine-card p-8 text-center">
-                <div class="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-green-500/20">
-                    <i class="fas fa-bolt text-green-400 text-2xl"></i>
-                </div>
-                <h3 class="text-white font-black uppercase text-sm tracking-widest mb-2">OpenAI Engine</h3>
-                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-3">GPT-4o-mini</p>
-                <p class="text-gray-400 text-xs leading-relaxed">Lightning-fast responses with deep reasoning and natural conversation.</p>
-            </div>
-            <div class="engine-card p-8 text-center border-blue-500/20">
-                <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-blue-500/20">
-                    <i class="fas fa-microchip text-blue-400 text-2xl"></i>
-                </div>
-                <h3 class="text-white font-black uppercase text-sm tracking-widest mb-2">Google Engine</h3>
-                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-3">Gemini Flash</p>
-                <p class="text-gray-400 text-xs leading-relaxed">Multimodal intelligence with real-time web data and vision analysis.</p>
-            </div>
-            <div class="engine-card p-8 text-center border-purple-500/20">
-                <div class="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-purple-500/20">
-                    <i class="fas fa-shield-alt text-purple-400 text-2xl"></i>
-                </div>
-                <h3 class="text-white font-black uppercase text-sm tracking-widest mb-2">Claude Validator</h3>
-                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-3">Anthropic Claude</p>
-                <p class="text-gray-400 text-xs leading-relaxed">Every AI system can be wrong — the industry calls it hallucination. When someone asks about a medication, a legal deadline, or a financial decision, a wrong answer isn't just frustrating. It can be dangerous. Veracore™ is LYLO's built-in verification engine. Before high-stakes answers reach you, multiple independent AI systems cross-check the response. If they disagree, you're informed. If confidence falls below our safety threshold, LYLO tells you instead of guessing. <strong class="text-white">Most consumer AI tools generate answers. LYLO verifies them.</strong></p>
-            </div>
+            <div class="engine-card p-8 text-center"><div class="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-green-500/20"><i class="fas fa-bolt text-green-400 text-2xl"></i></div><h3 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="e1_name">OpenAI Engine</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-3">GPT-4o-mini</p><p class="text-gray-400 text-xs leading-relaxed" data-t="e1_desc">Lightning-fast responses with deep reasoning and natural conversation.</p></div>
+            <div class="engine-card p-8 text-center border-blue-500/20"><div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-blue-500/20"><i class="fas fa-microchip text-blue-400 text-2xl"></i></div><h3 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="e2_name">Google Engine</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-3">Gemini Flash</p><p class="text-gray-400 text-xs leading-relaxed" data-t="e2_desc">Multimodal intelligence with real-time web data and vision analysis.</p></div>
+            <div class="engine-card p-8 text-center border-purple-500/20"><div class="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-purple-500/20"><i class="fas fa-shield-alt text-purple-400 text-2xl"></i></div><h3 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="e3_name">Claude Validator</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-3">Anthropic Claude</p><p class="text-gray-400 text-xs leading-relaxed" data-th="e3_desc">Every AI system can be wrong. When someone asks about a medication or legal deadline, a wrong answer can be dangerous. Veracore™ cross-checks every high-stakes response. <strong class="text-white">Most AI tools generate answers. LYLO verifies them.</strong></p></div>
         </div>
-
-        <!-- Veracore callout -->
         <div class="hk-badge p-6 md:p-8 mb-8">
             <div class="flex flex-col md:flex-row items-center gap-6">
-                <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(57,255,20,0.1);border:1px solid rgba(57,255,20,0.3);">
-                    <i class="fas fa-brain text-green-400 text-2xl"></i>
-                </div>
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(57,255,20,0.1);border:1px solid rgba(57,255,20,0.3);"><i class="fas fa-brain text-green-400 text-2xl"></i></div>
                 <div class="text-center md:text-left">
-                    <h4 class="text-white font-black uppercase text-sm tracking-widest mb-2">Powered by Veracore™ — Active on Pro Tier and Above</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed max-w-3xl">
-                        When you ask a medical, legal, or financial question, a second verification layer activates automatically. Three independent models cross-examine each other's answers. Responses that don't reach consensus are flagged. A confidence score shows you exactly how certain the system is — before you act on it. This is what separates LYLO™ from every other AI assistant.
-                    </p>
+                    <h4 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="vc_title">Powered by Veracore™ — Active on Pro Tier and Above</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed max-w-3xl" data-t="vc_desc">When you ask a medical, legal, or financial question, a second verification layer activates automatically. Three independent models cross-examine each other's answers. Responses that don't reach consensus are flagged. A confidence score shows you exactly how certain the system is — before you act on it.</p>
                 </div>
-            </div>
-            <div class="flex flex-wrap gap-3 mt-5 justify-center md:justify-start">
-                <span class="px-3 py-1 text-[10px] font-black uppercase tracking-wider rounded-full" style="background:rgba(57,255,20,0.1);border:1px solid rgba(57,255,20,0.2);color:#39FF14;">Confidence Score on Every Response</span>
-                <span class="px-3 py-1 text-[10px] font-black uppercase tracking-wider rounded-full" style="background:rgba(57,255,20,0.1);border:1px solid rgba(57,255,20,0.2);color:#39FF14;">3-Model Consensus Verification</span>
-                <span class="px-3 py-1 text-[10px] font-black uppercase tracking-wider rounded-full" style="background:rgba(57,255,20,0.1);border:1px solid rgba(57,255,20,0.2);color:#39FF14;">Deterministic Overrides for Known Facts</span>
-                <span class="px-3 py-1 text-[10px] font-black uppercase tracking-wider rounded-full" style="background:rgba(57,255,20,0.1);border:1px solid rgba(57,255,20,0.2);color:#39FF14;">Source Diversity Enforcement</span>
-            </div>
-        </div>
-
-        <div class="text-center">
-            <div class="inline-flex items-center gap-3 px-6 py-3 bg-white/[0.02] border border-white/10 rounded-full">
-                <div class="w-2 h-2 rounded-full bg-green-400 pulse-red"></div>
-                <p class="text-xs text-gray-400 uppercase tracking-widest font-bold">All three engines active on every message</p>
             </div>
         </div>
     </div>
 </section>
-
-<!-- EMERGENCY PROTOCOLS -->
-<section id="emergency" class="relative py-40 overflow-hidden" style="background: #020202;">
-    <div class="absolute inset-0 pointer-events-none">
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(220,38,38,0.12) 0%,transparent 70%);"></div>
-    </div>
+<!-- EMERGENCY -->
+<section id="emergency" class="relative py-40 overflow-hidden" style="background:#020202;">
+    <div class="absolute inset-0 pointer-events-none"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(220,38,38,0.12) 0%,transparent 70%);"></div></div>
     <div class="max-w-6xl mx-auto px-6 relative z-10">
-        <div class="flex justify-center mb-8">
-            <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full border" style="background:rgba(220,38,38,0.08);border-color:rgba(220,38,38,0.35);">
-                <span class="w-2 h-2 rounded-full bg-red-500 pulse-red"></span>
-                <span class="text-red-400 text-xs font-black uppercase tracking-[0.4em]">LYLO™ Emergency Protocol System</span>
-            </div>
-        </div>
+        <div class="flex justify-center mb-8"><div class="inline-flex items-center gap-3 px-6 py-3 rounded-full border" style="background:rgba(220,38,38,0.08);border-color:rgba(220,38,38,0.35);"><span class="w-2 h-2 rounded-full bg-red-500 pulse-red"></span><span class="text-red-400 text-xs font-black uppercase tracking-[0.4em]" data-t="emerg_badge">LYLO™ Emergency Protocol System</span></div></div>
         <div class="text-center mb-6">
-            <h2 class="text-5xl md:text-8xl font-black uppercase italic tracking-tighter text-white leading-none mb-4">
-                When Seconds<br><span class="text-red-500">Save Lives</span>
-            </h2>
-            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
-                Most people freeze in a crisis because they don't know what to do. LYLO™ fixes that. Say what's happening — LYLO auto-switches to the right specialist and delivers a <strong class="text-white">calm, numbered, step-by-step protocol in seconds.</strong>
-            </p>
-        </div>
-        <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-16 text-center">
-            <div class="flex items-center gap-3 px-5 py-3 rounded-2xl" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
-                <span class="text-2xl">🗣️</span>
-                <span class="text-white font-bold text-sm uppercase tracking-wider">Say what's happening</span>
-            </div>
-            <i class="fas fa-arrow-right text-red-500 text-xl hidden md:block"></i>
-            <i class="fas fa-arrow-down text-red-500 text-xl md:hidden"></i>
-            <div class="flex items-center gap-3 px-5 py-3 rounded-2xl" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
-                <span class="text-2xl">⚡</span>
-                <span class="text-white font-bold text-sm uppercase tracking-wider">LYLO auto-switches specialist</span>
-            </div>
-            <i class="fas fa-arrow-right text-red-500 text-xl hidden md:block"></i>
-            <i class="fas fa-arrow-down text-red-500 text-xl md:hidden"></i>
-            <div class="flex items-center gap-3 px-5 py-3 rounded-2xl" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
-                <span class="text-2xl">📋</span>
-                <span class="text-white font-bold text-sm uppercase tracking-wider">Step-by-step protocol delivered</span>
-            </div>
-            <i class="fas fa-arrow-right text-red-500 text-xl hidden md:block"></i>
-            <i class="fas fa-arrow-down text-red-500 text-xl md:hidden"></i>
-            <div class="flex items-center gap-3 px-5 py-3 rounded-2xl" style="background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.3);">
-                <span class="text-2xl">📧</span>
-                <span class="text-red-300 font-bold text-sm uppercase tracking-wider">PDF auto-sent to your email</span>
-            </div>
+            <h2 class="text-5xl md:text-8xl font-black uppercase italic tracking-tighter text-white leading-none mb-4" data-th="emerg_h2">When Seconds<br><span class="text-red-500">Save Lives</span></h2>
+            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light" data-th="emerg_sub">Most people freeze in a crisis because they don't know what to do. LYLO™ fixes that. Say what's happening — LYLO auto-switches to the right specialist and delivers a <strong class="text-white">calm, numbered, step-by-step protocol in seconds.</strong></p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div class="emergency-card p-8">
-                <div class="flex items-center gap-4 mb-5">
-                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(234,179,8,0.1);border:1px solid rgba(234,179,8,0.25);">
-                        <i class="fas fa-car-crash text-yellow-400 text-2xl"></i>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2 mb-1">
-                            <h4 class="text-white font-black uppercase text-base tracking-wide">Car Accident Protocol</h4>
-                            <span class="px-2 py-0.5 text-[10px] font-black uppercase tracking-wider rounded-full" style="background:rgba(234,179,8,0.15);color:#fbbf24;">10 Steps</span>
-                        </div>
-                        <p class="text-xs text-gray-500 uppercase tracking-wider font-bold">Auto-routes to: The Lawyer</p>
-                    </div>
-                </div>
-                <p class="text-gray-300 text-sm leading-relaxed mb-4">Just say <em class="text-yellow-400 not-italic font-bold">"I was just in a car wreck"</em> — LYLO immediately switches to The Lawyer and walks you through exactly what to do, say, document, and avoid before you leave the scene.</p>
-                <div class="space-y-2">
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-yellow-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Do NOT admit fault — exact words to use</p></div>
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-yellow-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">What to photograph before anything moves</p></div>
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-yellow-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">How to handle insurance calls on the scene</p></div>
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-yellow-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">What NOT to sign at the scene</p></div>
-                </div>
-            </div>
-            <div class="emergency-card p-8">
-                <div class="flex items-center gap-4 mb-5">
-                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);">
-                        <i class="fas fa-heartbeat text-red-400 text-2xl"></i>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2 mb-1">
-                            <h4 class="text-white font-black uppercase text-base tracking-wide">Cardiac Emergency</h4>
-                            <span class="px-2 py-0.5 text-[10px] font-black uppercase tracking-wider rounded-full" style="background:rgba(239,68,68,0.15);color:#f87171;">Life Critical</span>
-                        </div>
-                        <p class="text-xs text-gray-500 uppercase tracking-wider font-bold">Auto-routes to: The Doctor</p>
-                    </div>
-                </div>
-                <p class="text-gray-300 text-sm leading-relaxed mb-4">Heart attack, stroke, or overdose — say what you're seeing and The Doctor deploys a time-critical protocol with the exact steps to take while waiting for 911.</p>
-                <div class="space-y-2">
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">F.A.S.T. stroke recognition and response</p></div>
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Aspirin protocol for heart attack (when to use it)</p></div>
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Overdose response — Narcan guidance, recovery position</p></div>
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Exactly what to tell 911 to get fastest response</p></div>
-                </div>
-            </div>
-            <div class="emergency-card p-8">
-                <div class="flex items-center gap-4 mb-5">
-                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);">
-                        <i class="fas fa-user-shield text-blue-400 text-2xl"></i>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2 mb-1">
-                            <h4 class="text-white font-black uppercase text-base tracking-wide">Hacked or ID Stolen</h4>
-                            <span class="px-2 py-0.5 text-[10px] font-black uppercase tracking-wider rounded-full" style="background:rgba(59,130,246,0.15);color:#60a5fa;">Act Fast</span>
-                        </div>
-                        <p class="text-xs text-gray-500 uppercase tracking-wider font-bold">Auto-routes to: The Guardian</p>
-                    </div>
-                </div>
-                <p class="text-gray-300 text-sm leading-relaxed mb-4">Say <em class="text-blue-400 not-italic font-bold">"my account was hacked"</em> or <em class="text-blue-400 not-italic font-bold">"my identity was stolen"</em> — The Guardian walks you through containment before the damage spreads.</p>
-                <div class="space-y-2">
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-blue-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Password lockdown sequence — right device, right order</p></div>
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-blue-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Credit freeze at all 3 bureaus — exact steps</p></div>
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-blue-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">FTC IdentityTheft.gov report walkthrough</p></div>
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-blue-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Active session termination — kick the hacker out</p></div>
-                </div>
-            </div>
-            <div class="emergency-card p-8">
-                <div class="flex items-center gap-4 mb-5">
-                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.25);">
-                        <i class="fas fa-exclamation-circle text-orange-400 text-2xl"></i>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2 mb-1">
-                            <h4 class="text-white font-black uppercase text-base tracking-wide">Road Emergency</h4>
-                            <span class="px-2 py-0.5 text-[10px] font-black uppercase tracking-wider rounded-full" style="background:rgba(249,115,22,0.15);color:#fb923c;">High Speed</span>
-                        </div>
-                        <p class="text-xs text-gray-500 uppercase tracking-wider font-bold">Auto-routes to: The Mechanic</p>
-                    </div>
-                </div>
-                <p class="text-gray-300 text-sm leading-relaxed mb-4">Brake failure, tire blowout, engine overheating at highway speed — The Mechanic gives you counter-intuitive survival moves most people get wrong.</p>
-                <div class="space-y-2">
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Tire blowout: why you must briefly accelerate first</p></div>
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Brake failure: engine braking and emergency brake sequence</p></div>
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Overheating: why turning on your heater cools the engine</p></div>
-                    <div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs">Never turn off the engine while moving — explained</p></div>
-                </div>
-            </div>
+            <div class="emergency-card p-8"><div class="flex items-center gap-4 mb-5"><div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(234,179,8,0.1);border:1px solid rgba(234,179,8,0.25);"><i class="fas fa-car-crash text-yellow-400 text-2xl"></i></div><div><h4 class="text-white font-black uppercase text-base tracking-wide" data-t="ec1_title">Car Accident Protocol</h4><p class="text-xs text-gray-500 uppercase tracking-wider font-bold" data-t="ec1_route">Auto-routes to: The Lawyer</p></div></div><p class="text-gray-300 text-sm leading-relaxed mb-4" data-th="ec1_body">Just say <em class="text-yellow-400 not-italic font-bold">"I was just in a car wreck"</em> — LYLO immediately switches to The Lawyer and walks you through exactly what to do.</p><div class="space-y-2"><div class="flex items-start gap-2"><i class="fas fa-check text-yellow-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec1_l1">Do NOT admit fault — exact words to use</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-yellow-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec1_l2">What to photograph before anything moves</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-yellow-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec1_l3">How to handle insurance calls on the scene</p></div></div></div>
+            <div class="emergency-card p-8"><div class="flex items-center gap-4 mb-5"><div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);"><i class="fas fa-heartbeat text-red-400 text-2xl"></i></div><div><h4 class="text-white font-black uppercase text-base tracking-wide" data-t="ec2_title">Cardiac Emergency</h4><p class="text-xs text-gray-500 uppercase tracking-wider font-bold" data-t="ec2_route">Auto-routes to: The Doctor</p></div></div><p class="text-gray-300 text-sm leading-relaxed mb-4" data-t="ec2_body">Heart attack, stroke, or overdose — say what you're seeing and The Doctor deploys a time-critical protocol.</p><div class="space-y-2"><div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec2_l1">F.A.S.T. stroke recognition and response</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec2_l2">Aspirin protocol for heart attack (when to use it)</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec2_l3">Overdose response — Narcan guidance, recovery position</p></div></div></div>
+            <div class="emergency-card p-8"><div class="flex items-center gap-4 mb-5"><div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);"><i class="fas fa-user-shield text-blue-400 text-2xl"></i></div><div><h4 class="text-white font-black uppercase text-base tracking-wide" data-t="ec3_title">Hacked or ID Stolen</h4><p class="text-xs text-gray-500 uppercase tracking-wider font-bold" data-t="ec3_route">Auto-routes to: The Guardian</p></div></div><p class="text-gray-300 text-sm leading-relaxed mb-4" data-th="ec3_body">Say <em class="text-blue-400 not-italic font-bold">"my account was hacked"</em> — The Guardian walks you through containment before the damage spreads.</p><div class="space-y-2"><div class="flex items-start gap-2"><i class="fas fa-check text-blue-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec3_l1">Password lockdown sequence — right device, right order</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-blue-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec3_l2">Credit freeze at all 3 bureaus — exact steps</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-blue-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec3_l3">FTC IdentityTheft.gov report walkthrough</p></div></div></div>
+            <div class="emergency-card p-8"><div class="flex items-center gap-4 mb-5"><div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.25);"><i class="fas fa-exclamation-circle text-orange-400 text-2xl"></i></div><div><h4 class="text-white font-black uppercase text-base tracking-wide" data-t="ec4_title">Road Emergency</h4><p class="text-xs text-gray-500 uppercase tracking-wider font-bold" data-t="ec4_route">Auto-routes to: The Mechanic</p></div></div><p class="text-gray-300 text-sm leading-relaxed mb-4" data-t="ec4_body">Brake failure, tire blowout, engine overheating at highway speed — The Mechanic gives you counter-intuitive survival moves most people get wrong.</p><div class="space-y-2"><div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec4_l1">Tire blowout: why you must briefly accelerate first</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec4_l2">Brake failure: engine braking and emergency brake sequence</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec4_l3">Overheating: why turning on your heater cools the engine</p></div></div></div>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-            <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);">
-                <i class="fas fa-university text-green-400 text-xl mb-2"></i>
-                <p class="text-white font-black text-xs uppercase tracking-wider">Account Drained</p>
-                <p class="text-gray-600 text-xs mt-1">Wealth Architect</p>
-            </div>
-            <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);">
-                <i class="fas fa-gavel text-yellow-500 text-xl mb-2"></i>
-                <p class="text-white font-black text-xs uppercase tracking-wider">Being Arrested</p>
-                <p class="text-gray-600 text-xs mt-1">The Lawyer</p>
-            </div>
-            <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);">
-                <i class="fas fa-home text-purple-400 text-xl mb-2"></i>
-                <p class="text-white font-black text-xs uppercase tracking-wider">Eviction Notice</p>
-                <p class="text-gray-600 text-xs mt-1">The Lawyer</p>
-            </div>
-            <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);">
-                <i class="fas fa-thermometer-full text-red-400 text-xl mb-2"></i>
-                <p class="text-white font-black text-xs uppercase tracking-wider">Heat Stroke</p>
-                <p class="text-gray-600 text-xs mt-1">Vitality Coach</p>
-            </div>
-        </div>
-        <div class="relative p-8 rounded-3xl overflow-hidden" style="background:linear-gradient(135deg,rgba(220,38,38,0.08) 0%,rgba(0,0,0,0.6) 100%);border:1px solid rgba(220,38,38,0.25);">
-            <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
-                <div class="w-20 h-20 rounded-3xl flex items-center justify-center flex-shrink-0" style="background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.3);">
-                    <i class="fas fa-file-pdf text-red-400 text-4xl"></i>
-                </div>
-                <div class="text-center md:text-left">
-                    <h3 class="text-white font-black text-2xl uppercase tracking-wide mb-2">Every Protocol Auto-Sends a PDF</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm max-w-2xl">The moment an emergency is detected, LYLO™ dispatches a full PDF of the protocol to your email — automatically. No button to press. No remembering to save it. When the adrenaline wears off and you need to reference what to do next, it's already in your inbox waiting.</p>
-                </div>
-            </div>
-        </div>
-        <p class="text-center text-gray-700 text-xs uppercase tracking-widest font-bold mt-8">
-            Emergency protocols are informational guides only. In any life-threatening emergency, call 911 immediately.
-        </p>
+        <p class="text-center text-gray-700 text-xs uppercase tracking-widest font-bold mt-8" data-t="emerg_disc">Emergency protocols are informational guides only. In any life-threatening emergency, call 911 immediately.</p>
     </div>
 </section>
 
@@ -385,168 +172,112 @@
 <section id="team" class="py-32 bg-[#080808] border-y border-white/5">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-[0.2em] text-white mb-4">Meet Your <span class="text-blue-500">Council</span></h2>
-            <p class="text-gray-500 uppercase tracking-widest text-sm font-bold max-w-2xl mx-auto">12 expert chairs. Each specialist stays strictly in their lane — enforced by AI in real time.</p>
+            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-[0.2em] text-white mb-4" data-th="team_h2">Meet Your <span class="text-blue-500">Council</span></h2>
+            <p class="text-gray-500 uppercase tracking-widest text-sm font-bold max-w-2xl mx-auto" data-t="team_sub">12 expert chairs. Each specialist stays strictly in their lane — enforced by AI in real time.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-blue-500"><h3 class="text-blue-400 font-black uppercase text-sm mb-1">The Guardian</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Security Lead</p><p class="text-gray-400 text-xs leading-relaxed">Scans for scams, fraud, and digital threats. Identity theft and breach protocols on demand.</p></div>
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-yellow-400"><h3 class="text-yellow-400 font-black uppercase text-sm mb-1">The Lawyer</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Legal Shield</p><p class="text-gray-400 text-xs leading-relaxed">Car accident protocol, tenant rights, fine print review, and arrest guidance.</p></div>
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-red-500"><h3 class="text-red-400 font-black uppercase text-sm mb-1">The Doctor</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Medical Guide</p><p class="text-gray-400 text-xs leading-relaxed">Symptom triage, medical jargon translation, and cardiac emergency protocols.</p></div>
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-green-500"><h3 class="text-green-400 font-black uppercase text-sm mb-1">Wealth Architect</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Finance Chief</p><p class="text-gray-400 text-xs leading-relaxed">Financial strategies, debt destruction plans, and bank fraud emergency response.</p></div>
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-indigo-400"><h3 class="text-indigo-400 font-black uppercase text-sm mb-1">Career Strategist</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Career Coach</p><p class="text-gray-400 text-xs leading-relaxed">Resume optimization, salary negotiation coaching, and office politics guidance.</p></div>
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-indigo-600"><h3 class="text-indigo-500 font-black uppercase text-sm mb-1">The Therapist</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Mental Wellness</p><p class="text-gray-400 text-xs leading-relaxed">Judgment-free space to process emotions, track mood, and build resilience.</p></div>
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-gray-400"><h3 class="text-gray-300 font-black uppercase text-sm mb-1">The Mechanic</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Master Fixer</p><p class="text-gray-400 text-xs leading-relaxed">Guards against repair fraud. Brake failure and roadside emergency protocols.</p></div>
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-purple-500"><h3 class="text-purple-400 font-black uppercase text-sm mb-1">Master Tutor</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Knowledge Bridge</p><p class="text-gray-400 text-xs leading-relaxed">Breaks down complex subjects and academic hurdles until they finally click.</p></div>
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-amber-500"><h3 class="text-amber-500 font-black uppercase text-sm mb-1">The Pastor</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Faith Anchor</p><p class="text-gray-400 text-xs leading-relaxed">Biblical wisdom, scripture guidance, and spiritual peace for life's hardest moments.</p></div>
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-green-400"><h3 class="text-green-300 font-black uppercase text-sm mb-1">Vitality Coach</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Health Optimizer</p><p class="text-gray-400 text-xs leading-relaxed">Fitness routines, meal prep, heat emergency protocols, and daily performance.</p></div>
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-orange-500"><h3 class="text-orange-400 font-black uppercase text-sm mb-1">Hype Strategist</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Creative Director</p><p class="text-gray-400 text-xs leading-relaxed">Viral hooks, content strategy, and high-energy creative direction.</p></div>
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-pink-500"><h3 class="text-pink-400 font-black uppercase text-sm mb-1">The Bestie</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4">Ride or Die</p><p class="text-gray-400 text-xs leading-relaxed">No filters, no judgment. Blunt life advice from your inner circle confidant.</p></div>
-        </div>
-        <div class="mt-8 p-4 bg-white/[0.02] border border-white/5 rounded-xl text-center">
-            <p class="text-xs text-gray-500 uppercase tracking-widest font-bold">
-                <i class="fas fa-lock text-blue-500 mr-2"></i>
-                Lane enforcement is AI-powered — specialists are forbidden from answering outside their domain
-            </p>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-blue-500"><h3 class="text-blue-400 font-black uppercase text-sm mb-1" data-t="sp1">The Guardian</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4" data-t="sp1r">Security Lead</p><p class="text-gray-400 text-xs leading-relaxed" data-t="sp1d">Scans for scams, fraud, and digital threats. Identity theft and breach protocols on demand.</p></div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-yellow-400"><h3 class="text-yellow-400 font-black uppercase text-sm mb-1" data-t="sp2">The Lawyer</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4" data-t="sp2r">Legal Shield</p><p class="text-gray-400 text-xs leading-relaxed" data-t="sp2d">Car accident protocol, tenant rights, fine print review, and arrest guidance.</p></div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-red-500"><h3 class="text-red-400 font-black uppercase text-sm mb-1" data-t="sp3">The Doctor</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4" data-t="sp3r">Medical Guide</p><p class="text-gray-400 text-xs leading-relaxed" data-t="sp3d">Symptom triage, medical jargon translation, and cardiac emergency protocols.</p></div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-green-500"><h3 class="text-green-400 font-black uppercase text-sm mb-1" data-t="sp4">Wealth Architect</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4" data-t="sp4r">Finance Chief</p><p class="text-gray-400 text-xs leading-relaxed" data-t="sp4d">Financial strategies, debt destruction plans, and bank fraud emergency response.</p></div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-indigo-400"><h3 class="text-indigo-400 font-black uppercase text-sm mb-1" data-t="sp5">Career Strategist</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4" data-t="sp5r">Career Coach</p><p class="text-gray-400 text-xs leading-relaxed" data-t="sp5d">Resume optimization, salary negotiation coaching, and office politics guidance.</p></div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-indigo-600"><h3 class="text-indigo-500 font-black uppercase text-sm mb-1" data-t="sp6">The Therapist</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4" data-t="sp6r">Mental Wellness</p><p class="text-gray-400 text-xs leading-relaxed" data-t="sp6d">Judgment-free space to process emotions, track mood, and build resilience.</p></div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-gray-400"><h3 class="text-gray-300 font-black uppercase text-sm mb-1" data-t="sp7">The Mechanic</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4" data-t="sp7r">Master Fixer</p><p class="text-gray-400 text-xs leading-relaxed" data-t="sp7d">Guards against repair fraud. Brake failure and roadside emergency protocols.</p></div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-purple-500"><h3 class="text-purple-400 font-black uppercase text-sm mb-1" data-t="sp8">Master Tutor</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4" data-t="sp8r">Knowledge Bridge</p><p class="text-gray-400 text-xs leading-relaxed" data-t="sp8d">Breaks down complex subjects and academic hurdles until they finally click.</p></div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-amber-500"><h3 class="text-amber-500 font-black uppercase text-sm mb-1" data-t="sp9">The Pastor</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4" data-t="sp9r">Faith Anchor</p><p class="text-gray-400 text-xs leading-relaxed" data-t="sp9d">Biblical wisdom, scripture guidance, and spiritual peace for life's hardest moments.</p></div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-green-400"><h3 class="text-green-300 font-black uppercase text-sm mb-1" data-t="sp10">Vitality Coach</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4" data-t="sp10r">Health Optimizer</p><p class="text-gray-400 text-xs leading-relaxed" data-t="sp10d">Fitness routines, meal prep, heat emergency protocols, and daily performance.</p></div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-orange-500"><h3 class="text-orange-400 font-black uppercase text-sm mb-1" data-t="sp11">Hype Strategist</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4" data-t="sp11r">Creative Director</p><p class="text-gray-400 text-xs leading-relaxed" data-t="sp11d">Viral hooks, content strategy, and high-energy creative direction.</p></div>
+            <div class="expert-card p-6 rounded-xl border-l-4 border-l-pink-500"><h3 class="text-pink-400 font-black uppercase text-sm mb-1" data-t="sp12">The Bestie</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-4" data-t="sp12r">Ride or Die</p><p class="text-gray-400 text-xs leading-relaxed" data-t="sp12d">No filters, no judgment. Blunt life advice from your inner circle confidant.</p></div>
         </div>
     </div>
 </section>
-
-<!-- PRIVACY SHIELD -->
-<section id="privacy" class="py-32 bg-black relative overflow-hidden border-t border-white/5">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-white mb-4">THE LYLO™ <span class="text-blue-500">PRIVACY SHIELD</span></h2>
-            <div class="h-1 w-24 bg-blue-600 mx-auto mb-6"></div>
-            <p class="text-gray-500 uppercase tracking-[0.3em] text-sm font-bold">120-Second Standby • Zero Human Access • 0% Data Training</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="card p-8 rounded-2xl border-white/5 bg-white/[0.01]"><i class="fas fa-eye-slash text-blue-500 text-4xl mb-6"></i><h4 class="text-white font-black uppercase text-sm tracking-widest mb-4">Zero Human Access</h4><p class="text-gray-500 text-sm leading-relaxed uppercase tracking-wider font-medium">Your data is processed strictly by AI and instantly purged. We retain zero chat logs. No engineer or employee can ever read your personal conversations.</p></div>
-            <div class="card p-8 rounded-2xl border-white/5 bg-white/[0.01]"><i class="fas fa-fingerprint text-blue-500 text-4xl mb-6"></i><h4 class="text-white font-black uppercase text-sm tracking-widests mb-4">Anonymous ID System</h4><p class="text-gray-500 text-sm leading-relaxed uppercase tracking-wider font-medium">We use Hashed Identity protocols. We don't store your actual name in intelligence logs — only a secure, scrambled code.</p></div>
-            <div class="card p-8 rounded-2xl border-white/5 bg-white/[0.01]"><i class="fas fa-microchip text-blue-500 text-4xl mb-6"></i><h4 class="text-white font-black uppercase text-sm tracking-widest mb-4">0% Model Training</h4><p class="text-gray-500 text-sm leading-relaxed uppercase tracking-wider font-medium">We absolutely never use your personal conversations, financial data, or uploaded screenshots to train global AI models.</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- INTELLIGENCE ENGINE -->
-<section id="master-lylo" class="py-32 bg-[#080808] border-y border-white/5">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-20 items-center">
-            <div class="text-center md:text-left">
-                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-widest mb-8 leading-tight">Master Your <br><span class="text-blue-500">Intelligence Engine</span></h2>
-                <p class="text-gray-400 text-lg mb-10 leading-relaxed">LYLO™ isn't just a program you run — it's an assistant you talk to. Three AI engines race on every message. The fastest, most accurate answer wins. Always.</p>
-                <div class="space-y-6">
-                    <div class="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 text-left"><i class="fas fa-camera text-blue-500 text-xl mt-1"></i><div><h4 class="text-white font-bold uppercase text-sm tracking-widest mb-1">Vision Link</h4><p class="text-gray-500 text-sm">Don't know how to explain it? Just show LYLO™ a photo. One tap analyzes scams or broken tech.</p></div></div>
-                    <div class="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 text-left"><i class="fas fa-sync text-blue-500 text-xl mt-1"></i><div><h4 class="text-white font-bold uppercase text-sm tracking-widest mb-1">Intelligence Sync</h4><p class="text-gray-500 text-sm">LYLO™ remembers your devices, your car, and your needs. The more you talk, the stronger your shield gets.</p></div></div>
-                    <div class="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 text-left"><i class="fas fa-file-pdf text-red-400 text-xl mt-1"></i><div><h4 class="text-white font-bold uppercase text-sm tracking-widest mb-1">Smart PDF Dispatch</h4><p class="text-gray-500 text-sm">Complex protocols auto-send to your email. Simple messages stay in chat. No clutter, just what matters.</p></div></div>
-                </div>
-            </div>
-            <div class="relative flex justify-center">
-                <div class="absolute inset-0 bg-blue-600/10 blur-[100px] rounded-full"></div>
-                <img src="logo.png" alt="LYLO AI" class="w-full h-auto relative z-10 drop-shadow-[0_0_50px_rgba(37,99,235,0.3)]">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- PRICING -->
+<!-- PRICING — FIX 2: Best Value badge visible, FIX 3: corrected yearly prices -->
 <section id="pricing" class="py-40 bg-[#050505] border-t border-white/5">
     <div class="max-w-7xl mx-auto px-6">
-
-        <!-- Header -->
         <div class="text-center mb-6">
             <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border mb-6" style="background:rgba(57,255,20,0.06);border-color:rgba(57,255,20,0.25);">
                 <span class="w-2 h-2 rounded-full bg-green-400 pulse-red"></span>
-                <span class="text-green-400 text-xs font-black uppercase tracking-[0.3em]">Founding Member Rollout — Spots Approved Manually</span>
+                <span class="text-green-400 text-xs font-black uppercase tracking-[0.3em]" data-t="pricing_badge">Founding Member Rollout — Spots Approved Manually</span>
             </div>
-            <h2 class="text-5xl md:text-6xl font-black text-center mb-4 tracking-[0.4em] uppercase">The Protection Plans</h2>
-            <p class="text-gray-500 text-sm uppercase tracking-wider font-bold max-w-lg mx-auto">Founding members lock in these prices forever. Apply via email — we respond within 24 hours with your access link.</p>
+            <h2 class="text-5xl md:text-6xl font-black text-center mb-4 tracking-[0.4em] uppercase" data-t="pricing_h2">The Protection Plans</h2>
+            <p class="text-gray-500 text-sm uppercase tracking-wider font-bold max-w-lg mx-auto" data-t="pricing_sub">Founding members lock in these prices forever. Apply via email — we respond within 24 hours.</p>
         </div>
-
-        <!-- Billing toggle -->
         <div class="flex justify-center mb-16 mt-8">
             <div class="bg-white/5 border border-white/10 p-1 rounded-full inline-flex relative items-center">
-                <button id="btn-monthly" onclick="toggleBilling('monthly')" class="px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest text-white bg-blue-600 transition-all">Monthly</button>
+                <button id="btn-monthly" onclick="toggleBilling('monthly')" class="px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest text-white bg-blue-600 transition-all" data-t="billing_mo_btn">Monthly</button>
                 <button id="btn-yearly" onclick="toggleBilling('yearly')" class="px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-all">
-                    Yearly <span class="text-green-400 ml-1 text-xs font-black">2 Months FREE</span>
+                    <span data-t="billing_yr_btn">Yearly</span> <span class="text-green-400 ml-1 text-xs font-black" data-t="billing_savings">2 Months FREE</span>
                 </button>
             </div>
         </div>
-
-        <!-- Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-stretch" style="padding-top:20px;overflow:visible;">
-
+        <!-- Cards: padding-top leaves room for Best Value badge -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-stretch" style="padding-top:28px;overflow:visible;">
             <!-- FREE -->
             <div class="card p-8 rounded-3xl flex flex-col items-center text-center group border-white/10" onclick="openWaitlist()">
                 <div class="glow-wrapper"><div class="radiant-light bg-white"></div><img src="https://mylylo.pro/freetier.png" class="shield-box-img"></div>
-                <h3 class="text-gray-400 font-black uppercase text-sm tracking-[0.3em] mb-2">Basic Shield</h3>
+                <h3 class="text-gray-400 font-black uppercase text-sm tracking-[0.3em] mb-2" data-t="t_free">Basic Shield</h3>
                 <div class="text-5xl font-black mb-8 text-white">$0</div>
                 <ul class="space-y-4 text-xs text-gray-500 mb-8 flex-1 text-left w-full border-t border-white/5 pt-6 uppercase font-bold tracking-wider">
-                    <li><i class="fas fa-check text-white mr-2"></i>3 Daily Interactions</li>
-                    <li><i class="fas fa-microchip text-white mr-2"></i>Single AI Engine</li>
-                    <li><i class="fas fa-shield-alt text-white mr-2"></i>Basic Scam Detection</li>
-                    <li><i class="fas fa-clock text-white mr-2"></i>Ephemeral Memory Only</li>
+                    <li><i class="fas fa-check text-white mr-2"></i><span data-t="f_f1">3 Daily Interactions</span></li>
+                    <li><i class="fas fa-microchip text-white mr-2"></i><span data-t="f_f2">Single AI Engine</span></li>
+                    <li><i class="fas fa-shield-alt text-white mr-2"></i><span data-t="f_f3">Basic Scam Detection</span></li>
+                    <li><i class="fas fa-clock text-white mr-2"></i><span data-t="f_f4">Ephemeral Memory Only</span></li>
                 </ul>
-                <button class="tier-button w-full py-4 border border-white/10 text-white rounded font-bold uppercase text-sm tracking-[0.2em]">Try Free</button>
+                <button class="tier-button w-full py-4 border border-white/10 text-white rounded font-bold uppercase text-sm tracking-[0.2em]" data-t="t_free_btn">Try Free</button>
             </div>
-
             <!-- PRO -->
             <div class="card p-8 rounded-3xl flex flex-col items-center text-center border-pro" onclick="handleCheckout('pro')">
                 <div class="glow-wrapper"><div class="radiant-light bg-blue-500"></div><img src="https://mylylo.pro/protier.png" class="shield-box-img"></div>
-                <h3 class="text-blue-400 font-black uppercase text-sm tracking-[0.3em] mb-2">Pro Guardian</h3>
+                <h3 class="text-blue-400 font-black uppercase text-sm tracking-[0.3em] mb-2" data-t="t_pro">Pro Guardian</h3>
                 <div class="text-5xl font-black mb-2 text-white">$<span id="price-pro">9.99</span><span class="text-sm text-gray-500" id="period-pro">/mo</span></div>
                 <p id="note-pro" class="text-blue-400 text-[10px] font-black uppercase tracking-wider mb-6 h-4"></p>
                 <ul class="space-y-4 text-xs text-gray-400 mb-8 flex-1 text-left w-full border-t border-blue-900/30 pt-6 uppercase font-bold tracking-wider">
-                    <li><i class="fas fa-check text-blue-500 mr-2"></i>30 Daily Interactions</li>
-                    <li><i class="fas fa-microchip text-blue-500 mr-2"></i>Triple AI Engine Race</li>
-                    <li><i class="fas fa-users text-blue-500 mr-2"></i>Full 12-Expert Council</li>
-                    <li><i class="fas fa-camera text-blue-500 mr-2"></i>Vision Link Enabled</li>
-                    <li><i class="fas fa-brain text-blue-500 mr-2"></i>Powered by Veracore™</li>
-                    <li><i class="fas fa-exclamation-triangle text-blue-500 mr-2"></i>Emergency Protocols</li>
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i><span data-t="p_f1">30 Daily Interactions</span></li>
+                    <li><i class="fas fa-microchip text-blue-500 mr-2"></i><span data-t="p_f2">Triple AI Engine Race</span></li>
+                    <li><i class="fas fa-users text-blue-500 mr-2"></i><span data-t="p_f3">Full 12-Expert Council</span></li>
+                    <li><i class="fas fa-camera text-blue-500 mr-2"></i><span data-t="p_f4">Vision Link Enabled</span></li>
+                    <li><i class="fas fa-brain text-blue-500 mr-2"></i><span data-t="p_f5">Powered by Veracore™</span></li>
+                    <li><i class="fas fa-exclamation-triangle text-blue-500 mr-2"></i><span data-t="p_f6">Emergency Protocols</span></li>
                 </ul>
-                <button class="tier-button w-full py-4 border border-blue-500 text-blue-400 rounded font-bold uppercase text-sm tracking-[0.2em]">Apply for Access</button>
+                <button class="tier-button w-full py-4 border border-blue-500 text-blue-400 rounded font-bold uppercase text-sm tracking-[0.2em]" data-t="t_apply">Apply for Access</button>
             </div>
-
-            <!-- ELITE — FEATURED -->
-            <div class="card p-8 rounded-3xl flex flex-col items-center text-center border-elite relative" style="box-shadow:0 0 40px rgba(57,255,20,0.08);" onclick="handleCheckout('elite')">
-                <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#39FF14;color:#000;font-size:9px;font-weight:900;letter-spacing:0.25em;text-transform:uppercase;padding:5px 16px;border-radius:100px;white-space:nowrap;">⚡ Best Value</div>
+            <!-- ELITE — overflow:visible so badge shows -->
+            <div class="card card-elite p-8 rounded-3xl flex flex-col items-center text-center border-elite" style="box-shadow:0 0 40px rgba(57,255,20,0.08);" onclick="handleCheckout('elite')">
+                <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#39FF14;color:#000;font-size:9px;font-weight:900;letter-spacing:0.25em;text-transform:uppercase;padding:5px 18px;border-radius:100px;white-space:nowrap;z-index:50;box-shadow:0 0 20px rgba(57,255,20,0.5);" data-t="best_value">⚡ Best Value</div>
                 <div class="glow-wrapper"><div class="radiant-light bg-green-400"></div><img src="https://mylylo.pro/elitetier.png" class="shield-box-img"></div>
-                <h3 class="font-black uppercase text-sm tracking-[0.3em] mb-2" style="color:#39FF14;">Elite Justice</h3>
+                <h3 class="font-black uppercase text-sm tracking-[0.3em] mb-2" style="color:#39FF14;" data-t="t_elite">Elite Justice</h3>
                 <div class="text-5xl font-black mb-2 text-white">$<span id="price-elite">19.99</span><span class="text-sm text-gray-500" id="period-elite">/mo</span></div>
                 <p id="note-elite" class="text-[10px] font-black uppercase tracking-wider mb-6 h-4" style="color:#39FF14;"></p>
                 <ul class="space-y-4 text-xs text-gray-300 mb-8 flex-1 text-left w-full border-t pt-6 uppercase font-bold tracking-wider" style="border-color:rgba(57,255,20,0.15);">
-                    <li><i class="fas fa-check mr-2" style="color:#39FF14;"></i>100 Daily Interactions</li>
-                    <li><i class="fas fa-microchip mr-2" style="color:#39FF14;"></i>Triple AI Engine Race</li>
-                    <li><i class="fas fa-briefcase-medical mr-2" style="color:#39FF14;"></i>Red Shield Crisis Hub</li>
-                    <li><i class="fas fa-database mr-2" style="color:#39FF14;"></i>Priority Data Processing</li>
-                    <li><i class="fas fa-file-pdf mr-2" style="color:#39FF14;"></i>Auto PDF Dispatch</li>
-                    <li><i class="fas fa-memory mr-2" style="color:#39FF14;"></i>Long-Term Memory Vault</li>
+                    <li><i class="fas fa-check mr-2" style="color:#39FF14;"></i><span data-t="e_f1">100 Daily Interactions</span></li>
+                    <li><i class="fas fa-microchip mr-2" style="color:#39FF14;"></i><span data-t="e_f2">Triple AI Engine Race</span></li>
+                    <li><i class="fas fa-briefcase-medical mr-2" style="color:#39FF14;"></i><span data-t="e_f3">Red Shield Crisis Hub</span></li>
+                    <li><i class="fas fa-database mr-2" style="color:#39FF14;"></i><span data-t="e_f4">Priority Data Processing</span></li>
+                    <li><i class="fas fa-file-pdf mr-2" style="color:#39FF14;"></i><span data-t="e_f5">Auto PDF Dispatch</span></li>
+                    <li><i class="fas fa-memory mr-2" style="color:#39FF14;"></i><span data-t="e_f6">Long-Term Memory Vault</span></li>
                 </ul>
-                <button class="tier-button w-full py-4 rounded font-bold uppercase text-sm tracking-[0.2em]" style="border-color:#39FF14;color:#39FF14;">Apply for Access</button>
+                <button class="tier-button w-full py-4 rounded font-bold uppercase text-sm tracking-[0.2em]" style="border-color:#39FF14;color:#39FF14;" data-t="t_apply">Apply for Access</button>
             </div>
-
             <!-- MAX -->
             <div class="card p-8 rounded-3xl flex flex-col items-center text-center border-max" onclick="handleCheckout('max')">
                 <div class="glow-wrapper"><div class="radiant-light bg-purple-500"></div><img src="https://mylylo.pro/maxtier.png" class="shield-box-img"></div>
-                <h3 class="text-purple-500 font-black uppercase text-sm tracking-[0.3em] mb-2">Max Unlimited</h3>
+                <h3 class="text-purple-500 font-black uppercase text-sm tracking-[0.3em] mb-2" data-t="t_max">Max Unlimited</h3>
                 <div class="text-5xl font-black mb-2 text-white">$<span id="price-max">34.99</span><span class="text-sm text-gray-500" id="period-max">/mo</span></div>
                 <p id="note-max" class="text-purple-400 text-[10px] font-black uppercase tracking-wider mb-6 h-4"></p>
                 <ul class="space-y-4 text-xs text-gray-300 mb-8 flex-1 text-left w-full border-t border-purple-900/30 pt-6 uppercase font-bold tracking-wider">
-                    <li><i class="fas fa-infinity text-purple-500 mr-2"></i>500 Daily Interactions</li>
-                    <li><i class="fas fa-brain text-purple-500 mr-2"></i>All Three AI Engines</li>
-                    <li><i class="fas fa-memory text-purple-500 mr-2"></i>Infinite Memory Vault</li>
-                    <li><i class="fas fa-shield-alt text-purple-500 mr-2"></i>Veracore™ All Queries Verified</li>
-                    <li><i class="fas fa-users text-purple-500 mr-2"></i>Family Plan (up to 5 users)</li>
-                    <li><i class="fas fa-star text-purple-500 mr-2"></i>VIP Direct Support</li>
+                    <li><i class="fas fa-infinity text-purple-500 mr-2"></i><span data-t="m_f1">500 Daily Interactions</span></li>
+                    <li><i class="fas fa-brain text-purple-500 mr-2"></i><span data-t="m_f2">All Three AI Engines</span></li>
+                    <li><i class="fas fa-memory text-purple-500 mr-2"></i><span data-t="m_f3">Infinite Memory Vault</span></li>
+                    <li><i class="fas fa-shield-alt text-purple-500 mr-2"></i><span data-t="m_f4">Veracore™ All Queries Verified</span></li>
+                    <li><i class="fas fa-users text-purple-500 mr-2"></i><span data-t="m_f5">Family Plan (up to 5 users)</span></li>
+                    <li><i class="fas fa-star text-purple-500 mr-2"></i><span data-t="m_f6">VIP Direct Support</span></li>
                 </ul>
-                <button class="tier-button w-full py-4 border border-purple-500 text-purple-400 rounded font-bold uppercase text-sm tracking-[0.2em]">Apply for Access</button>
+                <button class="tier-button w-full py-4 border border-purple-500 text-purple-400 rounded font-bold uppercase text-sm tracking-[0.2em]" data-t="t_apply">Apply for Access</button>
             </div>
-
         </div>
-
-        <!-- Founding member guarantee -->
         <div class="max-w-2xl mx-auto mt-12 p-6 text-center rounded-2xl" style="background:rgba(57,255,20,0.03);border:1px solid rgba(57,255,20,0.15);">
-            <p class="font-black uppercase tracking-wider text-sm mb-2" style="color:#39FF14;">🔒 Founding Member Guarantee</p>
-            <p class="text-gray-500 text-sm leading-relaxed">We are in controlled rollout — approving members manually to ensure a quality experience. Click any paid tier to apply via email. We respond within 24 hours with your access link. <strong class="text-gray-300">Your price is locked forever.</strong></p>
+            <p class="font-black uppercase tracking-wider text-sm mb-2" style="color:#39FF14;" data-t="guarantee_title">🔒 Founding Member Guarantee</p>
+            <p class="text-gray-500 text-sm leading-relaxed" data-th="guarantee_body">We are in controlled rollout — approving members manually to ensure a quality experience. <strong class="text-gray-300">Your price is locked forever.</strong></p>
         </div>
     </div>
 </section>
@@ -555,221 +286,144 @@
 <section id="how-it-works" class="py-16 md:py-32 bg-black border-y border-white/5">
     <div class="max-w-6xl mx-auto px-4 md:px-6">
         <div class="text-center mb-10 md:mb-16">
-            <p class="text-xs font-black uppercase tracking-[0.5em] text-blue-500 mb-3">Everything It Does</p>
-            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-[0.1em] text-white mb-3">The Full <span class="text-blue-500">Feature Set</span></h2>
-            <p class="text-gray-500 uppercase tracking-widest text-xs font-bold max-w-2xl mx-auto">No clutter inside the app. Everything you need to know is right here.</p>
+            <p class="text-xs font-black uppercase tracking-[0.5em] text-blue-500 mb-3" data-t="feat_eyebrow">Everything It Does</p>
+            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-[0.1em] text-white mb-3" data-th="feat_h2">The Full <span class="text-blue-500">Feature Set</span></h2>
         </div>
-        <div class="mb-12 md:mb-20">
-            <h3 class="text-xs font-black uppercase tracking-[0.4em] text-blue-400 mb-5 flex items-center gap-3"><span class="w-6 h-[2px] bg-blue-500"></span>How You Talk To It</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="engine-card p-5 md:p-7"><div class="flex items-center gap-3 mb-3 md:block"><div class="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center border border-blue-500/20 flex-shrink-0 md:mb-4"><i class="fas fa-keyboard text-blue-400"></i></div><h4 class="text-white font-black uppercase text-sm tracking-widest">Type It</h4></div><p class="text-gray-500 text-xs leading-relaxed">Type any question to any specialist. Hit send or press enter. That's it.</p></div>
-                <div class="engine-card p-5 md:p-7"><div class="flex items-center gap-3 mb-3 md:block"><div class="w-10 h-10 bg-green-500/10 rounded-xl flex items-center justify-center border border-green-500/20 flex-shrink-0 md:mb-4"><i class="fas fa-microphone text-green-400"></i></div><h4 class="text-white font-black uppercase text-sm tracking-widest">Hold To Speak</h4></div><p class="text-gray-500 text-xs leading-relaxed">Hold the mic button and talk. LYLO listens, transcribes, and responds — hands-free.</p></div>
-                <div class="engine-card p-5 md:p-7"><div class="flex items-center gap-3 mb-3 md:block"><div class="w-10 h-10 bg-purple-500/10 rounded-xl flex items-center justify-center border border-purple-500/20 flex-shrink-0 md:mb-4"><i class="fas fa-camera text-purple-400"></i></div><h4 class="text-white font-black uppercase text-sm tracking-widest">Show It A Photo</h4></div><p class="text-gray-500 text-xs leading-relaxed">Tap camera and upload any image. LYLO analyzes scam texts, repair damage, medical images, documents, and more.</p></div>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+            <div class="engine-card p-5 md:p-7"><div class="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center border border-blue-500/20 mb-4"><i class="fas fa-keyboard text-blue-400"></i></div><h4 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="feat_type">Type It</h4><p class="text-gray-500 text-xs leading-relaxed" data-t="feat_type_d">Type any question to any specialist. Hit send or press enter. That's it.</p></div>
+            <div class="engine-card p-5 md:p-7"><div class="w-10 h-10 bg-green-500/10 rounded-xl flex items-center justify-center border border-green-500/20 mb-4"><i class="fas fa-microphone text-green-400"></i></div><h4 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="feat_speak">Tap to Speak</h4><p class="text-gray-500 text-xs leading-relaxed" data-t="feat_speak_d">Tap the mic button and talk. LYLO listens, transcribes, and responds — hands-free.</p></div>
+            <div class="engine-card p-5 md:p-7"><div class="w-10 h-10 bg-purple-500/10 rounded-xl flex items-center justify-center border border-purple-500/20 mb-4"><i class="fas fa-camera text-purple-400"></i></div><h4 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="feat_photo">Show It A Photo</h4><p class="text-gray-500 text-xs leading-relaxed" data-t="feat_photo_d">Tap camera and upload any image. LYLO analyzes scam texts, repair damage, documents, and more.</p></div>
         </div>
-        <div class="mb-12 md:mb-20">
-            <h3 class="text-xs font-black uppercase tracking-[0.4em] text-green-400 mb-5 flex items-center gap-3"><span class="w-6 h-[2px] bg-green-500"></span>Voice Features</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
-                <div class="engine-card p-4 md:p-6"><i class="fas fa-volume-up text-green-400 text-xl mb-2"></i><h4 class="text-white font-black uppercase text-xs tracking-widest mb-1">Voice On / Off</h4><p class="text-gray-500 text-xs leading-relaxed">Toggle LYLO's voice with one tap. Green = on.</p></div>
-                <div class="engine-card p-4 md:p-6"><i class="fas fa-tachometer-alt text-yellow-400 text-xl mb-2"></i><h4 class="text-white font-black uppercase text-xs tracking-widest mb-1">Sync vs Fast</h4><p class="text-gray-500 text-xs leading-relaxed">Sync reads as it streams. Fast waits then reads all at once.</p></div>
-                <div class="engine-card p-4 md:p-6"><i class="fas fa-user-circle text-pink-400 text-xl mb-2"></i><h4 class="text-white font-black uppercase text-xs tracking-widest mb-1">Bestie Voice</h4><p class="text-gray-500 text-xs leading-relaxed">Pick male or female. Choose from multiple voice personalities.</p></div>
-                <div class="engine-card p-4 md:p-6"><i class="fas fa-bell text-indigo-400 text-xl mb-2"></i><h4 class="text-white font-black uppercase text-xs tracking-widest mb-1">Notifications</h4><p class="text-gray-500 text-xs leading-relaxed">Enable alerts for reminders and important follow-ups.</p></div>
-            </div>
-        </div>
-        <div class="mb-12 md:mb-20">
-            <h3 class="text-xs font-black uppercase tracking-[0.4em] text-purple-400 mb-5 flex items-center gap-3"><span class="w-6 h-[2px] bg-purple-500"></span>Personalization</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="engine-card p-5 md:p-7"><i class="fas fa-sliders-h text-purple-400 text-2xl mb-3"></i><h4 class="text-white font-black uppercase text-sm tracking-widest mb-2">Communication Style</h4><p class="text-gray-500 text-xs leading-relaxed mb-3">Every specialist adapts to how you want to be talked to:</p><div class="flex flex-wrap gap-1.5"><span class="px-2 py-1 bg-white/5 rounded text-xs text-gray-400 font-bold">Direct</span><span class="px-2 py-1 bg-white/5 rounded text-xs text-gray-400 font-bold">Chill</span><span class="px-2 py-1 bg-white/5 rounded text-xs text-gray-400 font-bold">Urgent</span><span class="px-2 py-1 bg-white/5 rounded text-xs text-gray-400 font-bold">Warm</span><span class="px-2 py-1 bg-white/5 rounded text-xs text-gray-400 font-bold">Blunt</span><span class="px-2 py-1 bg-white/5 rounded text-xs text-gray-400 font-bold">Academic</span></div></div>
-                <div class="engine-card p-5 md:p-7"><i class="fas fa-brain text-blue-400 text-2xl mb-3"></i><h4 class="text-white font-black uppercase text-sm tracking-widest mb-2">Intelligence Sync</h4><p class="text-gray-500 text-xs leading-relaxed">LYLO remembers your name, goals, devices, car, and situation. The more you talk, the smarter it gets about your life.</p></div>
-                <div class="engine-card p-5 md:p-7"><i class="fas fa-crosshairs text-red-400 text-2xl mb-3"></i><h4 class="text-white font-black uppercase text-sm tracking-widest mb-2">Mission Profile</h4><p class="text-gray-500 text-xs leading-relaxed">Set your #1 priority on setup. Build Wealth, Protect Family, Career Growth, Health, Legal Help, or Personal Growth.</p></div>
-            </div>
-        </div>
-        <div class="mb-12 md:mb-20">
-            <h3 class="text-xs font-black uppercase tracking-[0.4em] text-amber-400 mb-5 flex items-center gap-3"><span class="w-6 h-[2px] bg-amber-500"></span>Every Response Includes</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
-                <div class="engine-card p-4 md:p-6"><i class="fas fa-percentage text-green-400 text-xl mb-2"></i><h4 class="text-white font-black uppercase text-xs tracking-widest mb-1">Confidence Score</h4><p class="text-gray-500 text-xs leading-relaxed">See exactly how certain the AI is before you act on it.</p></div>
-                <div class="engine-card p-4 md:p-6"><i class="fas fa-shield-alt text-red-400 text-xl mb-2"></i><h4 class="text-white font-black uppercase text-xs tracking-widest mb-1">Scam Detection</h4><p class="text-gray-500 text-xs leading-relaxed">Red alert fires and report emails you instantly if a scam is detected.</p></div>
-                <div class="engine-card p-4 md:p-6"><i class="fas fa-file-pdf text-orange-400 text-xl mb-2"></i><h4 class="text-white font-black uppercase text-xs tracking-widest mb-1">PDF Dispatch</h4><p class="text-gray-500 text-xs leading-relaxed">Complex protocols auto-send to your email. No request needed.</p></div>
-                <div class="engine-card p-4 md:p-6"><i class="fas fa-lock text-blue-400 text-xl mb-2"></i><h4 class="text-white font-black uppercase text-xs tracking-widest mb-1">Lane Enforcement</h4><p class="text-gray-500 text-xs leading-relaxed">Claude AI validates every answer. Specialists stay in their lane.</p></div>
-            </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="p-5 md:p-8 bg-red-500/5 border border-red-500/20 rounded-2xl">
-                <div class="flex items-center gap-3 mb-3"><i class="fas fa-exclamation-triangle text-red-400 text-2xl pulse-red"></i><h4 class="text-white font-black uppercase text-sm tracking-widest">Emergency Auto-Switch</h4></div>
-                <p class="text-gray-400 text-xs leading-relaxed mb-4">Don't touch anything. Just say what's happening. LYLO switches to the right specialist automatically and delivers a step-by-step protocol. PDF goes to your email instantly.</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 rounded text-xs text-red-400 font-bold">Car Accident → Lawyer</span>
-                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 rounded text-xs text-red-400 font-bold">Heart Attack → Doctor</span>
-                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 rounded text-xs text-red-400 font-bold">Account Hacked → Guardian</span>
-                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 rounded text-xs text-red-400 font-bold">Brake Failure → Mechanic</span>
+                <div class="flex items-center gap-3 mb-3"><i class="fas fa-exclamation-triangle text-red-400 text-2xl pulse-red"></i><h4 class="text-white font-black uppercase text-sm tracking-widest" data-t="feat_emerg">Emergency Auto-Switch</h4></div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 rounded text-xs text-red-400 font-bold" data-t="tag1">Car Accident → Lawyer</span>
+                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 rounded text-xs text-red-400 font-bold" data-t="tag2">Heart Attack → Doctor</span>
+                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 rounded text-xs text-red-400 font-bold" data-t="tag3">Account Hacked → Guardian</span>
+                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 rounded text-xs text-red-400 font-bold" data-t="tag4">Brake Failure → Mechanic</span>
                 </div>
             </div>
             <div class="p-5 md:p-8 bg-blue-500/5 border border-blue-500/20 rounded-2xl">
-                <div class="flex items-center gap-3 mb-3"><i class="fas fa-mobile-alt text-blue-400 text-2xl"></i><h4 class="text-white font-black uppercase text-sm tracking-widest">Install As An App</h4></div>
-                <p class="text-gray-400 text-xs leading-relaxed mb-4">No app store needed. Open in your browser and add to your home screen. Runs like a native app on any phone or tablet.</p>
-                <div class="flex flex-col gap-2">
-                    <span class="px-3 py-2 bg-blue-500/10 border border-blue-500/20 rounded text-xs text-blue-400 font-bold"><i class="fab fa-apple mr-2"></i>iPhone — Safari → Share → Add to Home Screen</span>
-                    <span class="px-3 py-2 bg-blue-500/10 border border-blue-500/20 rounded text-xs text-blue-400 font-bold"><i class="fab fa-android mr-2"></i>Android — Chrome → 3 dots → Install App</span>
+                <div class="flex items-center gap-3 mb-3"><i class="fas fa-mobile-alt text-blue-400 text-2xl"></i><h4 class="text-white font-black uppercase text-sm tracking-widest" data-t="feat_install">Install As An App</h4></div>
+                <div class="flex flex-col gap-2 mt-4">
+                    <span class="px-3 py-2 bg-blue-500/10 border border-blue-500/20 rounded text-xs text-blue-400 font-bold" data-t="feat_ios"><i class="fab fa-apple mr-2"></i>iPhone — Safari → Share → Add to Home Screen</span>
+                    <span class="px-3 py-2 bg-blue-500/10 border border-blue-500/20 rounded text-xs text-blue-400 font-bold" data-t="feat_android"><i class="fab fa-android mr-2"></i>Android — Chrome → 3 dots → Install App</span>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- SCHOLARSHIP -->
-<section id="scholarship" class="py-32 bg-[#080808] border-y border-white/5 text-center px-6">
-    <div class="max-w-4xl mx-auto">
-        <i class="fas fa-hands-helping text-blue-500 text-5xl mb-6"></i>
-        <h2 class="text-4xl md:text-5xl font-black uppercase tracking-widest mb-6 text-white">The Vanguard Scholarship</h2>
-        <p class="text-gray-400 mb-10 leading-relaxed uppercase tracking-wider text-sm max-w-2xl mx-auto font-medium">We believe that top-tier digital protection is a fundamental right, not a luxury. If you are a senior citizen on a fixed income, a disabled individual, or currently facing severe financial hardship, you should not have to face the internet alone.</p>
-        <p class="text-gray-300 mb-10 leading-relaxed uppercase tracking-widest text-xs font-black">Apply below to receive a full Elite Justice package at absolutely no cost.</p>
-        <a href="/cdn-cgi/l/email-protection#f09d899c899c9fde9199b0979d91999cde939f9dcf8385929a959384cda393989f9c918283989980d0b180809c99939184999f9e" class="px-10 py-5 bg-white text-black font-black uppercase text-sm tracking-widest rounded-xl hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.2)]">Apply for Coverage</a>
     </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="py-24 bg-black">
     <div class="max-w-7xl mx-auto px-6 text-center">
-        <div class="p-5 bg-yellow-500/5 border border-yellow-500/20 rounded-2xl mb-8 flex flex-col md:flex-row items-start gap-4 max-w-4xl mx-auto shadow-lg text-left">
+        <div class="p-5 bg-yellow-500/5 border border-yellow-500/20 rounded-2xl mb-8 flex flex-col md:flex-row items-start gap-4 max-w-4xl mx-auto text-left">
             <i class="fas fa-exclamation-triangle text-yellow-500 text-3xl mt-1 flex-shrink-0"></i>
-            <div><p class="text-xs text-yellow-400 font-black uppercase tracking-widest mb-2">Critical Disclaimer</p><p class="text-xs text-gray-400 font-bold uppercase tracking-widest leading-relaxed">LYLO™ is an advanced AI Educational &amp; Strategic Information Tool. While powered by state-of-the-art models, AI systems can make mistakes, hallucinate facts, or misinterpret data. You must always verify critical medical, legal, or financial information with a certified, licensed human professional before taking action. LYLO™ does not provide licensed medical advice, legal counsel, or certified financial planning services.</p></div>
-        </div>
-        <div class="p-5 bg-red-500/5 border border-red-500/20 rounded-2xl mb-8 flex flex-col md:flex-row items-start gap-4 max-w-4xl mx-auto text-left">
-            <i class="fas fa-ambulance text-red-500 text-3xl mt-1 flex-shrink-0"></i>
-            <div><p class="text-xs text-red-400 font-black uppercase tracking-widest mb-2">Emergency Protocol Disclaimer</p><p class="text-xs text-gray-400 font-bold uppercase tracking-widest leading-relaxed">LYLO™ Emergency Protocols are informational guides only and do not replace calling 911 or emergency services. In any life-threatening emergency, call 911 immediately. Protocol information is provided for general preparedness and may not apply to every situation. Always follow instructions from licensed emergency personnel.</p></div>
+            <div><p class="text-xs text-yellow-400 font-black uppercase tracking-widest mb-2" data-t="disc1_t">Critical Disclaimer</p><p class="text-xs text-gray-400 font-bold uppercase tracking-widest leading-relaxed" data-t="disc1_b">LYLO™ is an advanced AI Educational &amp; Strategic Information Tool. AI systems can make mistakes. You must always verify critical medical, legal, or financial information with a certified, licensed human professional before taking action.</p></div>
         </div>
         <div class="p-5 bg-blue-500/5 border border-blue-500/20 rounded-2xl mb-12 flex flex-col md:flex-row items-start gap-4 max-w-4xl mx-auto text-left">
             <i class="fas fa-robot text-blue-400 text-3xl mt-1 flex-shrink-0"></i>
-            <div><p class="text-xs text-blue-400 font-black uppercase tracking-widest mb-2">AI Technology Disclosure</p><p class="text-xs text-gray-400 font-bold uppercase tracking-widest leading-relaxed">LYLO™ is powered by third-party AI services including OpenAI (GPT-4o-mini), Google (Gemini), and Anthropic (Claude). LYLO™ does not control or guarantee the accuracy of outputs generated by these models. Responses are AI-generated and should not be treated as professional advice from a licensed practitioner. LYLO™ is not responsible for decisions made based on AI-generated content.</p></div>
+            <div><p class="text-xs text-blue-400 font-black uppercase tracking-widest mb-2" data-t="disc3_t">AI Technology Disclosure</p><p class="text-xs text-gray-400 font-bold uppercase tracking-widest leading-relaxed" data-t="disc3_b">LYLO™ is powered by OpenAI (GPT-4o-mini), Google (Gemini), and Anthropic (Claude). Responses are AI-generated and should not be treated as professional advice from a licensed practitioner.</p></div>
         </div>
         <img src="logo.png" alt="LYLO" class="w-16 h-16 object-contain mx-auto mb-6 opacity-80">
-        <h4 class="text-white font-black uppercase text-xl tracking-[0.4em] mb-10 italic text-center">LYLO<span class="text-blue-500">™</span></h4>
+        <h4 class="text-white font-black uppercase text-xl tracking-[0.4em] mb-10 italic">LYLO<span class="text-blue-500">™</span></h4>
         <div class="flex flex-wrap justify-center gap-6 mb-12 text-xs font-black uppercase tracking-[0.2em] text-gray-500">
-            <a href="/legal.html#terms" class="hover:text-blue-500 transition-colors">Terms of Service</a>
-            <span class="text-white/20">|</span>
-            <a href="/legal.html#privacy" class="hover:text-blue-500 transition-colors">Privacy Policy</a>
-            <span class="text-white/20">|</span>
-            <a href="/legal.html#disclaimer" class="hover:text-yellow-500 transition-colors">AI Disclaimer</a>
-            <span class="text-white/20">|</span>
-            <a href="/legal.html#affiliate" class="hover:text-amber-500 transition-colors">Partner / Affiliate Program</a>
-            <span class="text-white/20">|</span>
-            <a href="/cdn-cgi/l/email-protection#412c382d382d2e6f202801262c20282d6f222e2c" class="hover:text-blue-500 transition-colors">Contact</a>
+            <a href="/legal.html#terms" class="hover:text-blue-500 transition-colors" data-t="ft_terms">Terms of Service</a><span class="text-white/20">|</span>
+            <a href="/legal.html#privacy" class="hover:text-blue-500 transition-colors" data-t="ft_privacy">Privacy Policy</a><span class="text-white/20">|</span>
+            <a href="/legal.html#disclaimer" class="hover:text-yellow-500 transition-colors" data-t="ft_disc">AI Disclaimer</a><span class="text-white/20">|</span>
+            <a href="/cdn-cgi/l/email-protection#412c382d382d2e6f202801262c20282d6f222e2c" class="hover:text-blue-500 transition-colors" data-t="ft_contact">Contact</a>
         </div>
-        <div class="text-center pt-8 border-t border-white/5 text-[10px] text-gray-700 tracking-[0.6em] font-black uppercase">
-            &copy; 2026 LYLO™ SECURITY SYSTEMS. ALL RIGHTS RESERVED. | LYLO™ IS NOT A LICENSED LEGAL, MEDICAL, OR FINANCIAL ADVISORY SERVICE.
-        </div>
+        <div class="text-center pt-8 border-t border-white/5 text-[10px] text-gray-700 tracking-[0.6em] font-black uppercase" data-t="ft_copy">&copy; 2026 LYLO™ SECURITY SYSTEMS. ALL RIGHTS RESERVED.</div>
     </div>
 </footer>
 
-<!-- WAITLIST / APPLY MODAL -->
+<!-- WAITLIST MODAL -->
 <div id="waitlist-modal" class="hidden fixed inset-0 bg-black/95 backdrop-blur-md z-[100000] flex items-center justify-center p-4">
     <div class="bg-[#080808] border border-blue-500/30 rounded-3xl w-full max-w-md p-8 text-center shadow-[0_0_50px_rgba(59,130,246,0.15)]">
         <i class="fas fa-lock text-blue-500 text-4xl mb-6 drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]"></i>
-        <h2 class="text-2xl font-black uppercase tracking-widest text-white mb-2 italic">Apply for Founding Access</h2>
-        <p class="text-gray-400 text-sm mb-8 uppercase tracking-wider font-bold">LYLO™ is in controlled rollout. Enter your email — we'll respond within 24 hours with your access link and lock in your founding price forever.</p>
-        <input type="email" id="waitlist-email" placeholder="ENTER YOUR EMAIL" class="w-full bg-black border border-white/10 rounded-xl p-5 text-white text-center font-bold uppercase mb-4 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all">
-        <button onclick="submitWaitlist()" class="w-full py-5 bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-[0.2em] rounded-xl transition-all shadow-lg glow-blue mb-4">Apply for Access</button>
-        <button onclick="closeWaitlist()" class="text-gray-500 uppercase text-xs font-black tracking-[0.2em] hover:text-white transition-colors">Cancel</button>
+        <h2 class="text-2xl font-black uppercase tracking-widest text-white mb-2 italic" data-t="modal_title">Apply for Founding Access</h2>
+        <p class="text-gray-400 text-sm mb-8 uppercase tracking-wider font-bold" data-t="modal_desc">LYLO™ is in controlled rollout. Enter your email — we'll respond within 24 hours with your access link and lock in your founding price forever.</p>
+        <input type="email" id="waitlist-email" placeholder="ENTER YOUR EMAIL" data-ph="modal_ph" class="w-full bg-black border border-white/10 rounded-xl p-5 text-white text-center font-bold uppercase mb-4 focus:border-blue-500 outline-none transition-all">
+        <button onclick="submitWaitlist()" class="w-full py-5 bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-[0.2em] rounded-xl transition-all shadow-lg glow-blue mb-4" data-t="modal_btn">Apply for Access</button>
+        <button onclick="closeWaitlist()" class="text-gray-500 uppercase text-xs font-black tracking-[0.2em] hover:text-white transition-colors" data-t="modal_cancel">Cancel</button>
     </div>
 </div>
-
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-    // ── Pricing data ──────────────────────────────────────────────────────────
-    const PRICES = {
-        monthly: { pro: '9.99',  elite: '19.99', max: '34.99' },
-        yearly:  { pro: '8.32',  elite: '16.65', max: '29.15' }
-    };
+// ── TRANSLATIONS ─────────────────────────────────────────────────────────────
+const T={en:{nav_team:"The Team",nav_emergency:"Emergency",nav_intelligence:"Intelligence",nav_features:"Features",nav_pricing:"Pricing",nav_login:"Login",nav_apply:"Apply for Access",nav_apply_short:"Apply",hero_badge:"Founding Member Rollout — Limited Spots",hero_h1:'LOVE YOUR <br><span class="text-blue-500">LOVED ONES</span>',hero_sub:"Protection for them, Peace of mind for you.",hero_body:'LYLO™ is the first AI assistant that <strong class="text-white not-italic">checks itself before answering</strong>. Three engines race simultaneously. A confidence score validates every response. When the stakes are high — medical, legal, financial — a second verification layer fires automatically.',badge_1:"✓ Confidence Score on Every Answer",badge_2:"✓ 3-Model Consensus on High-Stakes Queries",badge_3:"✓ Auto-Blocks Hallucinations on Medical & Legal",hero_cta1:"Apply for Founding Access",hero_cta2:"Meet the Council",founder_eyebrow:"A Note from the Founder",founder_title:"I'm Christopher, <br>and this is Personal.",founder_p1:"I didn't build LYLO™ to be another faceless corporation. I'm a tech enthusiast based right here in <span class='text-white'>Sacramento, CA</span>. Whether I'm building custom Z790 rigs, modding consoles, or hunting down the best carne asada in the city, I've always believed that technology should serve people—not target them.",founder_p2:"I created LYLO™ (Love Your Loved Ones) because I saw how easy it was for scammers to hurt the people we care about. This is my mission: to provide elite protection with a human heart.",engine_eyebrow:"NEW IN 2026",engine_h2:'Triple Engine <span class="text-blue-500">Intelligence</span>',engine_sub:"Three AI engines race simultaneously. The fastest, most accurate answer wins. A confidence score validates every result.",e1_name:"OpenAI Engine",e1_desc:"Lightning-fast responses with deep reasoning and natural conversation.",e2_name:"Google Engine",e2_desc:"Multimodal intelligence with real-time web data and vision analysis.",e3_name:"Claude Validator",e3_desc:'Every AI system can be wrong. Veracore™ cross-checks every high-stakes response. <strong class="text-white">Most AI tools generate answers. LYLO verifies them.</strong>',vc_title:"Powered by Veracore™ — Active on Pro Tier and Above",vc_desc:"When you ask a medical, legal, or financial question, a second verification layer activates automatically. Three independent models cross-examine each other's answers.",emerg_badge:"LYLO™ Emergency Protocol System",emerg_h2:'When Seconds<br><span class="text-red-500">Save Lives</span>',emerg_sub:'Most people freeze in a crisis. LYLO™ fixes that. Say what\'s happening — LYLO auto-switches to the right specialist and delivers a <strong class="text-white">calm, numbered, step-by-step protocol in seconds.</strong>',ec1_title:"Car Accident Protocol",ec1_route:"Auto-routes to: The Lawyer",ec1_body:'Just say <em class="text-yellow-400 not-italic font-bold">"I was just in a car wreck"</em> — LYLO immediately switches to The Lawyer and walks you through exactly what to do.',ec1_l1:"Do NOT admit fault — exact words to use",ec1_l2:"What to photograph before anything moves",ec1_l3:"How to handle insurance calls on the scene",ec2_title:"Cardiac Emergency",ec2_route:"Auto-routes to: The Doctor",ec2_body:"Heart attack, stroke, or overdose — say what you're seeing and The Doctor deploys a time-critical protocol.",ec2_l1:"F.A.S.T. stroke recognition and response",ec2_l2:"Aspirin protocol for heart attack (when to use it)",ec2_l3:"Overdose response — Narcan guidance, recovery position",ec3_title:"Hacked or ID Stolen",ec3_route:"Auto-routes to: The Guardian",ec3_body:'Say <em class="text-blue-400 not-italic font-bold">"my account was hacked"</em> — The Guardian walks you through containment before the damage spreads.',ec3_l1:"Password lockdown sequence — right device, right order",ec3_l2:"Credit freeze at all 3 bureaus — exact steps",ec3_l3:"FTC IdentityTheft.gov report walkthrough",ec4_title:"Road Emergency",ec4_route:"Auto-routes to: The Mechanic",ec4_body:"Brake failure, tire blowout, engine overheating at highway speed — The Mechanic gives you counter-intuitive survival moves most people get wrong.",ec4_l1:"Tire blowout: why you must briefly accelerate first",ec4_l2:"Brake failure: engine braking and emergency brake sequence",ec4_l3:"Overheating: why turning on your heater cools the engine",emerg_disc:"Emergency protocols are informational guides only. In any life-threatening emergency, call 911 immediately.",team_h2:'Meet Your <span class="text-blue-500">Council</span>',team_sub:"12 expert chairs. Each specialist stays strictly in their lane — enforced by AI in real time.",sp1:"The Guardian",sp1r:"Security Lead",sp1d:"Scans for scams, fraud, and digital threats. Identity theft and breach protocols on demand.",sp2:"The Lawyer",sp2r:"Legal Shield",sp2d:"Car accident protocol, tenant rights, fine print review, and arrest guidance.",sp3:"The Doctor",sp3r:"Medical Guide",sp3d:"Symptom triage, medical jargon translation, and cardiac emergency protocols.",sp4:"Wealth Architect",sp4r:"Finance Chief",sp4d:"Financial strategies, debt destruction plans, and bank fraud emergency response.",sp5:"Career Strategist",sp5r:"Career Coach",sp5d:"Resume optimization, salary negotiation coaching, and office politics guidance.",sp6:"The Therapist",sp6r:"Mental Wellness",sp6d:"Judgment-free space to process emotions, track mood, and build resilience.",sp7:"The Mechanic",sp7r:"Master Fixer",sp7d:"Guards against repair fraud. Brake failure and roadside emergency protocols.",sp8:"Master Tutor",sp8r:"Knowledge Bridge",sp8d:"Breaks down complex subjects and academic hurdles until they finally click.",sp9:"The Pastor",sp9r:"Faith Anchor",sp9d:"Biblical wisdom, scripture guidance, and spiritual peace for life's hardest moments.",sp10:"Vitality Coach",sp10r:"Health Optimizer",sp10d:"Fitness routines, meal prep, heat emergency protocols, and daily performance.",sp11:"Hype Strategist",sp11r:"Creative Director",sp11d:"Viral hooks, content strategy, and high-energy creative direction.",sp12:"The Bestie",sp12r:"Ride or Die",sp12d:"No filters, no judgment. Blunt life advice from your inner circle confidant.",pricing_badge:"Founding Member Rollout — Spots Approved Manually",pricing_h2:"The Protection Plans",pricing_sub:"Founding members lock in these prices forever. Apply via email — we respond within 24 hours.",billing_mo_btn:"Monthly",billing_yr_btn:"Yearly",billing_savings:"2 Months FREE",best_value:"⚡ Best Value",t_free:"Basic Shield",t_pro:"Pro Guardian",t_elite:"Elite Justice",t_max:"Max Unlimited",t_free_btn:"Try Free",t_apply:"Apply for Access",f_f1:"3 Daily Interactions",f_f2:"Single AI Engine",f_f3:"Basic Scam Detection",f_f4:"Ephemeral Memory Only",p_f1:"30 Daily Interactions",p_f2:"Triple AI Engine Race",p_f3:"Full 12-Expert Council",p_f4:"Vision Link Enabled",p_f5:"Powered by Veracore™",p_f6:"Emergency Protocols",e_f1:"100 Daily Interactions",e_f2:"Triple AI Engine Race",e_f3:"Red Shield Crisis Hub",e_f4:"Priority Data Processing",e_f5:"Auto PDF Dispatch",e_f6:"Long-Term Memory Vault",m_f1:"500 Daily Interactions",m_f2:"All Three AI Engines",m_f3:"Infinite Memory Vault",m_f4:"Veracore™ All Queries Verified",m_f5:"Family Plan (up to 5 users)",m_f6:"VIP Direct Support",guarantee_title:"🔒 Founding Member Guarantee",guarantee_body:'We are in controlled rollout — approving members manually to ensure quality. <strong class="text-gray-300">Your price is locked forever.</strong>',feat_eyebrow:"Everything It Does",feat_h2:'The Full <span class="text-blue-500">Feature Set</span>',feat_type:"Type It",feat_type_d:"Type any question to any specialist. Hit send or press enter. That's it.",feat_speak:"Tap to Speak",feat_speak_d:"Tap the mic button and talk. LYLO listens, transcribes, and responds — hands-free.",feat_photo:"Show It A Photo",feat_photo_d:"Tap camera and upload any image. LYLO analyzes scam texts, repair damage, documents, and more.",feat_emerg:"Emergency Auto-Switch",feat_install:"Install As An App",tag1:"Car Accident → Lawyer",tag2:"Heart Attack → Doctor",tag3:"Account Hacked → Guardian",tag4:"Brake Failure → Mechanic",feat_ios:"iPhone — Safari → Share → Add to Home Screen",feat_android:"Android — Chrome → 3 dots → Install App",disc1_t:"Critical Disclaimer",disc1_b:"LYLO™ is an advanced AI Educational & Strategic Information Tool. AI systems can make mistakes. Always verify critical medical, legal, or financial information with a licensed professional before taking action.",disc3_t:"AI Technology Disclosure",disc3_b:"LYLO™ is powered by OpenAI (GPT-4o-mini), Google (Gemini), and Anthropic (Claude). Responses are AI-generated and should not be treated as professional advice.",ft_terms:"Terms of Service",ft_privacy:"Privacy Policy",ft_disc:"AI Disclaimer",ft_contact:"Contact",ft_copy:"© 2026 LYLO™ SECURITY SYSTEMS. ALL RIGHTS RESERVED.",modal_title:"Apply for Founding Access",modal_desc:"LYLO™ is in controlled rollout. Enter your email — we'll respond within 24 hours with your access link and lock in your founding price forever.",modal_ph:"ENTER YOUR EMAIL",modal_btn:"Apply for Access",modal_cancel:"Cancel",mo:"/mo",mo_yr:"/mo billed yearly",note_yr:"2 months free",note_mo:"",lf:"🇲🇽",ll:"Español",lfm:"🇲🇽",llm:"ES"},
+es:{nav_team:"El Equipo",nav_emergency:"Emergencia",nav_intelligence:"Inteligencia",nav_features:"Funciones",nav_pricing:"Precios",nav_login:"Entrar",nav_apply:"Solicitar Acceso",nav_apply_short:"Aplicar",hero_badge:"Lanzamiento para Miembros Fundadores — Cupos Limitados",hero_h1:'AMA A TUS <br><span class="text-blue-500">SERES QUERIDOS</span>',hero_sub:"Protección para ellos, tranquilidad para ti.",hero_body:'LYLO™ es el primer asistente de IA que <strong class="text-white not-italic">se verifica antes de responder</strong>. Tres motores compiten simultáneamente. Una puntuación de confianza valida cada respuesta.',badge_1:"✓ Puntuación de Confianza en Cada Respuesta",badge_2:"✓ Consenso de 3 Modelos en Consultas de Alto Riesgo",badge_3:"✓ Bloquea Automáticamente Alucinaciones en Temas Médicos y Legales",hero_cta1:"Solicitar Acceso Fundador",hero_cta2:"Conoce el Consejo",founder_eyebrow:"Una Nota del Fundador",founder_title:"Soy Christopher, <br>y esto es Personal.",founder_p1:"No construí LYLO™ para ser otra corporación sin rostro. Soy un entusiasta de la tecnología aquí en <span class='text-white'>Sacramento, CA</span>. Ya sea construyendo equipos Z790 o buscando la mejor carne asada de la ciudad, siempre creí que la tecnología debe servir a las personas.",founder_p2:"Creé LYLO™ (Love Your Loved Ones) porque vi lo fácil que era para los estafadores lastimar a las personas que amamos. Esta es mi misión: brindar protección de élite con corazón humano.",engine_eyebrow:"NUEVO EN 2026",engine_h2:'Triple Motor de <span class="text-blue-500">Inteligencia</span>',engine_sub:"Tres motores de IA compiten simultáneamente. La respuesta más rápida y precisa gana.",e1_name:"Motor OpenAI",e1_desc:"Respuestas ultrarrápidas con razonamiento profundo y conversación natural.",e2_name:"Motor Google",e2_desc:"Inteligencia multimodal con datos web en tiempo real y análisis visual.",e3_name:"Validador Claude",e3_desc:'Todo sistema de IA puede equivocarse. Veracore™ verifica cada respuesta de alto riesgo. <strong class="text-white">La mayoría de las IAs generan respuestas. LYLO las verifica.</strong>',vc_title:"Impulsado por Veracore™ — Activo en Plan Pro y Superior",vc_desc:"Cuando haces una pregunta médica, legal o financiera, una segunda capa de verificación se activa automáticamente. Tres modelos independientes contrastan sus respuestas.",emerg_badge:"Sistema de Protocolos de Emergencia LYLO™",emerg_h2:'Cuando los Segundos<br><span class="text-red-500">Salvan Vidas</span>',emerg_sub:'La mayoría se paraliza en una crisis. LYLO™ lo soluciona. Di qué está pasando — LYLO cambia al especialista correcto y entrega un <strong class="text-white">protocolo paso a paso en segundos.</strong>',ec1_title:"Protocolo de Accidente de Auto",ec1_route:"Redirige a: El Abogado",ec1_body:'Di <em class="text-yellow-400 not-italic font-bold">"tuve un accidente de carro"</em> — LYLO cambia al Abogado y te guía exactamente sobre qué hacer.',ec1_l1:"NO admitas culpa — palabras exactas a usar",ec1_l2:"Qué fotografiar antes de que nada se mueva",ec1_l3:"Cómo manejar las llamadas del seguro en el lugar",ec2_title:"Emergencia Cardíaca",ec2_route:"Redirige a: El Doctor",ec2_body:"Ataque al corazón, derrame, o sobredosis — di lo que ves y El Doctor despliega un protocolo urgente.",ec2_l1:"Reconocimiento de derrame con F.A.S.T.",ec2_l2:"Protocolo de aspirina para ataque cardíaco",ec2_l3:"Respuesta a sobredosis — guía Narcan",ec3_title:"Hackeado o Robo de Identidad",ec3_route:"Redirige a: El Guardián",ec3_body:'Di <em class="text-blue-400 not-italic font-bold">"hackearon mi cuenta"</em> — El Guardián te guía por el protocolo de contención.',ec3_l1:"Secuencia de bloqueo de contraseñas",ec3_l2:"Congelamiento de crédito en las 3 agencias",ec3_l3:"Guía para reporte en FTC IdentityTheft.gov",ec4_title:"Emergencia en Carretera",ec4_route:"Redirige a: El Mecánico",ec4_body:"Falla de frenos, llanta reventada, motor sobrecalentado — El Mecánico te da movimientos de supervivencia.",ec4_l1:"Llanta reventada: por qué debes acelerar brevemente primero",ec4_l2:"Falla de frenos: freno motor y freno de emergencia",ec4_l3:"Sobrecalentamiento: por qué encender la calefacción enfría el motor",emerg_disc:"Los protocolos de emergencia son guías informativas. En cualquier emergencia que amenace la vida, llama al 911 inmediatamente.",team_h2:'Conoce Tu <span class="text-blue-500">Consejo</span>',team_sub:"12 sillas de expertos. Cada especialista se mantiene en su área — controlado por IA en tiempo real.",sp1:"El Guardián",sp1r:"Jefe de Seguridad",sp1d:"Detecta estafas, fraudes y amenazas digitales. Protocolos de robo de identidad y brechas.",sp2:"El Abogado",sp2r:"Escudo Legal",sp2d:"Protocolo de accidente de auto, derechos del inquilino, revisión de letra pequeña y guía en arrestos.",sp3:"El Doctor",sp3r:"Guía Médica",sp3d:"Evaluación de síntomas, traducción de jerga médica y protocolos de emergencia cardíaca.",sp4:"Arquitecto de Riqueza",sp4r:"Director Financiero",sp4d:"Estrategias financieras, planes de eliminación de deuda y respuesta a fraude bancario.",sp5:"Estratega de Carrera",sp5r:"Coach de Carrera",sp5d:"Optimización de currículum, negociación salarial y guía en política de oficina.",sp6:"El Terapeuta",sp6r:"Bienestar Mental",sp6d:"Espacio sin juicios para procesar emociones, seguimiento del estado de ánimo y resiliencia.",sp7:"El Mecánico",sp7r:"Reparador Maestro",sp7d:"Protege contra fraude en talleres. Protocolos de falla de frenos y emergencias en carretera.",sp8:"Tutor Maestro",sp8r:"Puente de Conocimiento",sp8d:"Desglosa materias complejas y obstáculos académicos hasta que hagan clic.",sp9:"El Pastor",sp9r:"Ancla de Fe",sp9d:"Sabiduría bíblica, guía de escrituras y paz espiritual para los momentos más difíciles.",sp10:"Coach de Vitalidad",sp10r:"Optimizador de Salud",sp10d:"Rutinas de ejercicio, preparación de comidas, protocolos de emergencia por calor.",sp11:"Estratega Hype",sp11r:"Director Creativo",sp11d:"Ganchos virales, estrategia de contenido y dirección creativa de alta energía.",sp12:"El Mejor Amigo",sp12r:"Ride or Die",sp12d:"Sin filtros, sin juicios. Consejos de vida directos de tu círculo más cercano.",pricing_badge:"Lanzamiento para Miembros Fundadores — Cupos Aprobados Manualmente",pricing_h2:"Los Planes de Protección",pricing_sub:"Los miembros fundadores bloquean estos precios para siempre. Aplica por correo — respondemos en 24 horas.",billing_mo_btn:"Mensual",billing_yr_btn:"Anual",billing_savings:"2 Meses GRATIS",best_value:"⚡ Mejor Valor",t_free:"Escudo Básico",t_pro:"Pro Guardián",t_elite:"Élite Justicia",t_max:"Max Ilimitado",t_free_btn:"Prueba Gratis",t_apply:"Solicitar Acceso",f_f1:"3 Interacciones Diarias",f_f2:"Motor de IA Único",f_f3:"Detección Básica de Estafas",f_f4:"Memoria Solo Temporal",p_f1:"30 Interacciones Diarias",p_f2:"Carrera de Triple Motor de IA",p_f3:"Consejo Completo de 12 Expertos",p_f4:"Vision Link Activado",p_f5:"Impulsado por Veracore™",p_f6:"Protocolos de Emergencia",e_f1:"100 Interacciones Diarias",e_f2:"Carrera de Triple Motor de IA",e_f3:"Centro de Crisis Escudo Rojo",e_f4:"Procesamiento de Datos Prioritario",e_f5:"Envío Automático de PDF",e_f6:"Bóveda de Memoria a Largo Plazo",m_f1:"500 Interacciones Diarias",m_f2:"Los Tres Motores de IA",m_f3:"Bóveda de Memoria Infinita",m_f4:"Veracore™ Todas las Consultas Verificadas",m_f5:"Plan Familiar (hasta 5 usuarios)",m_f6:"Soporte VIP Directo",guarantee_title:"🔒 Garantía de Miembro Fundador",guarantee_body:'Estamos en lanzamiento controlado — aprobando miembros manualmente. <strong class="text-gray-300">Tu precio está bloqueado para siempre.</strong>',feat_eyebrow:"Todo Lo Que Hace",feat_h2:'El <span class="text-blue-500">Conjunto Completo</span> de Funciones',feat_type:"Escríbelo",feat_type_d:"Escribe cualquier pregunta a cualquier especialista. Presiona enviar. Eso es todo.",feat_speak:"Toca para Hablar",feat_speak_d:"Toca el botón del micrófono y habla. LYLO escucha, transcribe y responde — manos libres.",feat_photo:"Muéstrale una Foto",feat_photo_d:"Toca la cámara y sube cualquier imagen. LYLO analiza textos de estafa, daños, documentos y más.",feat_emerg:"Cambio Automático de Emergencia",feat_install:"Instálala Como App",tag1:"Accidente → Abogado",tag2:"Ataque Cardíaco → Doctor",tag3:"Cuenta Hackeada → Guardián",tag4:"Falla de Frenos → Mecánico",feat_ios:"iPhone — Safari → Compartir → Agregar a Pantalla de Inicio",feat_android:"Android — Chrome → 3 puntos → Instalar App",disc1_t:"Aviso Legal Crítico",disc1_b:"LYLO™ es una Herramienta Avanzada de Información Educativa con IA. Los sistemas de IA pueden cometer errores. Siempre verifica la información crítica con un profesional certificado antes de actuar.",disc3_t:"Divulgación de Tecnología de IA",disc3_b:"LYLO™ funciona con OpenAI (GPT-4o-mini), Google (Gemini) y Anthropic (Claude). Las respuestas son generadas por IA y no deben tratarse como asesoramiento profesional.",ft_terms:"Términos de Servicio",ft_privacy:"Política de Privacidad",ft_disc:"Aviso de IA",ft_contact:"Contacto",ft_copy:"© 2026 LYLO™ SISTEMAS DE SEGURIDAD. TODOS LOS DERECHOS RESERVADOS.",modal_title:"Solicitar Acceso Fundador",modal_desc:"LYLO™ está en lanzamiento controlado. Ingresa tu correo — te responderemos en 24 horas con tu enlace de acceso.",modal_ph:"INGRESA TU CORREO",modal_btn:"Solicitar Acceso",modal_cancel:"Cancelar",mo:"/mes",mo_yr:"/mes facturado anualmente",note_yr:"2 meses gratis",note_mo:"",lf:"🇺🇸",ll:"English",lfm:"🇺🇸",llm:"EN"}};
 
-    // ── Stripe links — UPDATE THESE with new price IDs from Stripe dashboard ──
-    const STRIPE_LINKS = {
-        monthly: {
-            pro:   "https://buy.stripe.com/7sY00i4LU162gYf4NT7Zu05",
-            elite: "https://buy.stripe.com/bJe3cu2DM7uq37pcgl7Zu06",
-            max:   "https://buy.stripe.com/6oU9ASa6e4ieeQ79497Zu08"
-        },
-        yearly: {
-            pro:   "https://buy.stripe.com/aFaaEW4LU8yu37p2FL7Zu04",
-            elite: "https://buy.stripe.com/5kQ5kCcem7uqcHZ1BH7Zu07",
-            max:   "https://buy.stripe.com/6oUeVc6U201Y37p1BH7Zu09"
-        }
-    };
+// ── LANGUAGE ENGINE ───────────────────────────────────────────────────────────
+let lang=(()=>{const s=localStorage.getItem('lylo_site_lang');if(s==='en'||s==='es')return s;return(navigator.language||'en').toLowerCase().startsWith('es')?'es':'en';})();
+function applyLang(l){
+    lang=l;localStorage.setItem('lylo_site_lang',l);
+    document.getElementById('html-root').lang=l;
+    const t=T[l];
+    document.querySelectorAll('[data-t]').forEach(el=>{const k=el.getAttribute('data-t');if(t[k]!==undefined)el.textContent=t[k];});
+    document.querySelectorAll('[data-th]').forEach(el=>{const k=el.getAttribute('data-th');if(t[k]!==undefined)el.innerHTML=t[k];});
+    document.querySelectorAll('[data-ph]').forEach(el=>{const k=el.getAttribute('data-ph');if(t[k]!==undefined)el.placeholder=t[k];});
+    document.getElementById('lf').textContent=t.lf;
+    document.getElementById('ll').textContent=t.ll;
+    document.getElementById('lfm').textContent=t.lfm;
+    document.getElementById('llm').textContent=t.llm;
+    // Update pricing periods
+    ['pro','elite','max'].forEach(tier=>{
+        const isYr=currentBilling==='yearly';
+        const pe=document.getElementById('period-'+tier);
+        const ne=document.getElementById('note-'+tier);
+        if(pe)pe.textContent=isYr?t.mo_yr:t.mo;
+        if(ne)ne.textContent=isYr?t.note_yr:'';
+    });
+}
+function toggleLang(){applyLang(lang==='en'?'es':'en');}
 
-    let currentBilling = 'monthly';
+// ── PRICING ───────────────────────────────────────────────────────────────────
+const PRICES={monthly:{pro:'9.99',elite:'19.99',max:'34.99'},yearly:{pro:'8.33',elite:'16.66',max:'29.16'}};
+const STRIPE_LINKS={monthly:{pro:"https://buy.stripe.com/7sY00i4LU162gYf4NT7Zu05",elite:"https://buy.stripe.com/bJe3cu2DM7uq37pcgl7Zu06",max:"https://buy.stripe.com/6oU9ASa6e4ieeQ79497Zu08"},yearly:{pro:"https://buy.stripe.com/aFaaEW4LU8yu37p2FL7Zu04",elite:"https://buy.stripe.com/5kQ5kCcem7uqcHZ1BH7Zu07",max:"https://buy.stripe.com/6oUeVc6U201Y37p1BH7Zu09"}};
+let currentBilling='monthly';
+function toggleBilling(type){
+    currentBilling=type;
+    const t=T[lang];
+    document.getElementById('btn-monthly').className='px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest transition-all '+(type==='monthly'?'bg-blue-600 text-white':'text-gray-400 hover:text-white');
+    document.getElementById('btn-yearly').className='px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest transition-all '+(type==='yearly'?'bg-blue-600 text-white':'text-gray-400 hover:text-white');
+    ['pro','elite','max'].forEach(tier=>{
+        document.getElementById('price-'+tier).textContent=PRICES[type][tier];
+        document.getElementById('period-'+tier).textContent=type==='yearly'?t.mo_yr:t.mo;
+        document.getElementById('note-'+tier).textContent=type==='yearly'?t.note_yr:'';
+    });
+}
+function handleCheckout(tier){const link=STRIPE_LINKS[currentBilling][tier];if(link&&link!==''){window.location.href=link;}else{openWaitlist();}}
+function openWaitlist(){document.getElementById('waitlist-modal').classList.remove('hidden');}
+function closeWaitlist(){document.getElementById('waitlist-modal').classList.add('hidden');document.getElementById('waitlist-email').value='';}
+async function submitWaitlist(){
+    const emailInput=document.getElementById('waitlist-email');
+    const email=emailInput.value.trim().toLowerCase();
+    if(!email||!email.includes('@')){alert(lang==='es'?'Por favor ingresa un correo válido.':'Please enter a valid email address.');return;}
+    try{await fetch('https://lylo-backend.onrender.com/join-waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})});}catch(err){}
+    alert(lang==='es'?'¡Solicitud recibida! Te responderemos en 24 horas.':'Application received! We\'ll respond within 24 hours with your founding member access link.');
+    closeWaitlist();
+}
+async function runBetaLogin(){
+    const rawEmail=prompt(lang==='es'?'Ingresa tu correo de acceso:':'Enter your Login Email:');
+    if(!rawEmail)return;
+    const email=rawEmail.toLowerCase().trim();
+    try{
+        const response=await fetch('https://lylo-backend.onrender.com/check-beta-access',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})});
+        const data=await response.json();
+        if(data.access){
+            alert(lang==='es'?`Acceso Concedido. Bienvenido ${data.name}.`:`Access Granted! Welcome ${data.name}. Deploying System.`);
+            window.location.assign('https://app.mylylo.pro/?email='+encodeURIComponent(email)+'&tier='+encodeURIComponent(data.tier||'max')+'&name='+encodeURIComponent(data.name)+'#/dashboard');
+        }else{alert(lang==='es'?'Acceso Denegado. Por favor solicita acceso de miembro fundador.':'Access Denied. If you are a new user, please apply for founding member access.');}
+    }catch(err){alert(lang==='es'?'Error de conexión. Verifica tu internet.':'Connection Error. Please check your internet.');}
+}
 
-    function toggleBilling(type) {
-        currentBilling = type;
-        const btnM = document.getElementById('btn-monthly');
-        const btnY = document.getElementById('btn-yearly');
-        if (type === 'monthly') {
-            btnM.classList.add('bg-blue-600','text-white'); btnM.classList.remove('text-gray-400');
-            btnY.classList.remove('bg-blue-600','text-white'); btnY.classList.add('text-gray-400');
-        } else {
-            btnY.classList.add('bg-blue-600','text-white'); btnY.classList.remove('text-gray-400');
-            btnM.classList.remove('bg-blue-600','text-white'); btnM.classList.add('text-gray-400');
-        }
-        ['pro','elite','max'].forEach(tier => {
-            document.getElementById('price-' + tier).innerText = PRICES[type][tier];
-            document.getElementById('period-' + tier).innerText = type === 'monthly' ? '/mo' : '/mo billed yearly';
-            document.getElementById('note-' + tier).innerText = type === 'yearly' ? '2 months free' : '';
-        });
-    }
-
-    function handleCheckout(tier) {
-        const link = STRIPE_LINKS[currentBilling][tier];
-        if (link && link !== "") { window.location.href = link; } else { openWaitlist(); }
-    }
-
-    function openWaitlist()  { document.getElementById('waitlist-modal').classList.remove('hidden'); }
-    function closeWaitlist() { document.getElementById('waitlist-modal').classList.add('hidden'); document.getElementById('waitlist-email').value = ''; }
-
-    async function submitWaitlist() {
-        const emailInput = document.getElementById('waitlist-email');
-        const email = emailInput.value.trim().toLowerCase();
-        if (!email || !email.includes('@')) { alert("Please enter a valid email address."); return; }
-        try {
-            await fetch('https://lylo-backend.onrender.com/join-waitlist', {
-                method: 'POST', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email })
-            });
-        } catch (err) {}
-        alert("Application received! We'll respond within 24 hours with your founding member access link.");
-        closeWaitlist();
-    }
-
-    async function runBetaLogin() {
-        const rawEmail = prompt("Enter your Login Email:");
-        if (!rawEmail) return;
-        const email = rawEmail.toLowerCase().trim();
-        try {
-            const response = await fetch('https://lylo-backend.onrender.com/check-beta-access', {
-                method: 'POST', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email })
-            });
-            const data = await response.json();
-            if (data.access) {
-                alert("Access Granted! Welcome " + data.name + ". Deploying System.");
-                const appDomain = "https://app.mylylo.pro/";
-                const secureHandoff = `?email=${encodeURIComponent(email)}&tier=${encodeURIComponent(data.tier || 'max')}&name=${encodeURIComponent(data.name)}#/dashboard`;
-                window.location.assign(appDomain + secureHandoff);
-            } else { alert("Access Denied. If you are a new user, please apply for founding member access."); }
-        } catch (err) { alert("Connection Error. Please check your internet."); }
-    }
-
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(reg => console.log('LYLO OS Engine Active:', reg.scope))
-                .catch(err => console.log('OS Engine Failed:', err));
-        });
-    }
-
-    // Keep-alive — pings backend every 4 min
-    async function pingBackend() {
-        try { await fetch('https://lylo-backend.onrender.com/health'); } catch(e) {}
-    }
-    pingBackend();
-    setInterval(pingBackend, 4 * 60 * 1000);
+// ── INIT ──────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',()=>applyLang(lang));
+if('serviceWorker'in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/service-worker.js').catch(()=>{});});}
+async function pingBackend(){try{await fetch('https://lylo-backend.onrender.com/health');}catch(e){}}
+pingBackend();setInterval(pingBackend,4*60*1000);
 </script>
 </body>
 </html>
