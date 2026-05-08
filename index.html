@@ -1,466 +1,426 @@
 <!DOCTYPE html>
-<html lang="en" id="html-root">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="/manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="LYLO">
-    <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
-    <meta name="theme-color" content="#02040a">
-    <title>LYLO™ | Love Your Loved Ones</title>
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="LYLO — Launching Your Limitless Opportunities. A curated discovery ecosystem for indie AI tools and experiences built by real people. No spam. No junk. Just interesting things worth trying.">
+    <meta property="og:title" content="LYLO — Discover AI Built By Real People">
+    <meta property="og:description" content="Curated indie AI tools and experiences. No spam. No junk. Just interesting things worth trying.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lylo.pro">
+    <title>LYLO — Discover AI Built By Real People</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #050505; color: white; scroll-behavior: smooth; overflow-x: hidden; }
-        .card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(255,255,255,0.01); border-width: 2px; border-style: solid; border-color: rgba(255,255,255,0.05); cursor: pointer; position: relative; overflow: hidden; }
-        .card-elite { overflow: visible !important; }
-        .glow-wrapper { position: relative; display: flex; justify-content: center; align-items: center; height: 12rem; margin-bottom: 2rem; z-index: 10; }
-        .radiant-light { position: absolute; width: 130px; height: 130px; border-radius: 50%; filter: blur(45px); opacity: 0.15; z-index: 0; animation: pulse-glow 4s infinite ease-in-out; }
-        @keyframes pulse-glow { 0%, 100% { transform: scale(1); opacity: 0.15; } 50% { transform: scale(1.2); opacity: 0.35; } }
-        .shield-box-img { height: 120px !important; width: auto !important; object-fit: contain; position: relative; z-index: 20; filter: drop-shadow(0 0 15px rgba(255,255,255,0.05)); }
-        .border-pro { border-color: rgba(59, 130, 246, 0.3); }
-        .border-elite { border-color: rgba(57, 255, 20, 0.3); }
-        .border-max { border-color: rgba(147, 51, 234, 0.3); }
-        @media (hover: hover) {
-            .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-            .border-pro:hover { background: #2563eb !important; border-color: #3b82f6; box-shadow: 0 0 40px rgba(59,130,246,0.4); }
-            .border-elite:hover { background: #22c55e !important; border-color: #39FF14; box-shadow: 0 0 40px rgba(57,255,20,0.4); }
-            .border-max:hover { background: #9333ea !important; border-color: #a855f7; box-shadow: 0 0 40px rgba(147,51,234,0.4); }
-            .card:hover * { color: white !important; opacity: 1 !important; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap');
+        :root {
+            --bg: #050505;
+            --bg-2: #0a0a0a;
+            --line: rgba(255,255,255,0.06);
+            --accent: #7c5cff;
+            --accent-2: #22d3ee;
         }
-        .tier-button { transition: all 0.3s ease; background: transparent; border: 2px solid currentColor; }
-        .card:hover .tier-button { background: white !important; color: black !important; border-color: white !important; }
-        .glow-blue { box-shadow: 0 0 20px rgba(59,130,246,0.2); }
-        .nav-link { position: relative; }
-        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #3b82f6; transition: width 0.3s ease; }
-        .nav-link:hover::after { width: 100%; }
-        .expert-card { background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.4) 100%); border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; }
-        .expert-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
-        .emergency-card { background: linear-gradient(145deg, rgba(239,68,68,0.05) 0%, rgba(0,0,0,0.6) 100%); border: 1px solid rgba(239,68,68,0.15); transition: all 0.3s ease; border-radius: 1rem; }
-        .emergency-card:hover { border-color: rgba(239,68,68,0.4); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(239,68,68,0.1); }
-        @keyframes pulse-red { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        .pulse-red { animation: pulse-red 2s infinite; }
-        .engine-card { background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.5) 100%); border: 1px solid rgba(255,255,255,0.06); border-radius: 1.5rem; transition: all 0.3s ease; }
-        .engine-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-4px); }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        * { -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: white; scroll-behavior: smooth; overflow-x: hidden; }
+        a { color: inherit; }
+
+        /* Animated hero backdrop — floating glowing cards */
+        .hero-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+        .hero-bg::before {
+            content: ''; position: absolute; inset: -20%;
+            background:
+                radial-gradient(600px circle at 20% 30%, rgba(124,92,255,0.18), transparent 60%),
+                radial-gradient(500px circle at 80% 20%, rgba(34,211,238,0.12), transparent 60%),
+                radial-gradient(700px circle at 50% 90%, rgba(124,92,255,0.10), transparent 60%);
+            filter: blur(10px);
+        }
+        .float-card {
+            position: absolute; border-radius: 18px;
+            background: linear-gradient(140deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+            opacity: 0.85;
+        }
+        .float-card.f1 { top: 14%; left: 6%; width: 180px; height: 110px; animation: floatA 11s ease-in-out infinite; }
+        .float-card.f2 { top: 22%; right: 8%; width: 220px; height: 130px; animation: floatB 13s ease-in-out infinite; }
+        .float-card.f3 { bottom: 14%; left: 12%; width: 200px; height: 120px; animation: floatB 15s ease-in-out infinite; }
+        .float-card.f4 { bottom: 20%; right: 14%; width: 160px; height: 100px; animation: floatA 12s ease-in-out infinite; }
+        @keyframes floatA { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-18px) rotate(2deg); } }
+        @keyframes floatB { 0%,100% { transform: translateY(0) rotate(2deg); } 50% { transform: translateY(-22px) rotate(-2deg); } }
+        @media (max-width: 768px) { .float-card { display: none; } }
+
+        /* Tool cards */
+        .tool-card {
+            background: linear-gradient(160deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+            position: relative; overflow: hidden;
+        }
+        .tool-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(400px circle at var(--x,50%) var(--y,0%), rgba(124,92,255,0.12), transparent 60%);
+            opacity: 0; transition: opacity .35s ease;
+            pointer-events: none;
+        }
+        .tool-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.18); box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+        .tool-card:hover::before { opacity: 1; }
+
+        .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
+        .pill-dot { width: 6px; height: 6px; border-radius: 50%; background: #22d3ee; box-shadow: 0 0 12px #22d3ee; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 28px; border-radius: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px; transition: all .25s ease; cursor: pointer; }
+        .btn-primary { background: linear-gradient(135deg, #7c5cff, #5b8cff); color: white; box-shadow: 0 10px 30px rgba(124,92,255,0.35); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(124,92,255,0.5); }
+        .btn-ghost { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.18); }
+        .btn-ghost:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.04); }
+
+        .section-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.4em; text-transform: uppercase; color: #a78bfa; }
+        .h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; }
+
+        .feature-tile { background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 20px; padding: 28px; transition: border-color .3s ease, transform .3s ease; }
+        .feature-tile:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-4px); }
+
+        .step-num { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 56px; line-height: 1; background: linear-gradient(135deg, #7c5cff, #22d3ee); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .nav-link { position: relative; transition: color .2s ease; }
+        .nav-link:hover { color: white; }
+
+        .glow-ring { position: relative; }
+        .glow-ring::after {
+            content: ''; position: absolute; inset: -1px; border-radius: 24px; padding: 1px;
+            background: linear-gradient(135deg, rgba(124,92,255,0.6), rgba(34,211,238,0.4), transparent 60%);
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
         .fade-up { animation: fadeUp 0.8s ease forwards; }
         .delay-1 { animation-delay: 0.1s; opacity: 0; }
         .delay-2 { animation-delay: 0.2s; opacity: 0; }
         .delay-3 { animation-delay: 0.3s; opacity: 0; }
-        .hk-badge { background: linear-gradient(135deg, rgba(57,255,20,0.08), rgba(0,0,0,0.4)); border: 1px solid rgba(57,255,20,0.25); border-radius: 1rem; }
-        .lang-btn { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border:1px solid rgba(255,255,255,0.2); border-radius:100px; font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:.15em; cursor:pointer; transition:all .2s; color:white; background:transparent; }
-        .lang-btn:hover { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.4); }
-        .obd-badge { background: linear-gradient(135deg, rgba(20,184,166,0.08), rgba(0,0,0,0.4)); border: 1px solid rgba(20,184,166,0.25); border-radius: 1rem; }
     </style>
 </head>
 <body>
-<nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 md:px-6 py-5 flex justify-between items-center">
-        <div class="flex items-center gap-4 group cursor-pointer" onclick="window.location.href='/'">
-            <img src="logo.png" alt="LYLO" class="w-12 h-12 md:w-16 md:h-16 object-contain transition-transform group-hover:scale-110">
-            <span class="text-2xl md:text-3xl font-black tracking-tighter text-white uppercase italic">LYLO<span class="text-blue-500">™</span></span>
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-3">
+            <img src="logo.png" alt="LYLO" class="w-9 h-9 object-contain">
+            <span class="text-xl font-black tracking-tight">LYLO<span class="text-violet-400">.pro</span></span>
+        </a>
+        <div class="hidden md:flex items-center gap-7 text-sm font-semibold text-gray-400">
+            <a href="#tools" class="nav-link">Tools</a>
+            <a href="#why" class="nav-link">Why LYLO</a>
+            <a href="#how" class="nav-link">How it works</a>
+            <a href="builder.html" class="nav-link">For Builders</a>
+            <a href="builder.html" class="btn btn-ghost" style="padding:10px 16px;font-size:12px;">Builder Login</a>
+            <a href="access.html" class="btn btn-primary" style="padding:10px 18px;font-size:12px;">Get Access</a>
         </div>
-        <div class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-[0.2em] text-gray-400">
-            <a href="#team" class="nav-link hover:text-white transition" data-t="nav_team">The Team</a>
-            <a href="#emergency" class="nav-link hover:text-red-400 transition" data-t="nav_emergency">Emergency</a>
-            <a href="#master-lylo" class="nav-link hover:text-white transition" data-t="nav_intelligence">Intelligence</a>
-            <a href="#how-it-works" class="nav-link hover:text-white transition" data-t="nav_features">Features</a>
-            <a href="#pricing" class="nav-link hover:text-white transition" data-t="nav_pricing">Pricing</a>
-            <button class="lang-btn" onclick="toggleLang()"><span id="lf">🇲🇽</span><span id="ll">Español</span></button>
-            <button onclick="runBetaLogin()" class="px-6 py-2.5 border border-white/20 text-white rounded-sm hover:bg-white hover:text-black transition" data-t="nav_login">Login</button>
-            <button onclick="openWaitlist()" class="px-6 py-2.5 bg-blue-600 text-white rounded-sm hover:bg-blue-500 transition shadow-lg glow-blue" data-t="nav_apply">Apply for Access</button>
-        </div>
-        <div class="lg:hidden flex gap-2 items-center">
-            <button class="lang-btn text-[10px] px-3 py-1.5" onclick="toggleLang()"><span id="lfm">🇲🇽</span><span id="llm">ES</span></button>
-            <button onclick="runBetaLogin()" class="px-4 py-2 border border-white/20 text-white text-xs font-black uppercase rounded-sm" data-t="nav_login">Login</button>
-            <button onclick="openWaitlist()" class="px-4 py-2 bg-blue-600 text-white text-xs font-black uppercase rounded-sm" data-t="nav_apply_short">Apply</button>
+        <div class="md:hidden flex items-center gap-2">
+            <a href="builder.html" class="btn btn-ghost" style="padding:9px 12px;font-size:11px;">Builder</a>
+            <a href="access.html" class="btn btn-primary" style="padding:9px 14px;font-size:11px;">Get Access</a>
         </div>
     </div>
 </nav>
 
 <!-- HERO -->
-<section class="relative pt-48 md:pt-60 pb-32 px-6 text-center">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent -z-10"></div>
-    <div class="flex justify-center mb-8 fade-up">
-        <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border" style="background:rgba(57,255,20,0.06);border-color:rgba(57,255,20,0.25);">
-            <span class="w-2 h-2 rounded-full bg-green-400 pulse-red"></span>
-            <span class="text-green-400 text-xs font-black uppercase tracking-[0.3em]" data-t="hero_badge">Founding Member Rollout — Limited Spots</span>
+<section class="relative pt-40 md:pt-48 pb-28 px-6 text-center">
+    <div class="hero-bg">
+        <div class="float-card f1"></div>
+        <div class="float-card f2"></div>
+        <div class="float-card f3"></div>
+        <div class="float-card f4"></div>
+    </div>
+    <div class="relative z-10 max-w-5xl mx-auto">
+        <div class="flex justify-center mb-8 fade-up">
+            <span class="pill" style="background:rgba(124,92,255,0.08);border:1px solid rgba(124,92,255,0.25);color:#c4b5fd;">
+                <span class="pill-dot"></span> Curated Indie AI · Early Access
+            </span>
         </div>
-    </div>
-    <h1 class="text-5xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.85] text-white italic uppercase mx-auto fade-up" data-th="hero_h1">
-        LOVE YOUR <br><span class="text-blue-500">LOVED ONES</span>
-    </h1>
-    <p class="text-blue-400 text-lg md:text-2xl font-bold uppercase tracking-[0.3em] mb-6 px-4 fade-up delay-1" data-t="hero_sub">Protection for them. Peace of mind for you.</p>
-    <p class="text-gray-400 text-lg md:text-xl mb-6 max-w-3xl mx-auto leading-relaxed font-light italic fade-up delay-2" data-th="hero_body">LYLO™ is the first AI assistant that <strong class="text-white not-italic">checks itself before answering</strong>. Three engines race simultaneously. A confidence score validates every response. When the stakes are high, a second verification layer fires automatically.</p>
-    <div class="flex flex-wrap justify-center gap-3 mb-10 fade-up delay-2">
-        <span class="px-3 py-1.5 text-xs font-black uppercase tracking-wider rounded-full" style="background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.2);color:#39FF14;" data-t="badge_1">✓ Confidence Score on Every Answer</span>
-        <span class="px-3 py-1.5 text-xs font-black uppercase tracking-wider rounded-full" style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:#60a5fa;" data-t="badge_2">✓ 3-Model Consensus on High-Stakes Queries</span>
-        <span class="px-3 py-1.5 text-xs font-black uppercase tracking-wider rounded-full" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);color:#f87171;" data-t="badge_3">✓ Auto-Blocks Hallucinations on Critical Questions</span>
-    </div>
-    <div class="flex flex-col md:flex-row justify-center gap-6 px-4 fade-up delay-3">
-        <button onclick="openWaitlist()" class="w-full md:w-auto px-12 py-6 bg-blue-600 text-white font-black uppercase text-sm tracking-widest rounded-sm hover:bg-blue-500 transition shadow-2xl glow-blue text-center" data-t="hero_cta1">Apply for Founding Access</button>
-        <a href="#team" class="w-full md:w-auto px-12 py-6 border border-white/10 text-white font-black rounded-sm uppercase tracking-widest text-sm text-center hover:border-white/30 transition" data-t="hero_cta2">Meet the Council</a>
-    </div>
-</section>
-
-<!-- FOUNDER -->
-<section class="py-32 bg-black overflow-hidden">
-    <div class="max-w-5xl mx-auto px-6">
-        <div class="card p-8 md:p-12 rounded-[3rem] border-blue-900/20 bg-gradient-to-br from-blue-900/5 to-transparent relative">
-            <div class="flex flex-col-reverse md:grid md:grid-cols-3 gap-12 items-center">
-                <div class="md:col-span-2 text-center md:text-left">
-                    <h3 class="text-sm font-bold text-blue-500 uppercase tracking-[0.5em] mb-4" data-t="founder_eyebrow">A Note from the Founder</h3>
-                    <h2 class="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-white mb-6" data-th="founder_title">I'm Christopher, <br>and this is Personal.</h2>
-                    <p class="text-gray-400 leading-relaxed mb-6 font-medium uppercase tracking-wider text-sm text-left" data-th="founder_p1">I didn't build LYLO™ to be another faceless corporation. I'm a tech enthusiast based right here in <span class='text-white'>Sacramento, CA</span>. Whether I'm sharpening knives on my route, building apps, or hunting down the best carne asada in the city, I've always believed that technology should serve people — not target them.</p>
-                    <p class="text-gray-400 leading-relaxed font-medium uppercase tracking-wider text-sm text-left" data-t="founder_p2">I created LYLO™ (Love Your Loved Ones) because I saw how easy it was for scammers to hurt the people we care about. This is my mission: to provide elite protection with a human heart, so you can Live Your Life Online without fear.</p>
-                </div>
-                <div class="flex justify-center"><img src="logo.png" alt="LYLO" class="w-32 h-32 md:w-48 md:h-48 object-contain opacity-50"></div>
-            </div>
+        <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[1.05] mb-6 fade-up">
+            Discover AI Built By <br><span class="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">Real People.</span>
+        </h1>
+        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed fade-up delay-1">
+            Curated indie AI tools and experiences. No spam. No junk. Just interesting things worth trying.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 fade-up delay-2">
+            <a href="access.html" class="btn btn-primary">Try Free</a>
+            <a href="#tools" class="btn btn-ghost">Explore Tools</a>
+        </div>
+        <p class="text-xs text-gray-500 mt-6 fade-up delay-3">
+            Building something? <a href="builder.html" class="text-violet-300 hover:text-violet-200 underline underline-offset-4">Apply for Builder Access →</a>
+        </p>
+        <div class="flex flex-wrap justify-center gap-2 mt-10 fade-up delay-3">
+            <span class="pill" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#d4d4d8;">Manually reviewed</span>
+            <span class="pill" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#d4d4d8;">Independent creators</span>
+            <span class="pill" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#d4d4d8;">No AI junkyard</span>
         </div>
     </div>
 </section>
 
-<!-- TRIPLE ENGINE -->
-<section class="py-32 bg-[#060606] border-y border-white/5">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <p class="text-xs font-black uppercase tracking-[0.5em] text-blue-500 mb-4" data-t="engine_eyebrow">NEW IN 2026</p>
-            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-[0.15em] text-white mb-4" data-th="engine_h2">Triple Engine <span class="text-blue-500">Intelligence</span></h2>
-            <p class="text-gray-500 uppercase tracking-widest text-sm font-bold max-w-2xl mx-auto" data-t="engine_sub">Three AI engines race simultaneously. The fastest, most accurate answer wins. A confidence score validates every result.</p>
+<!-- FEATURED TOOLS -->
+<section id="tools" class="py-24 md:py-32 px-6 border-t border-white/5">
+    <div class="max-w-6xl mx-auto">
+        <div class="mb-14 text-center">
+            <p class="section-eyebrow mb-3">Featured Tools</p>
+            <h2 class="h2">Two tools to start. <span class="text-gray-500">More coming, carefully.</span></h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div class="engine-card p-8 text-center"><div class="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-green-500/20"><i class="fas fa-bolt text-green-400 text-2xl"></i></div><h3 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="e1_name">OpenAI Engine</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-3">GPT-4o-mini</p><p class="text-gray-400 text-xs leading-relaxed" data-t="e1_desc">Lightning-fast responses with deep reasoning and natural conversation.</p></div>
-            <div class="engine-card p-8 text-center border-blue-500/20"><div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-blue-500/20"><i class="fas fa-microchip text-blue-400 text-2xl"></i></div><h3 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="e2_name">Google Engine</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-3">Gemini Flash</p><p class="text-gray-400 text-xs leading-relaxed" data-t="e2_desc">Multimodal intelligence with real-time web data and vision analysis.</p></div>
-            <div class="engine-card p-8 text-center border-purple-500/20"><div class="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-purple-500/20"><i class="fas fa-shield-alt text-purple-400 text-2xl"></i></div><h3 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="e3_name">Claude Validator</h3><p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-3">Anthropic Claude</p><p class="text-gray-400 text-xs leading-relaxed" data-th="e3_desc">Every AI system can be wrong. Veracore™ cross-checks every high-stakes response. <strong class="text-white">Most AI tools generate answers. LYLO verifies them.</strong></p></div>
-        </div>
-        <div class="hk-badge p-6 md:p-8 mb-8">
-            <div class="flex flex-col md:flex-row items-center gap-6">
-                <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(57,255,20,0.1);border:1px solid rgba(57,255,20,0.3);"><i class="fas fa-brain text-green-400 text-2xl"></i></div>
-                <div class="text-center md:text-left">
-                    <h4 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="vc_title">Powered by Veracore™ — Active on Pro Tier and Above</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed max-w-3xl" data-t="vc_desc">When you ask a high-stakes question, a second verification layer activates automatically. Three independent models cross-examine each other's answers. Responses that don't reach consensus are flagged. A confidence score shows you exactly how certain the system is — before you act on it.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- GUARD TABLE -->
+            <div class="tool-card glow-ring p-8 md:p-10" data-card>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(124,92,255,0.12);border:1px solid rgba(124,92,255,0.3);">
+                        <i class="fas fa-shield-halved text-violet-300"></i>
+                    </div>
+                    <span class="pill" style="background:rgba(124,92,255,0.08);border:1px solid rgba(124,92,255,0.25);color:#c4b5fd;">Life Assistance</span>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- EMERGENCY -->
-<section id="emergency" class="relative py-40 overflow-hidden" style="background:#020202;">
-    <div class="absolute inset-0 pointer-events-none"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(220,38,38,0.12) 0%,transparent 70%);"></div></div>
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-        <div class="flex justify-center mb-8"><div class="inline-flex items-center gap-3 px-6 py-3 rounded-full border" style="background:rgba(220,38,38,0.08);border-color:rgba(220,38,38,0.35);"><span class="w-2 h-2 rounded-full bg-red-500 pulse-red"></span><span class="text-red-400 text-xs font-black uppercase tracking-[0.4em]" data-t="emerg_badge">LYLO™ Emergency Protocol System</span></div></div>
-        <div class="text-center mb-6">
-            <h2 class="text-5xl md:text-8xl font-black uppercase italic tracking-tighter text-white leading-none mb-4" data-th="emerg_h2">When Seconds<br><span class="text-red-500">Save Lives</span></h2>
-            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light" data-th="emerg_sub">Most people freeze in a crisis because they don't know what to do. LYLO™ fixes that. Say what's happening — LYLO auto-switches to the right specialist and delivers a <strong class="text-white">calm, numbered, step-by-step protocol in seconds.</strong></p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div class="emergency-card p-8"><div class="flex items-center gap-4 mb-5"><div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);"><i class="fas fa-user-shield text-red-400 text-2xl"></i></div><div><h4 class="text-white font-black uppercase text-base tracking-wide" data-t="ec1_title">Hacked or Scammed</h4><p class="text-xs text-gray-500 uppercase tracking-wider font-bold" data-t="ec1_route">Auto-routes to: The Guardian</p></div></div><p class="text-gray-300 text-sm leading-relaxed mb-4" data-th="ec1_body">Just say <em class="text-red-400 not-italic font-bold">"my account was hacked"</em> — The Guardian deploys containment steps before the damage spreads.</p><div class="space-y-2"><div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec1_l1">Password lockdown — right device, right order</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec1_l2">Credit freeze at all 3 bureaus — exact steps</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-red-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec1_l3">FTC IdentityTheft.gov report walkthrough</p></div></div></div>
-            <div class="emergency-card p-8"><div class="flex items-center gap-4 mb-5"><div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.25);"><i class="fas fa-car-crash text-orange-400 text-2xl"></i></div><div><h4 class="text-white font-black uppercase text-base tracking-wide" data-t="ec2_title">Road Emergency</h4><p class="text-xs text-gray-500 uppercase tracking-wider font-bold" data-t="ec2_route">Auto-routes to: The Mechanic</p></div></div><p class="text-gray-300 text-sm leading-relaxed mb-4" data-t="ec2_body">Brake failure, tire blowout, engine overheating — The Mechanic gives you counter-intuitive survival moves most people get wrong.</p><div class="space-y-2"><div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec2_l1">Tire blowout: why you must briefly accelerate first</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec2_l2">Brake failure: engine braking and emergency brake sequence</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-orange-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec2_l3">Overheating: why turning on your heater cools the engine</p></div></div></div>
-            <div class="emergency-card p-8"><div class="flex items-center gap-4 mb-5"><div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.25);"><i class="fas fa-heart-broken text-pink-400 text-2xl"></i></div><div><h4 class="text-white font-black uppercase text-base tracking-wide" data-t="ec3_title">Emotional Crisis</h4><p class="text-xs text-gray-500 uppercase tracking-wider font-bold" data-t="ec3_route">Auto-routes to: The Bestie</p></div></div><p class="text-gray-300 text-sm leading-relaxed mb-4" data-th="ec3_body">Say <em class="text-pink-400 not-italic font-bold">"I'm not okay"</em> — The Bestie shows up, no judgment, and asks the one question that matters: <em class="text-white font-bold">"Are you safe right now?"</em></p><div class="space-y-2"><div class="flex items-start gap-2"><i class="fas fa-check text-pink-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec3_l1">Safety check first — no skipping it</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-pink-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec3_l2">988 Lifeline + Crisis Text Line on deck</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-pink-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec3_l3">Real talk — not a script. Stays until you're stable.</p></div></div></div>
-            <div class="emergency-card p-8"><div class="flex items-center gap-4 mb-5"><div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25);"><i class="fas fa-briefcase text-indigo-400 text-2xl"></i></div><div><h4 class="text-white font-black uppercase text-base tracking-wide" data-t="ec4_title">Just Got Fired</h4><p class="text-xs text-gray-500 uppercase tracking-wider font-bold" data-t="ec4_route">Auto-routes to: The Builder</p></div></div><p class="text-gray-300 text-sm leading-relaxed mb-4" data-t="ec4_body">Say <em class="text-indigo-400 not-italic font-bold">"I just got fired"</em> — The Builder's first response: do NOT sign anything today. Here's exactly what to do in the next 24 hours.</p><div class="space-y-2"><div class="flex items-start gap-2"><i class="fas fa-check text-indigo-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec4_l1">Do not sign the severance — you have time</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-indigo-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec4_l2">File for unemployment today — you're eligible</p></div><div class="flex items-start gap-2"><i class="fas fa-check text-indigo-400 text-xs mt-1"></i><p class="text-gray-500 text-xs" data-t="ec4_l3">Document everything before you lose access</p></div></div></div>
-        </div>
-        <p class="text-center text-gray-700 text-xs uppercase tracking-widest font-bold mt-8" data-t="emerg_disc">Emergency protocols are informational guides only. In any life-threatening emergency, call 911 immediately.</p>
-    </div>
-</section>
-
-<!-- SPECIALISTS -->
-<section id="team" class="py-32 bg-[#080808] border-y border-white/5">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-[0.2em] text-white mb-4" data-th="team_h2">Meet Your <span class="text-blue-500">Council</span></h2>
-            <p class="text-gray-500 uppercase tracking-widest text-sm font-bold max-w-2xl mx-auto" data-t="team_sub">5 specialist seats. Each one stays strictly in their lane — enforced by AI in real time.</p>
-        </div>
-
-        <!-- Guardian — full width flagship -->
-        <div class="expert-card p-8 rounded-2xl border-l-4 border-l-blue-500 mb-4 flex flex-col md:flex-row items-start gap-6">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 bg-blue-500/10 border border-blue-500/20"><i class="fas fa-shield-alt text-blue-400 text-2xl"></i></div>
-            <div class="flex-1">
-                <div class="flex items-center gap-3 mb-1">
-                    <h3 class="text-blue-400 font-black uppercase text-base" data-t="sp1">The Guardian</h3>
-                    <span class="px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-full" style="background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.2);color:#39FF14;">Free</span>
-                </div>
-                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-2" data-t="sp1r">Stay Safe — Security Lead</p>
-                <p class="text-gray-400 text-sm leading-relaxed" data-t="sp1d">Your digital bodyguard. Detects scams, phishing, account takeovers, and fraud in real time. When something feels off — The Guardian has seen it before.</p>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-pink-500">
-                <div class="flex items-center gap-3 mb-1"><h3 class="text-pink-400 font-black uppercase text-sm" data-t="sp2">The Bestie</h3><span class="px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-full" style="background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.2);color:#39FF14;">Free</span></div>
-                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-3" data-t="sp2r">Talk It Out — Ride or Die</p>
-                <p class="text-gray-400 text-xs leading-relaxed" data-t="sp2d">No filters, no judgment. Real talk when you need it. Knows when to listen, when to push back, and when to say "are you safe right now?"</p>
-            </div>
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-gray-400">
-                <div class="flex items-center gap-3 mb-1">
-                    <h3 class="text-gray-300 font-black uppercase text-sm" data-t="sp3">The Mechanic</h3>
-                    <span class="px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-full" style="background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.2);color:#39FF14;">Free</span>
-                    <span class="px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-full" style="background:rgba(20,184,166,0.08);border:1px solid rgba(20,184,166,0.25);color:#14b8a6;">⬡ OBD</span>
-                </div>
-                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-3" data-t="sp3r">Fix Things — Master Fixer</p>
-                <p class="text-gray-400 text-xs leading-relaxed" data-t="sp3d">Cars, devices, tech, home systems. Plug in your OBDLink adapter, tap Scan My Car, and get a plain-English diagnosis with repair cost estimates before you talk to any shop.</p>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-purple-500">
-                <div class="flex items-center gap-3 mb-1"><h3 class="text-purple-400 font-black uppercase text-sm" data-t="sp4">The Guide</h3><span class="px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-full" style="background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.2);color:#39FF14;">Free</span></div>
-                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-3" data-t="sp4r">Understand Anything — Knowledge Bridge</p>
-                <p class="text-gray-400 text-xs leading-relaxed" data-t="sp4d">The right analogy beats the right definition every time. The Guide breaks down any subject until it clicks — exams, skills, complex topics, anything.</p>
-            </div>
-            <div class="expert-card p-6 rounded-xl border-l-4 border-l-indigo-400">
-                <div class="flex items-center gap-3 mb-1"><h3 class="text-indigo-400 font-black uppercase text-sm" data-t="sp5">The Builder</h3><span class="px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-full" style="background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.2);color:#39FF14;">Free</span></div>
-                <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-3" data-t="sp5r">Get Things Done — Execution Partner</p>
-                <p class="text-gray-400 text-xs leading-relaxed" data-t="sp5d">Jobs, goals, projects, decisions. No theory — just the next concrete step. Salary negotiation, job search, and making hard calls.</p>
-            </div>
-        </div>
-
-        <!-- OBD Feature callout -->
-        <div class="obd-badge p-6 md:p-8 mt-8">
-            <div class="flex flex-col md:flex-row items-center gap-6">
-                <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(20,184,166,0.1);border:1px solid rgba(20,184,166,0.3);"><i class="fas fa-car text-teal-400 text-2xl"></i></div>
-                <div class="text-center md:text-left">
-                    <h4 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="obd_title">New: OBD Vehicle Scanner — Powered by OBDLink</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed max-w-3xl" data-t="obd_desc">Plug your OBDLink MX+, EX, CX, or LX adapter into your car's OBD-II port, tap "Scan My Car" inside The Mechanic, and get every fault code decoded in plain English — with repair cost estimates and the exact questions to ask your shop so you can't be upsold.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing" class="py-40 bg-[#050505] border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-6">
-            <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border mb-6" style="background:rgba(57,255,20,0.06);border-color:rgba(57,255,20,0.25);">
-                <span class="w-2 h-2 rounded-full bg-green-400 pulse-red"></span>
-                <span class="text-green-400 text-xs font-black uppercase tracking-[0.3em]" data-t="pricing_badge">Founding Member Rollout — Spots Approved Manually</span>
-            </div>
-            <h2 class="text-5xl md:text-6xl font-black text-center mb-4 tracking-[0.4em] uppercase" data-t="pricing_h2">The Protection Plans</h2>
-            <p class="text-gray-500 text-sm uppercase tracking-wider font-bold max-w-lg mx-auto" data-t="pricing_sub">Founding members lock in these prices forever. Apply via email — we respond within 24 hours.</p>
-        </div>
-        <div class="flex justify-center mb-16 mt-8">
-            <div class="bg-white/5 border border-white/10 p-1 rounded-full inline-flex relative items-center">
-                <button id="btn-monthly" onclick="toggleBilling('monthly')" class="px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest text-white bg-blue-600 transition-all" data-t="billing_mo_btn">Monthly</button>
-                <button id="btn-yearly" onclick="toggleBilling('yearly')" class="px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-all">
-                    <span data-t="billing_yr_btn">Yearly</span> <span class="text-green-400 ml-1 text-xs font-black" data-t="billing_savings">2 Months FREE</span>
-                </button>
-            </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-stretch" style="padding-top:28px;overflow:visible;">
-            <!-- FREE -->
-            <div class="card p-8 rounded-3xl flex flex-col items-center text-center group border-white/10" onclick="openWaitlist()">
-                <div class="glow-wrapper"><div class="radiant-light bg-white"></div><img src="https://mylylo.pro/freetier.png" class="shield-box-img"></div>
-                <h3 class="text-gray-400 font-black uppercase text-sm tracking-[0.3em] mb-2" data-t="t_free">Basic Shield</h3>
-                <div class="text-5xl font-black mb-8 text-white">$0</div>
-                <ul class="space-y-4 text-xs text-gray-500 mb-8 flex-1 text-left w-full border-t border-white/5 pt-6 uppercase font-bold tracking-wider">
-                    <li><i class="fas fa-check text-white mr-2"></i><span data-t="f_f1">3 Daily Interactions</span></li>
-                    <li><i class="fas fa-microchip text-white mr-2"></i><span data-t="f_f2">Single AI Engine</span></li>
-                    <li><i class="fas fa-shield-alt text-white mr-2"></i><span data-t="f_f3">Basic Scam Detection</span></li>
-                    <li><i class="fas fa-clock text-white mr-2"></i><span data-t="f_f4">Ephemeral Memory Only</span></li>
+                <h3 class="text-3xl md:text-4xl font-black mb-3">Guard Table</h3>
+                <p class="text-violet-300 font-semibold mb-5">Help when life gets messy.</p>
+                <p class="text-gray-400 leading-relaxed mb-8">
+                    Think clearly under pressure. Write the message you wish you could. Navigate the situation
+                    you didn't ask for. Guard Table is a calm, practical assistant for the moments that matter most.
+                </p>
+                <ul class="space-y-2 text-sm text-gray-400 mb-8">
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-violet-400 text-xs mt-1.5"></i> Drafts professional letters and replies</li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-violet-400 text-xs mt-1.5"></i> Helps you respond when emotions are high</li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-violet-400 text-xs mt-1.5"></i> Walks through stressful situations step by step</li>
                 </ul>
-                <button class="tier-button w-full py-4 border border-white/10 text-white rounded font-bold uppercase text-sm tracking-[0.2em]" data-t="t_free_btn">Try Free</button>
+                <a href="access.html" class="btn btn-primary w-full md:w-auto">Try It</a>
+                <p class="text-xs text-gray-600 mt-4 uppercase tracking-widest">5 free requests · then unlock with subscription</p>
             </div>
-            <!-- PRO -->
-            <div class="card p-8 rounded-3xl flex flex-col items-center text-center border-pro" onclick="handleCheckout('pro')">
-                <div class="glow-wrapper"><div class="radiant-light bg-blue-500"></div><img src="https://mylylo.pro/protier.png" class="shield-box-img"></div>
-                <h3 class="text-blue-400 font-black uppercase text-sm tracking-[0.3em] mb-2" data-t="t_pro">Pro Guardian</h3>
-                <div class="text-5xl font-black mb-2 text-white">$<span id="price-pro">9.99</span><span class="text-sm text-gray-500" id="period-pro">/mo</span></div>
-                <p id="note-pro" class="text-blue-400 text-[10px] font-black uppercase tracking-wider mb-6 h-4"></p>
-                <ul class="space-y-4 text-xs text-gray-400 mb-8 flex-1 text-left w-full border-t border-blue-900/30 pt-6 uppercase font-bold tracking-wider">
-                    <li><i class="fas fa-check text-blue-500 mr-2"></i><span data-t="p_f1">30 Daily Interactions</span></li>
-                    <li><i class="fas fa-microchip text-blue-500 mr-2"></i><span data-t="p_f2">Triple AI Engine Race</span></li>
-                    <li><i class="fas fa-users text-blue-500 mr-2"></i><span data-t="p_f3">Full 5-Specialist Council</span></li>
-                    <li><i class="fas fa-camera text-blue-500 mr-2"></i><span data-t="p_f4">Vision Link Enabled</span></li>
-                    <li><i class="fas fa-brain text-blue-500 mr-2"></i><span data-t="p_f5">Powered by Veracore™</span></li>
-                    <li><i class="fas fa-exclamation-triangle text-blue-500 mr-2"></i><span data-t="p_f6">Emergency Protocols</span></li>
+
+            <!-- SLAPSTICK AI -->
+            <div class="tool-card glow-ring p-8 md:p-10" data-card>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.3);">
+                        <i class="fas fa-face-laugh-squint text-cyan-300"></i>
+                    </div>
+                    <span class="pill" style="background:rgba(34,211,238,0.08);border:1px solid rgba(34,211,238,0.25);color:#67e8f9;">Entertainment</span>
+                </div>
+                <h3 class="text-3xl md:text-4xl font-black mb-3">Slapstick AI</h3>
+                <p class="text-cyan-300 font-semibold mb-5">The AI comedian that remembers the joke.</p>
+                <p class="text-gray-400 leading-relaxed mb-8">
+                    A personality AI that lands jokes, calls them back later, and actually keeps up with you.
+                    The bit you said three messages ago? It remembers. Welcome to AI with a sense of timing.
+                </p>
+                <ul class="space-y-2 text-sm text-gray-400 mb-8">
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 text-xs mt-1.5"></i> Long-term joke memory and callbacks</li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 text-xs mt-1.5"></i> Personality that adapts to your humor</li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 text-xs mt-1.5"></i> Built for chats that stay fun, not flat</li>
                 </ul>
-                <button class="tier-button w-full py-4 border border-blue-500 text-blue-400 rounded font-bold uppercase text-sm tracking-[0.2em]" data-t="t_apply">Apply for Access</button>
+                <a href="access.html" class="btn btn-primary w-full md:w-auto">Try It</a>
+                <p class="text-xs text-gray-600 mt-4 uppercase tracking-widest">20 free messages · then unlock with subscription</p>
             </div>
-            <!-- ELITE -->
-            <div class="card card-elite p-8 rounded-3xl flex flex-col items-center text-center border-elite" style="box-shadow:0 0 40px rgba(57,255,20,0.08);" onclick="handleCheckout('elite')">
-                <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#39FF14;color:#000;font-size:9px;font-weight:900;letter-spacing:0.25em;text-transform:uppercase;padding:5px 18px;border-radius:100px;white-space:nowrap;z-index:50;box-shadow:0 0 20px rgba(57,255,20,0.5);" data-t="best_value">⚡ Best Value</div>
-                <div class="glow-wrapper"><div class="radiant-light bg-green-400"></div><img src="https://mylylo.pro/elitetier.png" class="shield-box-img"></div>
-                <h3 class="font-black uppercase text-sm tracking-[0.3em] mb-2" style="color:#39FF14;" data-t="t_elite">Elite Justice</h3>
-                <div class="text-5xl font-black mb-2 text-white">$<span id="price-elite">19.99</span><span class="text-sm text-gray-500" id="period-elite">/mo</span></div>
-                <p id="note-elite" class="text-[10px] font-black uppercase tracking-wider mb-6 h-4" style="color:#39FF14;"></p>
-                <ul class="space-y-4 text-xs text-gray-300 mb-8 flex-1 text-left w-full border-t pt-6 uppercase font-bold tracking-wider" style="border-color:rgba(57,255,20,0.15);">
-                    <li><i class="fas fa-check mr-2" style="color:#39FF14;"></i><span data-t="e_f1">100 Daily Interactions</span></li>
-                    <li><i class="fas fa-microchip mr-2" style="color:#39FF14;"></i><span data-t="e_f2">Triple AI Engine Race</span></li>
-                    <li><i class="fas fa-briefcase-medical mr-2" style="color:#39FF14;"></i><span data-t="e_f3">Red Shield Crisis Hub</span></li>
-                    <li><i class="fas fa-database mr-2" style="color:#39FF14;"></i><span data-t="e_f4">Priority Data Processing</span></li>
-                    <li><i class="fas fa-file-pdf mr-2" style="color:#39FF14;"></i><span data-t="e_f5">Auto PDF Dispatch</span></li>
-                    <li><i class="fas fa-memory mr-2" style="color:#39FF14;"></i><span data-t="e_f6">Long-Term Memory Vault</span></li>
-                </ul>
-                <button class="tier-button w-full py-4 rounded font-bold uppercase text-sm tracking-[0.2em]" style="border-color:#39FF14;color:#39FF14;" data-t="t_apply">Apply for Access</button>
-            </div>
-            <!-- MAX -->
-            <div class="card p-8 rounded-3xl flex flex-col items-center text-center border-max" onclick="handleCheckout('max')">
-                <div class="glow-wrapper"><div class="radiant-light bg-purple-500"></div><img src="https://mylylo.pro/maxtier.png" class="shield-box-img"></div>
-                <h3 class="text-purple-500 font-black uppercase text-sm tracking-[0.3em] mb-2" data-t="t_max">Max Unlimited</h3>
-                <div class="text-5xl font-black mb-2 text-white">$<span id="price-max">34.99</span><span class="text-sm text-gray-500" id="period-max">/mo</span></div>
-                <p id="note-max" class="text-purple-400 text-[10px] font-black uppercase tracking-wider mb-6 h-4"></p>
-                <ul class="space-y-4 text-xs text-gray-300 mb-8 flex-1 text-left w-full border-t border-purple-900/30 pt-6 uppercase font-bold tracking-wider">
-                    <li><i class="fas fa-infinity text-purple-500 mr-2"></i><span data-t="m_f1">500 Daily Interactions</span></li>
-                    <li><i class="fas fa-brain text-purple-500 mr-2"></i><span data-t="m_f2">All Three AI Engines</span></li>
-                    <li><i class="fas fa-memory text-purple-500 mr-2"></i><span data-t="m_f3">Infinite Memory Vault</span></li>
-                    <li><i class="fas fa-shield-alt text-purple-500 mr-2"></i><span data-t="m_f4">Veracore™ All Queries Verified</span></li>
-                    <li><i class="fas fa-users text-purple-500 mr-2"></i><span data-t="m_f5">Family Plan (up to 5 users)</span></li>
-                    <li><i class="fas fa-star text-purple-500 mr-2"></i><span data-t="m_f6">VIP Direct Support</span></li>
-                </ul>
-                <button class="tier-button w-full py-4 border border-purple-500 text-purple-400 rounded font-bold uppercase text-sm tracking-[0.2em]" data-t="t_apply">Apply for Access</button>
-            </div>
+
         </div>
-        <div class="max-w-2xl mx-auto mt-12 p-6 text-center rounded-2xl" style="background:rgba(57,255,20,0.03);border:1px solid rgba(57,255,20,0.15);">
-            <p class="font-black uppercase tracking-wider text-sm mb-2" style="color:#39FF14;" data-t="guarantee_title">🔒 Founding Member Guarantee</p>
-            <p class="text-gray-500 text-sm leading-relaxed" data-th="guarantee_body">We are in controlled rollout — approving members manually to ensure a quality experience. <strong class="text-gray-300">Your price is locked forever.</strong></p>
+    </div>
+</section>
+
+<!-- WHY LYLO -->
+<section id="why" class="py-24 md:py-32 px-6 bg-[#080808] border-y border-white/5">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-14">
+            <p class="section-eyebrow mb-3">Why LYLO?</p>
+            <h2 class="h2">Built on trust, not noise.</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="feature-tile">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(124,92,255,0.12);border:1px solid rgba(124,92,255,0.3);">
+                    <i class="fas fa-circle-check text-violet-300"></i>
+                </div>
+                <h3 class="text-xl font-black mb-2">Trusted</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Every tool is manually reviewed before it goes live. No open uploads. No spam. No surprises.</p>
+            </div>
+            <div class="feature-tile">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.3);">
+                    <i class="fas fa-user-astronaut text-cyan-300"></i>
+                </div>
+                <h3 class="text-xl font-black mb-2">Human</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Built by real independent creators. The kind of people who actually answer when you say hi.</p>
+            </div>
+            <div class="feature-tile">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);">
+                    <i class="fas fa-sparkles text-amber-300"></i>
+                </div>
+                <h3 class="text-xl font-black mb-2">Curated</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">No AI junkyard. Only tools worth exploring. Someone already tested this for you.</p>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section id="how-it-works" class="py-16 md:py-32 bg-black border-y border-white/5">
-    <div class="max-w-6xl mx-auto px-4 md:px-6">
-        <div class="text-center mb-10 md:mb-16">
-            <p class="text-xs font-black uppercase tracking-[0.5em] text-blue-500 mb-3" data-t="feat_eyebrow">Everything It Does</p>
-            <h2 class="text-3xl md:text-5xl font-black uppercase tracking-[0.1em] text-white mb-3" data-th="feat_h2">The Full <span class="text-blue-500">Feature Set</span></h2>
+<section id="how" class="py-24 md:py-32 px-6">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+            <p class="section-eyebrow mb-3">How it works</p>
+            <h2 class="h2">Three steps. That's the whole flow.</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-            <div class="engine-card p-5 md:p-7"><div class="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center border border-blue-500/20 mb-4"><i class="fas fa-keyboard text-blue-400"></i></div><h4 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="feat_type">Type It</h4><p class="text-gray-500 text-xs leading-relaxed" data-t="feat_type_d">Type any question to any specialist. Hit send or press enter. That's it.</p></div>
-            <div class="engine-card p-5 md:p-7"><div class="w-10 h-10 bg-green-500/10 rounded-xl flex items-center justify-center border border-green-500/20 mb-4"><i class="fas fa-microphone text-green-400"></i></div><h4 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="feat_speak">Tap to Speak</h4><p class="text-gray-500 text-xs leading-relaxed" data-t="feat_speak_d">Tap the mic button and talk. LYLO listens, transcribes, and responds — hands-free.</p></div>
-            <div class="engine-card p-5 md:p-7"><div class="w-10 h-10 bg-purple-500/10 rounded-xl flex items-center justify-center border border-purple-500/20 mb-4"><i class="fas fa-camera text-purple-400"></i></div><h4 class="text-white font-black uppercase text-sm tracking-widest mb-2" data-t="feat_photo">Show It A Photo</h4><p class="text-gray-500 text-xs leading-relaxed" data-t="feat_photo_d">Tap camera and upload any image. LYLO analyzes scam texts, repair damage, documents, and more.</p></div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="p-5 md:p-8 bg-red-500/5 border border-red-500/20 rounded-2xl">
-                <div class="flex items-center gap-3 mb-3"><i class="fas fa-exclamation-triangle text-red-400 text-2xl pulse-red"></i><h4 class="text-white font-black uppercase text-sm tracking-widest" data-t="feat_emerg">Emergency Auto-Switch</h4></div>
-                <div class="flex flex-wrap gap-2 mt-4">
-                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 rounded text-xs text-red-400 font-bold" data-t="tag1">Hacked → Guardian</span>
-                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 rounded text-xs text-red-400 font-bold" data-t="tag2">Not Okay → Bestie</span>
-                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 rounded text-xs text-red-400 font-bold" data-t="tag3">Brake Failure → Mechanic</span>
-                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 rounded text-xs text-red-400 font-bold" data-t="tag4">Just Got Fired → Builder</span>
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <div class="step-num mb-4">01</div>
+                <h3 class="text-xl font-black mb-2">Browse curated AI tools.</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Pick what catches your eye. Every tool has a story and a real person behind it.</p>
             </div>
-            <div class="p-5 md:p-8 bg-blue-500/5 border border-blue-500/20 rounded-2xl">
-                <div class="flex items-center gap-3 mb-3"><i class="fas fa-mobile-alt text-blue-400 text-2xl"></i><h4 class="text-white font-black uppercase text-sm tracking-widest" data-t="feat_install">Install As An App</h4></div>
-                <div class="flex flex-col gap-2 mt-4">
-                    <span class="px-3 py-2 bg-blue-500/10 border border-blue-500/20 rounded text-xs text-blue-400 font-bold" data-t="feat_ios"><i class="fab fa-apple mr-2"></i>iPhone — Safari → Share → Add to Home Screen</span>
-                    <span class="px-3 py-2 bg-blue-500/10 border border-blue-500/20 rounded text-xs text-blue-400 font-bold" data-t="feat_android"><i class="fab fa-android mr-2"></i>Android — Chrome → 3 dots → Install App</span>
+            <div>
+                <div class="step-num mb-4">02</div>
+                <h3 class="text-xl font-black mb-2">Try them free.</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Every tool gets free usage. See if it's actually useful before you spend a dollar.</p>
+            </div>
+            <div>
+                <div class="step-num mb-4">03</div>
+                <h3 class="text-xl font-black mb-2">Unlock the whole shelf.</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">One subscription gets you full access to every approved tool — and everything we add next.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BUILDERS -->
+<section id="builders" class="py-24 md:py-32 px-6 bg-[#080808] border-y border-white/5">
+    <div class="max-w-5xl mx-auto">
+        <div class="tool-card p-8 md:p-14">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
+                <div class="md:col-span-3">
+                    <p class="section-eyebrow mb-3">For Builders</p>
+                    <h2 class="h2 mb-5">Built something great?</h2>
+                    <p class="text-gray-400 leading-relaxed mb-3">
+                        Most indie builders don't fail because they can't build.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed mb-8">
+                        They fail because <strong class="text-white">nobody sees what they built.</strong>
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-400 mb-8">
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-violet-400 text-xs mt-1.5"></i> 50% of subscriber revenue goes to the builder pool</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-violet-400 text-xs mt-1.5"></i> Engagement bonus rewards tools users actually love</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-violet-400 text-xs mt-1.5"></i> <span><strong class="text-white">Top 25 Surplus Bonus:</strong> after we cover hosting and bills, anything left from LYLO's 50% gets paid back to the top 25 most popular apps — biggest prorated cut at #1, trickling down through #25.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-violet-400 text-xs mt-1.5"></i> <span><strong class="text-white">Fully transparent monthly income</strong> — see what you made, what LYLO made, and what every other top earner made. Same number, same month, no spin.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-violet-400 text-xs mt-1.5"></i> Manual onboarding only — quality over quantity</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="builder.html#apply" class="btn btn-primary">Apply As Builder</a>
+                        <a href="builder.html" class="btn btn-ghost">Builder Login</a>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="feature-tile" style="border-color:rgba(124,92,255,0.25);">
+                        <p class="text-xs uppercase tracking-widest text-violet-300 font-bold mb-3">The Rule</p>
+                        <p class="text-white font-semibold leading-relaxed mb-3">Uploading 10 junk apps does not get you 10x revenue.</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">Quality matters more than quantity. The builders users genuinely love earn the most.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- EARLY ACCESS — TWO DOORS -->
+<section id="access" class="py-24 md:py-32 px-6">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-14">
+            <p class="section-eyebrow mb-3">Early Access</p>
+            <h2 class="h2 mb-4">Two doors in. Pick yours.</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Limited spots while the platform evolves. We're keeping it small on purpose.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- USER ACCESS -->
+            <div class="tool-card glow-ring p-8 md:p-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(124,92,255,0.12);border:1px solid rgba(124,92,255,0.3);">
+                        <i class="fas fa-user text-violet-300"></i>
+                    </div>
+                    <span class="pill" style="background:rgba(124,92,255,0.08);border:1px solid rgba(124,92,255,0.25);color:#c4b5fd;">User Access</span>
+                </div>
+                <h3 class="text-2xl md:text-3xl font-black mb-2">Try the tools.</h3>
+                <div class="flex items-baseline gap-2 mb-1">
+                    <span class="text-5xl font-black bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">$10</span>
+                    <span class="text-gray-500 font-semibold">/ month</span>
+                </div>
+                <p class="text-gray-400 mb-6">7-day free trial. Cancel anytime.</p>
+                <ul class="space-y-2 text-sm text-gray-300 mb-8">
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-violet-400 text-xs mt-1.5"></i> Full access to every approved tool</li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-violet-400 text-xs mt-1.5"></i> Future tools included automatically</li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-violet-400 text-xs mt-1.5"></i> Saved history across sessions</li>
+                </ul>
+                <a href="access.html" class="btn btn-primary w-full">Get User Access</a>
+                <p class="text-center text-xs text-gray-600 mt-3">Already a member? <a href="access.html#login" class="text-violet-300 hover:text-violet-200">Log in</a></p>
+            </div>
+
+            <!-- BUILDER ACCESS -->
+            <div class="tool-card glow-ring p-8 md:p-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.3);">
+                        <i class="fas fa-hammer text-cyan-300"></i>
+                    </div>
+                    <span class="pill" style="background:rgba(34,211,238,0.08);border:1px solid rgba(34,211,238,0.25);color:#67e8f9;">Builder Access</span>
+                </div>
+                <h3 class="text-2xl md:text-3xl font-black mb-2">List your tool.</h3>
+                <div class="flex items-baseline gap-2 mb-1">
+                    <span class="text-5xl font-black bg-gradient-to-r from-cyan-300 to-violet-400 bg-clip-text text-transparent">50%</span>
+                    <span class="text-gray-500 font-semibold">revenue share</span>
+                </div>
+                <p class="text-gray-400 mb-6">Manual review. No fees to apply.</p>
+                <ul class="space-y-2 text-sm text-gray-300 mb-8">
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 text-xs mt-1.5"></i> 50% of subscriber revenue → builder pool</li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 text-xs mt-1.5"></i> Engagement bonus for high retention</li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 text-xs mt-1.5"></i> <strong class="text-white">Top 25 Surplus Bonus</strong> — leftovers from LYLO's 50% (after hosting + bills) flow back to the most popular apps, prorated</li>
+                    <li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 text-xs mt-1.5"></i> <strong class="text-white">Monthly income, fully transparent</strong> — see what you made, what LYLO made, and what every other top earner made</li>
+                </ul>
+                <a href="builder.html" class="btn btn-ghost w-full" style="border-color:rgba(34,211,238,0.4);color:#67e8f9;">Apply As Builder</a>
+                <p class="text-center text-xs text-gray-600 mt-3">Already approved? <a href="builder.html#login" class="text-cyan-300 hover:text-cyan-200">Builder login</a></p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 <!-- FOOTER -->
-<footer class="py-24 bg-black">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-        <div class="p-5 bg-yellow-500/5 border border-yellow-500/20 rounded-2xl mb-8 flex flex-col md:flex-row items-start gap-4 max-w-4xl mx-auto text-left">
-            <i class="fas fa-exclamation-triangle text-yellow-500 text-3xl mt-1 flex-shrink-0"></i>
-            <div><p class="text-xs text-yellow-400 font-black uppercase tracking-widest mb-2" data-t="disc1_t">Critical Disclaimer</p><p class="text-xs text-gray-400 font-bold uppercase tracking-widest leading-relaxed" data-t="disc1_b">LYLO™ is an advanced AI Educational &amp; Strategic Information Tool. AI systems can make mistakes. You must always verify critical information with a certified, licensed human professional before taking action.</p></div>
+<footer class="border-t border-white/5 py-14 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-10">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="LYLO" class="w-10 h-10 object-contain">
+                <div>
+                    <div class="text-lg font-black">LYLO<span class="text-violet-400">.pro</span></div>
+                    <div class="text-xs text-gray-500 uppercase tracking-widest">Launching Your Limitless Opportunities</div>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-6 text-sm text-gray-400">
+                <a href="#about-anchor" class="nav-link">About</a>
+                <a href="terms.html" class="nav-link">Terms</a>
+                <a href="privacy.html" class="nav-link">Privacy</a>
+                <a href="mailto:hello@lylo.pro" class="nav-link">Contact</a>
+            </div>
+            <div class="flex items-center gap-4 text-gray-400">
+                <a href="https://www.tiktok.com/" aria-label="TikTok" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/" aria-label="YouTube" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/" aria-label="LinkedIn" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-white/30 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+            </div>
         </div>
-        <div class="p-5 bg-blue-500/5 border border-blue-500/20 rounded-2xl mb-12 flex flex-col md:flex-row items-start gap-4 max-w-4xl mx-auto text-left">
-            <i class="fas fa-robot text-blue-400 text-3xl mt-1 flex-shrink-0"></i>
-            <div><p class="text-xs text-blue-400 font-black uppercase tracking-widest mb-2" data-t="disc3_t">AI Technology Disclosure</p><p class="text-xs text-gray-400 font-bold uppercase tracking-widest leading-relaxed" data-t="disc3_b">LYLO™ is powered by OpenAI (GPT-4o-mini), Google (Gemini), and Anthropic (Claude). Responses are AI-generated and should not be treated as professional advice from a licensed practitioner.</p></div>
-        </div>
-        <img src="logo.png" alt="LYLO" class="w-16 h-16 object-contain mx-auto mb-6 opacity-80">
-        <h4 class="text-white font-black uppercase text-xl tracking-[0.4em] mb-2 italic">LYLO<span class="text-blue-500">™</span></h4>
-        <p class="text-gray-600 text-[9px] font-black uppercase tracking-[0.3em] mb-10">Truth · Safety · We Got Your Back</p>
-        <div class="flex flex-wrap justify-center gap-6 mb-12 text-xs font-black uppercase tracking-[0.2em] text-gray-500">
-            <a href="/legal.html#terms" class="hover:text-blue-500 transition-colors" data-t="ft_terms">Terms of Service</a><span class="text-white/20">|</span>
-            <a href="/legal.html#privacy" class="hover:text-blue-500 transition-colors" data-t="ft_privacy">Privacy Policy</a><span class="text-white/20">|</span>
-            <a href="/legal.html#disclaimer" class="hover:text-yellow-500 transition-colors" data-t="ft_disc">AI Disclaimer</a><span class="text-white/20">|</span>
-            <a href="/cdn-cgi/l/email-protection#412c382d382d2e6f202801262c20282d6f222e2c" class="hover:text-blue-500 transition-colors" data-t="ft_contact">Contact</a>
-        </div>
-        <div class="text-center pt-8 border-t border-white/5 text-[10px] text-gray-700 tracking-[0.6em] font-black uppercase" data-t="ft_copy">&copy; 2026 LYLO™ SECURITY SYSTEMS. ALL RIGHTS RESERVED.</div>
+        <p id="about-anchor" class="text-xs text-gray-600 text-center uppercase tracking-widest">© 2026 LYLO.pro · Curated indie AI · Made with care</p>
     </div>
 </footer>
 
-<!-- WAITLIST MODAL -->
-<div id="waitlist-modal" class="hidden fixed inset-0 bg-black/95 backdrop-blur-md z-[100000] flex items-center justify-center p-4">
-    <div class="bg-[#080808] border border-blue-500/30 rounded-3xl w-full max-w-md p-8 text-center shadow-[0_0_50px_rgba(59,130,246,0.15)]">
-        <i class="fas fa-lock text-blue-500 text-4xl mb-6 drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]"></i>
-        <h2 class="text-2xl font-black uppercase tracking-widest text-white mb-2 italic" data-t="modal_title">Apply for Founding Access</h2>
-        <p class="text-gray-400 text-sm mb-8 uppercase tracking-wider font-bold" data-t="modal_desc">LYLO™ is in controlled rollout. Enter your email — we'll respond within 24 hours with your access link and lock in your founding price forever.</p>
-        <input type="email" id="waitlist-email" placeholder="ENTER YOUR EMAIL" data-ph="modal_ph" class="w-full bg-black border border-white/10 rounded-xl p-5 text-white text-center font-bold uppercase mb-4 focus:border-blue-500 outline-none transition-all">
-        <button onclick="submitWaitlist()" class="w-full py-5 bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-[0.2em] rounded-xl transition-all shadow-lg glow-blue mb-4" data-t="modal_btn">Apply for Access</button>
-        <button onclick="closeWaitlist()" class="text-gray-500 uppercase text-xs font-black tracking-[0.2em] hover:text-white transition-colors" data-t="modal_cancel">Cancel</button>
-    </div>
-</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-const T={en:{nav_team:"The Team",nav_emergency:"Emergency",nav_intelligence:"Intelligence",nav_features:"Features",nav_pricing:"Pricing",nav_login:"Login",nav_apply:"Apply for Access",nav_apply_short:"Apply",hero_badge:"Founding Member Rollout — Limited Spots",hero_h1:'LOVE YOUR <br><span class="text-blue-500">LOVED ONES</span>',hero_sub:"Protection for them. Peace of mind for you.",hero_body:'LYLO™ is the first AI assistant that <strong class="text-white not-italic">checks itself before answering</strong>. Three engines race simultaneously. A confidence score validates every response. When the stakes are high, a second verification layer fires automatically.',badge_1:"✓ Confidence Score on Every Answer",badge_2:"✓ 3-Model Consensus on High-Stakes Queries",badge_3:"✓ Auto-Blocks Hallucinations on Critical Questions",hero_cta1:"Apply for Founding Access",hero_cta2:"Meet the Council",founder_eyebrow:"A Note from the Founder",founder_title:"I'm Christopher, <br>and this is Personal.",founder_p1:"I didn't build LYLO™ to be another faceless corporation. I'm a tech enthusiast based right here in <span class='text-white'>Sacramento, CA</span>. Whether I'm sharpening knives on my route, building apps, or hunting down the best carne asada in the city, I've always believed that technology should serve people — not target them.",founder_p2:"I created LYLO™ (Love Your Loved Ones) because I saw how easy it was for scammers to hurt the people we care about. This is my mission: to provide elite protection with a human heart.",engine_eyebrow:"NEW IN 2026",engine_h2:'Triple Engine <span class="text-blue-500">Intelligence</span>',engine_sub:"Three AI engines race simultaneously. The fastest, most accurate answer wins. A confidence score validates every result.",e1_name:"OpenAI Engine",e1_desc:"Lightning-fast responses with deep reasoning and natural conversation.",e2_name:"Google Engine",e2_desc:"Multimodal intelligence with real-time web data and vision analysis.",e3_name:"Claude Validator",e3_desc:'Every AI system can be wrong. Veracore™ cross-checks every high-stakes response. <strong class="text-white">Most AI tools generate answers. LYLO verifies them.</strong>',vc_title:"Powered by Veracore™ — Active on Pro Tier and Above",vc_desc:"When you ask a high-stakes question, a second verification layer activates automatically. Three independent models cross-examine each other's answers. Responses that don't reach consensus are flagged.",obd_title:"New: OBD Vehicle Scanner — Powered by OBDLink",obd_desc:"Plug your OBDLink MX+, EX, CX, or LX adapter into your car's OBD-II port, tap Scan My Car inside The Mechanic, and get every fault code decoded in plain English — with repair cost estimates and the exact questions to ask your shop.",emerg_badge:"LYLO™ Emergency Protocol System",emerg_h2:'When Seconds<br><span class="text-red-500">Save Lives</span>',emerg_sub:'Most people freeze in a crisis. LYLO™ fixes that. Say what\'s happening — LYLO auto-switches to the right specialist and delivers a <strong class="text-white">calm, numbered, step-by-step protocol in seconds.</strong>',ec1_title:"Hacked or Scammed",ec1_route:"Auto-routes to: The Guardian",ec1_body:'Just say <em class="text-red-400 not-italic font-bold">"my account was hacked"</em> — The Guardian deploys containment steps before the damage spreads.',ec1_l1:"Password lockdown — right device, right order",ec1_l2:"Credit freeze at all 3 bureaus — exact steps",ec1_l3:"FTC IdentityTheft.gov report walkthrough",ec2_title:"Road Emergency",ec2_route:"Auto-routes to: The Mechanic",ec2_body:"Brake failure, tire blowout, engine overheating — The Mechanic gives you counter-intuitive survival moves most people get wrong.",ec2_l1:"Tire blowout: why you must briefly accelerate first",ec2_l2:"Brake failure: engine braking and emergency brake sequence",ec2_l3:"Overheating: why turning on your heater cools the engine",ec3_title:"Emotional Crisis",ec3_route:"Auto-routes to: The Bestie",ec3_body:'Say <em class="text-pink-400 not-italic font-bold">"I\'m not okay"</em> — The Bestie shows up, no judgment, and asks the one question that matters: <em class="text-white font-bold">"Are you safe right now?"</em>',ec3_l1:"Safety check first — no skipping it",ec3_l2:"988 Lifeline + Crisis Text Line on deck",ec3_l3:"Real talk — not a script. Stays until you're stable.",ec4_title:"Just Got Fired",ec4_route:"Auto-routes to: The Builder",ec4_body:'Say <em class="text-indigo-400 not-italic font-bold">"I just got fired"</em> — The Builder\'s first move: do NOT sign anything today.',ec4_l1:"Do not sign the severance — you have time",ec4_l2:"File for unemployment today — you're eligible",ec4_l3:"Document everything before you lose access",emerg_disc:"Emergency protocols are informational guides only. In any life-threatening emergency, call 911 immediately.",team_h2:'Meet Your <span class="text-blue-500">Council</span>',team_sub:"5 specialist seats. Each one stays strictly in their lane — enforced by AI in real time.",sp1:"The Guardian",sp1r:"Stay Safe — Security Lead",sp1d:"Your digital bodyguard. Detects scams, phishing, account takeovers, and fraud in real time. When something feels off — The Guardian has seen it before.",sp2:"The Bestie",sp2r:"Talk It Out — Ride or Die",sp2d:"No filters, no judgment. Real talk when you need it. Knows when to listen, when to push back, and when to say \"are you safe right now?\"",sp3:"The Mechanic",sp3r:"Fix Things — Master Fixer",sp3d:"Cars, devices, tech, home systems. Plug in your OBDLink adapter, tap Scan My Car, and get a plain-English diagnosis with repair cost estimates before you talk to any shop.",sp4:"The Guide",sp4r:"Understand Anything — Knowledge Bridge",sp4d:"The right analogy beats the right definition every time. Breaks down any subject until it clicks.",sp5:"The Builder",sp5r:"Get Things Done — Execution Partner",sp5d:"Jobs, goals, projects, decisions. No theory — just the next concrete step.",pricing_badge:"Founding Member Rollout — Spots Approved Manually",pricing_h2:"The Protection Plans",pricing_sub:"Founding members lock in these prices forever. Apply via email — we respond within 24 hours.",billing_mo_btn:"Monthly",billing_yr_btn:"Yearly",billing_savings:"2 Months FREE",best_value:"⚡ Best Value",t_free:"Basic Shield",t_pro:"Pro Guardian",t_elite:"Elite Justice",t_max:"Max Unlimited",t_free_btn:"Try Free",t_apply:"Apply for Access",f_f1:"3 Daily Interactions",f_f2:"Single AI Engine",f_f3:"Basic Scam Detection",f_f4:"Ephemeral Memory Only",p_f1:"30 Daily Interactions",p_f2:"Triple AI Engine Race",p_f3:"Full 5-Specialist Council",p_f4:"Vision Link Enabled",p_f5:"Powered by Veracore™",p_f6:"Emergency Protocols",e_f1:"100 Daily Interactions",e_f2:"Triple AI Engine Race",e_f3:"Red Shield Crisis Hub",e_f4:"Priority Data Processing",e_f5:"Auto PDF Dispatch",e_f6:"Long-Term Memory Vault",m_f1:"500 Daily Interactions",m_f2:"All Three AI Engines",m_f3:"Infinite Memory Vault",m_f4:"Veracore™ All Queries Verified",m_f5:"Family Plan (up to 5 users)",m_f6:"VIP Direct Support",guarantee_title:"🔒 Founding Member Guarantee",guarantee_body:'We are in controlled rollout — approving members manually to ensure quality. <strong class="text-gray-300">Your price is locked forever.</strong>',feat_eyebrow:"Everything It Does",feat_h2:'The Full <span class="text-blue-500">Feature Set</span>',feat_type:"Type It",feat_type_d:"Type any question to any specialist. Hit send or press enter. That's it.",feat_speak:"Tap to Speak",feat_speak_d:"Tap the mic button and talk. LYLO listens, transcribes, and responds — hands-free.",feat_photo:"Show It A Photo",feat_photo_d:"Tap camera and upload any image. LYLO analyzes scam texts, repair damage, documents, and more.",feat_emerg:"Emergency Auto-Switch",feat_install:"Install As An App",tag1:"Hacked → Guardian",tag2:"Not Okay → Bestie",tag3:"Brake Failure → Mechanic",tag4:"Just Got Fired → Builder",feat_ios:"iPhone — Safari → Share → Add to Home Screen",feat_android:"Android — Chrome → 3 dots → Install App",disc1_t:"Critical Disclaimer",disc1_b:"LYLO™ is an advanced AI Educational & Strategic Information Tool. AI systems can make mistakes. Always verify critical information with a licensed professional before taking action.",disc3_t:"AI Technology Disclosure",disc3_b:"LYLO™ is powered by OpenAI (GPT-4o-mini), Google (Gemini), and Anthropic (Claude). Responses are AI-generated and should not be treated as professional advice.",ft_terms:"Terms of Service",ft_privacy:"Privacy Policy",ft_disc:"AI Disclaimer",ft_contact:"Contact",ft_copy:"© 2026 LYLO™ SECURITY SYSTEMS. ALL RIGHTS RESERVED.",modal_title:"Apply for Founding Access",modal_desc:"LYLO™ is in controlled rollout. Enter your email — we'll respond within 24 hours with your access link and lock in your founding price forever.",modal_ph:"ENTER YOUR EMAIL",modal_btn:"Apply for Access",modal_cancel:"Cancel",mo:"/mo",mo_yr:"/yr",note_yr:"2 months free",note_mo:"",lf:"🇲🇽",ll:"Español",lfm:"🇲🇽",llm:"ES"},
-es:{nav_team:"El Equipo",nav_emergency:"Emergencia",nav_intelligence:"Inteligencia",nav_features:"Funciones",nav_pricing:"Precios",nav_login:"Entrar",nav_apply:"Solicitar Acceso",nav_apply_short:"Aplicar",hero_badge:"Lanzamiento para Miembros Fundadores — Cupos Limitados",hero_h1:'AMA A TUS <br><span class="text-blue-500">SERES QUERIDOS</span>',hero_sub:"Protección para ellos, tranquilidad para ti.",hero_body:'LYLO™ es el primer asistente de IA que <strong class="text-white not-italic">se verifica antes de responder</strong>. Tres motores compiten simultáneamente. Una puntuación de confianza valida cada respuesta.',badge_1:"✓ Puntuación de Confianza en Cada Respuesta",badge_2:"✓ Consenso de 3 Modelos en Consultas de Alto Riesgo",badge_3:"✓ Bloquea Alucinaciones en Preguntas Críticas",hero_cta1:"Solicitar Acceso Fundador",hero_cta2:"Conoce el Consejo",founder_eyebrow:"Una Nota del Fundador",founder_title:"Soy Christopher, <br>y esto es Personal.",founder_p1:"No construí LYLO™ para ser otra corporación sin rostro. Soy un entusiasta de la tecnología aquí en <span class='text-white'>Sacramento, CA</span>. Ya sea afilando cuchillos en mi ruta, construyendo apps, o buscando la mejor carne asada de la ciudad, siempre creí que la tecnología debe servir a las personas.",founder_p2:"Creé LYLO™ (Love Your Loved Ones) porque vi lo fácil que era para los estafadores lastimar a las personas que amamos. Esta es mi misión: brindar protección de élite con corazón humano.",engine_eyebrow:"NUEVO EN 2026",engine_h2:'Triple Motor de <span class="text-blue-500">Inteligencia</span>',engine_sub:"Tres motores de IA compiten simultáneamente. La respuesta más rápida y precisa gana.",e1_name:"Motor OpenAI",e1_desc:"Respuestas ultrarrápidas con razonamiento profundo y conversación natural.",e2_name:"Motor Google",e2_desc:"Inteligencia multimodal con datos web en tiempo real y análisis visual.",e3_name:"Validador Claude",e3_desc:'Todo sistema de IA puede equivocarse. Veracore™ verifica cada respuesta de alto riesgo. <strong class="text-white">La mayoría de las IAs generan respuestas. LYLO las verifica.</strong>',vc_title:"Impulsado por Veracore™ — Activo en Plan Pro y Superior",vc_desc:"Cuando haces una pregunta de alto riesgo, una segunda capa de verificación se activa automáticamente.",obd_title:"Nuevo: Escáner OBD — Powered by OBDLink",obd_desc:"Conecta tu adaptador OBDLink al puerto OBD-II de tu auto, toca Escanear Mi Auto en El Mecánico, y obtén cada código de falla traducido en español simple — con estimados de costo y las preguntas exactas para el taller.",emerg_badge:"Sistema de Protocolos de Emergencia LYLO™",emerg_h2:'Cuando los Segundos<br><span class="text-red-500">Salvan Vidas</span>',emerg_sub:'La mayoría se paraliza en una crisis. LYLO™ lo soluciona. Di qué está pasando — LYLO cambia al especialista correcto y entrega un <strong class="text-white">protocolo paso a paso en segundos.</strong>',ec1_title:"Hackeado o Estafado",ec1_route:"Redirige a: El Guardián",ec1_body:'Di <em class="text-red-400 not-italic font-bold">"hackearon mi cuenta"</em> — El Guardián despliega los pasos de contención.',ec1_l1:"Bloqueo de contraseñas — dispositivo correcto, orden correcto",ec1_l2:"Congelamiento de crédito en las 3 agencias",ec1_l3:"Guía para reporte en FTC IdentityTheft.gov",ec2_title:"Emergencia en Carretera",ec2_route:"Redirige a: El Mecánico",ec2_body:"Falla de frenos, llanta reventada, motor sobrecalentado — El Mecánico te da movimientos de supervivencia.",ec2_l1:"Llanta reventada: por qué debes acelerar brevemente primero",ec2_l2:"Falla de frenos: freno motor y freno de emergencia",ec2_l3:"Sobrecalentamiento: por qué encender la calefacción enfría el motor",ec3_title:"Crisis Emocional",ec3_route:"Redirige a: El Mejor Amigo/a",ec3_body:'Di <em class="text-pink-400 not-italic font-bold">"no estoy bien"</em> — El Mejor Amigo/a aparece, sin juicios.',ec3_l1:"Verificación de seguridad primero",ec3_l2:"Línea 988 y Crisis Text Line disponibles",ec3_l3:"Conversación real — no un guión.",ec4_title:"Me Acaban de Despedir",ec4_route:"Redirige a: El Constructor",ec4_body:'Di <em class="text-indigo-400 not-italic font-bold">"me despidieron"</em> — El Constructor: NO firmes nada hoy.',ec4_l1:"No firmes la indemnización — tienes tiempo",ec4_l2:"Solicita el desempleo hoy — eres elegible",ec4_l3:"Documenta todo antes de perder acceso",emerg_disc:"Los protocolos de emergencia son guías informativas. En cualquier emergencia que amenace la vida, llama al 911 inmediatamente.",team_h2:'Conoce Tu <span class="text-blue-500">Consejo</span>',team_sub:"5 especialistas. Cada uno se mantiene en su área — controlado por IA en tiempo real.",sp1:"El Guardián",sp1r:"Mantente Seguro — Jefe de Seguridad",sp1d:"Tu guardaespaldas digital. Detecta estafas, phishing, robos de cuentas y fraudes en tiempo real.",sp2:"El Mejor Amigo/a",sp2r:"Habla — Ride or Die",sp2d:"Sin filtros, sin juicios. Conversación real cuando la necesitas.",sp3:"El Mecánico",sp3r:"Arregla las Cosas — Reparador Maestro",sp3d:"Autos, dispositivos, tecnología. Conecta tu adaptador OBDLink, toca Escanear Mi Auto, y obtén un diagnóstico en español simple.",sp4:"El Guía",sp4r:"Entiende Cualquier Cosa — Puente de Conocimiento",sp4d:"La analogía correcta supera la definición correcta. Desglosa cualquier tema hasta que haga clic.",sp5:"El Constructor",sp5r:"Haz Las Cosas — Socio de Ejecución",sp5d:"Trabajos, metas, proyectos, decisiones. Sin teoría — solo el próximo paso concreto.",pricing_badge:"Lanzamiento para Miembros Fundadores — Cupos Aprobados Manualmente",pricing_h2:"Los Planes de Protección",pricing_sub:"Los miembros fundadores bloquean estos precios para siempre.",billing_mo_btn:"Mensual",billing_yr_btn:"Anual",billing_savings:"2 Meses GRATIS",best_value:"⚡ Mejor Valor",t_free:"Escudo Básico",t_pro:"Pro Guardián",t_elite:"Élite Justicia",t_max:"Max Ilimitado",t_free_btn:"Prueba Gratis",t_apply:"Solicitar Acceso",f_f1:"3 Interacciones Diarias",f_f2:"Motor de IA Único",f_f3:"Detección Básica de Estafas",f_f4:"Memoria Solo Temporal",p_f1:"30 Interacciones Diarias",p_f2:"Carrera de Triple Motor de IA",p_f3:"Consejo de 5 Especialistas",p_f4:"Vision Link Activado",p_f5:"Impulsado por Veracore™",p_f6:"Protocolos de Emergencia",e_f1:"100 Interacciones Diarias",e_f2:"Carrera de Triple Motor de IA",e_f3:"Centro de Crisis Escudo Rojo",e_f4:"Procesamiento de Datos Prioritario",e_f5:"Envío Automático de PDF",e_f6:"Bóveda de Memoria a Largo Plazo",m_f1:"500 Interacciones Diarias",m_f2:"Los Tres Motores de IA",m_f3:"Bóveda de Memoria Infinita",m_f4:"Veracore™ Todas las Consultas Verificadas",m_f5:"Plan Familiar (hasta 5 usuarios)",m_f6:"Soporte VIP Directo",guarantee_title:"🔒 Garantía de Miembro Fundador",guarantee_body:'Estamos en lanzamiento controlado. <strong class="text-gray-300">Tu precio está bloqueado para siempre.</strong>',feat_eyebrow:"Todo Lo Que Hace",feat_h2:'El <span class="text-blue-500">Conjunto Completo</span> de Funciones',feat_type:"Escríbelo",feat_type_d:"Escribe cualquier pregunta. Presiona enviar. Eso es todo.",feat_speak:"Toca para Hablar",feat_speak_d:"Toca el micrófono y habla. LYLO escucha, transcribe y responde — manos libres.",feat_photo:"Muéstrale una Foto",feat_photo_d:"Sube cualquier imagen. LYLO analiza textos de estafa, daños, documentos y más.",feat_emerg:"Cambio Automático de Emergencia",feat_install:"Instálala Como App",tag1:"Hackeado → Guardián",tag2:"No Estoy Bien → Mejor Amigo/a",tag3:"Falla de Frenos → Mecánico",tag4:"Me Despidieron → Constructor",feat_ios:"iPhone — Safari → Compartir → Agregar a Pantalla de Inicio",feat_android:"Android — Chrome → 3 puntos → Instalar App",disc1_t:"Aviso Legal Crítico",disc1_b:"LYLO™ es una Herramienta Avanzada de Información Educativa con IA. Los sistemas de IA pueden cometer errores. Siempre verifica la información crítica con un profesional antes de actuar.",disc3_t:"Divulgación de Tecnología de IA",disc3_b:"LYLO™ funciona con OpenAI (GPT-4o-mini), Google (Gemini) y Anthropic (Claude). Las respuestas son generadas por IA.",ft_terms:"Términos de Servicio",ft_privacy:"Política de Privacidad",ft_disc:"Aviso de IA",ft_contact:"Contacto",ft_copy:"© 2026 LYLO™ SISTEMAS DE SEGURIDAD. TODOS LOS DERECHOS RESERVADOS.",modal_title:"Solicitar Acceso Fundador",modal_desc:"LYLO™ está en lanzamiento controlado. Ingresa tu correo — te responderemos en 24 horas.",modal_ph:"INGRESA TU CORREO",modal_btn:"Solicitar Acceso",modal_cancel:"Cancelar",mo:"/mes",mo_yr:"/yr",note_yr:"2 meses gratis",note_mo:"",lf:"🇺🇸",ll:"English",lfm:"🇺🇸",llm:"EN"}};
-
-let lang=(()=>{const s=localStorage.getItem('lylo_site_lang');if(s==='en'||s==='es')return s;return(navigator.language||'en').toLowerCase().startsWith('es')?'es':'en';})();
-function applyLang(l){
-    lang=l;localStorage.setItem('lylo_site_lang',l);
-    document.getElementById('html-root').lang=l;
-    const t=T[l];
-    document.querySelectorAll('[data-t]').forEach(el=>{const k=el.getAttribute('data-t');if(t[k]!==undefined)el.textContent=t[k];});
-    document.querySelectorAll('[data-th]').forEach(el=>{const k=el.getAttribute('data-th');if(t[k]!==undefined)el.innerHTML=t[k];});
-    document.querySelectorAll('[data-ph]').forEach(el=>{const k=el.getAttribute('data-ph');if(t[k]!==undefined)el.placeholder=t[k];});
-    document.getElementById('lf').textContent=t.lf;
-    document.getElementById('ll').textContent=t.ll;
-    document.getElementById('lfm').textContent=t.lfm;
-    document.getElementById('llm').textContent=t.llm;
-    ['pro','elite','max'].forEach(tier=>{
-        const isYr=currentBilling==='yearly';
-        const pe=document.getElementById('period-'+tier);
-        const ne=document.getElementById('note-'+tier);
-        if(pe)pe.textContent=isYr?t.mo_yr:t.mo;
-        if(ne)ne.textContent=isYr?t.note_yr:'';
+    // Cursor-tracked glow on tool cards
+    document.querySelectorAll('[data-card]').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty('--x', ((e.clientX - rect.left) / rect.width * 100) + '%');
+            card.style.setProperty('--y', ((e.clientY - rect.top) / rect.height * 100) + '%');
+        });
     });
-}
-function toggleLang(){applyLang(lang==='en'?'es':'en');}
 
-const PRICES={monthly:{pro:'9.99',elite:'19.99',max:'34.99'},yearly:{pro:'99.90',elite:'199.90',max:'349.90'}};
-const STRIPE_LINKS={monthly:{pro:"https://buy.stripe.com/7sY00i4LU162gYf4NT7Zu05",elite:"https://buy.stripe.com/bJe3cu2DM7uq37pcgl7Zu06",max:"https://buy.stripe.com/6oU9ASa6e4ieeQ79497Zu08"},yearly:{pro:"https://buy.stripe.com/aFaaEW4LU8yu37p2FL7Zu04",elite:"https://buy.stripe.com/5kQ5kCcem7uqcHZ1BH7Zu07",max:"https://buy.stripe.com/6oUeVc6U201Y37p1BH7Zu09"}};
-let currentBilling='monthly';
-function toggleBilling(type){
-    currentBilling=type;
-    const t=T[lang];
-    document.getElementById('btn-monthly').className='px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest transition-all '+(type==='monthly'?'bg-blue-600 text-white':'text-gray-400 hover:text-white');
-    document.getElementById('btn-yearly').className='px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest transition-all '+(type==='yearly'?'bg-blue-600 text-white':'text-gray-400 hover:text-white');
-    ['pro','elite','max'].forEach(tier=>{
-        document.getElementById('price-'+tier).textContent=PRICES[type][tier];
-        document.getElementById('period-'+tier).textContent=type==='yearly'?t.mo_yr:t.mo;
-        document.getElementById('note-'+tier).textContent=type==='yearly'?t.note_yr:'';
-    });
-}
-function handleCheckout(tier){const link=STRIPE_LINKS[currentBilling][tier];if(link&&link!==''){window.location.href=link;}else{openWaitlist();}}
-function openWaitlist(){document.getElementById('waitlist-modal').classList.remove('hidden');}
-function closeWaitlist(){document.getElementById('waitlist-modal').classList.add('hidden');document.getElementById('waitlist-email').value='';}
-async function submitWaitlist(){
-    const emailInput=document.getElementById('waitlist-email');
-    const email=emailInput.value.trim().toLowerCase();
-    if(!email||!email.includes('@')){alert(lang==='es'?'Por favor ingresa un correo válido.':'Please enter a valid email address.');return;}
-    try{await fetch('https://lylo-backend.onrender.com/join-waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})});}catch(err){}
-    alert(lang==='es'?'¡Solicitud recibida! Te responderemos en 24 horas.':'Application received! We\'ll respond within 24 hours with your founding member access link.');
-    closeWaitlist();
-}
-async function runBetaLogin(){
-    const rawEmail=prompt(lang==='es'?'Ingresa tu correo de acceso:':'Enter your Login Email:');
-    if(!rawEmail)return;
-    const email=rawEmail.toLowerCase().trim();
-    try{
-        const response=await fetch('https://lylo-backend.onrender.com/check-beta-access',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})});
-        const data=await response.json();
-        if(data.access){
-            alert(lang==='es'?`Acceso Concedido. Bienvenido ${data.name}.`:`Access Granted! Welcome ${data.name}. Deploying System.`);
-            window.location.assign('https://app.mylylo.pro/?email='+encodeURIComponent(email)+'&tier='+encodeURIComponent(data.tier||'max')+'&name='+encodeURIComponent(data.name)+'#/dashboard');
-        }else{alert(lang==='es'?'Acceso Denegado. Por favor solicita acceso de miembro fundador.':'Access Denied. If you are a new user, please apply for founding member access.');}
-    }catch(err){alert(lang==='es'?'Error de conexión. Verifica tu internet.':'Connection Error. Please check your internet.');}
-}
-document.addEventListener('DOMContentLoaded',()=>applyLang(lang));
-if('serviceWorker'in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/service-worker.js').catch(()=>{});});}
-async function pingBackend(){try{await fetch('https://lylo-backend.onrender.com/health');}catch(e){}}
-pingBackend();setInterval(pingBackend,4*60*1000);
 </script>
 </body>
 </html>
