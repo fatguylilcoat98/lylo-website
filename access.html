@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="User access for LYLO.pro — sign up or log in to unlock every curated AI tool. 7-day free trial, then $10/month.">
+    <title>User Access | LYLO.pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-3">
+            <img src="logo.png" alt="LYLO" class="w-9 h-9 object-contain">
+            <span class="text-xl font-black tracking-tight">LYLO<span class="text-violet-400">.pro</span></span>
+        </a>
+        <div class="flex items-center gap-3 text-sm font-semibold text-gray-400">
+            <a href="/" class="nav-link hidden sm:inline">Home</a>
+            <a href="builder.html" class="btn btn-ghost" style="padding:9px 14px;font-size:11px;">Builder Access</a>
+        </div>
+    </div>
+</nav>
+
+<section class="pt-36 md:pt-44 pb-24 px-6">
+    <div class="max-w-md mx-auto">
+        <div class="text-center mb-8 fade-up">
+            <p class="section-eyebrow mb-3">User Access</p>
+            <h1 class="text-3xl md:text-4xl font-black tracking-tight mb-3">Unlock every tool on LYLO.</h1>
+            <p class="text-gray-400 text-sm">7-day free trial. $10/month after. Cancel anytime.</p>
+        </div>
+
+        <div class="flex justify-center mb-6">
+            <div class="tab-bar" id="tabs">
+                <button class="tab active" data-tab="signup">Sign Up</button>
+                <button class="tab" data-tab="login">Log In</button>
+            </div>
+        </div>
+
+        <div class="tool-card glow-ring p-7 md:p-9">
+
+            <!-- SIGN UP -->
+            <form id="form-signup" class="space-y-5" data-pane="signup">
+                <div>
+                    <label class="field-label" for="su-name">Your Name</label>
+                    <input id="su-name" type="text" class="field" placeholder="Alex Rivera" required>
+                </div>
+                <div>
+                    <label class="field-label" for="su-email">Email</label>
+                    <input id="su-email" type="email" class="field" placeholder="you@email.com" required>
+                </div>
+                <div>
+                    <label class="field-label" for="su-pass">Password</label>
+                    <input id="su-pass" type="password" class="field" placeholder="At least 8 characters" minlength="8" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-full">Start 7-Day Free Trial</button>
+                <p class="text-center text-xs text-gray-500">No card required during early access. We'll email you when your spot opens.</p>
+            </form>
+
+            <!-- LOGIN -->
+            <form id="form-login" class="space-y-5 hidden" data-pane="login">
+                <div>
+                    <label class="field-label" for="li-email">Email</label>
+                    <input id="li-email" type="email" class="field" placeholder="you@email.com" required>
+                </div>
+                <div>
+                    <label class="field-label" for="li-pass">Password</label>
+                    <input id="li-pass" type="password" class="field" placeholder="Your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-full">Log In</button>
+                <p class="text-center text-xs text-gray-500"><a href="#" class="text-violet-300 hover:text-violet-200">Forgot password?</a></p>
+            </form>
+
+            <div id="msg" class="notice notice-ok mt-5 hidden"></div>
+        </div>
+
+        <p class="text-center text-xs text-gray-500 mt-8">
+            Building something? <a href="builder.html" class="text-violet-300 hover:text-violet-200 underline underline-offset-4">Apply for Builder Access →</a>
+        </p>
+    </div>
+</section>
+
+<footer class="border-t border-white/5 py-8 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-4 text-xs text-gray-500 uppercase tracking-widest">
+        <span>© 2026 LYLO.pro</span>
+        <div class="flex gap-5">
+            <a href="terms.html" class="hover:text-white">Terms</a>
+            <a href="privacy.html" class="hover:text-white">Privacy</a>
+            <a href="mailto:hello@lylo.pro" class="hover:text-white">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const tabs = document.querySelectorAll('#tabs .tab');
+    const panes = { signup: document.getElementById('form-signup'), login: document.getElementById('form-login') };
+    function activate(tab) {
+        tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+        Object.entries(panes).forEach(([k, el]) => el.classList.toggle('hidden', k !== tab));
+        document.getElementById('msg').classList.add('hidden');
+    }
+    tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.tab)));
+    if (location.hash === '#login') activate('login');
+
+    function show(text) {
+        const m = document.getElementById('msg');
+        m.textContent = text;
+        m.classList.remove('hidden');
+    }
+
+    document.getElementById('form-signup').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('su-email').value.trim();
+        const name = document.getElementById('su-name').value.trim();
+        try {
+            const list = JSON.parse(localStorage.getItem('lylo_users') || '[]');
+            if (!list.find(u => u.email === email)) list.push({ name, email, joined: new Date().toISOString() });
+            localStorage.setItem('lylo_users', JSON.stringify(list));
+        } catch (_) {}
+        e.target.reset();
+        show("You're on the early-access list. We'll email " + email + " when your spot opens.");
+    });
+
+    document.getElementById('form-login').addEventListener('submit', (e) => {
+        e.preventDefault();
+        e.target.reset();
+        show("Logins go live with the public launch. You'll get an email when it's ready.");
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="Builder access for LYLO.pro — apply to list your indie AI tool. 50% revenue share, transparent payouts, manual review.">
+    <title>Builder Access | LYLO.pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-3">
+            <img src="logo.png" alt="LYLO" class="w-9 h-9 object-contain">
+            <span class="text-xl font-black tracking-tight">LYLO<span class="text-violet-400">.pro</span></span>
+        </a>
+        <div class="flex items-center gap-3 text-sm font-semibold text-gray-400">
+            <a href="/" class="nav-link hidden sm:inline">Home</a>
+            <a href="access.html" class="btn btn-primary" style="padding:9px 14px;font-size:11px;">User Access</a>
+        </div>
+    </div>
+</nav>
+
+<section class="pt-36 md:pt-44 pb-12 px-6">
+    <div class="max-w-3xl mx-auto text-center fade-up">
+        <p class="section-eyebrow mb-3" style="color:#67e8f9;">Builder Access</p>
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4">Most builders don't fail because they can't build.</h1>
+        <p class="text-xl md:text-2xl text-gray-300 font-semibold mb-6">They fail because <span class="text-white">nobody sees what they built.</span></p>
+        <p class="text-gray-400 max-w-xl mx-auto">LYLO is a curated home for indie AI tools. Manual review, real distribution, transparent payouts.</p>
+    </div>
+</section>
+
+<section class="px-6 pb-16">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="tool-card p-6">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background:rgba(34,211,238,0.12);border:1px solid rgba(34,211,238,0.3);">
+                <i class="fas fa-percent text-cyan-300"></i>
+            </div>
+            <h3 class="font-black mb-1">50% builder pool</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Half of all subscriber revenue goes to builders, distributed monthly.</p>
+        </div>
+        <div class="tool-card p-6">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background:rgba(124,92,255,0.12);border:1px solid rgba(124,92,255,0.3);">
+                <i class="fas fa-fire text-violet-300"></i>
+            </div>
+            <h3 class="font-black mb-1">Engagement bonus</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">A slice of the pool rewards retention and real usage — not just upload counts.</p>
+        </div>
+        <div class="tool-card p-6">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);">
+                <i class="fas fa-chart-line text-amber-300"></i>
+            </div>
+            <h3 class="font-black mb-1">Transparent dashboard</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">See views, retention, payout estimate, and the formula behind every dollar.</p>
+        </div>
+    </div>
+</section>
+
+<section id="apply" class="px-6 pb-24">
+    <div class="max-w-3xl mx-auto">
+        <div class="flex justify-center mb-6">
+            <div class="tab-bar" id="tabs">
+                <button class="tab active" data-tab="apply">Apply</button>
+                <button class="tab" data-tab="login">Builder Login</button>
+            </div>
+        </div>
+
+        <div class="tool-card glow-ring p-7 md:p-10">
+
+            <!-- APPLY -->
+            <form id="form-apply" class="space-y-5" data-pane="apply">
+                <div class="notice notice-info">
+                    <strong class="block mb-1 text-white">Manual review only.</strong>
+                    We read every application. Tools are approved based on quality, originality, and whether real people would actually use them.
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="field-label" for="ap-name">Your Name</label>
+                        <input id="ap-name" type="text" class="field" placeholder="Alex Rivera" required>
+                    </div>
+                    <div>
+                        <label class="field-label" for="ap-email">Email</label>
+                        <input id="ap-email" type="email" class="field" placeholder="you@email.com" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="field-label" for="ap-tool">Tool Name</label>
+                    <input id="ap-tool" type="text" class="field" placeholder="What's it called?" required>
+                </div>
+                <div>
+                    <label class="field-label" for="ap-url">Tool URL or Demo Link</label>
+                    <input id="ap-url" type="url" class="field" placeholder="https://..." required>
+                </div>
+                <div>
+                    <label class="field-label" for="ap-desc">What does it do? (1–2 sentences)</label>
+                    <textarea id="ap-desc" class="field" placeholder="Help me understand the problem you're solving and who it's for." required></textarea>
+                </div>
+                <div>
+                    <label class="field-label" for="ap-why">Why LYLO? (Optional)</label>
+                    <textarea id="ap-why" class="field" placeholder="What kind of users are you hoping to reach?"></textarea>
+                </div>
+                <div>
+                    <label class="field-label" for="ap-pass">Set a Password</label>
+                    <input id="ap-pass" type="password" class="field" placeholder="At least 8 characters" minlength="8" required>
+                    <p class="text-xs text-gray-500 mt-2">Used for your builder dashboard once you're approved.</p>
+                </div>
+                <button type="submit" class="btn btn-cyan w-full">Submit Application</button>
+            </form>
+
+            <!-- LOGIN -->
+            <form id="form-login" class="space-y-5 hidden" data-pane="login">
+                <div>
+                    <label class="field-label" for="bl-email">Builder Email</label>
+                    <input id="bl-email" type="email" class="field" placeholder="you@email.com" required>
+                </div>
+                <div>
+                    <label class="field-label" for="bl-pass">Password</label>
+                    <input id="bl-pass" type="password" class="field" placeholder="Your password" required>
+                </div>
+                <button type="submit" class="btn btn-cyan w-full">Log In to Dashboard</button>
+                <p class="text-center text-xs text-gray-500">Not approved yet? <a href="#apply" class="text-cyan-300 hover:text-cyan-200" data-switch="apply">Apply here</a>.</p>
+            </form>
+
+            <div id="msg" class="notice notice-ok mt-5 hidden"></div>
+        </div>
+
+        <p class="text-center text-xs text-gray-500 mt-8 max-w-xl mx-auto leading-relaxed">
+            <strong class="text-gray-300">The rule:</strong> uploading 10 junk apps does not get you 10x revenue.
+            Quality matters more than quantity. Builders users genuinely love earn the most.
+        </p>
+    </div>
+</section>
+
+<footer class="border-t border-white/5 py-8 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-4 text-xs text-gray-500 uppercase tracking-widest">
+        <span>© 2026 LYLO.pro</span>
+        <div class="flex gap-5">
+            <a href="terms.html" class="hover:text-white">Terms</a>
+            <a href="privacy.html" class="hover:text-white">Privacy</a>
+            <a href="mailto:builders@lylo.pro" class="hover:text-white">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const tabs = document.querySelectorAll('#tabs .tab');
+    const panes = { apply: document.getElementById('form-apply'), login: document.getElementById('form-login') };
+    function activate(tab) {
+        tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+        Object.entries(panes).forEach(([k, el]) => el.classList.toggle('hidden', k !== tab));
+        document.getElementById('msg').classList.add('hidden');
+    }
+    tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.tab)));
+    document.querySelectorAll('[data-switch]').forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); activate(a.dataset.switch); }));
+    if (location.hash === '#login') activate('login');
+
+    function show(text) {
+        const m = document.getElementById('msg');
+        m.textContent = text;
+        m.classList.remove('hidden');
+    }
+
+    document.getElementById('form-apply').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = {
+            name: document.getElementById('ap-name').value.trim(),
+            email: document.getElementById('ap-email').value.trim(),
+            tool: document.getElementById('ap-tool').value.trim(),
+            url: document.getElementById('ap-url').value.trim(),
+            desc: document.getElementById('ap-desc').value.trim(),
+            why: document.getElementById('ap-why').value.trim(),
+            submitted: new Date().toISOString()
+        };
+        try {
+            const list = JSON.parse(localStorage.getItem('lylo_builders') || '[]');
+            list.push(data);
+            localStorage.setItem('lylo_builders', JSON.stringify(list));
+        } catch (_) {}
+        e.target.reset();
+        show("Application received for " + data.tool + ". We review every application personally — expect a reply at " + data.email + " within a few days.");
+    });
+
+    document.getElementById('form-login').addEventListener('submit', (e) => {
+        e.preventDefault();
+        e.target.reset();
+        show("Builder dashboards go live as approvals roll out. You'll get a sign-in email once your tool is live.");
+    });
+</script>
+</body>
+</html>
