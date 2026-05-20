@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream-50: #FDFBF6;
+  --cream-100: #FBF8F1;
+  --ink-900: #1F1B17;
+  --sky-300: #B0CBE0;
+  --gold-400: #D4A85A;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--cream-50);
+  color: var(--ink-900);
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Accessibility — focus ring */
+:focus-visible {
+  outline: 2px solid var(--gold-400);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom gradient utilities */
+.bg-warm-gradient {
+  background: radial-gradient(
+      1200px 600px at 10% 10%,
+      rgba(244, 230, 196, 0.65),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 600px at 90% 30%,
+      rgba(176, 203, 224, 0.55),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 500px at 50% 100%,
+      rgba(246, 232, 194, 0.45),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #FDFBF6 0%, #FBF8F1 100%);
+}
+
+.bg-card-gradient {
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(253, 251, 246, 0.85) 100%
+  );
+  backdrop-filter: blur(6px);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Subtle grain overlay */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
