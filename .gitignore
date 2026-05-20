@@ -8,7 +8,8 @@
 
 # next.js
 /.next/
-/out/
+# NOTE: /out/ is intentionally NOT ignored — it's the deployable
+# static export that gets uploaded to Porkbun static hosting.
 
 # production
 /build
