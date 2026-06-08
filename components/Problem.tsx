@@ -1,29 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CloudRain, Hourglass, MessageCircleHeart, Users } from "lucide-react";
+import { BookOpen, Mic, Utensils, HeartCrack } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
 const items = [
   {
-    icon: CloudRain,
-    title: "Quiet days, longer than they should be",
-    body: "Many seniors go hours — sometimes whole days — without a meaningful conversation. Loneliness becomes part of the routine.",
+    icon: HeartCrack,
+    title: "Some goodbyes come too early",
+    body: "A child grows up without a real memory of a parent’s voice. A family loses the person before the stories were ever recorded.",
   },
   {
-    icon: Hourglass,
-    title: "Caregivers stretched thin",
-    body: "Family caregivers carry love and exhaustion at the same time. There is rarely enough of them to go around.",
+    icon: Utensils,
+    title: "Recipes disappear",
+    body: "Biscuits and gravy. Cornbread. Holiday meals. The little details usually live in someone’s hands, not in a cookbook.",
   },
   {
-    icon: MessageCircleHeart,
-    title: "Conversations that disappear",
-    body: "Most chats with technology start from zero every time. Nothing is remembered. Nothing builds on what came before.",
+    icon: BookOpen,
+    title: "Family stories change over time",
+    body: "People mean well, but memories shift. Lylo preserves the story as close as possible to the person who actually lived it.",
   },
   {
-    icon: Users,
-    title: "Connection still matters most",
-    body: "Seniors don't want to be entertained — they want to feel known, recognized, and connected to the people they love.",
+    icon: Mic,
+    title: "Voices matter",
+    body: "Sometimes the most valuable thing is not a summary. It is hearing the person say it in their own words.",
   },
 ];
 
@@ -35,11 +35,11 @@ export default function Problem() {
           eyebrow="The Problem"
           title={
             <>
-              Too many seniors{" "}
-              <span className="italic text-ink-700">feel forgotten.</span>
+              Too many memories{" "}
+              <span className="italic text-ink-700">disappear too soon.</span>
             </>
           }
-          subtitle="The world keeps moving. Conversations get shorter. The people who shaped our lives can quietly slip out of view."
+          subtitle="Families often do not realize what they wish they had saved until the person who could tell the story is gone."
         />
 
         <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -49,11 +49,7 @@ export default function Problem() {
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{
-                duration: 0.55,
-                ease: "easeOut",
-                delay: idx * 0.07,
-              }}
+              transition={{ duration: 0.55, ease: "easeOut", delay: idx * 0.07 }}
               className="group relative rounded-3xl border border-ink-900/5 bg-white/80 p-7 shadow-soft backdrop-blur transition-all hover:-translate-y-1 hover:bg-white hover:shadow-warm"
             >
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cream-100 to-sky-100 text-sky-700">
