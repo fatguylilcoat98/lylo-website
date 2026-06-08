@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CalendarDays } from "lucide-react";
+import { ArrowRight, Mic, ShieldCheck } from "lucide-react";
 import AmbientBackground from "./AmbientBackground";
 import ChatMockup from "./ChatMockup";
 
@@ -29,9 +29,9 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.05 }}
             className="mt-6 font-serif text-[2.6rem] leading-[1.04] tracking-tight text-ink-900 text-balance sm:text-6xl md:text-[4.25rem]"
           >
-            AI companionship{" "}
+            Preserve the stories{" "}
             <span className="relative inline-block">
-              <span className="relative z-10">that remembers.</span>
+              <span className="relative z-10">your family should never lose.</span>
               <span
                 aria-hidden="true"
                 className="absolute inset-x-0 bottom-1 -z-0 h-3 rounded-full bg-gold-100 sm:h-4"
@@ -45,9 +45,9 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
             className="mt-6 max-w-xl text-lg leading-relaxed text-ink-600 text-pretty sm:text-xl"
           >
-            Lylo helps seniors and families stay connected through warm,
-            continuity-focused conversations designed to help loved ones feel
-            remembered, supported, and emotionally connected.
+            Lylo helps families record memories, recipes, voice stories, life
+            lessons, and messages for future generations in a governed legacy
+            vault built on truth, consent, and care.
           </motion.p>
 
           <motion.div
@@ -61,17 +61,14 @@ export default function Hero() {
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-7 py-4 text-base font-medium text-cream-50 shadow-soft transition-all hover:-translate-y-0.5 hover:bg-ink-800 hover:shadow-warm"
             >
               Request Early Access
-              <ArrowRight
-                size={18}
-                className="transition-transform group-hover:translate-x-1"
-              />
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="#access"
+              href="#legacy"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-900/15 bg-white/70 px-7 py-4 text-base font-medium text-ink-800 backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-white"
             >
-              <CalendarDays size={18} />
-              Book a Demo
+              <Mic size={18} />
+              See Memory Vault
             </a>
           </motion.div>
 
@@ -82,16 +79,12 @@ export default function Hero() {
             className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-500"
           >
             <span className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
-              Privacy-first by design
+              <ShieldCheck size={16} />
+              Truth-governed memory
             </span>
             <span className="inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
-              Human-supervised
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              In pilot with families
+              Family permission controls
             </span>
           </motion.div>
         </div>
@@ -101,7 +94,6 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-            className="relative"
           >
             <ChatMockup />
           </motion.div>
