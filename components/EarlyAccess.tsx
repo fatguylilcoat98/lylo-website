@@ -76,7 +76,7 @@ export default function EarlyAccess() {
             className="lg:col-span-3"
           >
             <form
-              action="https://formsubmit.co/mylylo.ai@gmail.com"
+              action="https://formsubmit.co/stangman9898@gmail.com"
               method="POST"
               className="rounded-3xl border border-ink-900/5 bg-white p-7 shadow-warm sm:p-9"
             >
