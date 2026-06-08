@@ -1,32 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Home, HeartHandshake, Stethoscope, Building2 } from "lucide-react";
+import { Baby, HeartPulse, Home, Users } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
 const audiences = [
   {
     icon: Home,
-    title: "Seniors aging in place",
-    body: "A familiar, patient companion that grows alongside their days — helping the world feel a little less quiet.",
+    title: "Families with aging loved ones",
+    body: "Preserve memories, recipes, stories, and life lessons before they disappear.",
     accent: "from-gold-100 to-cream-100",
   },
   {
-    icon: HeartHandshake,
-    title: "Families supporting loved ones remotely",
-    body: "Stay close to mom or dad between visits and calls, with optional gentle updates that keep you in the loop.",
+    icon: HeartPulse,
+    title: "Hospice and serious illness",
+    body: "Give someone a gentle way to record messages, stories, and words their loved ones may need later.",
     accent: "from-sky-100 to-cream-100",
   },
   {
-    icon: Stethoscope,
-    title: "Caregivers",
-    body: "A supportive companion that takes some of the everyday emotional weight off — so you can be present where it matters most.",
+    icon: Baby,
+    title: "Children who may not remember",
+    body: "Save first-hand memories from a parent or grandparent for children who are too young to hold them yet.",
     accent: "from-cream-100 to-gold-100",
   },
   {
-    icon: Building2,
-    title: "Assisted living communities",
-    body: "Augment the wonderful staff you already have with a calm, continuity-focused presence available around the clock.",
+    icon: Users,
+    title: "Family legacy keepers",
+    body: "Build a governed family archive with permissions, transcripts, recordings, and protected private memories.",
     accent: "from-sky-100 to-gold-100",
   },
 ];
@@ -37,8 +37,8 @@ export default function WhoFor() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeader
           eyebrow="Who it's for"
-          title="Built for the people doing the loving."
-          subtitle="Lylo is designed for the everyday moments — the ones too small to schedule, but too important to lose."
+          title="Built for families before, during, and after goodbye."
+          subtitle="Lylo is for people who know that a voice, a recipe, a story, or one honest message can become priceless later."
         />
 
         <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
