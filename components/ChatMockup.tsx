@@ -1,37 +1,37 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Heart, Sparkles } from "lucide-react";
+import { Archive, Mic, ShieldCheck, Sparkles } from "lucide-react";
 
 type Bubble = {
-  from: "mattie" | "user";
+  from: "lylo" | "user";
   text: string;
   note?: string;
 };
 
 const bubbles: Bubble[] = [
   {
-    from: "mattie",
-    text: "Good morning, Margaret. How did you sleep after the storm last night?",
-    note: "Remembers last night's weather",
+    from: "lylo",
+    text: "What memory would you like to preserve today?",
+    note: "Starts as a recorder",
   },
   {
     from: "user",
-    text: "A little restless, but I'm okay. The rain was loud.",
+    text: "I want to save my dad’s biscuits and gravy recipe.",
   },
   {
-    from: "mattie",
-    text: "I'm glad you're alright. Did Emily make it home safely from her trip on Sunday?",
-    note: "Remembers your granddaughter",
+    from: "lylo",
+    text: "Go ahead. I’ll record it in your words and mark it as a recipe memory.",
+    note: "Does not invent details",
   },
   {
     from: "user",
-    text: "Yes! She called me yesterday. She sounded happy.",
+    text: "The secret was extra black pepper and cooking the gravy slow.",
   },
   {
-    from: "mattie",
-    text: "That's wonderful. Would you like me to remind you to call her back this Friday — like you usually do?",
-    note: "Encourages family connection",
+    from: "lylo",
+    text: "Saved. Should this memory be shared with family, kept private, or locked in your vault?",
+    note: "Asks permission first",
   },
 ];
 
@@ -57,19 +57,19 @@ export default function ChatMockup() {
         <div className="flex items-center gap-3 border-b border-ink-900/5 pb-4">
           <div className="relative">
             <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-gold-200 to-sky-200 text-ink-900">
-              <Heart size={20} strokeWidth={2.2} />
+              <Archive size={20} strokeWidth={2.2} />
             </div>
             <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white bg-emerald-400" />
           </div>
           <div className="flex-1">
             <p className="font-serif text-lg leading-none text-ink-900">
-              Mattie
+              Lylo
             </p>
             <p className="mt-1 text-xs text-ink-500">
-              Listening • Remembering you
+              Recording • Preserving memories
             </p>
           </div>
-          <Sparkles size={18} className="text-gold-400" />
+          <ShieldCheck size={18} className="text-gold-400" />
         </div>
 
         <motion.ul
@@ -87,7 +87,7 @@ export default function ChatMockup() {
             >
               <div
                 className={`max-w-[85%] rounded-2xl px-4 py-3 text-[15px] leading-relaxed sm:text-[16px] ${
-                  b.from === "mattie"
+                  b.from === "lylo"
                     ? "bg-cream-100 text-ink-800 rounded-tl-md"
                     : "bg-sky-100 text-ink-800 rounded-tr-md"
                 }`}
@@ -116,22 +116,24 @@ export default function ChatMockup() {
               style={{ animationDelay: "0.3s" }}
             />
           </div>
-          <p className="text-sm text-ink-500">Mattie is thinking with you…</p>
+          <p className="text-sm text-ink-500">
+            Lylo is saving this with permission…
+          </p>
         </div>
       </motion.div>
 
-      {/* Decorative continuity card */}
       <motion.div
         initial={{ opacity: 0, x: 20, y: 20, rotate: 4 }}
         animate={{ opacity: 1, x: 0, y: 0, rotate: 4 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
         className="absolute -bottom-6 -right-3 hidden w-56 rounded-2xl border border-ink-900/5 bg-white/95 p-4 shadow-warm sm:block"
       >
-        <p className="text-[11px] font-semibold uppercase tracking-widest text-sky-600">
-          Memory
+        <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-sky-600">
+          <Mic size={12} />
+          Memory Vault
         </p>
         <p className="mt-1.5 text-sm leading-snug text-ink-800">
-          “Margaret&apos;s granddaughter is Emily. They call Fridays.”
+          “Dad’s biscuits and gravy recipe. Family shared. Recorded from original speaker.”
         </p>
       </motion.div>
     </div>
