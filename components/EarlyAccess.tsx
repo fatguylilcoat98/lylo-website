@@ -1,19 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
 export default function EarlyAccess() {
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Static export: this is a placeholder. Wire to your form provider later.
-    setSubmitted(true);
-  };
-
   return (
     <section id="access" className="relative overflow-hidden py-24 sm:py-32">
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-cream-50 via-cream-100 to-cream-50" />
@@ -29,8 +20,8 @@ export default function EarlyAccess() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeader
           eyebrow="Early Access · Pilot Program"
-          title="Help shape the future of compassionate AI."
-          subtitle="Lylo and Mattie are currently in early testing with seniors, families, and a small group of partner organizations. Join us as we shape what comes next."
+          title="Help shape LYLO the right way."
+          subtitle="LYLO is currently looking for families, caregivers, hospice workers, elder-care organizations, and partners who care about preserving real memories with truth, consent, and care."
         />
 
         <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-5 lg:gap-12">
@@ -47,10 +38,10 @@ export default function EarlyAccess() {
               </p>
               <ul className="mt-5 space-y-4">
                 {[
-                  "Early access to Mattie as it grows",
+                  "Early access updates as LYLO grows",
                   "A direct line to the founding team",
-                  "Pilot opportunities for organizations & communities",
-                  "Quiet, monthly updates — no marketing noise",
+                  "Pilot opportunities for families and organizations",
+                  "Quiet updates — no spam, no junk",
                 ].map((t) => (
                   <li key={t} className="flex items-start gap-3">
                     <CheckCircle2
@@ -66,12 +57,12 @@ export default function EarlyAccess() {
 
               <div className="mt-7 rounded-2xl bg-cream-100 p-5">
                 <p className="flex items-center gap-2 text-sm font-medium text-gold-500">
-                  <Sparkles size={16} /> A note from our team
+                  <Sparkles size={16} /> A note from Chris
                 </p>
                 <p className="mt-2 text-[15px] leading-relaxed text-ink-700">
-                  We move slowly on purpose. Every pilot family helps us build
-                  something kinder and safer for the next one. Thank you for
-                  being part of that.
+                  LYLO is being built slowly on purpose. Memories are someone&apos;s
+                  life. The system has to preserve what was really said, not invent
+                  what sounds good.
                 </p>
               </div>
             </div>
@@ -85,114 +76,105 @@ export default function EarlyAccess() {
             className="lg:col-span-3"
           >
             <form
-              onSubmit={handleSubmit}
+              action="https://formsubmit.co/mylylo.ai@gmail.com"
+              method="POST"
               className="rounded-3xl border border-ink-900/5 bg-white p-7 shadow-warm sm:p-9"
             >
-              {!submitted ? (
-                <>
-                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                    <Field
-                      label="Name"
-                      name="name"
-                      type="text"
-                      required
-                      placeholder="Your full name"
-                    />
-                    <Field
-                      label="Email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="you@example.com"
-                    />
-                  </div>
-                  <div className="mt-5">
-                    <Field
-                      label="Organization (optional)"
-                      name="organization"
-                      type="text"
-                      placeholder="Family, caregiver, senior living community, nonprofit…"
-                    />
-                  </div>
-                  <div className="mt-5">
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-ink-700"
-                    >
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      placeholder="Tell us a little about who you're hoping to support, or what kind of pilot you're imagining."
-                      className="mt-2 w-full rounded-2xl border border-ink-900/10 bg-cream-50 px-4 py-3 text-base text-ink-900 placeholder:text-ink-400 focus:border-gold-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-gold-200"
-                    />
-                  </div>
+              <input
+                type="hidden"
+                name="_subject"
+                value="New LYLO Early Access Request"
+              />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
 
-                  <fieldset className="mt-5">
-                    <legend className="block text-sm font-medium text-ink-700">
-                      I&apos;m interested in
-                    </legend>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {[
-                        "Join Early Access",
-                        "Request a Pilot Demo",
-                        "Partnership / Nonprofit",
-                      ].map((opt, i) => (
-                        <label
-                          key={opt}
-                          className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-ink-900/10 bg-cream-50 px-4 py-2 text-sm text-ink-800 transition-colors hover:bg-cream-100"
-                        >
-                          <input
-                            type="checkbox"
-                            name="interest"
-                            value={opt}
-                            defaultChecked={i === 0}
-                            className="h-4 w-4 rounded border-ink-900/20 accent-gold-400"
-                          />
-                          {opt}
-                        </label>
-                      ))}
-                    </div>
-                  </fieldset>
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <Field
+                  label="Name"
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Your full name"
+                />
+                <Field
+                  label="Email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="you@example.com"
+                />
+              </div>
 
-                  <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <p className="text-xs text-ink-500">
-                      We&apos;ll only use your information to follow up about
-                      Lylo. Never sold, never spammed.
-                    </p>
-                    <button
-                      type="submit"
-                      className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-base font-medium text-cream-50 shadow-soft transition-all hover:-translate-y-0.5 hover:bg-ink-800 hover:shadow-warm"
-                    >
-                      Send request
-                      <ArrowRight
-                        size={18}
-                        className="transition-transform group-hover:translate-x-1"
-                      />
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex flex-col items-center justify-center py-10 text-center"
+              <div className="mt-5">
+                <Field
+                  label="Organization (optional)"
+                  name="organization"
+                  type="text"
+                  placeholder="Family, caregiver, senior living community, nonprofit…"
+                />
+              </div>
+
+              <div className="mt-5">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-ink-700"
                 >
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
-                    <CheckCircle2 size={28} />
-                  </div>
-                  <h3 className="font-serif text-2xl text-ink-900">
-                    Thank you — we&apos;ll be in touch.
-                  </h3>
-                  <p className="mt-3 max-w-md text-[15px] leading-relaxed text-ink-600">
-                    Someone from our small founding team will personally read
-                    your note and follow up soon. We&apos;re grateful you&apos;re
-                    here.
-                  </p>
-                </motion.div>
-              )}
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  placeholder="Tell us who you want to preserve memories for, or what kind of pilot you are interested in."
+                  className="mt-2 w-full rounded-2xl border border-ink-900/10 bg-cream-50 px-4 py-3 text-base text-ink-900 placeholder:text-ink-400 focus:border-gold-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-gold-200"
+                />
+              </div>
+
+              <fieldset className="mt-5">
+                <legend className="block text-sm font-medium text-ink-700">
+                  I&apos;m interested in
+                </legend>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {[
+                    "Join Early Access",
+                    "Request a Pilot Demo",
+                    "Family Memory Vault",
+                    "Hospice / Care Partner",
+                    "Partnership / Nonprofit",
+                  ].map((opt, i) => (
+                    <label
+                      key={opt}
+                      className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-ink-900/10 bg-cream-50 px-4 py-2 text-sm text-ink-800 transition-colors hover:bg-cream-100"
+                    >
+                      <input
+                        type="checkbox"
+                        name="interest"
+                        value={opt}
+                        defaultChecked={i === 0}
+                        className="h-4 w-4 rounded border-ink-900/20 accent-gold-400"
+                      />
+                      {opt}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+
+              <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-xs text-ink-500">
+                  We&apos;ll only use your information to follow up about LYLO.
+                  Never sold, never spammed.
+                </p>
+                <button
+                  type="submit"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-base font-medium text-cream-50 shadow-soft transition-all hover:-translate-y-0.5 hover:bg-ink-800 hover:shadow-warm"
+                >
+                  Send request
+                  <ArrowRight
+                    size={18}
+                    className="transition-transform group-hover:translate-x-1"
+                  />
+                </button>
+              </div>
             </form>
           </motion.div>
         </div>
@@ -216,10 +198,7 @@ function Field({
 }) {
   return (
     <div>
-      <label
-        htmlFor={name}
-        className="block text-sm font-medium text-ink-700"
-      >
+      <label htmlFor={name} className="block text-sm font-medium text-ink-700">
         {label}
         {required && <span className="ml-1 text-gold-500">*</span>}
       </label>
