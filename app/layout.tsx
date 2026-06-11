@@ -17,32 +17,34 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mylylo.pro"),
-  title: "Lylo — AI companionship that remembers",
+  title: "LYLO — Love Your Loved One",
   description:
-    "Lylo helps seniors and families stay connected through warm, continuity-focused conversations designed to help loved ones feel remembered, supported, and emotionally connected.",
+    "LYLO preserves family stories, recipes, voices, life lessons, and memories in a secure, governed legacy vault — so the people you love are never truly forgotten.",
   keywords: [
-    "Lylo",
-    "Mattie",
-    "AI companion",
-    "senior care",
-    "aging in place",
-    "caregiver support",
-    "compassionate AI",
+    "LYLO",
     "Love Your Loved One",
+    "family legacy",
+    "memory preservation",
+    "legacy vault",
+    "family stories",
+    "senior care",
+    "Remember Preserve Cherish",
+    "family history",
+    "voice recording",
   ],
   openGraph: {
-    title: "Lylo — AI companionship that remembers",
+    title: "LYLO — Love Your Loved One",
     description:
-      "Warm, continuity-focused AI companionship for seniors and the families who love them.",
+      "Preserve family stories, recipes, voices, and life lessons in a secure governed vault — so the people you love are never truly forgotten.",
     url: "https://mylylo.pro",
-    siteName: "Lylo",
+    siteName: "LYLO",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lylo — AI companionship that remembers",
+    title: "LYLO — Love Your Loved One",
     description:
-      "Warm, continuity-focused AI companionship for seniors and the families who love them.",
+      "Preserve family stories, recipes, voices, and life lessons in a secure governed vault.",
   },
 };
 
