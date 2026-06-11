@@ -6,8 +6,9 @@ import { Menu, X } from "lucide-react";
 import LyloMark from "./LyloMark";
 
 const links = [
-  { href: "#mattie", label: "Meet Mattie" },
-  { href: "#safety", label: "Safety" },
+  { href: "#legacy", label: "Legacy Vault" },
+  { href: "#vision", label: "Our Vision" },
+  { href: "#safety", label: "Privacy" },
   { href: "#who", label: "Who it's for" },
   { href: "#access", label: "Early Access" },
 ];
@@ -31,16 +32,16 @@ export default function Nav() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
         <a
           href="#top"
-          aria-label="Lylo home"
+          aria-label="LYLO home"
           className="rounded-lg focus:outline-none"
         >
-          <LyloMark />
+          <LyloMark variant="nav" />
         </a>
 
-        <nav className="hidden items-center gap-9 md:flex">
+        <nav className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
             <a
               key={l.href}

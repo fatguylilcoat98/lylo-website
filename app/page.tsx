@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
 import Mattie from "@/components/Mattie";
+import Vision from "@/components/Vision";
 import Safety from "@/components/Safety";
 import WhoFor from "@/components/WhoFor";
 import EarlyAccess from "@/components/EarlyAccess";
@@ -15,6 +16,7 @@ export default function Page() {
       <Hero />
       <Problem />
       <Mattie />
+      <Vision />
       <Safety />
       <WhoFor />
       <EarlyAccess />

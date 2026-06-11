@@ -2,44 +2,44 @@
 
 import { motion } from "framer-motion";
 import {
+  Lock,
   ShieldCheck,
   Eye,
-  Lock,
+  Users2,
   HeartHandshake,
   CheckCircle2,
-  Users2,
 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
 const pillars = [
   {
     icon: Lock,
-    title: "User-controlled memory",
-    body: "You decide what Mattie remembers and what to let go. Memories can be reviewed, edited, or deleted at any time.",
+    title: "Your vault, your rules",
+    body: "You decide what gets recorded, what stays private, and who receives access. Every permission is yours to set, adjust, or revoke at any time.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Passcode-protected access",
+    body: "Individual memories and your entire vault can be secured with passcode protection. Nothing opens without your direct authorization.",
+  },
+  {
+    icon: CheckCircle2,
+    title: "Family access by invitation only",
+    body: "No family member receives access to a memory unless the creator explicitly granted it. Consent is not optional — it is built into every step.",
   },
   {
     icon: Eye,
     title: "Transparent by design",
-    body: "Mattie is always clearly an AI. No pretending to be human, no hidden agenda, no manipulation.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Privacy boundaries",
-    body: "Conversations are private. Sensitive information stays protected with strict access controls and clear data practices.",
+    body: "LYLO is always clearly an AI. No pretending to be human, no hidden agenda, no manipulation. What you see is exactly what it is.",
   },
   {
     icon: HeartHandshake,
-    title: "Support, not replacement",
-    body: "Mattie is designed to encourage human relationships — never to replace caregivers, family, or medical professionals.",
-  },
-  {
-    icon: CheckCircle2,
-    title: "Designed to avoid misinformation",
-    body: "Mattie is built to stay within what it knows, defer when it doesn't, and never offer medical or legal advice it isn't qualified to give.",
+    title: "Your data is never sold",
+    body: "Your family's stories are never sold, never analyzed for advertising, and never shared with third parties. Your memories belong to your family — full stop.",
   },
   {
     icon: Users2,
-    title: "Human oversight matters",
+    title: "Human oversight built in",
     body: "Families and caregivers can stay in the loop with optional summaries and alerts — keeping people, not algorithms, at the center.",
   },
 ];
@@ -54,14 +54,14 @@ export default function Safety() {
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeader
-          eyebrow="Safety & Transparency"
+          eyebrow="Privacy & Governance"
           title={
             <>
-              Built with safety and{" "}
-              <span className="italic text-ink-700">transparency in mind.</span>
+              Secure by design.{" "}
+              <span className="italic text-ink-700">Governed by consent.</span>
             </>
           }
-          subtitle="Trust isn't a feature we add later. It's the foundation Lylo and Mattie are built on, from the very first conversation."
+          subtitle="Privacy is not a feature we added later. It is the foundation everything else is built on. Your memories stay under your control — always."
         />
 
         <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
