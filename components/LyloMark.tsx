@@ -13,7 +13,7 @@ export default function LyloMark({ className, variant = "nav" }: Props) {
 
   return (
     <Image
-      src="/lylo-logo.png"
+      src="/lylo-logo.jpg"
       alt="LYLO — Love Your Loved One"
       width={dims.width}
       height={dims.height}
