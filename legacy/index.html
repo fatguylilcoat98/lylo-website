@@ -6,7 +6,7 @@
 
   <title>LYLO — Love Your Loved One</title>
 
-  <meta name="description" content="LYLO is a governed legacy vault that helps families preserve stories, voices, memories, recipes, and messages with truth, consent, and care." />
+  <meta name="description" content="LYLO is a governed legacy vault that helps families preserve stories, voices, recipes, memories, and legacy messages with truth, consent, and care." />
   <meta property="og:title" content="LYLO — Love Your Loved One" />
   <meta property="og:description" content="Preserve the stories, voices, and memories your family should never lose." />
   <meta property="og:type" content="website" />
@@ -22,12 +22,9 @@
       --gold: #f8c76b;
       --blue: #38bdf8;
       --violet: #8b5cf6;
-      --soft: rgba(255,255,255,0.07);
     }
 
-    * {
-      scroll-behavior: smooth;
-    }
+    * { scroll-behavior: smooth; }
 
     body {
       font-family: Inter, sans-serif;
@@ -114,17 +111,15 @@
       color: transparent;
     }
 
-    .logo-img {
-      width: 52px;
-      height: 52px;
+    .nav-logo {
+      height: 54px;
+      width: auto;
       object-fit: contain;
-      border-radius: 14px;
-      background: rgba(255,255,255,.92);
-      padding: 4px;
     }
 
     .hero-logo {
-      max-width: 280px;
+      max-width: 420px;
+      width: 100%;
       margin-bottom: 28px;
       filter: drop-shadow(0 18px 45px rgba(0,0,0,.5));
     }
@@ -138,15 +133,10 @@
 
 <body>
 
-  <!-- NAV -->
   <nav class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3">
-        <img src="lylo-logo.png" alt="LYLO logo" class="logo-img" />
-        <div>
-          <div class="font-black text-xl leading-none">LYLO</div>
-          <div class="text-[10px] text-gray-400 uppercase tracking-widest">Love Your Loved One</div>
-        </div>
+      <a href="#" class="flex items-center">
+        <img src="lylo-logo.png" alt="LYLO — Love Your Loved One" class="nav-logo" />
       </a>
 
       <div class="hidden md:flex items-center gap-7 text-sm text-gray-300 font-semibold">
@@ -160,7 +150,6 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <section class="hero-bg min-h-screen flex items-center px-6 pt-32 pb-20">
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
       <div>
@@ -196,9 +185,7 @@
             <i class="fa-solid fa-microphone-lines text-yellow-300 text-xl"></i>
             <h3 class="font-black text-xl">Memory Recorder</h3>
           </div>
-          <p class="text-gray-300 leading-relaxed">
-            “Tell me about your mother’s biscuit recipe.”
-          </p>
+          <p class="text-gray-300 leading-relaxed">“Tell me about your mother’s biscuit recipe.”</p>
         </div>
 
         <div class="rounded-3xl bg-black/40 border border-white/10 p-6 mb-5">
@@ -226,7 +213,6 @@
 
   <div class="divider-glow"></div>
 
-  <!-- WHY -->
   <section class="py-24 px-6 border-t border-white/10">
     <div class="max-w-5xl mx-auto text-center">
       <p class="eyebrow mb-4">Why This Matters</p>
@@ -239,7 +225,6 @@
     </div>
   </section>
 
-  <!-- WHAT HAPPENS LATER -->
   <section class="py-24 px-6 bg-[#080808] border-y border-white/10">
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
       <div>
@@ -269,7 +254,6 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
   <section id="how" class="py-24 px-6 border-y border-white/10">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-14">
@@ -305,37 +289,6 @@
     </div>
   </section>
 
-  <!-- MODES -->
-  <section class="py-24 px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-14">
-        <p class="eyebrow mb-4">Built Around Comfort</p>
-        <h2 class="text-4xl md:text-6xl font-black">Start as a recorder. Grow only when ready.</h2>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="card">
-          <i class="fa-solid fa-circle-dot text-yellow-300 text-3xl mb-5"></i>
-          <h3 class="text-3xl font-black mb-4">Memory Taker Mode</h3>
-          <p class="text-gray-400 leading-relaxed mb-5">
-            For people who are nervous about AI, LYLO can begin as a simple recorder. No complicated chat. No pressure. Just preserve what matters.
-          </p>
-          <p class="text-gray-300 font-semibold">“Go ahead and record your memory.”</p>
-        </div>
-
-        <div class="card">
-          <i class="fa-solid fa-comments text-sky-300 text-3xl mb-5"></i>
-          <h3 class="text-3xl font-black mb-4">Companion Mode</h3>
-          <p class="text-gray-400 leading-relaxed mb-5">
-            When the person becomes comfortable, LYLO can help ask gentle questions, organize memories, and support recall using only approved stored memories.
-          </p>
-          <p class="text-gray-300 font-semibold">“Would you like help remembering that story?”</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VAULT -->
   <section id="vault" class="py-24 px-6 bg-[#080808] border-y border-white/10">
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
       <div>
@@ -379,36 +332,6 @@
     </div>
   </section>
 
-  <!-- VOICE -->
-  <section class="py-24 px-6">
-    <div class="max-w-5xl mx-auto text-center">
-      <p class="eyebrow mb-4">Voice Stories</p>
-      <h2 class="text-4xl md:text-6xl font-black mb-8">Hear it in their voice, only with consent.</h2>
-      <p class="text-gray-300 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-10">
-        When voice recording is available and approved, families may choose to hear the original recording, read the transcript, or have LYLO summarize the memory. Voice should be a gift, not a trick.
-      </p>
-
-      <div class="grid md:grid-cols-3 gap-5 text-left">
-        <div class="card">
-          <i class="fa-solid fa-play text-yellow-300 text-2xl mb-4"></i>
-          <h3 class="font-black text-xl mb-2">Original Recording</h3>
-          <p class="text-gray-400 text-sm">Hear the memory in the person’s own voice.</p>
-        </div>
-        <div class="card">
-          <i class="fa-solid fa-file-lines text-sky-300 text-2xl mb-4"></i>
-          <h3 class="font-black text-xl mb-2">Transcript</h3>
-          <p class="text-gray-400 text-sm">Read the exact saved memory in text form.</p>
-        </div>
-        <div class="card">
-          <i class="fa-solid fa-wand-magic-sparkles text-violet-300 text-2xl mb-4"></i>
-          <h3 class="font-black text-xl mb-2">Gentle Summary</h3>
-          <p class="text-gray-400 text-sm">Summarized only from approved stored memories.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST -->
   <section id="trust" class="py-24 px-6 bg-[#080808] border-y border-white/10">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-14">
@@ -440,7 +363,6 @@
     </div>
   </section>
 
-  <!-- WHO -->
   <section class="py-24 px-6">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-14">
@@ -465,7 +387,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact" class="py-24 px-6 bg-gradient-to-b from-[#080808] to-black border-t border-white/10">
     <div class="max-w-3xl mx-auto text-center">
       <p class="eyebrow mb-4">Early Access</p>
@@ -504,22 +425,11 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="py-10 px-6 border-t border-white/10">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-6 items-center text-center md:text-left">
-      <div class="flex items-center gap-3">
-        <img src="lylo-logo.png" alt="LYLO logo" class="logo-img" />
-        <div>
-          <div class="font-black text-xl">LYLO</div>
-          <div class="text-xs text-gray-500 uppercase tracking-widest">Love Your Loved One</div>
-        </div>
-      </div>
-      <div class="text-sm text-gray-500">
-        Remember · Preserve · Cherish
-      </div>
-      <div class="text-sm text-gray-600">
-        © 2026 LYLO
-      </div>
+      <img src="lylo-logo.png" alt="LYLO logo" class="nav-logo" />
+      <div class="text-sm text-gray-500">Remember · Preserve · Cherish</div>
+      <div class="text-sm text-gray-600">© 2026 LYLO</div>
     </div>
   </footer>
 
