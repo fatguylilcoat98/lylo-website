@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>LYLO — Love Your Loved One</title>
 
-  <meta name="description" content="LYLO helps families preserve memories, stories, recipes, voice recordings, and legacy messages in a governed memory vault built on truth, consent, and care." />
+  <meta name="description" content="LYLO is a governed legacy vault that helps families preserve stories, voices, memories, recipes, and messages with truth, consent, and care." />
   <meta property="og:title" content="LYLO — Love Your Loved One" />
-  <meta property="og:description" content="A governed memory and legacy vault for preserving the stories, voices, recipes, and messages families never want to lose." />
+  <meta property="og:description" content="Preserve the stories, voices, and memories your family should never lose." />
   <meta property="og:type" content="website" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -22,6 +23,10 @@
       --blue: #38bdf8;
       --violet: #8b5cf6;
       --soft: rgba(255,255,255,0.07);
+    }
+
+    * {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -108,6 +113,26 @@
       background-clip: text;
       color: transparent;
     }
+
+    .logo-img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: rgba(255,255,255,.92);
+      padding: 4px;
+    }
+
+    .hero-logo {
+      max-width: 280px;
+      margin-bottom: 28px;
+      filter: drop-shadow(0 18px 45px rgba(0,0,0,.5));
+    }
+
+    .divider-glow {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(248,199,107,.55), transparent);
+    }
   </style>
 </head>
 
@@ -117,9 +142,7 @@
   <nav class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-300 to-orange-500 flex items-center justify-center text-black font-black">
-          L
-        </div>
+        <img src="lylo-logo.png" alt="LYLO logo" class="logo-img" />
         <div>
           <div class="font-black text-xl leading-none">LYLO</div>
           <div class="text-[10px] text-gray-400 uppercase tracking-widest">Love Your Loved One</div>
@@ -138,13 +161,21 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero-bg min-h-screen flex items-center px-6 pt-28 pb-20">
+  <section class="hero-bg min-h-screen flex items-center px-6 pt-32 pb-20">
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
       <div>
+        <img src="lylo-logo.png" alt="LYLO — Love Your Loved One" class="hero-logo" />
+
         <p class="eyebrow mb-5">Governed Memory · Legacy Preservation</p>
-        <h1 class="text-5xl md:text-7xl font-black leading-[1.02] tracking-tight mb-7">
-          Preserve the stories you never want your family to lose.
+
+        <h1 class="text-5xl md:text-7xl font-black leading-[1.02] tracking-tight mb-6">
+          Preserve the stories, voices, and memories your family should never lose.
         </h1>
+
+        <p class="text-2xl md:text-3xl font-black gradient-text mb-6">
+          A legacy vault for the people who matter most.
+        </p>
+
         <p class="text-xl text-gray-300 leading-relaxed mb-9 max-w-2xl">
           LYLO helps families record memories, recipes, life lessons, voice stories, and legacy messages in a governed memory vault built on truth, consent, and care.
         </p>
@@ -193,6 +224,8 @@
     </div>
   </section>
 
+  <div class="divider-glow"></div>
+
   <!-- WHY -->
   <section class="py-24 px-6 border-t border-white/10">
     <div class="max-w-5xl mx-auto text-center">
@@ -206,8 +239,38 @@
     </div>
   </section>
 
+  <!-- WHAT HAPPENS LATER -->
+  <section class="py-24 px-6 bg-[#080808] border-y border-white/10">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="eyebrow mb-4">What Happens Later</p>
+        <h2 class="text-4xl md:text-6xl font-black mb-6">
+          The memory stays protected when life changes.
+        </h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-8">
+          LYLO is built for the moments families do not always know how to prepare for. Memories can be saved, permissioned, protected, and later shared only according to the person’s choices.
+        </p>
+      </div>
+
+      <div class="grid gap-4">
+        <div class="card">
+          <h3 class="text-xl font-black mb-2">Approved memories can be shared</h3>
+          <p class="text-gray-400">Family can access the stories and messages they were allowed to receive.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-xl font-black mb-2">Private memories stay private</h3>
+          <p class="text-gray-400">Not every memory belongs to everyone. Boundaries matter.</p>
+        </div>
+        <div class="card">
+          <h3 class="text-xl font-black mb-2">Locked memories stay locked</h3>
+          <p class="text-gray-400">Future access can follow the person’s instructions instead of someone else’s guess.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- HOW IT WORKS -->
-  <section id="how" class="py-24 px-6 bg-[#080808] border-y border-white/10">
+  <section id="how" class="py-24 px-6 border-y border-white/10">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-14">
         <p class="eyebrow mb-4">How It Works</p>
@@ -301,7 +364,7 @@
       <div class="glass rounded-[32px] p-8">
         <h3 class="text-2xl font-black mb-6">Example Memory</h3>
         <div class="bg-black/40 border border-white/10 rounded-2xl p-5 mb-4">
-          <p class="text-sm text-gray-500 mb-2">Memory Type</p>
+          <p class="text-sm text-gray-500 mb-2">Memory</p>
           <p class="font-bold">Grandpa’s cornbread recipe</p>
         </div>
         <div class="bg-black/40 border border-white/10 rounded-2xl p-5 mb-4">
@@ -309,8 +372,8 @@
           <p class="font-bold text-yellow-300">Family Shared</p>
         </div>
         <div class="bg-black/40 border border-white/10 rounded-2xl p-5">
-          <p class="text-sm text-gray-500 mb-2">Truth Status</p>
-          <p class="font-bold text-sky-300">Recorded from original speaker</p>
+          <p class="text-sm text-gray-500 mb-2">Memory Source</p>
+          <p class="font-bold text-sky-300">Recorded directly from Grandpa</p>
         </div>
       </div>
     </div>
@@ -444,12 +507,15 @@
   <!-- FOOTER -->
   <footer class="py-10 px-6 border-t border-white/10">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-6 items-center text-center md:text-left">
-      <div>
-        <div class="font-black text-xl">LYLO</div>
-        <div class="text-xs text-gray-500 uppercase tracking-widest">Love Your Loved One</div>
+      <div class="flex items-center gap-3">
+        <img src="lylo-logo.png" alt="LYLO logo" class="logo-img" />
+        <div>
+          <div class="font-black text-xl">LYLO</div>
+          <div class="text-xs text-gray-500 uppercase tracking-widest">Love Your Loved One</div>
+        </div>
       </div>
       <div class="text-sm text-gray-500">
-        Truth · Safety · We Got Your Back
+        Remember · Preserve · Cherish
       </div>
       <div class="text-sm text-gray-600">
         © 2026 LYLO
