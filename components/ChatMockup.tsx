@@ -12,25 +12,25 @@ type Bubble = {
 const bubbles: Bubble[] = [
   {
     from: "lylo",
-    text: "What memory would you like to preserve today?",
+    text: "What would you like to share with your family today?",
     note: "Starts as a recorder",
   },
   {
     from: "user",
-    text: "I want to save my dad’s biscuits and gravy recipe.",
+    text: "I want to record my biscuits and gravy recipe for my kids.",
   },
   {
     from: "lylo",
-    text: "Go ahead. I’ll record it in your words and mark it as a recipe memory.",
+    text: "Go ahead. Tell me the recipe in your own words.",
     note: "Does not invent details",
   },
   {
     from: "user",
-    text: "The secret was extra black pepper and cooking the gravy slow.",
+    text: "The secret is extra black pepper and cooking the gravy real slow.",
   },
   {
     from: "lylo",
-    text: "Saved. Should this memory be shared with family, kept private, or locked in your vault?",
+    text: "Saved. Should this be shared with your family, kept private, or locked in your vault?",
     note: "Asks permission first",
   },
 ];
@@ -132,8 +132,8 @@ export default function ChatMockup() {
           <Mic size={12} />
           Memory Vault
         </p>
-        <p className="mt-1.5 text-sm leading-snug text-ink-800">
-          “Dad’s biscuits and gravy recipe. Family shared. Recorded from original speaker.”
+        <p className=”mt-1.5 text-sm leading-snug text-ink-800”>
+          “My biscuits and gravy recipe. Family shared. In my own words.”
         </p>
       </motion.div>
     </div>

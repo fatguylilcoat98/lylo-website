@@ -17,7 +17,7 @@ export default function LyloMark({ className, variant = "nav" }: Props) {
       alt="LYLO — Love Your Loved One"
       width={dims.width}
       height={dims.height}
-      className={className ?? ""}
+      className={`mix-blend-multiply ${className ?? ""}`}
       priority={variant === "nav"}
     />
   );

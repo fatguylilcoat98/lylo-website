@@ -54,13 +54,13 @@ export default function Mattie() {
 
               <div className="mt-5 space-y-4">
                 <div className="max-w-[90%] rounded-2xl rounded-tl-md bg-cream-100 px-5 py-4 text-[17px] leading-relaxed text-ink-800">
-                  Tell me about the recipe you want your family to remember.
+                  Tell me a recipe you want your family to have forever.
                 </div>
                 <div className="ml-auto max-w-[85%] rounded-2xl rounded-tr-md bg-sky-100 px-5 py-4 text-[17px] leading-relaxed text-ink-800">
-                  My dad made biscuits and gravy every Sunday. The trick was the pepper.
+                  I make biscuits and gravy every Sunday. The trick is the pepper.
                 </div>
                 <div className="max-w-[90%] rounded-2xl rounded-tl-md bg-cream-100 px-5 py-4 text-[17px] leading-relaxed text-ink-800">
-                  Should this memory be shared with family, kept private, or locked in your vault?
+                  Should this be shared with your family, kept private, or locked in your vault?
                 </div>
                 <div className="ml-auto max-w-[70%] rounded-2xl rounded-tr-md bg-sky-100 px-5 py-4 text-[17px] leading-relaxed text-ink-800">
                   Share this one with family.
@@ -72,7 +72,7 @@ export default function Mattie() {
                   Saved memory
                 </p>
                 <p className="mt-1 text-xs text-ink-600">
-                  Biscuits and gravy • Family shared • Recorded from original speaker
+                  Biscuits and gravy • Family shared • In your own words
                 </p>
               </div>
             </div>
