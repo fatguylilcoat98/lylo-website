@@ -51,14 +51,14 @@ export default function Founder() {
               From the founder
             </p>
             <h2 className="mt-3 font-serif text-3xl leading-[1.1] tracking-tight text-ink-900 text-balance sm:text-4xl md:text-[2.75rem]">
-              &ldquo;I wanted to build something that helps families hold on to the people they love.&rdquo;
+              &ldquo;I never had a memory of my mother. She knew she was dying — and she could have left me something.&rdquo;
             </h2>
             <div className="mt-6 space-y-4 text-[16.5px] leading-relaxed text-ink-700 sm:text-lg">
               <p>
-                Christopher started building LYLO after thinking about how many stories, recipes, voices, and lessons disappear when someone we love passes away — and how often families wish they had done something before it was too late.
+                My mother passed away from leukemia when I was four years old. She knew she was going to die. She had time. And now that I&rsquo;m much older, I keep thinking — how different would my life have been if she could have spoken directly to me? A story. Her voice. A recipe she loved. Something real, from her, not just stories other people told me about her.
               </p>
               <p>
-                The mission is simple: give people a safe, governed way to preserve what matters, on their own terms, so the next generation has something real to hold onto.
+                That&rsquo;s why I&rsquo;m building LYLO. For every family where someone knows their time is short. For every person who has something worth leaving behind but no easy way to do it. So that no child ever has to wonder what their parent actually sounded like.
               </p>
             </div>
 
