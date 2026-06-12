@@ -132,8 +132,8 @@ export default function ChatMockup() {
           <Mic size={12} />
           Memory Vault
         </p>
-        <p className=”mt-1.5 text-sm leading-snug text-ink-800”>
-          “My biscuits and gravy recipe. Family shared. In my own words.”
+        <p className="mt-1.5 text-sm leading-snug text-ink-800">
+          "My biscuits and gravy recipe. Family shared. In my own words."
         </p>
       </motion.div>
     </div>
