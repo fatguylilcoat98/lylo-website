@@ -8,7 +8,7 @@ const examples = [
   {
     icon: Mic,
     title: "Record the real story",
-    body: "Life stories, recipes, advice, prayers, memories, and messages saved in the person’s own words.",
+    body: "Life stories, recipes, advice, prayers, memories, and messages saved in the person's own words.",
   },
   {
     icon: Users,
@@ -27,7 +27,7 @@ const examples = [
   },
 ];
 
-export default function Mattie() {
+export default function LegacyVault() {
   return (
     <section id="legacy" className="relative py-24 sm:py-32">
       <div className="absolute inset-x-0 top-0 -z-10 h-full bg-gradient-to-b from-cream-100/60 via-cream-50 to-cream-50" />
@@ -36,7 +36,7 @@ export default function Mattie() {
         <SectionHeader
           eyebrow="Legacy Vault"
           title={<>A governed memory vault for the people you love.</>}
-          subtitle="Lylo starts simple: record what matters, choose who can access it, and preserve it without letting AI invent someone’s life."
+          subtitle="Lylo starts simple: record what matters, choose who can access it, and preserve it without letting AI invent someone's life."
         />
 
         <div className="mt-16 grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -72,7 +72,7 @@ export default function Mattie() {
                   Saved memory
                 </p>
                 <p className="mt-1 text-xs text-ink-600">
-                  Biscuits and gravy • Family shared • In your own words
+                  Biscuits and gravy &bull; Family shared &bull; In your own words
                 </p>
               </div>
             </div>

@@ -1,7 +1,7 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
-import Mattie from "@/components/Mattie";
+import LegacyVault from "@/components/LegacyVault";
 import Vision from "@/components/Vision";
 import Safety from "@/components/Safety";
 import WhoFor from "@/components/WhoFor";
@@ -15,7 +15,7 @@ export default function Page() {
       <Nav />
       <Hero />
       <Problem />
-      <Mattie />
+      <LegacyVault />
       <Vision />
       <Safety />
       <WhoFor />
