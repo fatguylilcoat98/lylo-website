@@ -1,176 +1,107 @@
 export default function Page() {
-return ( <main className="min-h-screen bg-warm-gradient text-[#1F1B17]"> <section className="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 py-20 text-center"> <p className="mb-5 text-sm font-semibold uppercase tracking-[0.35em] text-[#8A6A2F]">
-LYLO </p>
+return (
+<main
+style={{
+fontFamily: "Arial, sans-serif",
+maxWidth: "900px",
+margin: "0 auto",
+padding: "60px 20px",
+lineHeight: 1.7,
+}}
+>
+<h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>
+LYLO isn't about death. It's about continuing life. </h1>
 
 ```
-    <h1 className="max-w-5xl text-5xl font-bold leading-tight tracking-tight md:text-7xl">
-      LYLO isn&apos;t about death. It&apos;s about continuing life.
-    </h1>
+  <h2 style={{ color: "#555", marginBottom: "2rem" }}>
+    Preserve your stories. Strengthen your relationships. Be remembered.
+  </h2>
 
-    <p className="mt-8 max-w-3xl text-2xl font-semibold text-[#4A4036] md:text-3xl">
-      Preserve your stories. Strengthen your relationships. Be remembered.
-    </p>
+  <p>
+    Every day, we create moments worth remembering. A family recipe. A funny
+    story. A lesson from Dad. A memory from college. A holiday tradition.
+    LYLO helps preserve those moments while they're happening.
+  </p>
 
-    <p className="mt-8 max-w-3xl text-lg leading-8 text-[#5F554B] md:text-xl">
-      LYLO helps families capture stories, recipes, traditions, photos, and everyday
-      moments while they&apos;re still being lived, so those memories can keep
-      creating connection for years to come.
-    </p>
+  <hr style={{ margin: "50px 0" }} />
 
-    <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-      <a
-        href="#demo"
-        className="rounded-full bg-[#1F1B17] px-8 py-4 text-lg font-semibold text-white shadow-lg transition hover:scale-[1.02]"
-      >
-        See how it works
-      </a>
-      <a
-        href="#vision"
-        className="rounded-full border border-[#D4A85A] bg-white/70 px-8 py-4 text-lg font-semibold text-[#1F1B17] shadow-sm transition hover:scale-[1.02]"
-      >
-        Learn the vision
-      </a>
-    </div>
-  </section>
+  <h2>The Story</h2>
 
-  <section id="demo" className="px-6 py-20">
-    <div className="mx-auto max-w-6xl rounded-[2rem] bg-white/80 p-8 shadow-xl md:p-12">
-      <p className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-[#8A6A2F]">
-        The moment LYLO creates
-      </p>
+  <p>
+    Imagine a father driving home from work when he remembers something
+    funny his daughter did as a child.
+  </p>
 
-      <h2 className="text-4xl font-bold md:text-5xl">
-        Dad was thinking about you.
-      </h2>
+  <p>
+    He opens LYLO and simply says:
+  </p>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
-        <div className="rounded-3xl border border-[#E7D9BC] bg-[#FDFBF6] p-6">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#8A6A2F]">
-            Step 1
-          </p>
-          <h3 className="mt-4 text-2xl font-bold">A story is told</h3>
-          <p className="mt-4 leading-7 text-[#5F554B]">
-            Steve remembers something about his daughter Emma. He opens LYLO,
-            taps the microphone, and says, “I want to save a story about Emma.”
-          </p>
-        </div>
+  <blockquote>
+    “I want to save a story about my daughter.”
+  </blockquote>
 
-        <div className="rounded-3xl border border-[#E7D9BC] bg-[#FDFBF6] p-6">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#8A6A2F]">
-            Step 2
-          </p>
-          <h3 className="mt-4 text-2xl font-bold">LYLO connects it</h3>
-          <p className="mt-4 leading-7 text-[#5F554B]">
-            The memory is preserved and connected to Emma, childhood, family
-            vacations, funny moments, and the people who may one day treasure it.
-          </p>
-        </div>
+  <p>
+    He tells the story, closes his phone, and goes on with his day.
+  </p>
 
-        <div className="rounded-3xl border border-[#E7D9BC] bg-[#FDFBF6] p-6">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#8A6A2F]">
-            Step 3
-          </p>
-          <h3 className="mt-4 text-2xl font-bold">A new call happens</h3>
-          <p className="mt-4 leading-7 text-[#5F554B]">
-            Days later Emma sees, “Your dad shared a new story about you.”
-            She calls home. They laugh. LYLO didn&apos;t just save a memory.
-            It helped create another one.
-          </p>
-        </div>
-      </div>
+  <p>
+    A few days later, while away at college, his daughter receives a
+    notification:
+  </p>
 
-      <div className="mt-10 rounded-3xl bg-[#1F1B17] p-8 text-white">
-        <p className="text-2xl font-bold md:text-3xl">
-          “Your dad shared a new story about you this week.”
-        </p>
-        <p className="mt-4 text-lg leading-8 text-white/80">
-          That message is not just a notification. It is a reason to call,
-          reconnect, ask another question, and keep the story going.
-        </p>
-      </div>
-    </div>
-  </section>
+  <blockquote>
+    <strong>Your dad shared a new story about you today.</strong>
+  </blockquote>
 
-  <section className="px-6 py-20">
-    <div className="mx-auto max-w-6xl">
-      <h2 className="max-w-4xl text-4xl font-bold md:text-5xl">
-        LYLO does not preserve conversations. It preserves relationships.
-      </h2>
+  <p>
+    She smiles and immediately calls home.
+  </p>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
-        <div className="rounded-3xl bg-white/80 p-8 shadow">
-          <h3 className="text-2xl font-bold">Story Threads</h3>
-          <p className="mt-4 leading-8 text-[#5F554B]">
-            Memories are connected around people, recipes, places, holidays,
-            life stages, traditions, and themes. One memory can be found many ways.
-          </p>
-        </div>
+  <p>
+    They laugh together and tell even more stories.
+  </p>
 
-        <div className="rounded-3xl bg-white/80 p-8 shadow">
-          <h3 className="text-2xl font-bold">Person Profiles</h3>
-          <p className="mt-4 leading-8 text-[#5F554B]">
-            A loved one can one day open their own thread and discover the
-            stories, recipes, photos, lessons, and messages connected to them.
-          </p>
-        </div>
+  <h3>
+    LYLO didn't just preserve a memory.
+  </h3>
 
-        <div className="rounded-3xl bg-white/80 p-8 shadow">
-          <h3 className="text-2xl font-bold">Weekly Legacy Letters</h3>
-          <p className="mt-4 leading-8 text-[#5F554B]">
-            Optional updates can gently show families that stories are being
-            preserved, giving them another reason to call while they still can.
-          </p>
-        </div>
+  <h2>It helped create another one.</h2>
 
-        <div className="rounded-3xl bg-white/80 p-8 shadow">
-          <h3 className="text-2xl font-bold">Story Mode</h3>
-          <p className="mt-4 leading-8 text-[#5F554B]">
-            LYLO can tell a faithful story from preserved memories without
-            inventing facts, always keeping the original memories as the source.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <hr style={{ margin: "50px 0" }} />
 
-  <section className="px-6 py-20">
-    <div className="mx-auto max-w-6xl rounded-[2rem] bg-white/80 p-8 shadow-xl md:p-12">
-      <h2 className="text-4xl font-bold md:text-5xl">
-        Built for every stage of life.
-      </h2>
+  <h2>Built for Every Stage of Life</h2>
 
-      <div className="mt-8 grid gap-5 md:grid-cols-2">
-        {[
-          ["Leaving for college", "A parent can preserve stories while their child is away, and those stories can become reasons to call home."],
-          ["Raising a family", "Everyday moments, birthdays, first steps, funny stories, and lessons can be saved as life is happening."],
-          ["Grandparents and grandchildren", "Recipes, traditions, photos, and memories can become gifts shared across generations."],
-          ["Growing older", "Older adults can talk naturally while LYLO helps preserve what matters without making technology feel hard."]
-        ].map(([title, body]) => (
-          <div key={title} className="rounded-2xl border border-[#E7D9BC] bg-[#FDFBF6] p-6">
-            <h3 className="text-xl font-bold">{title}</h3>
-            <p className="mt-3 leading-7 text-[#5F554B]">{body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <ul>
+    <li>🎓 Kids leaving for college</li>
+    <li>👨‍👩‍👧 Parents raising a family</li>
+    <li>👵 Grandparents preserving traditions</li>
+    <li>🍲 Recording family recipes</li>
+    <li>📸 Capturing everyday moments</li>
+    <li>❤️ Sharing stories while everyone is still together</li>
+  </ul>
 
-  <section id="vision" className="px-6 py-24 text-center">
-    <div className="mx-auto max-w-4xl">
-      <h2 className="text-4xl font-bold md:text-6xl">
-        One day, your family won&apos;t just inherit your photos.
-      </h2>
+  <hr style={{ margin: "50px 0" }} />
 
-      <p className="mt-8 text-xl leading-9 text-[#5F554B]">
-        They&apos;ll inherit your stories, your recipes, your laughter, your
-        lessons, and the way you remembered them.
-      </p>
+  <h2>The Vision</h2>
 
-      <p className="mt-10 text-3xl font-bold">
-        LYLO isn&apos;t about death. It&apos;s about continuing life.
-      </p>
-    </div>
-  </section>
+  <p>
+    LYLO organizes stories around the people, places, traditions, recipes,
+    and moments that define our lives.
+  </p>
+
+  <p>
+    One day, your loved ones won't just inherit photos or documents.
+  </p>
+
+  <p>
+    They'll discover how you remembered them.
+  </p>
+
+  <h2 style={{ marginTop: "60px" }}>
+    LYLO isn't about death.
+    <br />
+    It's about continuing life.
+  </h2>
 </main>
 ```
 
