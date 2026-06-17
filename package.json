@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "npx serve out",
     "preview": "next build && npx serve out",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "npx tsx --test __tests__/guards.test.ts __tests__/notifications.test.ts __tests__/chains.test.ts"
   },
   "dependencies": {
     "framer-motion": "^11.3.19",
@@ -23,6 +24,7 @@
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.7",
-    "typescript": "^5.5.4"
+    "tsx": "^4.19.2",
+    "typescript": "^5.9.3"
   }
 }
