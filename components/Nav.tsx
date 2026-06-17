@@ -28,8 +28,8 @@ export default function Nav() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "backdrop-blur-md bg-cream-50/80 border-b border-ink-900/5"
-          : "bg-transparent"
+          ? "backdrop-blur-md bg-ink-900/95 border-b border-white/10"
+          : "bg-ink-900"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
@@ -46,7 +46,7 @@ export default function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-ink-700 transition-colors hover:text-ink-900"
+              className="text-sm font-medium text-white/70 transition-colors hover:text-white"
             >
               {l.label}
             </a>
@@ -56,7 +56,7 @@ export default function Nav() {
         <div className="hidden items-center gap-3 md:flex">
           <a
             href="#access"
-            className="rounded-full bg-ink-900 px-5 py-2.5 text-sm font-medium text-cream-50 shadow-soft transition-transform hover:-translate-y-0.5 hover:bg-ink-800"
+            className="rounded-full bg-teal-500 px-5 py-2.5 text-sm font-medium text-white shadow-soft transition-all hover:-translate-y-0.5 hover:bg-teal-400"
           >
             Request Early Access
           </a>
@@ -66,7 +66,7 @@ export default function Nav() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="rounded-full border border-ink-900/10 bg-white/70 p-2.5 text-ink-800 backdrop-blur md:hidden"
+          className="rounded-full border border-white/20 bg-white/10 p-2.5 text-white backdrop-blur md:hidden"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -81,14 +81,14 @@ export default function Nav() {
             transition={{ duration: 0.2 }}
             className="md:hidden"
           >
-            <div className="mx-4 mb-3 rounded-3xl border border-ink-900/5 bg-white/95 p-4 shadow-soft backdrop-blur">
+            <div className="mx-4 mb-3 rounded-3xl border border-white/10 bg-ink-900/98 p-4 shadow-soft backdrop-blur">
               <ul className="flex flex-col gap-1">
                 {links.map((l) => (
                   <li key={l.href}>
                     <a
                       href={l.href}
                       onClick={() => setOpen(false)}
-                      className="block rounded-2xl px-4 py-3 text-base font-medium text-ink-800 hover:bg-cream-100"
+                      className="block rounded-2xl px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white"
                     >
                       {l.label}
                     </a>
@@ -98,7 +98,7 @@ export default function Nav() {
                   <a
                     href="#access"
                     onClick={() => setOpen(false)}
-                    className="block rounded-full bg-ink-900 px-4 py-3 text-center text-base font-medium text-cream-50"
+                    className="block rounded-full bg-teal-500 px-4 py-3 text-center text-base font-medium text-white"
                   >
                     Request Early Access
                   </a>
