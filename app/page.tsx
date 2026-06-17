@@ -2,6 +2,11 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
 import LegacyVault from "@/components/LegacyVault";
+import MemoryGraph from "@/components/MemoryGraph";
+import LegacyLetter from "@/components/LegacyLetter";
+import LifeUseCases from "@/components/LifeUseCases";
+import ContinuingLife from "@/components/ContinuingLife";
+import DadWasThinkingDemo from "@/components/DadWasThinkingDemo";
 import Vision from "@/components/Vision";
 import Safety from "@/components/Safety";
 import WhoFor from "@/components/WhoFor";
@@ -15,7 +20,12 @@ export default function Page() {
       <Nav />
       <Hero />
       <Problem />
+      <ContinuingLife />
+      <DadWasThinkingDemo />
       <LegacyVault />
+      <MemoryGraph />
+      <LegacyLetter />
+      <LifeUseCases />
       <Vision />
       <Safety />
       <WhoFor />
